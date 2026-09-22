@@ -1,6 +1,7 @@
 name: Fresh Bonus & Stock Split Alerts
 
 "on":
+  push:
   workflow_dispatch:
   schedule:
     - cron: "0 * * * *"
