@@ -2,11 +2,12 @@ import os
 import json
 import re
 import requests
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 # ============================================================
-# CONFIGURATION
+# CONFIG
 # ============================================================
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -30,15 +31,32 @@ HEADERS = {
 
 
 # ============================================================
-# LOAD / SAVE SEEN ALERTS
+# INDIA DATE
+# ============================================================
+
+def india_today():
+    return datetime.now(
+        ZoneInfo("Asia/Kolkata")
+    ).date()
+
+
+# ============================================================
+# LOAD SEEN
 # ============================================================
 
 def load_seen():
+
     if not os.path.exists(SEEN_FILE):
         return set()
 
     try:
-        with open(SEEN_FILE, "r", encoding="utf-8") as f:
+
+        with open(
+            SEEN_FILE,
+            "r",
+            encoding="utf-8"
+        ) as f:
+
             data = json.load(f)
 
         if isinstance(data, list):
@@ -46,13 +64,36 @@ def load_seen():
 
         return set()
 
-    except Exception:
+    except Exception as e:
+
+        print(f"Could not load seen.json: {e}")
+
         return set()
 
 
+# ============================================================
+# SAVE SEEN
+# ============================================================
+
 def save_seen(seen):
-    with open(SEEN_FILE, "w", encoding="utf-8") as f:
-        json.dump(sorted(seen), f, indent=2)
+
+    try:
+
+        with open(
+            SEEN_FILE,
+            "w",
+            encoding="utf-8"
+        ) as f:
+
+            json.dump(
+                sorted(seen),
+                f,
+                indent=2
+            )
+
+    except Exception as e:
+
+        print(f"Could not save seen.json: {e}")
 
 
 # ============================================================
@@ -60,8 +101,13 @@ def save_seen(seen):
 # ============================================================
 
 def send_telegram(message):
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        print("Telegram credentials are missing.")
+
+    if not TELEGRAM_BOT_TOKEN:
+        print("ERROR: TELEGRAM_BOT_TOKEN is missing.")
+        return False
+
+    if not TELEGRAM_CHAT_ID:
+        print("ERROR: TELEGRAM_CHAT_ID is missing.")
         return False
 
     url = (
@@ -76,19 +122,35 @@ def send_telegram(message):
     }
 
     try:
+
         response = requests.post(
             url,
             json=payload,
             timeout=30
         )
 
+        print(
+            f"Telegram HTTP status: "
+            f"{response.status_code}"
+        )
+
         response.raise_for_status()
 
-        print("Telegram alert sent successfully.")
-        return True
+        result = response.json()
 
-    except requests.RequestException as e:
+        if result.get("ok"):
+
+            print("Telegram message sent.")
+            return True
+
+        print(f"Telegram rejected message: {result}")
+
+        return False
+
+    except Exception as e:
+
         print(f"Telegram error: {e}")
+
         return False
 
 
@@ -97,26 +159,39 @@ def send_telegram(message):
 # ============================================================
 
 def create_nse_session():
-    """
-    Create an NSE session.
-
-    Important:
-    We intentionally do NOT visit the NSE homepage first.
-    The previous version was failing here with HTTP 403
-    from GitHub Actions.
-    """
 
     session = requests.Session()
 
     session.headers.update(HEADERS)
 
-    session.headers.update({
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Connection": "keep-alive",
-        "Host": "www.nseindia.com",
-        "Referer": "https://www.nseindia.com/",
-    })
+    try:
+
+        print("Opening NSE homepage...")
+
+        response = session.get(
+            "https://www.nseindia.com/",
+            timeout=30
+        )
+
+        print(
+            "NSE homepage status:",
+            response.status_code
+        )
+
+        print(
+            "NSE homepage content type:",
+            response.headers.get("Content-Type")
+        )
+
+        # Do not fail here.
+        # NSE may return different content depending
+        # on GitHub's IP.
+
+    except requests.RequestException as e:
+
+        print(
+            f"NSE homepage request failed: {e}"
+        )
 
     return session
 
@@ -126,43 +201,143 @@ def create_nse_session():
 # ============================================================
 
 def get_announcements():
+
     session = create_nse_session()
 
-    today = datetime.now(timezone.utc).date()
-    yesterday = today - timedelta(days=1)
+    today = india_today()
+
+    date_string = today.strftime("%d-%m-%Y")
 
     params = {
         "index": "equities",
-        "from_date": yesterday.strftime("%d-%m-%Y"),
-        "to_date": today.strftime("%d-%m-%Y"),
+        "from_date": date_string,
+        "to_date": date_string,
     }
 
+    print(
+        f"Checking NSE announcements for "
+        f"{date_string}"
+    )
+
     try:
+
         response = session.get(
             NSE_URL,
             params=params,
             timeout=30
         )
 
-        response.raise_for_status()
+        print(
+            "NSE API status:",
+            response.status_code
+        )
 
-        data = response.json()
+        content_type = response.headers.get(
+            "Content-Type",
+            ""
+        )
+
+        print(
+            "NSE API content type:",
+            content_type
+        )
+
+        # ----------------------------------------------------
+        # HTTP ERROR
+        # ----------------------------------------------------
+
+        if response.status_code != 200:
+
+            print(
+                "NSE API did not return HTTP 200."
+            )
+
+            print(
+                "Response preview:",
+                response.text[:500]
+            )
+
+            return None
+
+        # ----------------------------------------------------
+        # EMPTY RESPONSE
+        # ----------------------------------------------------
+
+        if not response.text.strip():
+
+            print(
+                "NSE returned an empty response."
+            )
+
+            return None
+
+        # ----------------------------------------------------
+        # JSON CHECK
+        # ----------------------------------------------------
+
+        try:
+
+            data = response.json()
+
+        except ValueError:
+
+            print(
+                "NSE returned NON-JSON data."
+            )
+
+            print(
+                "Response preview:"
+            )
+
+            print(
+                response.text[:1000]
+            )
+
+            return None
+
+        # ----------------------------------------------------
+        # RESPONSE FORMAT
+        # ----------------------------------------------------
 
         if isinstance(data, list):
+
             return data
 
         if isinstance(data, dict):
-            return data.get("data", [])
 
-        return []
+            announcements = data.get(
+                "data",
+                []
+            )
+
+            if isinstance(
+                announcements,
+                list
+            ):
+
+                return announcements
+
+        print(
+            "Unexpected NSE response format."
+        )
+
+        return None
 
     except requests.RequestException as e:
-        print(f"NSE request failed: {e}")
-        return []
 
-    except ValueError as e:
-        print(f"NSE returned invalid JSON: {e}")
-        return []
+        print(
+            f"NSE request failed: {e}"
+        )
+
+        return None
+
+    except Exception as e:
+
+        print(
+            f"Unexpected NSE error: {e}"
+        )
+
+        return None
 
 
 # ============================================================
@@ -170,14 +345,10 @@ def get_announcements():
 # ============================================================
 
 def identify_action(announcement):
-    """
-    Identify whether an announcement is related to
-    a bonus issue or stock split.
-    """
 
     text_parts = []
 
-    for key in [
+    fields = [
         "desc",
         "description",
         "subject",
@@ -186,18 +357,28 @@ def identify_action(announcement):
         "attchmntText",
         "announcement",
         "purpose",
-    ]:
-        value = announcement.get(key)
+    ]
+
+    for field in fields:
+
+        value = announcement.get(field)
 
         if value:
-            text_parts.append(str(value))
 
-    text = " ".join(text_parts).lower()
+            text_parts.append(
+                str(value)
+            )
 
-    # Normalize whitespace
-    text = re.sub(r"\s+", " ", text)
+    text = " ".join(text_parts)
+
+    text = re.sub(
+        r"\s+",
+        " ",
+        text
+    ).lower()
 
     # BONUS
+
     bonus_patterns = [
         r"\bbonus\b",
         r"\bbonus issue\b",
@@ -206,77 +387,129 @@ def identify_action(announcement):
     ]
 
     for pattern in bonus_patterns:
-        if re.search(pattern, text, re.IGNORECASE):
+
+        if re.search(
+            pattern,
+            text,
+            re.IGNORECASE
+        ):
+
             return "BONUS"
 
     # STOCK SPLIT
+
     split_patterns = [
         r"\bstock split\b",
         r"\bshare split\b",
-        r"\bface value\b.*\bsplit\b",
+        r"\bsub[\s-]?division\b",
+        r"\bsub[\s-]?division of shares\b",
         r"\bsplit\b.*\bface value\b",
-        r"\bsub-division\b",
-        r"\bsub division\b",
-        r"\bsubdivision\b",
+        r"\bface value\b.*\bsplit\b",
     ]
 
     for pattern in split_patterns:
-        if re.search(pattern, text, re.IGNORECASE):
+
+        if re.search(
+            pattern,
+            text,
+            re.IGNORECASE
+        ):
+
             return "STOCK SPLIT"
 
     return None
 
 
 # ============================================================
-# CREATE UNIQUE ANNOUNCEMENT ID
+# UNIQUE ID
 # ============================================================
 
 def announcement_id(announcement):
-    """
-    Create a stable ID so the same announcement
-    is not sent repeatedly.
-    """
 
-    for key in [
+    # First use NSE ID if available.
+
+    for field in [
         "seq_id",
         "seqId",
         "id",
-        "symbol",
-        "attchmntFile",
-        "sort_date",
-        "broadcastDate",
     ]:
-        value = announcement.get(key)
+
+        value = announcement.get(field)
 
         if value:
-            return f"{key}:{value}"
 
-    # Fallback
-    important_fields = [
-        str(announcement.get("symbol", "")),
-        str(announcement.get("desc", "")),
-        str(announcement.get("subject", "")),
-        str(announcement.get("broadcastDate", "")),
-    ]
+            return (
+                f"{field}:{value}"
+            )
 
-    return "|".join(important_fields)
+    symbol = str(
+        announcement.get(
+            "symbol",
+            ""
+        )
+    )
+
+    company = str(
+        announcement.get(
+            "companyName",
+            ""
+        )
+    )
+
+    description = str(
+        announcement.get(
+            "desc",
+            ""
+        )
+        or announcement.get(
+            "description",
+            ""
+        )
+        or announcement.get(
+            "subject",
+            ""
+        )
+    )
+
+    date_value = str(
+        announcement.get(
+            "broadcastDate",
+            ""
+        )
+        or announcement.get(
+            "date",
+            ""
+        )
+    )
+
+    return "|".join(
+        [
+            symbol.strip(),
+            company.strip(),
+            date_value.strip(),
+            description.strip().lower(),
+        ]
+    )
 
 
 # ============================================================
-# FORMAT TELEGRAM MESSAGE
+# FORMAT MESSAGE
 # ============================================================
 
-def format_message(action, announcement):
+def format_message(
+    action,
+    announcement
+):
+
     symbol = (
         announcement.get("symbol")
         or announcement.get("symbolName")
-        or announcement.get("companyName")
         or "Unknown"
     )
 
     company = (
         announcement.get("companyName")
-        or announcement.get("symbol")
+        or symbol
         or "Unknown company"
     )
 
@@ -290,21 +523,27 @@ def format_message(action, announcement):
     )
 
     date_value = (
-        announcement.get("broadcastDate")
-        or announcement.get("date")
-        or announcement.get("sort_date")
+        announcement.get(
+            "broadcastDate"
+        )
+        or announcement.get(
+            "date"
+        )
         or ""
     )
 
     attachment = (
-        announcement.get("attchmntFile")
-        or announcement.get("attachment")
-        or announcement.get("url")
+        announcement.get(
+            "attchmntFile"
+        )
+        or announcement.get(
+            "attachment"
+        )
         or ""
     )
 
     message = (
-        f"🚨 FRESH {action} ALERT\n\n"
+        f"🚨 FRESH {action}\n\n"
         f"🏢 Company: {company}\n"
         f"📌 Symbol: {symbol}\n"
         f"📅 Date: {date_value}\n\n"
@@ -312,15 +551,31 @@ def format_message(action, announcement):
     )
 
     if attachment:
-        if str(attachment).startswith("http"):
-            message += f"\n\n🔗 {attachment}"
-        else:
+
+        attachment = str(
+            attachment
+        )
+
+        if attachment.startswith(
+            "http"
+        ):
+
             message += (
-                "\n\n🔗 https://www.nseindia.com/"
-                + str(attachment).lstrip("/")
+                f"\n\n🔗 {attachment}"
             )
 
-    message += "\n\n🤖 Corporate Action Scanner"
+        else:
+
+            message += (
+                "\n\n🔗 "
+                "https://www.nseindia.com/"
+                + attachment.lstrip("/")
+            )
+
+    message += (
+        "\n\n🤖 NSE Fresh Corporate "
+        "Action Scanner"
+    )
 
     return message
 
@@ -330,60 +585,179 @@ def format_message(action, announcement):
 # ============================================================
 
 def main():
+
     print("=" * 60)
-    print("NSE BONUS & STOCK SPLIT SCANNER")
+
+    print(
+        "NSE FRESH BONUS & STOCK SPLIT SCANNER"
+    )
+
     print("=" * 60)
+
+    print(
+        f"India date: {india_today()}"
+    )
 
     seen = load_seen()
 
-    print(f"Previously alerted: {len(seen)}")
+    print(
+        f"Previously alerted: {len(seen)}"
+    )
 
     announcements = get_announcements()
 
-    print(f"Announcements received: {len(announcements)}")
+    # ========================================================
+    # VERY IMPORTANT:
+    # None means NSE FAILED.
+    #
+    # [] means NSE successfully returned zero announcements.
+    # ========================================================
+
+    if announcements is None:
+
+        print()
+        print(
+            "NSE SCAN FAILED."
+        )
+
+        print(
+            "No alerts will be sent."
+        )
+
+        print(
+            "Seen list will NOT be changed."
+        )
+
+        print(
+            "Scanner finished with NSE error."
+        )
+
+        return
+
+    print(
+        f"Announcements received: "
+        f"{len(announcements)}"
+    )
 
     if not announcements:
-        print("No announcements received.")
-        print("Scanner finished.")
+
+        print(
+            "No announcements for today."
+        )
+
+        print(
+            "Scanner finished."
+        )
+
         return
 
     new_alerts = 0
 
     for announcement in announcements:
 
-        action = identify_action(announcement)
+        action = identify_action(
+            announcement
+        )
 
-        if action is None:
+        if not action:
+
             continue
 
-        ann_id = announcement_id(announcement)
+        ann_id = announcement_id(
+            announcement
+        )
 
-        print(f"\nPotential {action}: {ann_id}")
+        symbol = (
+            announcement.get(
+                "symbol"
+            )
+            or announcement.get(
+                "symbolName"
+            )
+            or "Unknown"
+        )
+
+        print()
+        print(
+            f"Detected {action}: {symbol}"
+        )
+
+        # ====================================================
+        # DUPLICATE PROTECTION
+        # ====================================================
 
         if ann_id in seen:
-            print("Already alerted. Skipping.")
+
+            print(
+                "Already alerted - SKIPPING."
+            )
+
             continue
+
+        # ====================================================
+        # NEW ALERT
+        # ====================================================
 
         message = format_message(
             action,
             announcement
         )
 
-        print("\n" + message)
+        print(
+            "NEW FRESH ALERT"
+        )
 
-        sent = send_telegram(message)
+        print(message)
+
+        sent = send_telegram(
+            message
+        )
 
         if sent:
-            seen.add(ann_id)
+
+            seen.add(
+                ann_id
+            )
+
             new_alerts += 1
+
+            print(
+                "Saved as alerted."
+            )
+
+        else:
+
+            print(
+                "Telegram failed."
+            )
+
+            print(
+                "NOT marking as alerted."
+            )
+
+    # ========================================================
+    # SAVE ONLY AFTER SUCCESSFUL PROCESSING
+    # ========================================================
 
     save_seen(seen)
 
-    print("\n" + "=" * 60)
-    print(f"NEW ALERTS SENT: {new_alerts}")
-    print(f"TOTAL SEEN: {len(seen)}")
+    print()
     print("=" * 60)
 
+    print(
+        f"NEW ALERTS SENT: {new_alerts}"
+    )
+
+    print(
+        f"TOTAL SEEN ALERTS: {len(seen)}"
+    )
+
+    print("=" * 60)
+
+
+# ============================================================
+# START
+# ============================================================
 
 if __name__ == "__main__":
     main()
