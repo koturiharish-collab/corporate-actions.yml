@@ -1,9 +1,12 @@
 import os
 import json
 import re
+import hashlib
 import requests
+
 from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
+
 
 # ============================================================
 # CONFIGURATION
@@ -30,32 +33,74 @@ HEADERS = {
 
 
 # ============================================================
-# SEEN ALERT STORAGE
+# SEEN STATE
 # ============================================================
 
 def load_seen():
+
     if not os.path.exists(SEEN_FILE):
-        return set()
+        return {
+            "initialized": False,
+            "keys": set()
+        }
 
     try:
+
         with open(SEEN_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
 
+        # New format
+        if isinstance(data, dict):
+
+            keys = data.get("keys", [])
+
+            if isinstance(keys, list):
+                return {
+                    "initialized": bool(data.get("initialized", False)),
+                    "keys": set(keys)
+                }
+
+        # Old format compatibility
         if isinstance(data, list):
-            return set(data)
 
-        return set()
-
-    except Exception:
-        return set()
-
-
-def save_seen(seen):
-    try:
-        with open(SEEN_FILE, "w", encoding="utf-8") as f:
-            json.dump(sorted(seen), f, indent=2)
+            return {
+                "initialized": True,
+                "keys": set(data)
+            }
 
     except Exception as e:
+
+        print(f"Could not load seen.json: {e}")
+
+    return {
+        "initialized": False,
+        "keys": set()
+    }
+
+
+def save_seen(state):
+
+    try:
+
+        data = {
+            "initialized": bool(state.get("initialized", False)),
+            "keys": sorted(list(state.get("keys", set())))
+        }
+
+        with open(SEEN_FILE, "w", encoding="utf-8") as f:
+
+            json.dump(
+                data,
+                f,
+                indent=2
+            )
+
+        print(
+            f"Saved state: {len(data['keys'])} keys"
+        )
+
+    except Exception as e:
+
         print(f"Could not save seen.json: {e}")
 
 
@@ -66,7 +111,9 @@ def save_seen(seen):
 def send_telegram(message):
 
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+
         print("Telegram credentials are missing.")
+
         return False
 
     url = (
@@ -77,10 +124,11 @@ def send_telegram(message):
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
         "text": message,
-        "disable_web_page_preview": True,
+        "disable_web_page_preview": True
     }
 
     try:
+
         response = requests.post(
             url,
             json=payload,
@@ -88,15 +136,19 @@ def send_telegram(message):
         )
 
         if response.status_code == 200:
+
             print("Telegram alert sent.")
+
             return True
 
         print(
             f"Telegram failed: "
-            f"{response.status_code} {response.text}"
+            f"{response.status_code} "
+            f"{response.text}"
         )
 
     except Exception as e:
+
         print(f"Telegram error: {e}")
 
     return False
@@ -113,15 +165,22 @@ def create_nse_session():
     session.headers.update(HEADERS)
 
     try:
+
         response = session.get(
             "https://www.nseindia.com/",
             timeout=30
         )
 
-        print(f"NSE homepage status: {response.status_code}")
+        print(
+            f"NSE homepage status: "
+            f"{response.status_code}"
+        )
 
     except Exception as e:
-        print(f"NSE homepage request failed: {e}")
+
+        print(
+            f"NSE homepage request failed: {e}"
+        )
 
     return session
 
@@ -135,6 +194,7 @@ def get_announcements():
     session = create_nse_session()
 
     today = datetime.now(timezone.utc).date()
+
     yesterday = today - timedelta(days=1)
 
     params = {
@@ -151,13 +211,17 @@ def get_announcements():
             timeout=30
         )
 
-        print(f"NSE API status: {response.status_code}")
+        print(
+            f"NSE API status: "
+            f"{response.status_code}"
+        )
 
         response.raise_for_status()
 
         data = response.json()
 
         if isinstance(data, list):
+
             return data
 
         if isinstance(data, dict):
@@ -167,14 +231,21 @@ def get_announcements():
                 "announcements",
                 "results"
             ]:
-                if isinstance(data.get(key), list):
+
+                if isinstance(
+                    data.get(key),
+                    list
+                ):
+
                     return data[key]
 
         return []
 
     except Exception as e:
 
-        print(f"NSE request failed: {e}")
+        print(
+            f"NSE request failed: {e}"
+        )
 
         return []
 
@@ -193,7 +264,10 @@ def clean_text(value):
     text = BeautifulSoup(
         text,
         "html.parser"
-    ).get_text(" ", strip=True)
+    ).get_text(
+        " ",
+        strip=True
+    )
 
     text = re.sub(
         r"\s+",
@@ -205,7 +279,7 @@ def clean_text(value):
 
 
 # ============================================================
-# FIND VALUE RECURSIVELY
+# RECURSIVE VALUES
 # ============================================================
 
 def recursive_values(obj):
@@ -226,37 +300,32 @@ def recursive_values(obj):
 
 
 # ============================================================
-# FIND DATE FROM ANNOUNCEMENT
+# FIND ACTION DATE
 # ============================================================
 
 def find_action_date(item):
 
-    """
-    Tries to identify the actual corporate-action date.
-
-    Priority:
-    1. Record date
-    2. Ex-date
-    3. Bonus date
-    4. Book closure date
-    5. Any relevant date field
-    """
-
     priority_keywords = [
+
         "record date",
         "record_date",
         "recordDate",
+
         "ex date",
         "ex-date",
         "ex_date",
+
         "bonus date",
         "bonus_date",
+
         "book closure",
         "book_closure",
+
         "effective date",
         "effective_date",
+
         "date of action",
-        "action date",
+        "action date"
     ]
 
     possible_dates = []
@@ -264,43 +333,49 @@ def find_action_date(item):
     for key, value in recursive_values(item):
 
         key_text = clean_text(key).lower()
+
         value_text = clean_text(value)
 
         if not value_text:
             continue
 
-        for keyword in priority_keywords:
+        for priority, keyword in enumerate(
+            priority_keywords
+        ):
 
             if keyword.lower() in key_text:
 
-                date_match = re.search(
+                match = re.search(
                     r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b",
                     value_text
                 )
 
-                if date_match:
+                if match:
+
                     possible_dates.append(
                         (
-                            priority_keywords.index(keyword),
-                            date_match.group(0)
+                            priority,
+                            match.group(0)
                         )
                     )
 
                 else:
 
-                    date_match = re.search(
+                    match = re.search(
                         r"\b\d{1,2}\s+"
-                        r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+                        r"(?:Jan|Feb|Mar|Apr|May|Jun|"
+                        r"Jul|Aug|Sep|Oct|Nov|Dec)"
                         r"[a-z]*\s+\d{4}\b",
                         value_text,
                         re.IGNORECASE
                     )
 
-                    if date_match:
+                    if match:
+
                         possible_dates.append(
                             (
-                                priority_keywords.index(keyword),
-                                date_match.group(0)
+                                priority,
+                                match.group(0)
                             )
                         )
 
@@ -312,9 +387,7 @@ def find_action_date(item):
 
         return possible_dates[0][1]
 
-    # --------------------------------------------------------
     # Search complete announcement text
-    # --------------------------------------------------------
 
     complete_text = " ".join(
         clean_text(value)
@@ -335,7 +408,7 @@ def find_action_date(item):
         r"\s*[:\-]?\s*"
         r"(\d{1,2}\s+"
         r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
-        r"[a-z]*\s+\d{4})",
+        r"[a-z]*\s+\d{4})"
     ]
 
     for pattern in patterns:
@@ -347,13 +420,14 @@ def find_action_date(item):
         )
 
         if match:
+
             return match.group(1)
 
     return ""
 
 
 # ============================================================
-# IDENTIFY CORPORATE ACTION
+# IDENTIFY ACTION
 # ============================================================
 
 def identify_action(item):
@@ -362,7 +436,10 @@ def identify_action(item):
 
     for key, value in recursive_values(item):
 
-        if isinstance(value, (str, int, float)):
+        if isinstance(
+            value,
+            (str, int, float)
+        ):
 
             text_parts.append(
                 clean_text(value)
@@ -372,50 +449,21 @@ def identify_action(item):
 
     text_lower = text.lower()
 
-    # --------------------------------------------------------
     # BONUS
-    # --------------------------------------------------------
 
     if "bonus" in text_lower:
 
         return "BONUS"
 
-    # --------------------------------------------------------
     # STOCK SPLIT
-    # --------------------------------------------------------
 
     if (
         "stock split" in text_lower
-        or "split" in text_lower
         or "sub-division" in text_lower
         or "sub division" in text_lower
     ):
 
         return "STOCK SPLIT"
-
-    # --------------------------------------------------------
-    # RIGHTS ISSUE
-    # --------------------------------------------------------
-
-    if "rights issue" in text_lower:
-
-        return "RIGHTS ISSUE"
-
-    # --------------------------------------------------------
-    # DIVIDEND
-    # --------------------------------------------------------
-
-    if "dividend" in text_lower:
-
-        return "DIVIDEND"
-
-    # --------------------------------------------------------
-    # BUYBACK
-    # --------------------------------------------------------
-
-    if "buyback" in text_lower or "buy back" in text_lower:
-
-        return "BUYBACK"
 
     return ""
 
@@ -427,10 +475,13 @@ def identify_action(item):
 def get_symbol(item):
 
     possible_keys = [
+
         "symbol",
         "Symbol",
+
         "ticker",
         "Ticker",
+
         "securitySymbol",
         "security_symbol"
     ]
@@ -442,23 +493,28 @@ def get_symbol(item):
             value = clean_text(value)
 
             if value:
+
                 return value
 
     return ""
 
 
 # ============================================================
-# GET COMPANY NAME
+# GET COMPANY
 # ============================================================
 
 def get_company(item):
 
     possible_keys = [
+
         "companyName",
         "company_name",
+
         "Company Name",
+
         "company",
         "Company",
+
         "name",
         "Name"
     ]
@@ -470,6 +526,7 @@ def get_company(item):
             value = clean_text(value)
 
             if value:
+
                 return value
 
     return ""
@@ -482,12 +539,16 @@ def get_company(item):
 def get_announcement_id(item):
 
     possible_keys = [
+
         "id",
         "announcementId",
         "announcement_id",
+
         "seqId",
         "seq_id",
+
         "attchmntText",
+
         "attachment",
         "fileName",
         "file_name"
@@ -500,14 +561,10 @@ def get_announcement_id(item):
             value = clean_text(value)
 
             if value:
+
                 return value
 
-    # fallback: entire item hash-like string
-
-    return json.dumps(
-        item,
-        sort_keys=True
-    )
+    return ""
 
 
 # ============================================================
@@ -517,12 +574,16 @@ def get_announcement_id(item):
 def get_link(item):
 
     possible_keys = [
+
         "attchmntFile",
         "attachment",
+
         "attachmentUrl",
         "attachment_url",
+
         "url",
         "link",
+
         "fileUrl",
         "file_url"
     ]
@@ -547,17 +608,21 @@ def get_link(item):
 def normalize_date(date_text):
 
     if not date_text:
+
         return ""
 
     date_text = date_text.strip()
 
     formats = [
+
         "%d-%m-%Y",
         "%d/%m/%Y",
+
         "%d-%m-%y",
         "%d/%m/%y",
+
         "%d %b %Y",
-        "%d %B %Y",
+        "%d %B %Y"
     ]
 
     for fmt in formats:
@@ -574,9 +639,63 @@ def normalize_date(date_text):
             )
 
         except ValueError:
+
             pass
 
     return date_text
+
+
+# ============================================================
+# CREATE STABLE UNIQUE KEY
+# ============================================================
+
+def create_unique_key(
+    item,
+    symbol,
+    action,
+    action_date,
+    announcement_id,
+    link
+):
+
+    # BEST KEY = NSE announcement URL
+
+    if link:
+
+        raw = (
+            "URL|"
+            + link.strip().lower()
+        )
+
+    # SECOND BEST = NSE announcement ID
+
+    elif announcement_id:
+
+        raw = (
+            "ID|"
+            + announcement_id.strip()
+        )
+
+    # FALLBACK = complete announcement
+
+    else:
+
+        raw = json.dumps(
+            item,
+            sort_keys=True,
+            default=str
+        )
+
+        raw = (
+            "HASH|"
+            + raw
+        )
+
+    digest = hashlib.sha256(
+        raw.encode("utf-8")
+    ).hexdigest()
+
+    return digest
 
 
 # ============================================================
@@ -604,9 +723,15 @@ def format_message(
         title = f"📢 FRESH {action}"
 
     message = (
+
         f"{title}\n\n"
-        f"🏢 Company: {company or 'N/A'}\n"
-        f"📌 Symbol: {symbol or 'N/A'}\n"
+
+        f"🏢 Company: "
+        f"{company or 'N/A'}\n"
+
+        f"📌 Symbol: "
+        f"{symbol or 'N/A'}\n"
+
         f"📅 Action Date: "
         f"{action_date or 'Not available'}\n"
     )
@@ -614,7 +739,7 @@ def format_message(
     if link:
 
         message += (
-            f"\n🔗 NSE Announcement:\n"
+            "\n🔗 NSE Announcement:\n"
             f"{link}\n"
         )
 
@@ -626,36 +751,33 @@ def format_message(
 
 
 # ============================================================
-# CREATE UNIQUE ACTION KEY
-# ============================================================
-
-def create_action_key(
-    symbol,
-    action,
-    action_date
-):
-
-    return (
-        f"{symbol.upper().strip()}|"
-        f"{action.upper().strip()}|"
-        f"{action_date.strip()}"
-    )
-
-
-# ============================================================
 # MAIN
 # ============================================================
 
 def main():
 
     print("=" * 60)
-    print("NSE FRESH BONUS & STOCK SPLIT SCANNER")
-    print("=" * 60)
-
-    seen = load_seen()
 
     print(
-        f"Previously alerted: {len(seen)}"
+        "NSE FRESH BONUS & STOCK SPLIT SCANNER"
+    )
+
+    print("=" * 60)
+
+    state = load_seen()
+
+    seen = state["keys"]
+
+    initialized = state["initialized"]
+
+    print(
+        f"Previously stored alerts: "
+        f"{len(seen)}"
+    )
+
+    print(
+        f"Scanner initialized: "
+        f"{initialized}"
     )
 
     announcements = get_announcements()
@@ -667,25 +789,29 @@ def main():
 
     if not announcements:
 
-        print("No announcements received.")
+        print(
+            "No announcements received."
+        )
 
-        save_seen(seen)
+        save_seen(state)
 
         return
 
-    sent_this_run = set()
+    eligible = []
 
-    fresh_count = 0
+    # ========================================================
+    # FIRST RUN = BUILD BASELINE
+    # ========================================================
 
     for item in announcements:
 
         action = identify_action(item)
 
-        # We only want bonus and stock split.
         if action not in [
             "BONUS",
             "STOCK SPLIT"
         ]:
+
             continue
 
         symbol = get_symbol(item)
@@ -702,45 +828,102 @@ def main():
             action_date
         )
 
-        # ----------------------------------------------------
-        # UNIQUE KEY
-        # ----------------------------------------------------
-
-        action_key = create_action_key(
-            symbol,
-            action,
-            action_date
+        unique_key = create_unique_key(
+            item=item,
+            symbol=symbol,
+            action=action,
+            action_date=action_date,
+            announcement_id=announcement_id,
+            link=link
         )
 
-        # ----------------------------------------------------
-        # OLD ANNOUNCEMENT
-        # ----------------------------------------------------
+        eligible.append(
+            (
+                item,
+                action,
+                symbol,
+                company,
+                announcement_id,
+                link,
+                action_date,
+                unique_key
+            )
+        )
 
-        if announcement_id in seen:
+    # ========================================================
+    # IMPORTANT:
+    # FIRST RUN DOES NOT SEND OLD ALERTS
+    # ========================================================
+
+    if not initialized:
+
+        print(
+            "First run detected."
+        )
+
+        print(
+            "Creating baseline."
+        )
+
+        for (
+            item,
+            action,
+            symbol,
+            company,
+            announcement_id,
+            link,
+            action_date,
+            unique_key
+        ) in eligible:
+
+            seen.add(unique_key)
+
+        state["keys"] = seen
+
+        state["initialized"] = True
+
+        save_seen(state)
+
+        print(
+            f"Baseline created with "
+            f"{len(eligible)} existing announcements."
+        )
+
+        print(
+            "No old announcements sent."
+        )
+
+        return
+
+    # ========================================================
+    # NORMAL HOURLY SCAN
+    # ========================================================
+
+    fresh_count = 0
+
+    for (
+        item,
+        action,
+        symbol,
+        company,
+        announcement_id,
+        link,
+        action_date,
+        unique_key
+    ) in eligible:
+
+        # ALREADY SENT
+
+        if unique_key in seen:
 
             print(
-                f"Already sent announcement: "
-                f"{symbol}"
+                f"Already alerted - SKIP: "
+                f"{symbol} | {action}"
             )
 
             continue
 
-        # ----------------------------------------------------
-        # DUPLICATE SAME ACTION
-        # ----------------------------------------------------
-
-        if action_key in sent_this_run:
-
-            print(
-                f"Duplicate ignored: "
-                f"{action_key}"
-            )
-
-            continue
-
-        # ----------------------------------------------------
-        # SEND
-        # ----------------------------------------------------
+        # NEW ALERT
 
         message = format_message(
             company=company,
@@ -752,6 +935,10 @@ def main():
 
         print("\n" + "-" * 60)
 
+        print(
+            "NEW ALERT:"
+        )
+
         print(message)
 
         print("-" * 60)
@@ -762,20 +949,40 @@ def main():
 
         if success:
 
-            seen.add(announcement_id)
+            # SAVE BEFORE NEXT ITEM
 
-            sent_this_run.add(
-                action_key
-            )
+            seen.add(unique_key)
+
+            state["keys"] = seen
+
+            state["initialized"] = True
+
+            save_seen(state)
 
             fresh_count += 1
 
-    save_seen(seen)
+        else:
+
+            print(
+                "Telegram failed."
+                " Alert NOT marked as sent."
+            )
+
+    # ========================================================
+    # FINAL SAVE
+    # ========================================================
+
+    state["keys"] = seen
+
+    state["initialized"] = True
+
+    save_seen(state)
 
     print("\n" + "=" * 60)
 
     print(
-        f"Fresh alerts sent: {fresh_count}"
+        f"Fresh alerts sent: "
+        f"{fresh_count}"
     )
 
     print("=" * 60)
@@ -786,4 +993,5 @@ def main():
 # ============================================================
 
 if __name__ == "__main__":
+
     main()
