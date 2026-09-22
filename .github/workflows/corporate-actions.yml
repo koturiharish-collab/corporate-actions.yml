@@ -1,6 +1,6 @@
 name: Fresh Bonus & Stock Split Alerts
 
-on:
+"on":
   workflow_dispatch:
   schedule:
     - cron: "0 * * * *"
@@ -31,4 +31,3 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python corporate_actions.py
-
