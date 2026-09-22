@@ -2,16 +2,15 @@ import os
 import json
 import re
 import requests
-from datetime import datetime
-from zoneinfo import ZoneInfo
-
+from datetime import datetime, timezone, timedelta
+from bs4 import BeautifulSoup
 
 # ============================================================
-# CONFIG
+# CONFIGURATION
 # ============================================================
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 SEEN_FILE = "seen.json"
 
@@ -23,7 +22,7 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/140.0.0.0 Safari/537.36"
     ),
-    "Accept": "application/json, text/plain, */*",
+    "Accept": "application/json,text/plain,*/*",
     "Accept-Language": "en-US,en;q=0.9",
     "Referer": "https://www.nseindia.com/",
     "Connection": "keep-alive",
@@ -31,32 +30,15 @@ HEADERS = {
 
 
 # ============================================================
-# INDIA DATE
-# ============================================================
-
-def india_today():
-    return datetime.now(
-        ZoneInfo("Asia/Kolkata")
-    ).date()
-
-
-# ============================================================
-# LOAD SEEN
+# SEEN ALERT STORAGE
 # ============================================================
 
 def load_seen():
-
     if not os.path.exists(SEEN_FILE):
         return set()
 
     try:
-
-        with open(
-            SEEN_FILE,
-            "r",
-            encoding="utf-8"
-        ) as f:
-
+        with open(SEEN_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         if isinstance(data, list):
@@ -64,35 +46,16 @@ def load_seen():
 
         return set()
 
-    except Exception as e:
-
-        print(f"Could not load seen.json: {e}")
-
+    except Exception:
         return set()
 
 
-# ============================================================
-# SAVE SEEN
-# ============================================================
-
 def save_seen(seen):
-
     try:
-
-        with open(
-            SEEN_FILE,
-            "w",
-            encoding="utf-8"
-        ) as f:
-
-            json.dump(
-                sorted(seen),
-                f,
-                indent=2
-            )
+        with open(SEEN_FILE, "w", encoding="utf-8") as f:
+            json.dump(sorted(seen), f, indent=2)
 
     except Exception as e:
-
         print(f"Could not save seen.json: {e}")
 
 
@@ -102,12 +65,8 @@ def save_seen(seen):
 
 def send_telegram(message):
 
-    if not TELEGRAM_BOT_TOKEN:
-        print("ERROR: TELEGRAM_BOT_TOKEN is missing.")
-        return False
-
-    if not TELEGRAM_CHAT_ID:
-        print("ERROR: TELEGRAM_CHAT_ID is missing.")
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("Telegram credentials are missing.")
         return False
 
     url = (
@@ -122,36 +81,25 @@ def send_telegram(message):
     }
 
     try:
-
         response = requests.post(
             url,
             json=payload,
             timeout=30
         )
 
-        print(
-            f"Telegram HTTP status: "
-            f"{response.status_code}"
-        )
-
-        response.raise_for_status()
-
-        result = response.json()
-
-        if result.get("ok"):
-
-            print("Telegram message sent.")
+        if response.status_code == 200:
+            print("Telegram alert sent.")
             return True
 
-        print(f"Telegram rejected message: {result}")
-
-        return False
+        print(
+            f"Telegram failed: "
+            f"{response.status_code} {response.text}"
+        )
 
     except Exception as e:
-
         print(f"Telegram error: {e}")
 
-        return False
+    return False
 
 
 # ============================================================
@@ -165,33 +113,15 @@ def create_nse_session():
     session.headers.update(HEADERS)
 
     try:
-
-        print("Opening NSE homepage...")
-
         response = session.get(
             "https://www.nseindia.com/",
             timeout=30
         )
 
-        print(
-            "NSE homepage status:",
-            response.status_code
-        )
+        print(f"NSE homepage status: {response.status_code}")
 
-        print(
-            "NSE homepage content type:",
-            response.headers.get("Content-Type")
-        )
-
-        # Do not fail here.
-        # NSE may return different content depending
-        # on GitHub's IP.
-
-    except requests.RequestException as e:
-
-        print(
-            f"NSE homepage request failed: {e}"
-        )
+    except Exception as e:
+        print(f"NSE homepage request failed: {e}")
 
     return session
 
@@ -204,20 +134,14 @@ def get_announcements():
 
     session = create_nse_session()
 
-    today = india_today()
-
-    date_string = today.strftime("%d-%m-%Y")
+    today = datetime.now(timezone.utc).date()
+    yesterday = today - timedelta(days=1)
 
     params = {
         "index": "equities",
-        "from_date": date_string,
-        "to_date": date_string,
+        "from_date": yesterday.strftime("%d-%m-%Y"),
+        "to_date": today.strftime("%d-%m-%Y"),
     }
-
-    print(
-        f"Checking NSE announcements for "
-        f"{date_string}"
-    )
 
     try:
 
@@ -227,357 +151,495 @@ def get_announcements():
             timeout=30
         )
 
-        print(
-            "NSE API status:",
-            response.status_code
-        )
+        print(f"NSE API status: {response.status_code}")
 
-        content_type = response.headers.get(
-            "Content-Type",
-            ""
-        )
+        response.raise_for_status()
 
-        print(
-            "NSE API content type:",
-            content_type
-        )
-
-        # ----------------------------------------------------
-        # HTTP ERROR
-        # ----------------------------------------------------
-
-        if response.status_code != 200:
-
-            print(
-                "NSE API did not return HTTP 200."
-            )
-
-            print(
-                "Response preview:",
-                response.text[:500]
-            )
-
-            return None
-
-        # ----------------------------------------------------
-        # EMPTY RESPONSE
-        # ----------------------------------------------------
-
-        if not response.text.strip():
-
-            print(
-                "NSE returned an empty response."
-            )
-
-            return None
-
-        # ----------------------------------------------------
-        # JSON CHECK
-        # ----------------------------------------------------
-
-        try:
-
-            data = response.json()
-
-        except ValueError:
-
-            print(
-                "NSE returned NON-JSON data."
-            )
-
-            print(
-                "Response preview:"
-            )
-
-            print(
-                response.text[:1000]
-            )
-
-            return None
-
-        # ----------------------------------------------------
-        # RESPONSE FORMAT
-        # ----------------------------------------------------
+        data = response.json()
 
         if isinstance(data, list):
-
             return data
 
         if isinstance(data, dict):
 
-            announcements = data.get(
+            for key in [
                 "data",
-                []
-            )
+                "announcements",
+                "results"
+            ]:
+                if isinstance(data.get(key), list):
+                    return data[key]
 
-            if isinstance(
-                announcements,
-                list
-            ):
-
-                return announcements
-
-        print(
-            "Unexpected NSE response format."
-        )
-
-        return None
-
-    except requests.RequestException as e:
-
-        print(
-            f"NSE request failed: {e}"
-        )
-
-        return None
+        return []
 
     except Exception as e:
 
-        print(
-            f"Unexpected NSE error: {e}"
-        )
+        print(f"NSE request failed: {e}")
 
-        return None
+        return []
 
 
 # ============================================================
-# IDENTIFY BONUS / SPLIT
+# TEXT CLEANING
 # ============================================================
 
-def identify_action(announcement):
+def clean_text(value):
 
-    text_parts = []
+    if value is None:
+        return ""
 
-    fields = [
-        "desc",
-        "description",
-        "subject",
-        "details",
-        "headline",
-        "attchmntText",
-        "announcement",
-        "purpose",
-    ]
+    text = str(value)
 
-    for field in fields:
-
-        value = announcement.get(field)
-
-        if value:
-
-            text_parts.append(
-                str(value)
-            )
-
-    text = " ".join(text_parts)
+    text = BeautifulSoup(
+        text,
+        "html.parser"
+    ).get_text(" ", strip=True)
 
     text = re.sub(
         r"\s+",
         " ",
         text
-    ).lower()
+    ).strip()
 
-    # BONUS
-
-    bonus_patterns = [
-        r"\bbonus\b",
-        r"\bbonus issue\b",
-        r"\bbonus shares\b",
-        r"\bissue of bonus\b",
-    ]
-
-    for pattern in bonus_patterns:
-
-        if re.search(
-            pattern,
-            text,
-            re.IGNORECASE
-        ):
-
-            return "BONUS"
-
-    # STOCK SPLIT
-
-    split_patterns = [
-        r"\bstock split\b",
-        r"\bshare split\b",
-        r"\bsub[\s-]?division\b",
-        r"\bsub[\s-]?division of shares\b",
-        r"\bsplit\b.*\bface value\b",
-        r"\bface value\b.*\bsplit\b",
-    ]
-
-    for pattern in split_patterns:
-
-        if re.search(
-            pattern,
-            text,
-            re.IGNORECASE
-        ):
-
-            return "STOCK SPLIT"
-
-    return None
+    return text
 
 
 # ============================================================
-# UNIQUE ID
+# FIND VALUE RECURSIVELY
 # ============================================================
 
-def announcement_id(announcement):
+def recursive_values(obj):
 
-    # First use NSE ID if available.
+    if isinstance(obj, dict):
 
-    for field in [
-        "seq_id",
-        "seqId",
-        "id",
-    ]:
+        for key, value in obj.items():
 
-        value = announcement.get(field)
+            yield key, value
 
-        if value:
+            yield from recursive_values(value)
 
-            return (
-                f"{field}:{value}"
+    elif isinstance(obj, list):
+
+        for item in obj:
+
+            yield from recursive_values(item)
+
+
+# ============================================================
+# FIND DATE FROM ANNOUNCEMENT
+# ============================================================
+
+def find_action_date(item):
+
+    """
+    Tries to identify the actual corporate-action date.
+
+    Priority:
+    1. Record date
+    2. Ex-date
+    3. Bonus date
+    4. Book closure date
+    5. Any relevant date field
+    """
+
+    priority_keywords = [
+        "record date",
+        "record_date",
+        "recordDate",
+        "ex date",
+        "ex-date",
+        "ex_date",
+        "bonus date",
+        "bonus_date",
+        "book closure",
+        "book_closure",
+        "effective date",
+        "effective_date",
+        "date of action",
+        "action date",
+    ]
+
+    possible_dates = []
+
+    for key, value in recursive_values(item):
+
+        key_text = clean_text(key).lower()
+        value_text = clean_text(value)
+
+        if not value_text:
+            continue
+
+        for keyword in priority_keywords:
+
+            if keyword.lower() in key_text:
+
+                date_match = re.search(
+                    r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b",
+                    value_text
+                )
+
+                if date_match:
+                    possible_dates.append(
+                        (
+                            priority_keywords.index(keyword),
+                            date_match.group(0)
+                        )
+                    )
+
+                else:
+
+                    date_match = re.search(
+                        r"\b\d{1,2}\s+"
+                        r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+                        r"[a-z]*\s+\d{4}\b",
+                        value_text,
+                        re.IGNORECASE
+                    )
+
+                    if date_match:
+                        possible_dates.append(
+                            (
+                                priority_keywords.index(keyword),
+                                date_match.group(0)
+                            )
+                        )
+
+    if possible_dates:
+
+        possible_dates.sort(
+            key=lambda x: x[0]
+        )
+
+        return possible_dates[0][1]
+
+    # --------------------------------------------------------
+    # Search complete announcement text
+    # --------------------------------------------------------
+
+    complete_text = " ".join(
+        clean_text(value)
+        for _, value in recursive_values(item)
+    )
+
+    patterns = [
+
+        r"(?:record\s*date)"
+        r"\s*[:\-]?\s*"
+        r"(\d{1,2}[-/]\d{1,2}[-/]\d{2,4})",
+
+        r"(?:ex\s*date|ex-date)"
+        r"\s*[:\-]?\s*"
+        r"(\d{1,2}[-/]\d{1,2}[-/]\d{2,4})",
+
+        r"(?:record\s*date)"
+        r"\s*[:\-]?\s*"
+        r"(\d{1,2}\s+"
+        r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+        r"[a-z]*\s+\d{4})",
+    ]
+
+    for pattern in patterns:
+
+        match = re.search(
+            pattern,
+            complete_text,
+            re.IGNORECASE
+        )
+
+        if match:
+            return match.group(1)
+
+    return ""
+
+
+# ============================================================
+# IDENTIFY CORPORATE ACTION
+# ============================================================
+
+def identify_action(item):
+
+    text_parts = []
+
+    for key, value in recursive_values(item):
+
+        if isinstance(value, (str, int, float)):
+
+            text_parts.append(
+                clean_text(value)
             )
 
-    symbol = str(
-        announcement.get(
-            "symbol",
-            ""
-        )
-    )
+    text = " ".join(text_parts)
 
-    company = str(
-        announcement.get(
-            "companyName",
-            ""
-        )
-    )
+    text_lower = text.lower()
 
-    description = str(
-        announcement.get(
-            "desc",
-            ""
-        )
-        or announcement.get(
-            "description",
-            ""
-        )
-        or announcement.get(
-            "subject",
-            ""
-        )
-    )
+    # --------------------------------------------------------
+    # BONUS
+    # --------------------------------------------------------
 
-    date_value = str(
-        announcement.get(
-            "broadcastDate",
-            ""
-        )
-        or announcement.get(
-            "date",
-            ""
-        )
-    )
+    if "bonus" in text_lower:
 
-    return "|".join(
-        [
-            symbol.strip(),
-            company.strip(),
-            date_value.strip(),
-            description.strip().lower(),
-        ]
+        return "BONUS"
+
+    # --------------------------------------------------------
+    # STOCK SPLIT
+    # --------------------------------------------------------
+
+    if (
+        "stock split" in text_lower
+        or "split" in text_lower
+        or "sub-division" in text_lower
+        or "sub division" in text_lower
+    ):
+
+        return "STOCK SPLIT"
+
+    # --------------------------------------------------------
+    # RIGHTS ISSUE
+    # --------------------------------------------------------
+
+    if "rights issue" in text_lower:
+
+        return "RIGHTS ISSUE"
+
+    # --------------------------------------------------------
+    # DIVIDEND
+    # --------------------------------------------------------
+
+    if "dividend" in text_lower:
+
+        return "DIVIDEND"
+
+    # --------------------------------------------------------
+    # BUYBACK
+    # --------------------------------------------------------
+
+    if "buyback" in text_lower or "buy back" in text_lower:
+
+        return "BUYBACK"
+
+    return ""
+
+
+# ============================================================
+# GET SYMBOL
+# ============================================================
+
+def get_symbol(item):
+
+    possible_keys = [
+        "symbol",
+        "Symbol",
+        "ticker",
+        "Ticker",
+        "securitySymbol",
+        "security_symbol"
+    ]
+
+    for key, value in recursive_values(item):
+
+        if key in possible_keys:
+
+            value = clean_text(value)
+
+            if value:
+                return value
+
+    return ""
+
+
+# ============================================================
+# GET COMPANY NAME
+# ============================================================
+
+def get_company(item):
+
+    possible_keys = [
+        "companyName",
+        "company_name",
+        "Company Name",
+        "company",
+        "Company",
+        "name",
+        "Name"
+    ]
+
+    for key, value in recursive_values(item):
+
+        if key in possible_keys:
+
+            value = clean_text(value)
+
+            if value:
+                return value
+
+    return ""
+
+
+# ============================================================
+# GET ANNOUNCEMENT ID
+# ============================================================
+
+def get_announcement_id(item):
+
+    possible_keys = [
+        "id",
+        "announcementId",
+        "announcement_id",
+        "seqId",
+        "seq_id",
+        "attchmntText",
+        "attachment",
+        "fileName",
+        "file_name"
+    ]
+
+    for key, value in recursive_values(item):
+
+        if key in possible_keys:
+
+            value = clean_text(value)
+
+            if value:
+                return value
+
+    # fallback: entire item hash-like string
+
+    return json.dumps(
+        item,
+        sort_keys=True
     )
 
 
 # ============================================================
-# FORMAT MESSAGE
+# GET LINK
+# ============================================================
+
+def get_link(item):
+
+    possible_keys = [
+        "attchmntFile",
+        "attachment",
+        "attachmentUrl",
+        "attachment_url",
+        "url",
+        "link",
+        "fileUrl",
+        "file_url"
+    ]
+
+    for key, value in recursive_values(item):
+
+        if key in possible_keys:
+
+            value = clean_text(value)
+
+            if value.startswith("http"):
+
+                return value
+
+    return ""
+
+
+# ============================================================
+# NORMALIZE DATE
+# ============================================================
+
+def normalize_date(date_text):
+
+    if not date_text:
+        return ""
+
+    date_text = date_text.strip()
+
+    formats = [
+        "%d-%m-%Y",
+        "%d/%m/%Y",
+        "%d-%m-%y",
+        "%d/%m/%y",
+        "%d %b %Y",
+        "%d %B %Y",
+    ]
+
+    for fmt in formats:
+
+        try:
+
+            dt = datetime.strptime(
+                date_text,
+                fmt
+            )
+
+            return dt.strftime(
+                "%d-%b-%Y"
+            )
+
+        except ValueError:
+            pass
+
+    return date_text
+
+
+# ============================================================
+# FORMAT TELEGRAM MESSAGE
 # ============================================================
 
 def format_message(
+    company,
+    symbol,
     action,
-    announcement
+    action_date,
+    link
 ):
 
-    symbol = (
-        announcement.get("symbol")
-        or announcement.get("symbolName")
-        or "Unknown"
-    )
+    if action == "BONUS":
 
-    company = (
-        announcement.get("companyName")
-        or symbol
-        or "Unknown company"
-    )
+        title = "🎁 FRESH BONUS"
 
-    description = (
-        announcement.get("desc")
-        or announcement.get("description")
-        or announcement.get("subject")
-        or announcement.get("details")
-        or announcement.get("headline")
-        or "Corporate action announcement"
-    )
+    elif action == "STOCK SPLIT":
 
-    date_value = (
-        announcement.get(
-            "broadcastDate"
-        )
-        or announcement.get(
-            "date"
-        )
-        or ""
-    )
+        title = "✂️ FRESH STOCK SPLIT"
 
-    attachment = (
-        announcement.get(
-            "attchmntFile"
-        )
-        or announcement.get(
-            "attachment"
-        )
-        or ""
-    )
+    else:
+
+        title = f"📢 FRESH {action}"
 
     message = (
-        f"🚨 FRESH {action}\n\n"
-        f"🏢 Company: {company}\n"
-        f"📌 Symbol: {symbol}\n"
-        f"📅 Date: {date_value}\n\n"
-        f"📝 Details:\n{description}"
+        f"{title}\n\n"
+        f"🏢 Company: {company or 'N/A'}\n"
+        f"📌 Symbol: {symbol or 'N/A'}\n"
+        f"📅 Action Date: "
+        f"{action_date or 'Not available'}\n"
     )
 
-    if attachment:
+    if link:
 
-        attachment = str(
-            attachment
+        message += (
+            f"\n🔗 NSE Announcement:\n"
+            f"{link}\n"
         )
 
-        if attachment.startswith(
-            "http"
-        ):
-
-            message += (
-                f"\n\n🔗 {attachment}"
-            )
-
-        else:
-
-            message += (
-                "\n\n🔗 "
-                "https://www.nseindia.com/"
-                + attachment.lstrip("/")
-            )
-
     message += (
-        "\n\n🤖 NSE Fresh Corporate "
-        "Action Scanner"
+        "\n🤖 NSE Fresh Corporate Action Scanner"
     )
 
     return message
+
+
+# ============================================================
+# CREATE UNIQUE ACTION KEY
+# ============================================================
+
+def create_action_key(
+    symbol,
+    action,
+    action_date
+):
+
+    return (
+        f"{symbol.upper().strip()}|"
+        f"{action.upper().strip()}|"
+        f"{action_date.strip()}"
+    )
 
 
 # ============================================================
@@ -587,16 +649,8 @@ def format_message(
 def main():
 
     print("=" * 60)
-
-    print(
-        "NSE FRESH BONUS & STOCK SPLIT SCANNER"
-    )
-
+    print("NSE FRESH BONUS & STOCK SPLIT SCANNER")
     print("=" * 60)
-
-    print(
-        f"India date: {india_today()}"
-    )
 
     seen = load_seen()
 
@@ -606,34 +660,6 @@ def main():
 
     announcements = get_announcements()
 
-    # ========================================================
-    # VERY IMPORTANT:
-    # None means NSE FAILED.
-    #
-    # [] means NSE successfully returned zero announcements.
-    # ========================================================
-
-    if announcements is None:
-
-        print()
-        print(
-            "NSE SCAN FAILED."
-        )
-
-        print(
-            "No alerts will be sent."
-        )
-
-        print(
-            "Seen list will NOT be changed."
-        )
-
-        print(
-            "Scanner finished with NSE error."
-        )
-
-        return
-
     print(
         f"Announcements received: "
         f"{len(announcements)}"
@@ -641,122 +667,122 @@ def main():
 
     if not announcements:
 
-        print(
-            "No announcements for today."
-        )
+        print("No announcements received.")
 
-        print(
-            "Scanner finished."
-        )
+        save_seen(seen)
 
         return
 
-    new_alerts = 0
+    sent_this_run = set()
 
-    for announcement in announcements:
+    fresh_count = 0
 
-        action = identify_action(
-            announcement
-        )
+    for item in announcements:
 
-        if not action:
+        action = identify_action(item)
 
+        # We only want bonus and stock split.
+        if action not in [
+            "BONUS",
+            "STOCK SPLIT"
+        ]:
             continue
 
-        ann_id = announcement_id(
-            announcement
+        symbol = get_symbol(item)
+
+        company = get_company(item)
+
+        announcement_id = get_announcement_id(item)
+
+        link = get_link(item)
+
+        action_date = find_action_date(item)
+
+        action_date = normalize_date(
+            action_date
         )
 
-        symbol = (
-            announcement.get(
-                "symbol"
-            )
-            or announcement.get(
-                "symbolName"
-            )
-            or "Unknown"
+        # ----------------------------------------------------
+        # UNIQUE KEY
+        # ----------------------------------------------------
+
+        action_key = create_action_key(
+            symbol,
+            action,
+            action_date
         )
 
-        print()
-        print(
-            f"Detected {action}: {symbol}"
-        )
+        # ----------------------------------------------------
+        # OLD ANNOUNCEMENT
+        # ----------------------------------------------------
 
-        # ====================================================
-        # DUPLICATE PROTECTION
-        # ====================================================
-
-        if ann_id in seen:
+        if announcement_id in seen:
 
             print(
-                "Already alerted - SKIPPING."
+                f"Already sent announcement: "
+                f"{symbol}"
             )
 
             continue
 
-        # ====================================================
-        # NEW ALERT
-        # ====================================================
+        # ----------------------------------------------------
+        # DUPLICATE SAME ACTION
+        # ----------------------------------------------------
+
+        if action_key in sent_this_run:
+
+            print(
+                f"Duplicate ignored: "
+                f"{action_key}"
+            )
+
+            continue
+
+        # ----------------------------------------------------
+        # SEND
+        # ----------------------------------------------------
 
         message = format_message(
-            action,
-            announcement
+            company=company,
+            symbol=symbol,
+            action=action,
+            action_date=action_date,
+            link=link
         )
 
-        print(
-            "NEW FRESH ALERT"
-        )
+        print("\n" + "-" * 60)
 
         print(message)
 
-        sent = send_telegram(
+        print("-" * 60)
+
+        success = send_telegram(
             message
         )
 
-        if sent:
+        if success:
 
-            seen.add(
-                ann_id
+            seen.add(announcement_id)
+
+            sent_this_run.add(
+                action_key
             )
 
-            new_alerts += 1
-
-            print(
-                "Saved as alerted."
-            )
-
-        else:
-
-            print(
-                "Telegram failed."
-            )
-
-            print(
-                "NOT marking as alerted."
-            )
-
-    # ========================================================
-    # SAVE ONLY AFTER SUCCESSFUL PROCESSING
-    # ========================================================
+            fresh_count += 1
 
     save_seen(seen)
 
-    print()
-    print("=" * 60)
+    print("\n" + "=" * 60)
 
     print(
-        f"NEW ALERTS SENT: {new_alerts}"
-    )
-
-    print(
-        f"TOTAL SEEN ALERTS: {len(seen)}"
+        f"Fresh alerts sent: {fresh_count}"
     )
 
     print("=" * 60)
 
 
 # ============================================================
-# START
+# RUN
 # ============================================================
 
 if __name__ == "__main__":
