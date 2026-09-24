@@ -2,11 +2,10 @@ name: Fresh Bonus & Stock Split Alerts
 
 on:
   schedule:
-
     # ==================================================
-    # INDIA / NSE HOURLY CHECKS
+    # NSE MARKET HOURS
     #
-    # GitHub cron uses UTC.
+    # GitHub Actions uses UTC.
     #
     # 09:47 IST = 04:17 UTC
     # 10:47 IST = 05:17 UTC
@@ -26,43 +25,25 @@ permissions:
   contents: write
 
 jobs:
-
   scan:
-
     runs-on: ubuntu-latest
 
     steps:
-
-      # --------------------------------------------------
-      # CHECKOUT
-      # --------------------------------------------------
 
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # --------------------------------------------------
-      # SETUP PYTHON
-      # --------------------------------------------------
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # --------------------------------------------------
-      # INSTALL DEPENDENCIES
-      # --------------------------------------------------
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      # --------------------------------------------------
-      # RUN SCANNER
-      # --------------------------------------------------
 
       - name: Run Fresh Corporate Actions Scanner
         env:
@@ -71,19 +52,11 @@ jobs:
         run: |
           python corporate_actions.py
 
-      # --------------------------------------------------
-      # MAKE SURE STATE FILE EXISTS
-      # --------------------------------------------------
-
       - name: Ensure seen state exists
         run: |
           if [ ! -f seen.json ]; then
             echo '{"initialized": false, "keys": []}' > seen.json
           fi
-
-      # --------------------------------------------------
-      # SAVE STATE
-      # --------------------------------------------------
 
       - name: Save alert state
         run: |
@@ -93,7 +66,7 @@ jobs:
           git add seen.json
 
           if git diff --cached --quiet; then
-            echo "No new corporate action state to save."
+            echo "No new state changes."
           else
             git commit -m "Update corporate action alert state"
             git push
