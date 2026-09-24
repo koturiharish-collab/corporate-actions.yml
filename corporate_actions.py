@@ -4,7 +4,8 @@ import re
 import hashlib
 import requests
 
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, time as dt_time, timedelta
+from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
 
 
@@ -12,12 +13,30 @@ from bs4 import BeautifulSoup
 # CONFIGURATION
 # ============================================================
 
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+TELEGRAM_BOT_TOKEN = os.environ.get(
+    "TELEGRAM_BOT_TOKEN",
+    ""
+)
 
+TELEGRAM_CHAT_ID = os.environ.get(
+    "TELEGRAM_CHAT_ID",
+    ""
+)
+
+# IMPORTANT:
+# This MUST match the GitHub Actions state file.
 SEEN_FILE = "seen.json"
 
-NSE_URL = "https://www.nseindia.com/api/corporate-announcements"
+# India timezone
+IST = ZoneInfo("Asia/Kolkata")
+
+# NSE regular market timing
+MARKET_OPEN = dt_time(9, 15)
+MARKET_CLOSE = dt_time(15, 30)
+
+NSE_URL = (
+    "https://www.nseindia.com/api/corporate-announcements"
+)
 
 HEADERS = {
     "User-Agent": (
@@ -33,12 +52,38 @@ HEADERS = {
 
 
 # ============================================================
+# INDIA TIME
+# ============================================================
+
+def now_ist():
+    return datetime.now(IST)
+
+
+def is_nse_market_time():
+
+    current = now_ist()
+
+    # Saturday / Sunday
+    if current.weekday() >= 5:
+        return False
+
+    current_time = current.time()
+
+    return (
+        MARKET_OPEN
+        <= current_time
+        < MARKET_CLOSE
+    )
+
+
+# ============================================================
 # SEEN STATE
 # ============================================================
 
 def load_seen():
 
     if not os.path.exists(SEEN_FILE):
+
         return {
             "initialized": False,
             "keys": set()
@@ -46,17 +91,31 @@ def load_seen():
 
     try:
 
-        with open(SEEN_FILE, "r", encoding="utf-8") as f:
+        with open(
+            SEEN_FILE,
+            "r",
+            encoding="utf-8"
+        ) as f:
+
             data = json.load(f)
 
         # New format
         if isinstance(data, dict):
 
-            keys = data.get("keys", [])
+            keys = data.get(
+                "keys",
+                []
+            )
 
             if isinstance(keys, list):
+
                 return {
-                    "initialized": bool(data.get("initialized", False)),
+                    "initialized": bool(
+                        data.get(
+                            "initialized",
+                            False
+                        )
+                    ),
                     "keys": set(keys)
                 }
 
@@ -70,7 +129,9 @@ def load_seen():
 
     except Exception as e:
 
-        print(f"Could not load seen.json: {e}")
+        print(
+            f"Could not load seen.json: {e}"
+        )
 
     return {
         "initialized": False,
@@ -83,11 +144,27 @@ def save_seen(state):
     try:
 
         data = {
-            "initialized": bool(state.get("initialized", False)),
-            "keys": sorted(list(state.get("keys", set())))
+            "initialized": bool(
+                state.get(
+                    "initialized",
+                    False
+                )
+            ),
+            "keys": sorted(
+                list(
+                    state.get(
+                        "keys",
+                        set()
+                    )
+                )
+            )
         }
 
-        with open(SEEN_FILE, "w", encoding="utf-8") as f:
+        with open(
+            SEEN_FILE,
+            "w",
+            encoding="utf-8"
+        ) as f:
 
             json.dump(
                 data,
@@ -96,12 +173,15 @@ def save_seen(state):
             )
 
         print(
-            f"Saved state: {len(data['keys'])} keys"
+            f"Saved state: "
+            f"{len(data['keys'])} keys"
         )
 
     except Exception as e:
 
-        print(f"Could not save seen.json: {e}")
+        print(
+            f"Could not save seen.json: {e}"
+        )
 
 
 # ============================================================
@@ -110,9 +190,14 @@ def save_seen(state):
 
 def send_telegram(message):
 
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+    if (
+        not TELEGRAM_BOT_TOKEN
+        or not TELEGRAM_CHAT_ID
+    ):
 
-        print("Telegram credentials are missing.")
+        print(
+            "Telegram credentials are missing."
+        )
 
         return False
 
@@ -137,7 +222,9 @@ def send_telegram(message):
 
         if response.status_code == 200:
 
-            print("Telegram alert sent.")
+            print(
+                "Telegram alert sent."
+            )
 
             return True
 
@@ -149,7 +236,9 @@ def send_telegram(message):
 
     except Exception as e:
 
-        print(f"Telegram error: {e}")
+        print(
+            f"Telegram error: {e}"
+        )
 
     return False
 
@@ -162,7 +251,9 @@ def create_nse_session():
 
     session = requests.Session()
 
-    session.headers.update(HEADERS)
+    session.headers.update(
+        HEADERS
+    )
 
     try:
 
@@ -193,14 +284,22 @@ def get_announcements():
 
     session = create_nse_session()
 
-    today = datetime.now(timezone.utc).date()
+    # IMPORTANT:
+    # NSE dates are based on Indian calendar date.
+    today = now_ist().date()
 
-    yesterday = today - timedelta(days=1)
+    yesterday = (
+        today - timedelta(days=1)
+    )
 
     params = {
         "index": "equities",
-        "from_date": yesterday.strftime("%d-%m-%Y"),
-        "to_date": today.strftime("%d-%m-%Y"),
+        "from_date": yesterday.strftime(
+            "%d-%m-%Y"
+        ),
+        "to_date": today.strftime(
+            "%d-%m-%Y"
+        ),
     }
 
     try:
@@ -257,6 +356,7 @@ def get_announcements():
 def clean_text(value):
 
     if value is None:
+
         return ""
 
     text = str(value)
@@ -284,19 +384,29 @@ def clean_text(value):
 
 def recursive_values(obj):
 
-    if isinstance(obj, dict):
+    if isinstance(
+        obj,
+        dict
+    ):
 
         for key, value in obj.items():
 
             yield key, value
 
-            yield from recursive_values(value)
+            yield from recursive_values(
+                value
+            )
 
-    elif isinstance(obj, list):
+    elif isinstance(
+        obj,
+        list
+    ):
 
         for item in obj:
 
-            yield from recursive_values(item)
+            yield from recursive_values(
+                item
+            )
 
 
 # ============================================================
@@ -330,13 +440,20 @@ def find_action_date(item):
 
     possible_dates = []
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
-        key_text = clean_text(key).lower()
+        key_text = clean_text(
+            key
+        ).lower()
 
-        value_text = clean_text(value)
+        value_text = clean_text(
+            value
+        )
 
         if not value_text:
+
             continue
 
         for priority, keyword in enumerate(
@@ -346,7 +463,9 @@ def find_action_date(item):
             if keyword.lower() in key_text:
 
                 match = re.search(
-                    r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b",
+                    r"\b\d{1,2}[-/]"
+                    r"\d{1,2}[-/]"
+                    r"\d{2,4}\b",
                     value_text
                 )
 
@@ -388,10 +507,11 @@ def find_action_date(item):
         return possible_dates[0][1]
 
     # Search complete announcement text
-
     complete_text = " ".join(
         clean_text(value)
-        for _, value in recursive_values(item)
+        for _, value in recursive_values(
+            item
+        )
     )
 
     patterns = [
@@ -434,7 +554,9 @@ def identify_action(item):
 
     text_parts = []
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if isinstance(
             value,
@@ -445,18 +567,18 @@ def identify_action(item):
                 clean_text(value)
             )
 
-    text = " ".join(text_parts)
+    text = " ".join(
+        text_parts
+    )
 
     text_lower = text.lower()
 
     # BONUS
-
     if "bonus" in text_lower:
 
         return "BONUS"
 
     # STOCK SPLIT
-
     if (
         "stock split" in text_lower
         or "sub-division" in text_lower
@@ -486,11 +608,15 @@ def get_symbol(item):
         "security_symbol"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
             if value:
 
@@ -519,11 +645,15 @@ def get_company(item):
         "Name"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
             if value:
 
@@ -554,11 +684,15 @@ def get_announcement_id(item):
         "file_name"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
             if value:
 
@@ -588,13 +722,19 @@ def get_link(item):
         "file_url"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
-            if value.startswith("http"):
+            if value.startswith(
+                "http"
+            ):
 
                 return value
 
@@ -744,6 +884,7 @@ def format_message(
         )
 
     message += (
+        "\n🇮🇳 Timezone: Asia/Kolkata"
         "\n🤖 NSE Fresh Corporate Action Scanner"
     )
 
@@ -756,13 +897,53 @@ def format_message(
 
 def main():
 
-    print("=" * 60)
+    print("=" * 65)
 
     print(
         "NSE FRESH BONUS & STOCK SPLIT SCANNER"
     )
 
-    print("=" * 60)
+    print("=" * 65)
+
+    current_ist = now_ist()
+
+    print(
+        "India Time:",
+        current_ist.strftime(
+            "%Y-%m-%d %H:%M:%S %Z"
+        )
+    )
+
+    print(
+        "Market Status:",
+        "OPEN"
+        if is_nse_market_time()
+        else "CLOSED"
+    )
+
+    print(
+        "NSE Market Window:",
+        "09:15 - 15:30 IST"
+    )
+
+    print("=" * 65)
+
+    # --------------------------------------------------------
+    # IMPORTANT:
+    # Only scan during NSE regular market hours.
+    # --------------------------------------------------------
+
+    if not is_nse_market_time():
+
+        print(
+            "Outside NSE market hours."
+        )
+
+        print(
+            "No corporate-action scan performed."
+        )
+
+        return
 
     state = load_seen()
 
@@ -800,12 +981,14 @@ def main():
     eligible = []
 
     # ========================================================
-    # FIRST RUN = BUILD BASELINE
+    # PROCESS ANNOUNCEMENTS
     # ========================================================
 
     for item in announcements:
 
-        action = identify_action(item)
+        action = identify_action(
+            item
+        )
 
         if action not in [
             "BONUS",
@@ -814,15 +997,25 @@ def main():
 
             continue
 
-        symbol = get_symbol(item)
+        symbol = get_symbol(
+            item
+        )
 
-        company = get_company(item)
+        company = get_company(
+            item
+        )
 
-        announcement_id = get_announcement_id(item)
+        announcement_id = (
+            get_announcement_id(item)
+        )
 
-        link = get_link(item)
+        link = get_link(
+            item
+        )
 
-        action_date = find_action_date(item)
+        action_date = find_action_date(
+            item
+        )
 
         action_date = normalize_date(
             action_date
@@ -851,8 +1044,7 @@ def main():
         )
 
     # ========================================================
-    # IMPORTANT:
-    # FIRST RUN DOES NOT SEND OLD ALERTS
+    # FIRST RUN = BUILD BASELINE
     # ========================================================
 
     if not initialized:
@@ -876,13 +1068,17 @@ def main():
             unique_key
         ) in eligible:
 
-            seen.add(unique_key)
+            seen.add(
+                unique_key
+            )
 
         state["keys"] = seen
 
         state["initialized"] = True
 
-        save_seen(state)
+        save_seen(
+            state
+        )
 
         print(
             f"Baseline created with "
@@ -912,7 +1108,9 @@ def main():
         unique_key
     ) in eligible:
 
+        # ----------------------------------------------------
         # ALREADY SENT
+        # ----------------------------------------------------
 
         if unique_key in seen:
 
@@ -923,7 +1121,9 @@ def main():
 
             continue
 
+        # ----------------------------------------------------
         # NEW ALERT
+        # ----------------------------------------------------
 
         message = format_message(
             company=company,
@@ -933,15 +1133,21 @@ def main():
             link=link
         )
 
-        print("\n" + "-" * 60)
-
         print(
-            "NEW ALERT:"
+            "\n" + "-" * 65
         )
 
-        print(message)
+        print(
+            "NEW FRESH ALERT:"
+        )
 
-        print("-" * 60)
+        print(
+            message
+        )
+
+        print(
+            "-" * 65
+        )
 
         success = send_telegram(
             message
@@ -949,15 +1155,20 @@ def main():
 
         if success:
 
-            # SAVE BEFORE NEXT ITEM
+            # Save immediately after successful Telegram
+            # delivery.
 
-            seen.add(unique_key)
+            seen.add(
+                unique_key
+            )
 
             state["keys"] = seen
 
             state["initialized"] = True
 
-            save_seen(state)
+            save_seen(
+                state
+            )
 
             fresh_count += 1
 
@@ -965,7 +1176,10 @@ def main():
 
             print(
                 "Telegram failed."
-                " Alert NOT marked as sent."
+            )
+
+            print(
+                "Alert NOT marked as sent."
             )
 
     # ========================================================
@@ -976,16 +1190,20 @@ def main():
 
     state["initialized"] = True
 
-    save_seen(state)
+    save_seen(
+        state
+    )
 
-    print("\n" + "=" * 60)
+    print(
+        "\n" + "=" * 65
+    )
 
     print(
         f"Fresh alerts sent: "
         f"{fresh_count}"
     )
 
-    print("=" * 60)
+    print("=" * 65)
 
 
 # ============================================================
