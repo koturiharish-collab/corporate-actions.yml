@@ -80,6 +80,7 @@ def is_nse_market_time():
 def load_seen():
 
     if not os.path.exists(SEEN_FILE):
+
         return {
             "initialized": False,
             "keys": set()
@@ -97,7 +98,10 @@ def load_seen():
 
         if isinstance(data, dict):
 
-            keys = data.get("keys", [])
+            keys = data.get(
+                "keys",
+                []
+            )
 
             if isinstance(keys, list):
 
@@ -188,7 +192,7 @@ def send_telegram(message):
     ):
 
         print(
-            "Telegram credentials are missing."
+            "ERROR: Telegram credentials are missing."
         )
 
         return False
@@ -217,6 +221,11 @@ def send_telegram(message):
             response.status_code
         )
 
+        print(
+            "Telegram response:",
+            response.text[:500]
+        )
+
         if response.status_code == 200:
 
             print(
@@ -226,8 +235,7 @@ def send_telegram(message):
             return True
 
         print(
-            "Telegram failed:",
-            response.text[:500]
+            "Telegram alert failed."
         )
 
     except Exception as e:
@@ -281,8 +289,7 @@ def get_announcements():
 
     session = create_nse_session()
 
-    # IMPORTANT:
-    # Use Indian calendar date, not UTC.
+    # Use Indian calendar date.
     today = now_ist().date()
 
     yesterday = (
@@ -316,10 +323,17 @@ def get_announcements():
 
         data = response.json()
 
-        if isinstance(data, list):
+        if isinstance(
+            data,
+            list
+        ):
+
             return data
 
-        if isinstance(data, dict):
+        if isinstance(
+            data,
+            dict
+        ):
 
             for key in [
                 "data",
@@ -353,6 +367,7 @@ def get_announcements():
 def clean_text(value):
 
     if value is None:
+
         return ""
 
     text = str(value)
@@ -380,7 +395,10 @@ def clean_text(value):
 
 def recursive_values(obj):
 
-    if isinstance(obj, dict):
+    if isinstance(
+        obj,
+        dict
+    ):
 
         for key, value in obj.items():
 
@@ -390,7 +408,10 @@ def recursive_values(obj):
                 value
             )
 
-    elif isinstance(obj, list):
+    elif isinstance(
+        obj,
+        list
+    ):
 
         for item in obj:
 
@@ -430,7 +451,9 @@ def find_action_date(item):
 
     possible_dates = []
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         key_text = clean_text(
             key
@@ -441,6 +464,7 @@ def find_action_date(item):
         )
 
         if not value_text:
+
             continue
 
         for priority, keyword in enumerate(
@@ -495,7 +519,9 @@ def find_action_date(item):
 
     complete_text = " ".join(
         clean_text(value)
-        for _, value in recursive_values(item)
+        for _, value in recursive_values(
+            item
+        )
     )
 
     patterns = [
@@ -524,6 +550,7 @@ def find_action_date(item):
         )
 
         if match:
+
             return match.group(1)
 
     return ""
@@ -537,7 +564,9 @@ def identify_action(item):
 
     text_parts = []
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if isinstance(
             value,
@@ -548,18 +577,24 @@ def identify_action(item):
                 clean_text(value)
             )
 
-    text = " ".join(text_parts)
+    text = " ".join(
+        text_parts
+    )
 
     text_lower = text.lower()
 
+    # BONUS
     if "bonus" in text_lower:
+
         return "BONUS"
 
+    # STOCK SPLIT
     if (
         "stock split" in text_lower
         or "sub-division" in text_lower
         or "sub division" in text_lower
     ):
+
         return "STOCK SPLIT"
 
     return ""
@@ -572,21 +607,29 @@ def identify_action(item):
 def get_symbol(item):
 
     possible_keys = [
+
         "symbol",
         "Symbol",
+
         "ticker",
         "Ticker",
+
         "securitySymbol",
         "security_symbol"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
             if value:
+
                 return value
 
     return ""
@@ -599,22 +642,31 @@ def get_symbol(item):
 def get_company(item):
 
     possible_keys = [
+
         "companyName",
         "company_name",
+
         "Company Name",
+
         "company",
         "Company",
+
         "name",
         "Name"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
             if value:
+
                 return value
 
     return ""
@@ -627,24 +679,33 @@ def get_company(item):
 def get_announcement_id(item):
 
     possible_keys = [
+
         "id",
         "announcementId",
         "announcement_id",
+
         "seqId",
         "seq_id",
+
         "attchmntText",
+
         "attachment",
         "fileName",
         "file_name"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
             if value:
+
                 return value
 
     return ""
@@ -657,23 +718,34 @@ def get_announcement_id(item):
 def get_link(item):
 
     possible_keys = [
+
         "attchmntFile",
         "attachment",
+
         "attachmentUrl",
         "attachment_url",
+
         "url",
         "link",
+
         "fileUrl",
         "file_url"
     ]
 
-    for key, value in recursive_values(item):
+    for key, value in recursive_values(
+        item
+    ):
 
         if key in possible_keys:
 
-            value = clean_text(value)
+            value = clean_text(
+                value
+            )
 
-            if value.startswith("http"):
+            if value.startswith(
+                "http"
+            ):
+
                 return value
 
     return ""
@@ -686,15 +758,19 @@ def get_link(item):
 def normalize_date(date_text):
 
     if not date_text:
+
         return ""
 
     date_text = date_text.strip()
 
     formats = [
+
         "%d-%m-%Y",
         "%d/%m/%Y",
+
         "%d-%m-%y",
         "%d/%m/%y",
+
         "%d %b %Y",
         "%d %B %Y"
     ]
@@ -713,13 +789,14 @@ def normalize_date(date_text):
             )
 
         except ValueError:
+
             pass
 
     return date_text
 
 
 # ============================================================
-# UNIQUE KEY
+# CREATE UNIQUE KEY
 # ============================================================
 
 def create_unique_key(
@@ -785,7 +862,9 @@ def format_message(
 
     else:
 
-        title = f"📢 FRESH {action}"
+        title = (
+            f"📢 FRESH {action}"
+        )
 
     message = (
 
@@ -823,10 +902,16 @@ def format_message(
 def main():
 
     print("=" * 70)
+
     print(
         "NSE FRESH BONUS & STOCK SPLIT SCANNER"
     )
+
     print("=" * 70)
+
+    # --------------------------------------------------------
+    # INDIA TIME
+    # --------------------------------------------------------
 
     current_ist = now_ist()
 
@@ -846,7 +931,9 @@ def main():
 
     print(
         "Market Status:",
-        "OPEN" if market_open else "CLOSED"
+        "OPEN"
+        if market_open
+        else "CLOSED"
     )
 
     print("=" * 70)
@@ -888,7 +975,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # GET NSE DATA
+    # GET NSE ANNOUNCEMENTS
     # --------------------------------------------------------
 
     announcements = get_announcements()
@@ -911,12 +998,14 @@ def main():
     eligible = []
 
     # --------------------------------------------------------
-    # IDENTIFY BONUS / SPLIT
+    # PROCESS BONUS / STOCK SPLIT
     # --------------------------------------------------------
 
     for item in announcements:
 
-        action = identify_action(item)
+        action = identify_action(
+            item
+        )
 
         if action not in [
             "BONUS",
@@ -925,15 +1014,23 @@ def main():
 
             continue
 
-        symbol = get_symbol(item)
-
-        company = get_company(item)
-
-        announcement_id = get_announcement_id(
+        symbol = get_symbol(
             item
         )
 
-        link = get_link(item)
+        company = get_company(
+            item
+        )
+
+        announcement_id = (
+            get_announcement_id(
+                item
+            )
+        )
+
+        link = get_link(
+            item
+        )
 
         action_date = find_action_date(
             item
@@ -995,13 +1092,17 @@ def main():
             unique_key
         ) in eligible:
 
-            seen.add(unique_key)
+            seen.add(
+                unique_key
+            )
 
         state["keys"] = seen
 
         state["initialized"] = True
 
-        save_seen(state)
+        save_seen(
+            state
+        )
 
         print(
             "Baseline created."
@@ -1014,7 +1115,7 @@ def main():
         return
 
     # --------------------------------------------------------
-    # NORMAL HOURLY SCAN
+    # NORMAL FRESH-ONLY SCAN
     # --------------------------------------------------------
 
     fresh_count = 0
@@ -1039,6 +1140,10 @@ def main():
 
             continue
 
+        # ----------------------------------------------------
+        # NEW EVENT
+        # ----------------------------------------------------
+
         message = format_message(
             company=company,
             symbol=symbol,
@@ -1048,16 +1153,31 @@ def main():
         )
 
         print()
-        print("-" * 70)
-        print("NEW FRESH ALERT")
-        print(message)
-        print("-" * 70)
 
-        success = send_telegram(
+        print(
+            "-" * 70
+        )
+
+        print(
+            "NEW FRESH ALERT"
+        )
+
+        print(
             message
         )
 
-        if success:
+        print(
+            "-" * 70
+        )
+
+        sent = send_telegram(
+            message
+        )
+
+        if sent:
+
+            # Only mark as seen AFTER
+            # successful Telegram delivery.
 
             seen.add(
                 unique_key
@@ -1067,7 +1187,9 @@ def main():
 
             state["initialized"] = True
 
-            save_seen(state)
+            save_seen(
+                state
+            )
 
             fresh_count += 1
 
@@ -1089,10 +1211,15 @@ def main():
 
     state["initialized"] = True
 
-    save_seen(state)
+    save_seen(
+        state
+    )
 
     print()
-    print("=" * 70)
+
+    print(
+        "=" * 70
+    )
 
     print(
         "Fresh alerts sent:",
@@ -1104,7 +1231,9 @@ def main():
         len(seen)
     )
 
-    print("=" * 70)
+    print(
+        "=" * 70
+    )
 
 
 # ============================================================
@@ -1112,4 +1241,5 @@ def main():
 # ============================================================
 
 if __name__ == "__main__":
+
     main()
