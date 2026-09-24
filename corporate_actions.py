@@ -23,14 +23,11 @@ TELEGRAM_CHAT_ID = os.environ.get(
     ""
 )
 
-# IMPORTANT:
-# This MUST match the GitHub Actions state file.
 SEEN_FILE = "seen.json"
 
-# India timezone
 IST = ZoneInfo("Asia/Kolkata")
 
-# NSE regular market timing
+# NSE regular market hours
 MARKET_OPEN = dt_time(9, 15)
 MARKET_CLOSE = dt_time(15, 30)
 
@@ -72,7 +69,7 @@ def is_nse_market_time():
     return (
         MARKET_OPEN
         <= current_time
-        < MARKET_CLOSE
+        <= MARKET_CLOSE
     )
 
 
@@ -83,7 +80,6 @@ def is_nse_market_time():
 def load_seen():
 
     if not os.path.exists(SEEN_FILE):
-
         return {
             "initialized": False,
             "keys": set()
@@ -99,13 +95,9 @@ def load_seen():
 
             data = json.load(f)
 
-        # New format
         if isinstance(data, dict):
 
-            keys = data.get(
-                "keys",
-                []
-            )
+            keys = data.get("keys", [])
 
             if isinstance(keys, list):
 
@@ -119,7 +111,7 @@ def load_seen():
                     "keys": set(keys)
                 }
 
-        # Old format compatibility
+        # Compatibility with old list format
         if isinstance(data, list):
 
             return {
@@ -220,6 +212,11 @@ def send_telegram(message):
             timeout=30
         )
 
+        print(
+            "Telegram status:",
+            response.status_code
+        )
+
         if response.status_code == 200:
 
             print(
@@ -229,9 +226,8 @@ def send_telegram(message):
             return True
 
         print(
-            f"Telegram failed: "
-            f"{response.status_code} "
-            f"{response.text}"
+            "Telegram failed:",
+            response.text[:500]
         )
 
     except Exception as e:
@@ -263,14 +259,15 @@ def create_nse_session():
         )
 
         print(
-            f"NSE homepage status: "
-            f"{response.status_code}"
+            "NSE homepage status:",
+            response.status_code
         )
 
     except Exception as e:
 
         print(
-            f"NSE homepage request failed: {e}"
+            "NSE homepage request failed:",
+            e
         )
 
     return session
@@ -285,7 +282,7 @@ def get_announcements():
     session = create_nse_session()
 
     # IMPORTANT:
-    # NSE dates are based on Indian calendar date.
+    # Use Indian calendar date, not UTC.
     today = now_ist().date()
 
     yesterday = (
@@ -311,8 +308,8 @@ def get_announcements():
         )
 
         print(
-            f"NSE API status: "
-            f"{response.status_code}"
+            "NSE API status:",
+            response.status_code
         )
 
         response.raise_for_status()
@@ -320,7 +317,6 @@ def get_announcements():
         data = response.json()
 
         if isinstance(data, list):
-
             return data
 
         if isinstance(data, dict):
@@ -343,7 +339,8 @@ def get_announcements():
     except Exception as e:
 
         print(
-            f"NSE request failed: {e}"
+            "NSE request failed:",
+            e
         )
 
         return []
@@ -356,7 +353,6 @@ def get_announcements():
 def clean_text(value):
 
     if value is None:
-
         return ""
 
     text = str(value)
@@ -384,10 +380,7 @@ def clean_text(value):
 
 def recursive_values(obj):
 
-    if isinstance(
-        obj,
-        dict
-    ):
+    if isinstance(obj, dict):
 
         for key, value in obj.items():
 
@@ -397,10 +390,7 @@ def recursive_values(obj):
                 value
             )
 
-    elif isinstance(
-        obj,
-        list
-    ):
+    elif isinstance(obj, list):
 
         for item in obj:
 
@@ -440,9 +430,7 @@ def find_action_date(item):
 
     possible_dates = []
 
-    for key, value in recursive_values(
-        item
-    ):
+    for key, value in recursive_values(item):
 
         key_text = clean_text(
             key
@@ -453,7 +441,6 @@ def find_action_date(item):
         )
 
         if not value_text:
-
             continue
 
         for priority, keyword in enumerate(
@@ -506,12 +493,9 @@ def find_action_date(item):
 
         return possible_dates[0][1]
 
-    # Search complete announcement text
     complete_text = " ".join(
         clean_text(value)
-        for _, value in recursive_values(
-            item
-        )
+        for _, value in recursive_values(item)
     )
 
     patterns = [
@@ -540,7 +524,6 @@ def find_action_date(item):
         )
 
         if match:
-
             return match.group(1)
 
     return ""
@@ -554,9 +537,7 @@ def identify_action(item):
 
     text_parts = []
 
-    for key, value in recursive_values(
-        item
-    ):
+    for key, value in recursive_values(item):
 
         if isinstance(
             value,
@@ -567,24 +548,18 @@ def identify_action(item):
                 clean_text(value)
             )
 
-    text = " ".join(
-        text_parts
-    )
+    text = " ".join(text_parts)
 
     text_lower = text.lower()
 
-    # BONUS
     if "bonus" in text_lower:
-
         return "BONUS"
 
-    # STOCK SPLIT
     if (
         "stock split" in text_lower
         or "sub-division" in text_lower
         or "sub division" in text_lower
     ):
-
         return "STOCK SPLIT"
 
     return ""
@@ -597,29 +572,21 @@ def identify_action(item):
 def get_symbol(item):
 
     possible_keys = [
-
         "symbol",
         "Symbol",
-
         "ticker",
         "Ticker",
-
         "securitySymbol",
         "security_symbol"
     ]
 
-    for key, value in recursive_values(
-        item
-    ):
+    for key, value in recursive_values(item):
 
         if key in possible_keys:
 
-            value = clean_text(
-                value
-            )
+            value = clean_text(value)
 
             if value:
-
                 return value
 
     return ""
@@ -632,31 +599,22 @@ def get_symbol(item):
 def get_company(item):
 
     possible_keys = [
-
         "companyName",
         "company_name",
-
         "Company Name",
-
         "company",
         "Company",
-
         "name",
         "Name"
     ]
 
-    for key, value in recursive_values(
-        item
-    ):
+    for key, value in recursive_values(item):
 
         if key in possible_keys:
 
-            value = clean_text(
-                value
-            )
+            value = clean_text(value)
 
             if value:
-
                 return value
 
     return ""
@@ -669,33 +627,24 @@ def get_company(item):
 def get_announcement_id(item):
 
     possible_keys = [
-
         "id",
         "announcementId",
         "announcement_id",
-
         "seqId",
         "seq_id",
-
         "attchmntText",
-
         "attachment",
         "fileName",
         "file_name"
     ]
 
-    for key, value in recursive_values(
-        item
-    ):
+    for key, value in recursive_values(item):
 
         if key in possible_keys:
 
-            value = clean_text(
-                value
-            )
+            value = clean_text(value)
 
             if value:
-
                 return value
 
     return ""
@@ -708,34 +657,23 @@ def get_announcement_id(item):
 def get_link(item):
 
     possible_keys = [
-
         "attchmntFile",
         "attachment",
-
         "attachmentUrl",
         "attachment_url",
-
         "url",
         "link",
-
         "fileUrl",
         "file_url"
     ]
 
-    for key, value in recursive_values(
-        item
-    ):
+    for key, value in recursive_values(item):
 
         if key in possible_keys:
 
-            value = clean_text(
-                value
-            )
+            value = clean_text(value)
 
-            if value.startswith(
-                "http"
-            ):
-
+            if value.startswith("http"):
                 return value
 
     return ""
@@ -748,19 +686,15 @@ def get_link(item):
 def normalize_date(date_text):
 
     if not date_text:
-
         return ""
 
     date_text = date_text.strip()
 
     formats = [
-
         "%d-%m-%Y",
         "%d/%m/%Y",
-
         "%d-%m-%y",
         "%d/%m/%y",
-
         "%d %b %Y",
         "%d %B %Y"
     ]
@@ -779,14 +713,13 @@ def normalize_date(date_text):
             )
 
         except ValueError:
-
             pass
 
     return date_text
 
 
 # ============================================================
-# CREATE STABLE UNIQUE KEY
+# UNIQUE KEY
 # ============================================================
 
 def create_unique_key(
@@ -798,8 +731,6 @@ def create_unique_key(
     link
 ):
 
-    # BEST KEY = NSE announcement URL
-
     if link:
 
         raw = (
@@ -807,16 +738,12 @@ def create_unique_key(
             + link.strip().lower()
         )
 
-    # SECOND BEST = NSE announcement ID
-
     elif announcement_id:
 
         raw = (
             "ID|"
             + announcement_id.strip()
         )
-
-    # FALLBACK = complete announcement
 
     else:
 
@@ -831,15 +758,13 @@ def create_unique_key(
             + raw
         )
 
-    digest = hashlib.sha256(
+    return hashlib.sha256(
         raw.encode("utf-8")
     ).hexdigest()
 
-    return digest
-
 
 # ============================================================
-# FORMAT TELEGRAM MESSAGE
+# TELEGRAM MESSAGE
 # ============================================================
 
 def format_message(
@@ -897,13 +822,11 @@ def format_message(
 
 def main():
 
-    print("=" * 65)
-
+    print("=" * 70)
     print(
         "NSE FRESH BONUS & STOCK SPLIT SCANNER"
     )
-
-    print("=" * 65)
+    print("=" * 70)
 
     current_ist = now_ist()
 
@@ -915,25 +838,24 @@ def main():
     )
 
     print(
-        "Market Status:",
-        "OPEN"
-        if is_nse_market_time()
-        else "CLOSED"
-    )
-
-    print(
         "NSE Market Window:",
         "09:15 - 15:30 IST"
     )
 
-    print("=" * 65)
+    market_open = is_nse_market_time()
+
+    print(
+        "Market Status:",
+        "OPEN" if market_open else "CLOSED"
+    )
+
+    print("=" * 70)
 
     # --------------------------------------------------------
-    # IMPORTANT:
-    # Only scan during NSE regular market hours.
+    # MARKET HOURS CHECK
     # --------------------------------------------------------
 
-    if not is_nse_market_time():
+    if not market_open:
 
         print(
             "Outside NSE market hours."
@@ -945,6 +867,10 @@ def main():
 
         return
 
+    # --------------------------------------------------------
+    # LOAD STATE
+    # --------------------------------------------------------
+
     state = load_seen()
 
     seen = state["keys"]
@@ -952,20 +878,24 @@ def main():
     initialized = state["initialized"]
 
     print(
-        f"Previously stored alerts: "
-        f"{len(seen)}"
+        "Previously stored alerts:",
+        len(seen)
     )
 
     print(
-        f"Scanner initialized: "
-        f"{initialized}"
+        "Scanner initialized:",
+        initialized
     )
+
+    # --------------------------------------------------------
+    # GET NSE DATA
+    # --------------------------------------------------------
 
     announcements = get_announcements()
 
     print(
-        f"Announcements received: "
-        f"{len(announcements)}"
+        "Announcements received:",
+        len(announcements)
     )
 
     if not announcements:
@@ -980,15 +910,13 @@ def main():
 
     eligible = []
 
-    # ========================================================
-    # PROCESS ANNOUNCEMENTS
-    # ========================================================
+    # --------------------------------------------------------
+    # IDENTIFY BONUS / SPLIT
+    # --------------------------------------------------------
 
     for item in announcements:
 
-        action = identify_action(
-            item
-        )
+        action = identify_action(item)
 
         if action not in [
             "BONUS",
@@ -997,21 +925,15 @@ def main():
 
             continue
 
-        symbol = get_symbol(
+        symbol = get_symbol(item)
+
+        company = get_company(item)
+
+        announcement_id = get_announcement_id(
             item
         )
 
-        company = get_company(
-            item
-        )
-
-        announcement_id = (
-            get_announcement_id(item)
-        )
-
-        link = get_link(
-            item
-        )
+        link = get_link(item)
 
         action_date = find_action_date(
             item
@@ -1043,9 +965,14 @@ def main():
             )
         )
 
-    # ========================================================
-    # FIRST RUN = BUILD BASELINE
-    # ========================================================
+    print(
+        "Bonus/Split announcements:",
+        len(eligible)
+    )
+
+    # --------------------------------------------------------
+    # FIRST RUN = BASELINE
+    # --------------------------------------------------------
 
     if not initialized:
 
@@ -1068,32 +995,27 @@ def main():
             unique_key
         ) in eligible:
 
-            seen.add(
-                unique_key
-            )
+            seen.add(unique_key)
 
         state["keys"] = seen
 
         state["initialized"] = True
 
-        save_seen(
-            state
+        save_seen(state)
+
+        print(
+            "Baseline created."
         )
 
         print(
-            f"Baseline created with "
-            f"{len(eligible)} existing announcements."
-        )
-
-        print(
-            "No old announcements sent."
+            "Old announcements will NOT be sent."
         )
 
         return
 
-    # ========================================================
+    # --------------------------------------------------------
     # NORMAL HOURLY SCAN
-    # ========================================================
+    # --------------------------------------------------------
 
     fresh_count = 0
 
@@ -1108,10 +1030,6 @@ def main():
         unique_key
     ) in eligible:
 
-        # ----------------------------------------------------
-        # ALREADY SENT
-        # ----------------------------------------------------
-
         if unique_key in seen:
 
             print(
@@ -1121,10 +1039,6 @@ def main():
 
             continue
 
-        # ----------------------------------------------------
-        # NEW ALERT
-        # ----------------------------------------------------
-
         message = format_message(
             company=company,
             symbol=symbol,
@@ -1133,30 +1047,17 @@ def main():
             link=link
         )
 
-        print(
-            "\n" + "-" * 65
-        )
-
-        print(
-            "NEW FRESH ALERT:"
-        )
-
-        print(
-            message
-        )
-
-        print(
-            "-" * 65
-        )
+        print()
+        print("-" * 70)
+        print("NEW FRESH ALERT")
+        print(message)
+        print("-" * 70)
 
         success = send_telegram(
             message
         )
 
         if success:
-
-            # Save immediately after successful Telegram
-            # delivery.
 
             seen.add(
                 unique_key
@@ -1166,9 +1067,7 @@ def main():
 
             state["initialized"] = True
 
-            save_seen(
-                state
-            )
+            save_seen(state)
 
             fresh_count += 1
 
@@ -1182,28 +1081,30 @@ def main():
                 "Alert NOT marked as sent."
             )
 
-    # ========================================================
+    # --------------------------------------------------------
     # FINAL SAVE
-    # ========================================================
+    # --------------------------------------------------------
 
     state["keys"] = seen
 
     state["initialized"] = True
 
-    save_seen(
-        state
+    save_seen(state)
+
+    print()
+    print("=" * 70)
+
+    print(
+        "Fresh alerts sent:",
+        fresh_count
     )
 
     print(
-        "\n" + "=" * 65
+        "Total saved alerts:",
+        len(seen)
     )
 
-    print(
-        f"Fresh alerts sent: "
-        f"{fresh_count}"
-    )
-
-    print("=" * 65)
+    print("=" * 70)
 
 
 # ============================================================
@@ -1211,5 +1112,4 @@ def main():
 # ============================================================
 
 if __name__ == "__main__":
-
     main()
