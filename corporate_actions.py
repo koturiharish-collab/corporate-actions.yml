@@ -2,11 +2,14 @@ import os
 import json
 import re
 import hashlib
+import warnings
 import requests
 
 from datetime import datetime, time as dt_time, timedelta
 from zoneinfo import ZoneInfo
+
 from bs4 import BeautifulSoup
+from bs4 import MarkupResemblesLocatorWarning
 
 
 # ============================================================
@@ -27,9 +30,11 @@ SEEN_FILE = "seen.json"
 
 IST = ZoneInfo("Asia/Kolkata")
 
-# NSE regular market hours
+# NSE normal equity market
 MARKET_OPEN = dt_time(9, 15)
 MARKET_CLOSE = dt_time(15, 30)
+
+NSE_HOME = "https://www.nseindia.com/"
 
 NSE_URL = (
     "https://www.nseindia.com/api/corporate-announcements"
@@ -41,11 +46,25 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/140.0.0.0 Safari/537.36"
     ),
-    "Accept": "application/json,text/plain,*/*",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Referer": "https://www.nseindia.com/",
+    "Accept": (
+        "application/json,text/plain,*/*"
+    ),
+    "Accept-Language": (
+        "en-US,en;q=0.9"
+    ),
+    "Referer": NSE_HOME,
     "Connection": "keep-alive",
 }
+
+
+# ============================================================
+# REMOVE BEAUTIFULSOUP WARNING
+# ============================================================
+
+warnings.filterwarnings(
+    "ignore",
+    category=MarkupResemblesLocatorWarning
+)
 
 
 # ============================================================
@@ -53,6 +72,7 @@ HEADERS = {
 # ============================================================
 
 def now_ist():
+
     return datetime.now(IST)
 
 
@@ -60,8 +80,12 @@ def is_nse_market_time():
 
     current = now_ist()
 
-    # Saturday / Sunday
+    # Monday = 0
+    # Friday = 4
+    # Saturday/Sunday = 5/6
+
     if current.weekday() >= 5:
+
         return False
 
     current_time = current.time()
@@ -92,10 +116,11 @@ def load_seen():
             SEEN_FILE,
             "r",
             encoding="utf-8"
-        ) as f:
+        ) as file:
 
-            data = json.load(f)
+            data = json.load(file)
 
+        # New format
         if isinstance(data, dict):
 
             keys = data.get(
@@ -103,19 +128,24 @@ def load_seen():
                 []
             )
 
-            if isinstance(keys, list):
+            if not isinstance(
+                keys,
+                list
+            ):
 
-                return {
-                    "initialized": bool(
-                        data.get(
-                            "initialized",
-                            False
-                        )
-                    ),
-                    "keys": set(keys)
-                }
+                keys = []
 
-        # Compatibility with old list format
+            return {
+                "initialized": bool(
+                    data.get(
+                        "initialized",
+                        False
+                    )
+                ),
+                "keys": set(keys)
+            }
+
+        # Old format: simple list
         if isinstance(data, list):
 
             return {
@@ -123,10 +153,11 @@ def load_seen():
                 "keys": set(data)
             }
 
-    except Exception as e:
+    except Exception as error:
 
         print(
-            f"Could not load seen.json: {e}"
+            "ERROR loading seen.json:",
+            error
         )
 
     return {
@@ -137,46 +168,48 @@ def load_seen():
 
 def save_seen(state):
 
-    try:
+    keys = state.get(
+        "keys",
+        set()
+    )
 
-        data = {
-            "initialized": bool(
-                state.get(
-                    "initialized",
-                    False
-                )
-            ),
-            "keys": sorted(
-                list(
-                    state.get(
-                        "keys",
-                        set()
-                    )
-                )
+    data = {
+        "initialized": bool(
+            state.get(
+                "initialized",
+                False
             )
-        }
+        ),
+        "keys": sorted(
+            list(keys)
+        )
+    }
+
+    try:
 
         with open(
             SEEN_FILE,
             "w",
             encoding="utf-8"
-        ) as f:
+        ) as file:
 
             json.dump(
                 data,
-                f,
+                file,
                 indent=2
             )
 
         print(
-            f"Saved state: "
-            f"{len(data['keys'])} keys"
+            "Saved state:",
+            len(keys),
+            "keys"
         )
 
-    except Exception as e:
+    except Exception as error:
 
         print(
-            f"Could not save seen.json: {e}"
+            "ERROR saving seen.json:",
+            error
         )
 
 
@@ -186,20 +219,26 @@ def save_seen(state):
 
 def send_telegram(message):
 
-    if (
-        not TELEGRAM_BOT_TOKEN
-        or not TELEGRAM_CHAT_ID
-    ):
+    if not TELEGRAM_BOT_TOKEN:
 
         print(
-            "ERROR: Telegram credentials are missing."
+            "ERROR: TELEGRAM_BOT_TOKEN missing."
+        )
+
+        return False
+
+    if not TELEGRAM_CHAT_ID:
+
+        print(
+            "ERROR: TELEGRAM_CHAT_ID missing."
         )
 
         return False
 
     url = (
-        f"https://api.telegram.org/bot"
-        f"{TELEGRAM_BOT_TOKEN}/sendMessage"
+        "https://api.telegram.org/bot"
+        f"{TELEGRAM_BOT_TOKEN}"
+        "/sendMessage"
     )
 
     payload = {
@@ -221,27 +260,24 @@ def send_telegram(message):
             response.status_code
         )
 
-        print(
-            "Telegram response:",
-            response.text[:500]
-        )
-
-        if response.status_code == 200:
+        if response.ok:
 
             print(
-                "Telegram alert sent."
+                "Telegram alert sent successfully."
             )
 
             return True
 
         print(
-            "Telegram alert failed."
+            "Telegram response:",
+            response.text[:500]
         )
 
-    except Exception as e:
+    except Exception as error:
 
         print(
-            f"Telegram error: {e}"
+            "Telegram error:",
+            error
         )
 
     return False
@@ -262,7 +298,7 @@ def create_nse_session():
     try:
 
         response = session.get(
-            "https://www.nseindia.com/",
+            NSE_HOME,
             timeout=30
         )
 
@@ -271,11 +307,11 @@ def create_nse_session():
             response.status_code
         )
 
-    except Exception as e:
+    except Exception as error:
 
         print(
             "NSE homepage request failed:",
-            e
+            error
         )
 
     return session
@@ -289,21 +325,23 @@ def get_announcements():
 
     session = create_nse_session()
 
-    # Use Indian calendar date.
-    today = now_ist().date()
+    # IMPORTANT:
+    # NSE date is based on Indian calendar.
+    current_date = now_ist().date()
 
-    yesterday = (
-        today - timedelta(days=1)
+    previous_date = (
+        current_date
+        - timedelta(days=1)
     )
 
     params = {
         "index": "equities",
-        "from_date": yesterday.strftime(
+        "from_date": previous_date.strftime(
             "%d-%m-%Y"
         ),
-        "to_date": today.strftime(
+        "to_date": current_date.strftime(
             "%d-%m-%Y"
-        ),
+        )
     }
 
     try:
@@ -335,33 +373,37 @@ def get_announcements():
             dict
         ):
 
-            for key in [
+            for key in (
                 "data",
                 "announcements",
                 "results"
-            ]:
+            ):
+
+                value = data.get(
+                    key
+                )
 
                 if isinstance(
-                    data.get(key),
+                    value,
                     list
                 ):
 
-                    return data[key]
+                    return value
 
         return []
 
-    except Exception as e:
+    except Exception as error:
 
         print(
-            "NSE request failed:",
-            e
+            "NSE API error:",
+            error
         )
 
         return []
 
 
 # ============================================================
-# TEXT CLEANING
+# CLEAN TEXT
 # ============================================================
 
 def clean_text(value):
@@ -384,13 +426,13 @@ def clean_text(value):
         r"\s+",
         " ",
         text
-    ).strip()
+    )
 
-    return text
+    return text.strip()
 
 
 # ============================================================
-# RECURSIVE VALUES
+# RECURSIVE DATA READER
 # ============================================================
 
 def recursive_values(obj):
@@ -421,199 +463,16 @@ def recursive_values(obj):
 
 
 # ============================================================
-# FIND ACTION DATE
-# ============================================================
-
-def find_action_date(item):
-
-    priority_keywords = [
-
-        "record date",
-        "record_date",
-        "recordDate",
-
-        "ex date",
-        "ex-date",
-        "ex_date",
-
-        "bonus date",
-        "bonus_date",
-
-        "book closure",
-        "book_closure",
-
-        "effective date",
-        "effective_date",
-
-        "date of action",
-        "action date"
-    ]
-
-    possible_dates = []
-
-    for key, value in recursive_values(
-        item
-    ):
-
-        key_text = clean_text(
-            key
-        ).lower()
-
-        value_text = clean_text(
-            value
-        )
-
-        if not value_text:
-
-            continue
-
-        for priority, keyword in enumerate(
-            priority_keywords
-        ):
-
-            if keyword.lower() in key_text:
-
-                match = re.search(
-                    r"\b\d{1,2}[-/]"
-                    r"\d{1,2}[-/]"
-                    r"\d{2,4}\b",
-                    value_text
-                )
-
-                if match:
-
-                    possible_dates.append(
-                        (
-                            priority,
-                            match.group(0)
-                        )
-                    )
-
-                else:
-
-                    match = re.search(
-                        r"\b\d{1,2}\s+"
-                        r"(?:Jan|Feb|Mar|Apr|May|Jun|"
-                        r"Jul|Aug|Sep|Oct|Nov|Dec)"
-                        r"[a-z]*\s+\d{4}\b",
-                        value_text,
-                        re.IGNORECASE
-                    )
-
-                    if match:
-
-                        possible_dates.append(
-                            (
-                                priority,
-                                match.group(0)
-                            )
-                        )
-
-    if possible_dates:
-
-        possible_dates.sort(
-            key=lambda x: x[0]
-        )
-
-        return possible_dates[0][1]
-
-    complete_text = " ".join(
-        clean_text(value)
-        for _, value in recursive_values(
-            item
-        )
-    )
-
-    patterns = [
-
-        r"(?:record\s*date)"
-        r"\s*[:\-]?\s*"
-        r"(\d{1,2}[-/]\d{1,2}[-/]\d{2,4})",
-
-        r"(?:ex\s*date|ex-date)"
-        r"\s*[:\-]?\s*"
-        r"(\d{1,2}[-/]\d{1,2}[-/]\d{2,4})",
-
-        r"(?:record\s*date)"
-        r"\s*[:\-]?\s*"
-        r"(\d{1,2}\s+"
-        r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
-        r"[a-z]*\s+\d{4})"
-    ]
-
-    for pattern in patterns:
-
-        match = re.search(
-            pattern,
-            complete_text,
-            re.IGNORECASE
-        )
-
-        if match:
-
-            return match.group(1)
-
-    return ""
-
-
-# ============================================================
-# IDENTIFY ACTION
-# ============================================================
-
-def identify_action(item):
-
-    text_parts = []
-
-    for key, value in recursive_values(
-        item
-    ):
-
-        if isinstance(
-            value,
-            (str, int, float)
-        ):
-
-            text_parts.append(
-                clean_text(value)
-            )
-
-    text = " ".join(
-        text_parts
-    )
-
-    text_lower = text.lower()
-
-    # BONUS
-    if "bonus" in text_lower:
-
-        return "BONUS"
-
-    # STOCK SPLIT
-    if (
-        "stock split" in text_lower
-        or "sub-division" in text_lower
-        or "sub division" in text_lower
-    ):
-
-        return "STOCK SPLIT"
-
-    return ""
-
-
-# ============================================================
 # GET SYMBOL
 # ============================================================
 
 def get_symbol(item):
 
-    possible_keys = [
-
+    keys = [
         "symbol",
         "Symbol",
-
         "ticker",
         "Ticker",
-
         "securitySymbol",
         "security_symbol"
     ]
@@ -622,7 +481,7 @@ def get_symbol(item):
         item
     ):
 
-        if key in possible_keys:
+        if key in keys:
 
             value = clean_text(
                 value
@@ -641,16 +500,12 @@ def get_symbol(item):
 
 def get_company(item):
 
-    possible_keys = [
-
+    keys = [
         "companyName",
         "company_name",
-
         "Company Name",
-
         "company",
         "Company",
-
         "name",
         "Name"
     ]
@@ -659,7 +514,7 @@ def get_company(item):
         item
     ):
 
-        if key in possible_keys:
+        if key in keys:
 
             value = clean_text(
                 value
@@ -678,18 +533,13 @@ def get_company(item):
 
 def get_announcement_id(item):
 
-    possible_keys = [
-
+    keys = [
         "id",
         "announcementId",
         "announcement_id",
-
         "seqId",
         "seq_id",
-
         "attchmntText",
-
-        "attachment",
         "fileName",
         "file_name"
     ]
@@ -698,7 +548,7 @@ def get_announcement_id(item):
         item
     ):
 
-        if key in possible_keys:
+        if key in keys:
 
             value = clean_text(
                 value
@@ -712,22 +562,18 @@ def get_announcement_id(item):
 
 
 # ============================================================
-# GET LINK
+# GET ATTACHMENT LINK
 # ============================================================
 
 def get_link(item):
 
-    possible_keys = [
-
+    keys = [
         "attchmntFile",
         "attachment",
-
         "attachmentUrl",
         "attachment_url",
-
         "url",
         "link",
-
         "fileUrl",
         "file_url"
     ]
@@ -736,7 +582,7 @@ def get_link(item):
         item
     ):
 
-        if key in possible_keys:
+        if key in keys:
 
             value = clean_text(
                 value
@@ -752,25 +598,139 @@ def get_link(item):
 
 
 # ============================================================
+# IDENTIFY BONUS / STOCK SPLIT
+# ============================================================
+
+def identify_action(item):
+
+    values = []
+
+    for key, value in recursive_values(
+        item
+    ):
+
+        if isinstance(
+            value,
+            (str, int, float)
+        ):
+
+            values.append(
+                clean_text(value)
+            )
+
+    text = " ".join(
+        values
+    )
+
+    text_lower = text.lower()
+
+    # Bonus
+    if "bonus" in text_lower:
+
+        return "BONUS"
+
+    # Stock split
+    if (
+        "stock split" in text_lower
+        or "sub-division" in text_lower
+        or "sub division" in text_lower
+        or "subdivision" in text_lower
+    ):
+
+        return "STOCK SPLIT"
+
+    return ""
+
+
+# ============================================================
+# FIND ACTION DATE
+# ============================================================
+
+def find_action_date(item):
+
+    preferred_keys = [
+        "record date",
+        "record_date",
+        "recordDate",
+        "ex date",
+        "ex-date",
+        "ex_date",
+        "bonus date",
+        "bonus_date",
+        "effective date",
+        "effective_date",
+        "action date",
+        "date of action"
+    ]
+
+    found = []
+
+    for key, value in recursive_values(
+        item
+    ):
+
+        key_text = clean_text(
+            key
+        ).lower()
+
+        value_text = clean_text(
+            value
+        )
+
+        if not value_text:
+
+            continue
+
+        for priority, wanted in enumerate(
+            preferred_keys
+        ):
+
+            if wanted.lower() in key_text:
+
+                match = re.search(
+                    r"\b\d{1,2}[-/]"
+                    r"\d{1,2}[-/]"
+                    r"\d{2,4}\b",
+                    value_text
+                )
+
+                if match:
+
+                    found.append(
+                        (
+                            priority,
+                            match.group(0)
+                        )
+                    )
+
+    if found:
+
+        found.sort(
+            key=lambda item: item[0]
+        )
+
+        return found[0][1]
+
+    return ""
+
+
+# ============================================================
 # NORMALIZE DATE
 # ============================================================
 
-def normalize_date(date_text):
+def normalize_date(value):
 
-    if not date_text:
+    if not value:
 
         return ""
 
-    date_text = date_text.strip()
+    value = value.strip()
 
     formats = [
-
         "%d-%m-%Y",
         "%d/%m/%Y",
-
         "%d-%m-%y",
         "%d/%m/%y",
-
         "%d %b %Y",
         "%d %B %Y"
     ]
@@ -779,31 +739,28 @@ def normalize_date(date_text):
 
         try:
 
-            dt = datetime.strptime(
-                date_text,
+            parsed = datetime.strptime(
+                value,
                 fmt
             )
 
-            return dt.strftime(
+            return parsed.strftime(
                 "%d-%b-%Y"
             )
 
         except ValueError:
 
-            pass
+            continue
 
-    return date_text
+    return value
 
 
 # ============================================================
-# CREATE UNIQUE KEY
+# UNIQUE ALERT KEY
 # ============================================================
 
 def create_unique_key(
     item,
-    symbol,
-    action,
-    action_date,
     announcement_id,
     link
 ):
@@ -836,7 +793,9 @@ def create_unique_key(
         )
 
     return hashlib.sha256(
-        raw.encode("utf-8")
+        raw.encode(
+            "utf-8"
+        )
     ).hexdigest()
 
 
@@ -844,7 +803,7 @@ def create_unique_key(
 # TELEGRAM MESSAGE
 # ============================================================
 
-def format_message(
+def create_message(
     company,
     symbol,
     action,
@@ -856,26 +815,16 @@ def format_message(
 
         title = "🎁 FRESH BONUS"
 
-    elif action == "STOCK SPLIT":
+    else:
 
         title = "✂️ FRESH STOCK SPLIT"
 
-    else:
-
-        title = (
-            f"📢 FRESH {action}"
-        )
-
     message = (
-
         f"{title}\n\n"
-
         f"🏢 Company: "
         f"{company or 'N/A'}\n"
-
         f"📌 Symbol: "
         f"{symbol or 'N/A'}\n"
-
         f"📅 Action Date: "
         f"{action_date or 'Not available'}\n"
     )
@@ -901,12 +850,11 @@ def format_message(
 
 def main():
 
+    print()
     print("=" * 70)
-
     print(
         "NSE FRESH BONUS & STOCK SPLIT SCANNER"
     )
-
     print("=" * 70)
 
     # --------------------------------------------------------
@@ -939,7 +887,7 @@ def main():
     print("=" * 70)
 
     # --------------------------------------------------------
-    # MARKET HOURS CHECK
+    # MARKET HOURS
     # --------------------------------------------------------
 
     if not market_open:
@@ -949,8 +897,10 @@ def main():
         )
 
         print(
-            "No corporate-action scan performed."
+            "No scan performed."
         )
+
+        print("=" * 70)
 
         return
 
@@ -975,7 +925,7 @@ def main():
     )
 
     # --------------------------------------------------------
-    # GET NSE ANNOUNCEMENTS
+    # GET DATA
     # --------------------------------------------------------
 
     announcements = get_announcements()
@@ -991,15 +941,17 @@ def main():
             "No announcements received."
         )
 
-        save_seen(state)
+        save_seen(
+            state
+        )
 
         return
 
-    eligible = []
+    # --------------------------------------------------------
+    # FIND BONUS / SPLIT
+    # --------------------------------------------------------
 
-    # --------------------------------------------------------
-    # PROCESS BONUS / STOCK SPLIT
-    # --------------------------------------------------------
+    eligible = []
 
     for item in announcements:
 
@@ -1007,10 +959,10 @@ def main():
             item
         )
 
-        if action not in [
+        if action not in (
             "BONUS",
             "STOCK SPLIT"
-        ]:
+        ):
 
             continue
 
@@ -1042,24 +994,20 @@ def main():
 
         unique_key = create_unique_key(
             item=item,
-            symbol=symbol,
-            action=action,
-            action_date=action_date,
             announcement_id=announcement_id,
             link=link
         )
 
         eligible.append(
-            (
-                item,
-                action,
-                symbol,
-                company,
-                announcement_id,
-                link,
-                action_date,
-                unique_key
-            )
+            {
+                "action": action,
+                "symbol": symbol,
+                "company": company,
+                "announcement_id": announcement_id,
+                "link": link,
+                "action_date": action_date,
+                "unique_key": unique_key
+            }
         )
 
     print(
@@ -1068,32 +1016,29 @@ def main():
     )
 
     # --------------------------------------------------------
-    # FIRST RUN = BASELINE
+    # FIRST RUN
     # --------------------------------------------------------
 
     if not initialized:
 
+        print()
         print(
-            "First run detected."
+            "FIRST RUN / BASELINE MODE"
         )
 
         print(
-            "Creating baseline."
+            "Existing NSE announcements "
+            "will be stored."
         )
 
-        for (
-            item,
-            action,
-            symbol,
-            company,
-            announcement_id,
-            link,
-            action_date,
-            unique_key
-        ) in eligible:
+        print(
+            "They will NOT generate Telegram alerts."
+        )
+
+        for item in eligible:
 
             seen.add(
-                unique_key
+                item["unique_key"]
             )
 
         state["keys"] = seen
@@ -1105,36 +1050,35 @@ def main():
         )
 
         print(
-            "Baseline created."
-        )
-
-        print(
-            "Old announcements will NOT be sent."
+            "Baseline completed."
         )
 
         return
 
     # --------------------------------------------------------
-    # NORMAL FRESH-ONLY SCAN
+    # FRESH ALERTS ONLY
     # --------------------------------------------------------
 
     fresh_count = 0
 
-    for (
-        item,
-        action,
-        symbol,
-        company,
-        announcement_id,
-        link,
-        action_date,
-        unique_key
-    ) in eligible:
+    for item in eligible:
+
+        unique_key = item[
+            "unique_key"
+        ]
+
+        action = item[
+            "action"
+        ]
+
+        symbol = item[
+            "symbol"
+        ]
 
         if unique_key in seen:
 
             print(
-                f"Already alerted - SKIP: "
+                "Already alerted - SKIP:",
                 f"{symbol} | {action}"
             )
 
@@ -1144,31 +1088,19 @@ def main():
         # NEW EVENT
         # ----------------------------------------------------
 
-        message = format_message(
-            company=company,
+        message = create_message(
+            company=item["company"],
             symbol=symbol,
             action=action,
-            action_date=action_date,
-            link=link
+            action_date=item["action_date"],
+            link=item["link"]
         )
 
         print()
-
-        print(
-            "-" * 70
-        )
-
-        print(
-            "NEW FRESH ALERT"
-        )
-
-        print(
-            message
-        )
-
-        print(
-            "-" * 70
-        )
+        print("-" * 70)
+        print("NEW FRESH ALERT")
+        print(message)
+        print("-" * 70)
 
         sent = send_telegram(
             message
@@ -1176,9 +1108,7 @@ def main():
 
         if sent:
 
-            # Only mark as seen AFTER
-            # successful Telegram delivery.
-
+            # Only save after Telegram succeeds.
             seen.add(
                 unique_key
             )
@@ -1193,6 +1123,10 @@ def main():
 
             fresh_count += 1
 
+            print(
+                "Alert state updated."
+            )
+
         else:
 
             print(
@@ -1200,11 +1134,12 @@ def main():
             )
 
             print(
-                "Alert NOT marked as sent."
+                "This alert will be retried "
+                "on the next hourly scan."
             )
 
     # --------------------------------------------------------
-    # FINAL SAVE
+    # FINAL STATE
     # --------------------------------------------------------
 
     state["keys"] = seen
@@ -1216,28 +1151,20 @@ def main():
     )
 
     print()
-
-    print(
-        "=" * 70
-    )
-
+    print("=" * 70)
     print(
         "Fresh alerts sent:",
         fresh_count
     )
-
     print(
         "Total saved alerts:",
         len(seen)
     )
-
-    print(
-        "=" * 70
-    )
+    print("=" * 70)
 
 
 # ============================================================
-# RUN
+# START
 # ============================================================
 
 if __name__ == "__main__":
