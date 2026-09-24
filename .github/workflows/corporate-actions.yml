@@ -2,8 +2,23 @@ name: Fresh Bonus & Stock Split Alerts
 
 on:
   schedule:
-    # Every hour at minute 17 UTC
-    - cron: "17 * * * *"
+
+    # ==================================================
+    # INDIA / NSE HOURLY CHECKS
+    #
+    # GitHub cron uses UTC.
+    #
+    # 09:47 IST = 04:17 UTC
+    # 10:47 IST = 05:17 UTC
+    # 11:47 IST = 06:17 UTC
+    # 12:47 IST = 07:17 UTC
+    # 13:47 IST = 08:17 UTC
+    # 14:47 IST = 09:17 UTC
+    # 15:17 IST = 09:47 UTC
+    # ==================================================
+
+    - cron: "17 4-9 * * 1-5"
+    - cron: "47 9 * * 1-5"
 
   workflow_dispatch:
 
@@ -11,7 +26,9 @@ permissions:
   contents: write
 
 jobs:
+
   scan:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -19,6 +36,7 @@ jobs:
       # --------------------------------------------------
       # CHECKOUT
       # --------------------------------------------------
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -27,6 +45,7 @@ jobs:
       # --------------------------------------------------
       # SETUP PYTHON
       # --------------------------------------------------
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -35,14 +54,16 @@ jobs:
       # --------------------------------------------------
       # INSTALL DEPENDENCIES
       # --------------------------------------------------
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       # --------------------------------------------------
-      # RUN CORPORATE ACTIONS SCANNER
+      # RUN SCANNER
       # --------------------------------------------------
+
       - name: Run Fresh Corporate Actions Scanner
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -53,6 +74,7 @@ jobs:
       # --------------------------------------------------
       # MAKE SURE STATE FILE EXISTS
       # --------------------------------------------------
+
       - name: Ensure seen state exists
         run: |
           if [ ! -f seen.json ]; then
@@ -60,8 +82,9 @@ jobs:
           fi
 
       # --------------------------------------------------
-      # SAVE FRESH-ALERT STATE
+      # SAVE STATE
       # --------------------------------------------------
+
       - name: Save alert state
         run: |
           git config user.name "github-actions[bot]"
