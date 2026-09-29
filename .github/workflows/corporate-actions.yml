@@ -1,73 +1,59 @@
-name: Fresh Bonus & Stock Split Alerts
+name: Corporate Actions Alert (Splits, Bonus, Buyback)
 
 on:
   schedule:
-    # ==================================================
-    # NSE MARKET HOURS
-    #
-    # GitHub Actions uses UTC.
-    #
-    # 09:47 IST = 04:17 UTC
-    # 10:47 IST = 05:17 UTC
-    # 11:47 IST = 06:17 UTC
-    # 12:47 IST = 07:17 UTC
-    # 13:47 IST = 08:17 UTC
-    # 14:47 IST = 09:17 UTC
-    # 15:17 IST = 09:47 UTC
-    # ==================================================
-
-    - cron: "17 4-9 * * 1-5"
-    - cron: "47 9 * * 1-5"
-
+    # 3 runs per weekday (cron is UTC). Odd minutes avoid busy GitHub slots.
+    - cron: "47 4 * * 1-5"    # 10:17 IST
+    - cron: "47 8 * * 1-5"    # 14:17 IST
+    - cron: "47 12 * * 1-5"   # 18:17 IST
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: corporate-actions
+  cancel-in-progress: false
+
 jobs:
   scan:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 25
     steps:
+      - uses: actions/checkout@v4
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          fetch-depth: 0
+          python-version: "3.12"
+          cache: pip
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+      - run: pip install -r requirements.txt
 
-      - name: Install dependencies
+      - name: Scan corporate actions
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python corporate_actions.py
+
+      - name: Save state
+        if: always()
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          git add seen.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update corporate action alert state"
+            git pull --rebase -q || true
+            git push
+          fi
 
-      - name: Run Fresh Corporate Actions Scanner
+      # Sends a Telegram message only when the run fails (avoids 3 messages a day).
+      - name: Notify on failure
+        if: failure()
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python corporate_actions.py
-
-      - name: Ensure seen state exists
-        run: |
-          if [ ! -f seen.json ]; then
-            echo '{"initialized": false, "keys": []}' > seen.json
-          fi
-
-      - name: Save alert state
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add seen.json
-
-          if git diff --cached --quiet; then
-            echo "No new state changes."
-          else
-            git commit -m "Update corporate action alert state"
-            git push
-          fi
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            -d text="❌ Corporate Actions scan FAILED - check GitHub Actions logs" > /dev/null
