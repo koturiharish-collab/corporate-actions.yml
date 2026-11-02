@@ -48,6 +48,20 @@ TITLES = {
     "BONUS": "🎁 BONUS ISSUE",
     "BUYBACK": "💰 BUYBACK",
 }
+# Routine follow-up filings about buybacks/splits that are already under way.
+# Matched as lowercase substrings of the announcement category. Add more if needed.
+NOISY_CATEGORIES = (
+    "newspaper publication",
+    "post buyback",
+    "post-buyback",
+    "trading window",
+    "loss of share certificate",
+    "duplicate share certificate",
+    "analysts/institutional investor meet",
+    "certificate under sebi",
+    "closure of trading window",
+)
+
 ANN_TITLES = {
     "SPLIT": "📢 ANNOUNCEMENT: STOCK SPLIT",
     "BONUS": "📢 ANNOUNCEMENT: BONUS ISSUE",
@@ -219,6 +233,9 @@ def collect_candidates(actions, announcements):
         out.append((key, build_action_message(kind, item)))
 
     for item in announcements or []:
+        category = (item.get("desc") or "").lower()
+        if any(noise in category for noise in NOISY_CATEGORIES):
+            continue
         text = (item.get("attchmntText") or "") + " " + (item.get("desc") or "")
         kind = classify(text)
         if not kind:
