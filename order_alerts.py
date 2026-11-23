@@ -181,7 +181,7 @@ def find_execution(text):
 
 
 def undisclosed_order_value(text):
-    match = re.search(r"(?:consideration|size|value)[^.;\n]{0,140}\bnot disclosed\b[^.;\n]{0,140}", text or "", re.I)
+    match = re.search(r"(?:consideration|size|value)[\s\S]{0,180}?\bnot\s+disclosed\b[\s\S]{0,160}", text or "", re.I)
     return re.sub(r"\s+", " ", match.group(0)).strip(" ,.;") if match else None
 
 
@@ -315,10 +315,11 @@ def order_alert(item, market_cache):
         {"label": "Market data snapshot captured", "value": datetime.now(IST).isoformat(timespec="seconds"), "source": "Yahoo Finance"},
         {"label": "Price at snapshot", "value": format_inr(price) if price is not None else None, "source": "Yahoo Finance"},
         {"label": "Market capitalization", "value": format_inr(market_cap) if market_cap is not None else None, "source": "Yahoo Finance"},
-        {"label": "Trailing P/E", "value": clean_number(market.get("trailingPE")), "source": "Yahoo Finance"},
-        {"label": "Forward P/E", "value": clean_number(market.get("forwardPE")), "source": "Yahoo Finance"},
-        {"label": "Price-to-book", "value": clean_number(market.get("priceToBook")), "source": "Yahoo Finance"},
-        {"label": "Trailing EPS", "value": clean_number(market.get("trailingEps")), "source": "Yahoo Finance"},
+        {"label": "Market capitalization (INR crore)", "value": f"₹{cap_cr:,.2f} crore" if cap_cr is not None else None, "source": "Yahoo Finance"},
+        {"label": "Trailing P/E", "value": f"{clean_number(market.get('trailingPE')):.2f}" if clean_number(market.get("trailingPE")) is not None else None, "source": "Yahoo Finance"},
+        {"label": "Forward P/E", "value": f"{clean_number(market.get('forwardPE')):.2f}" if clean_number(market.get("forwardPE")) is not None else None, "source": "Yahoo Finance"},
+        {"label": "Price-to-book", "value": f"{clean_number(market.get('priceToBook')):.2f}" if clean_number(market.get("priceToBook")) is not None else None, "source": "Yahoo Finance"},
+        {"label": "Trailing EPS", "value": format_inr(clean_number(market.get("trailingEps"))), "source": "Yahoo Finance"},
         {"label": "Enterprise value", "value": format_inr(clean_number(market.get("enterpriseValue"))), "source": "Yahoo Finance"},
         {"label": "52-week high", "value": format_inr(clean_number(market.get("fiftyTwoWeekHigh"))), "source": "Yahoo Finance"},
         {"label": "52-week low", "value": format_inr(clean_number(market.get("fiftyTwoWeekLow"))), "source": "Yahoo Finance"},
@@ -337,7 +338,7 @@ def order_alert(item, market_cache):
     change = clean_number(market.get("regularMarketChangePercent"))
     title = item.get("title") or item.get("category") or "Order win announcement"
     return {
-        "id": alert_id, "parser_version": 2, "time": now, "folder": "orders", "subfolder": subfolder,
+        "id": alert_id, "parser_version": 3, "time": now, "folder": "orders", "subfolder": subfolder,
         "symbol": str(item.get("symbol") or ""), "company": item.get("company") or "",
         "title": title, "price": price, "change_pct": change, "details": details,
         "link": item.get("link") or "", "source_data": item.get("source_data") or {},
@@ -423,7 +424,7 @@ def main():
         if not old_alert or not item.get("link"):
             continue
         status = next((d.get("value") for d in old_alert.get("details", []) if d.get("label") == "PDF text extraction"), None)
-        if old_alert.get("parser_version", 0) < 2 or status == "No exchange PDF attachment was available.":
+        if old_alert.get("parser_version", 0) < 3 or status == "No exchange PDF attachment was available.":
             refresh_pdf.append(item)
     to_process = new_hits + refresh_pdf
     log(f"{len(new)} new announcements; {len(new_hits)} new order-win matches; {len(refresh_pdf)} filing refreshes")
