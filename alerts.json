@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T17:58:15+05:30",
+  "updated": "2026-11-23T18:00:51+05:30",
   "folders": [
     {
       "id": "emas",
@@ -4546,6 +4546,325 @@
         }
       ],
       "link": "https://nsearchives.nseindia.in/corporate/MEDIASSIST_23112026174239_MAHSSEIntimationLetterOfOffersd.pdf"
+    },
+    {
+      "id": "2a2c498418e22e211d5e65af",
+      "parser_version": 3,
+      "time": "2026-11-23T18:00:51+05:30",
+      "folder": "orders",
+      "subfolder": "small",
+      "symbol": "TEXRAIL",
+      "company": "Texmaco Rail & Engineering Limited",
+      "title": "Bagging/Receiving of orders/contracts",
+      "price": 112.19,
+      "change_pct": 0.73628414,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Texmaco Rail & Engineering Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "TEXRAIL",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Texmaco Rail & Engineering Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "Rs. 3.13 crores",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Small (under ₹10 crore)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 17:59:15",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "TEXRAIL.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/TEXRAIL.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T18:00:51+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹112.19",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹45,646,139,392.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹4,564.61 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": "17.37",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": "16.74",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "1.82",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹6.46",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹52,808,740,864.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹142.95",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹78.05",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Railroads",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "0.0686%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "Rs. 3.13 crores; Rs. 3.13 crores",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "23rd November, 2026 \n \nNational Stock Exchange of India Ltd. \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex \nBandra (E), Mumbai – 400051 \nSymbol – TEXRAIL \nBSE Limited \nP. J. Towers,  \nDalal Street,  \nMumbai – 400001 \nScrip Code – 533326 \n \n \nSubject: Receipt of Order- Disclosure under Regulation 30 of SEBI (Listing Obligations \nand Disclosure Requirements), Regulations 2015  \n \nDear Sirs, \n \nPursuant to Regulation 30, we wish to inform you that Eastern Railway has awarded an order of \nRs. 3.13 crores for Manufacture and Supply of 73 Sets of 1 in 8.5 BG 60Kg Weldable CMS \nCrossing on PSC sleepers in accordance with RDSO Drg. \nThe details as required under the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 read with SEBI Circular No. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 \ndated 30th January, 2026 are provided hereunder: \n \nSl. No Particulars Details \n1.  Name of the entity awarding the \norder(s)/contract(s) \nEastern Railway \n2.  Significant terms and conditions of \norder(s)/contract(s) awarded in brief \nManufacture and Supply of 73 Sets of 1 \nin 8.5 BG 60Kg Weldable CMS Crossing \non PSC sleepers in accordance with \nRDSO Drg. \n3.  Whether order(s) / contract(s) have \nbeen awarded by domestic/ \ninternational entity \nDomestic \n4.  Nature of order(s) / contract(s) \n  \nManufacture and Supply of 73 Sets of 1 \nin 8.5 BG 60Kg Weldable CMS Crossing \non PSC sleepers in accordance with \nRDSO Drg. \n\n \n \n \nThis is for your information and record. \n \nYours faithfully, \n \nFor Texmaco Rail & Engineering Limited \n \n \n \nSandeep Kumar Sultania \nCompany Secretary &  \nCompliance Officer \n \n5.  Whether domestic or international Domestic \n6.  Time period by which the order(s) / \ncontract(s) is to be executed \nBy 31st March, 2027.  \n7.  Broad consideration or size of the \norder(s)/contract(s) \nRs. 3.13 crores (including taxes). \n8.  Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded the \norder(s)/ contract(s)? If yes, nature of \ninterest and details thereof \nNo \n9.  Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the same \nis done at “arm’s length” \nNo",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 17:59:15",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "336.31 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/TEXRAIL_23112026175853_TexRailReceiptofoOrderER23112026Signed.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Texmaco Rail & Engineering Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026175915",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 17:59:16",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "336.31 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106869101",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": "Engineering",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE621L01012",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Texmaco Rail & Engineering Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 17:59:15",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "TEXRAIL",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Texmaco Rail and Engineering Limited received an order from Eastern Railway valued at Rs. 3.13 crores. The contract involves the manufacture and supply of 73 sets of 1 in 8.5 BG 60Kg Weldable CMS Crossing on PSC sleepers. The order is domestic in nature. Execution is scheduled to be completed by 31st March 2027. The announcement confirms that the promoter group has no interest in Eastern Railway. The order does not constitute a related party transaction. This disclosure is made pursuant to Regulation 30 of SEBI Listing Obligations and Disclosure Requirements Regulations 2015.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/TEXRAIL_23112026175853_TexRailReceiptofoOrderER23112026Signed.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/TEXRAIL_23112026175853_TexRailReceiptofoOrderER23112026Signed.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 17:59:15",
+        "attFilePath": null,
+        "attFileSize": "336.31 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/TEXRAIL_23112026175853_TexRailReceiptofoOrderER23112026Signed.pdf",
+        "attchmntText": "Texmaco Rail & Engineering Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Bagging/Receiving of orders/contracts",
+        "difference": "00:00:01",
+        "dt": "23112026175915",
+        "exchdisstime": "23-Nov-2026 17:59:16",
+        "fileSize": "336.31 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106869101",
+        "smIndustry": "Engineering",
+        "sm_isin": "INE621L01012",
+        "sm_name": "Texmaco Rail & Engineering Limited",
+        "sort_date": "2026-11-23 17:59:15",
+        "symbol": "TEXRAIL",
+        "voiceSummary": "Texmaco Rail and Engineering Limited received an order from Eastern Railway valued at Rs. 3.13 crores. The contract involves the manufacture and supply of 73 sets of 1 in 8.5 BG 60Kg Weldable CMS Crossing on PSC sleepers. The order is domestic in nature. Execution is scheduled to be completed by 31st March 2027. The announcement confirms that the promoter group has no interest in Eastern Railway. The order does not constitute a related party transaction. This disclosure is made pursuant to Regulation 30 of SEBI Listing Obligations and Disclosure Requirements Regulations 2015.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/TEXRAIL_23112026175853_TexRailReceiptofoOrderER23112026Signed.mp3"
+      },
+      "filing_text": "Bagging/Receiving of orders/contracts\n\nTexmaco Rail & Engineering Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\n23rd November, 2026 \n \nNational Stock Exchange of India Ltd. \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex \nBandra (E), Mumbai – 400051 \nSymbol – TEXRAIL \nBSE Limited \nP. J. Towers,  \nDalal Street,  \nMumbai – 400001 \nScrip Code – 533326 \n \n \nSubject: Receipt of Order- Disclosure under Regulation 30 of SEBI (Listing Obligations \nand Disclosure Requirements), Regulations 2015  \n \nDear Sirs, \n \nPursuant to Regulation 30, we wish to inform you that Eastern Railway has awarded an order of \nRs. 3.13 crores for Manufacture and Supply of 73 Sets of 1 in 8.5 BG 60Kg Weldable CMS \nCrossing on PSC sleepers in accordance with RDSO Drg. \nThe details as required under the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 read with SEBI Circular No. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 \ndated 30th January, 2026 are provided hereunder: \n \nSl. No Particulars Details \n1.  Name of the entity awarding the \norder(s)/contract(s) \nEastern Railway \n2.  Significant terms and conditions of \norder(s)/contract(s) awarded in brief \nManufacture and Supply of 73 Sets of 1 \nin 8.5 BG 60Kg Weldable CMS Crossing \non PSC sleepers in accordance with \nRDSO Drg. \n3.  Whether order(s) / contract(s) have \nbeen awarded by domestic/ \ninternational entity \nDomestic \n4.  Nature of order(s) / contract(s) \n  \nManufacture and Supply of 73 Sets of 1 \nin 8.5 BG 60Kg Weldable CMS Crossing \non PSC sleepers in accordance with \nRDSO Drg. \n\n \n \n \nThis is for your information and record. \n \nYours faithfully, \n \nFor Texmaco Rail & Engineering Limited \n \n \n \nSandeep Kumar Sultania \nCompany Secretary &  \nCompliance Officer \n \n5.  Whether domestic or international Domestic \n6.  Time period by which the order(s) / \ncontract(s) is to be executed \nBy 31st March, 2027.  \n7.  Broad consideration or size of the \norder(s)/contract(s) \nRs. 3.13 crores (including taxes). \n8.  Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded the \norder(s)/ contract(s)? If yes, nature of \ninterest and details thereof \nNo \n9.  Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the same \nis done at “arm’s length” \nNo",
+      "source_id": "NSE:106869101"
     }
   ]
 }
