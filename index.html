@@ -511,7 +511,8 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   render();
 
   function refreshAlerts() {
-    fetch('alerts.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('not found'); return r.json(); }).then(function (d) {
+    var feedUrl = window.location.protocol === 'file:' ? 'https://koturiharish-collab.github.io/corporate-actions.yml/alerts.json' : 'alerts.json';
+    fetch(feedUrl, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('not found'); return r.json(); }).then(function (d) {
       data = prep(d);
       if (view.type === 'folder' && !data.fmap[view.folder]) view = { type: 'all', folder: null, sub: null };
       render();
