@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T18:00:51+05:30",
+  "updated": "2026-11-23T18:45:48+05:30",
   "folders": [
     {
       "id": "emas",
@@ -4865,6 +4865,325 @@
       },
       "filing_text": "Bagging/Receiving of orders/contracts\n\nTexmaco Rail & Engineering Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\n23rd November, 2026 \n \nNational Stock Exchange of India Ltd. \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex \nBandra (E), Mumbai – 400051 \nSymbol – TEXRAIL \nBSE Limited \nP. J. Towers,  \nDalal Street,  \nMumbai – 400001 \nScrip Code – 533326 \n \n \nSubject: Receipt of Order- Disclosure under Regulation 30 of SEBI (Listing Obligations \nand Disclosure Requirements), Regulations 2015  \n \nDear Sirs, \n \nPursuant to Regulation 30, we wish to inform you that Eastern Railway has awarded an order of \nRs. 3.13 crores for Manufacture and Supply of 73 Sets of 1 in 8.5 BG 60Kg Weldable CMS \nCrossing on PSC sleepers in accordance with RDSO Drg. \nThe details as required under the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 read with SEBI Circular No. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 \ndated 30th January, 2026 are provided hereunder: \n \nSl. No Particulars Details \n1.  Name of the entity awarding the \norder(s)/contract(s) \nEastern Railway \n2.  Significant terms and conditions of \norder(s)/contract(s) awarded in brief \nManufacture and Supply of 73 Sets of 1 \nin 8.5 BG 60Kg Weldable CMS Crossing \non PSC sleepers in accordance with \nRDSO Drg. \n3.  Whether order(s) / contract(s) have \nbeen awarded by domestic/ \ninternational entity \nDomestic \n4.  Nature of order(s) / contract(s) \n  \nManufacture and Supply of 73 Sets of 1 \nin 8.5 BG 60Kg Weldable CMS Crossing \non PSC sleepers in accordance with \nRDSO Drg. \n\n \n \n \nThis is for your information and record. \n \nYours faithfully, \n \nFor Texmaco Rail & Engineering Limited \n \n \n \nSandeep Kumar Sultania \nCompany Secretary &  \nCompliance Officer \n \n5.  Whether domestic or international Domestic \n6.  Time period by which the order(s) / \ncontract(s) is to be executed \nBy 31st March, 2027.  \n7.  Broad consideration or size of the \norder(s)/contract(s) \nRs. 3.13 crores (including taxes). \n8.  Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded the \norder(s)/ contract(s)? If yes, nature of \ninterest and details thereof \nNo \n9.  Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the same \nis done at “arm’s length” \nNo",
       "source_id": "NSE:106869101"
+    },
+    {
+      "id": "7fd953f884329da4ca39419e",
+      "parser_version": 3,
+      "time": "2026-11-23T18:45:48+05:30",
+      "folder": "orders",
+      "subfolder": null,
+      "symbol": "LAL",
+      "company": "Lorenzini Apparels Limited",
+      "title": "Name Change",
+      "price": 9.2,
+      "change_pct": -3.6649253,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Lorenzini Apparels Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "LAL",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Name Change",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Name Change",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Lorenzini Apparels Limited has informs about the receipt of final order for change of Name.",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": null,
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 18:31:26",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 3 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "LAL.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/LAL.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T18:45:48+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹9.20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹1,589,176,192.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹158.92 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": "28.75",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "2.63",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹0.32",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹1,634,059,008.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹13.45",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹5.56",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Consumer Cyclical",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Apparel Manufacturing",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": null,
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "November 23, 2026 \nTo, \nThe Secretary  \nListing Department \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, Mumbai – 400001 \nBSE Scrip Code: 540952 \nTo, \nThe Secretary  \nListing Department \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, Bandra Kurla Complex, \nBandra (E), Mumbai – 400051 \nNSE Symbol: *LAL \n \nSub: Disclosure of approval received from ‘Bombay Stock Exchange Limited’ for change in \nname of the Company from “Lorenzini Apparels Limited” to “Monteil Limited”. \nDear Sir/Madam, \nThis is in continuation of our earlier intimation dated October 28, 2026, wherein we submitted the \nfresh Certificate of Incorporation pursuant to change of name issued by the Registrar of Companies. \nPursuant to Regulation 30 read with Schedule III of the SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 (“SEBI Listing Regulations”), we would like to inform you that the \nCompany has received approval from Bombay Stock Exchange Limited for change of name of the \nCompany in its records from “LORENZINI APPARELS LIMITED” to “MONTEIL LIMITED”. \nAs per BSE Notice dated November 20, 2026, the name and symbol of the Company will be changed \nand effective in the Exchange’s master records w.e.f. November 27, 2026, and the details are as under: \nExisting \nSymbol \nNew Symbol Existing Name New Name \nLAL MONTEIL Lorenzini Apparels Limited MONTEIL LIMITED \n \nA copy of the NSE Letter is attached herewith. Kindly take the same on record. \nThanking You, \n \nFor and on Behalf of  \nMonteil Limited \n(Formerly known as Lorenzini Apparels Limited) \n \n \n \n \nSandeep Jain \n(Managing Director & Chief Financial Officer)  \nDIN: 02365790 \n \nEncl.- As above \n \n*NSE symbol wil get changed to ‘MONTEIL’ with effect from 27th November, 2026. \n \n \n \nSandeep \nJain\nDigitally signed by \nSandeep Jain \nDate: 2026.11.23 \n18:07:59 +05'30'\n\nNOTICE\nNotice\nNo.\n20261120-\n13\nNotice\nDate\n20\nNov\n2026\nCategory\nCorporate\nActions\nSegment\nEquity\nDepartment\nListing\nOperations\nSubject\nChange\nin\nName\nof\nthe\nCompany\n-\nLorenzini\nApparels\nLtd.\nAttachments\nlorenzini_ROC\n\n\n \n \nTrading Members of the Exchange are hereby informed that the under-mentioned Company has informed the \nExchange about the change in name of the Company. Accordingly, the SCRIP ID and ABBREVIATED NAME of the \nCompany for BOLT Plus SYSTEM will be changed as follows w.e.f November 27, 2026. \n  \nScrip \nCode Existing Name \n             New Name \n \n \nScrip ID for BOLT Plus \nSystem* \nAbbreviated name on \nBOLT Plus System* \n540952  \nLorenzini \nApparels Ltd \nMONTEIL LIMITED \nMONTEIL MONTEIL \n \nMarian Dsouza \nAssistant Vice President \nListing Compliance and Operations",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 18:31:26",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "677.77 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/LAL_23112026183110_BSE_disclosure_Name_Change.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Lorenzini Apparels Limited has informs about the receipt of final order for change of Name.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Name Change",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026183126",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 18:31:27",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "677.77 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106869151",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE740X01015",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Lorenzini Apparels Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 18:31:26",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "LAL",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Monteil Limited, formerly Lorenzini Apparels Limited, has received approval from Bombay Stock Exchange Limited for the change of name. The company's symbol on the BSE will change from LAL to MONTEIL, and the scrip code remains 540952. This change is effective from November 27, 2026. The NSE symbol will also change to MONTEIL with effect from November 27, 2026. The company previously submitted a fresh Certificate of Incorporation on October 28, 2026, following the Registrar of Companies approval. Sandeep Jain, Managing Director and Chief Financial Officer, signed the disclosure on November 23, 2026. The BSE notice regarding this change was issued on November 20, 2026.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/LAL_23112026183110_BSE_disclosure_Name_Change.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/LAL_23112026183110_BSE_disclosure_Name_Change.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 18:31:26",
+        "attFilePath": null,
+        "attFileSize": "677.77 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/LAL_23112026183110_BSE_disclosure_Name_Change.pdf",
+        "attchmntText": "Lorenzini Apparels Limited has informs about the receipt of final order for change of Name.",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Name Change",
+        "difference": "00:00:01",
+        "dt": "23112026183126",
+        "exchdisstime": "23-Nov-2026 18:31:27",
+        "fileSize": "677.77 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106869151",
+        "smIndustry": null,
+        "sm_isin": "INE740X01015",
+        "sm_name": "Lorenzini Apparels Limited",
+        "sort_date": "2026-11-23 18:31:26",
+        "symbol": "LAL",
+        "voiceSummary": "Monteil Limited, formerly Lorenzini Apparels Limited, has received approval from Bombay Stock Exchange Limited for the change of name. The company's symbol on the BSE will change from LAL to MONTEIL, and the scrip code remains 540952. This change is effective from November 27, 2026. The NSE symbol will also change to MONTEIL with effect from November 27, 2026. The company previously submitted a fresh Certificate of Incorporation on October 28, 2026, following the Registrar of Companies approval. Sandeep Jain, Managing Director and Chief Financial Officer, signed the disclosure on November 23, 2026. The BSE notice regarding this change was issued on November 20, 2026.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/LAL_23112026183110_BSE_disclosure_Name_Change.mp3"
+      },
+      "filing_text": "Name Change\n\nLorenzini Apparels Limited has informs about the receipt of final order for change of Name.\n\nNovember 23, 2026 \nTo, \nThe Secretary  \nListing Department \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, Mumbai – 400001 \nBSE Scrip Code: 540952 \nTo, \nThe Secretary  \nListing Department \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, Bandra Kurla Complex, \nBandra (E), Mumbai – 400051 \nNSE Symbol: *LAL \n \nSub: Disclosure of approval received from ‘Bombay Stock Exchange Limited’ for change in \nname of the Company from “Lorenzini Apparels Limited” to “Monteil Limited”. \nDear Sir/Madam, \nThis is in continuation of our earlier intimation dated October 28, 2026, wherein we submitted the \nfresh Certificate of Incorporation pursuant to change of name issued by the Registrar of Companies. \nPursuant to Regulation 30 read with Schedule III of the SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 (“SEBI Listing Regulations”), we would like to inform you that the \nCompany has received approval from Bombay Stock Exchange Limited for change of name of the \nCompany in its records from “LORENZINI APPARELS LIMITED” to “MONTEIL LIMITED”. \nAs per BSE Notice dated November 20, 2026, the name and symbol of the Company will be changed \nand effective in the Exchange’s master records w.e.f. November 27, 2026, and the details are as under: \nExisting \nSymbol \nNew Symbol Existing Name New Name \nLAL MONTEIL Lorenzini Apparels Limited MONTEIL LIMITED \n \nA copy of the NSE Letter is attached herewith. Kindly take the same on record. \nThanking You, \n \nFor and on Behalf of  \nMonteil Limited \n(Formerly known as Lorenzini Apparels Limited) \n \n \n \n \nSandeep Jain \n(Managing Director & Chief Financial Officer)  \nDIN: 02365790 \n \nEncl.- As above \n \n*NSE symbol wil get changed to ‘MONTEIL’ with effect from 27th November, 2026. \n \n \n \nSandeep \nJain\nDigitally signed by \nSandeep Jain \nDate: 2026.11.23 \n18:07:59 +05'30'\n\nNOTICE\nNotice\nNo.\n20261120-\n13\nNotice\nDate\n20\nNov\n2026\nCategory\nCorporate\nActions\nSegment\nEquity\nDepartment\nListing\nOperations\nSubject\nChange\nin\nName\nof\nthe\nCompany\n-\nLorenzini\nApparels\nLtd.\nAttachments\nlorenzini_ROC\n\n\n \n \nTrading Members of the Exchange are hereby informed that the under-mentioned Company has informed the \nExchange about the change in name of the Company. Accordingly, the SCRIP ID and ABBREVIATED NAME of the \nCompany for BOLT Plus SYSTEM will be changed as follows w.e.f November 27, 2026. \n  \nScrip \nCode Existing Name \n             New Name \n \n \nScrip ID for BOLT Plus \nSystem* \nAbbreviated name on \nBOLT Plus System* \n540952  \nLorenzini \nApparels Ltd \nMONTEIL LIMITED \nMONTEIL MONTEIL \n \nMarian Dsouza \nAssistant Vice President \nListing Compliance and Operations",
+      "source_id": "NSE:106869151"
     }
   ]
 }
