@@ -1,0 +1,68 @@
+name: Order win alerts for Share Sanket
+
+on:
+  schedule:
+    # Every 5 minutes, Mon-Fri, 08:30-21:25 IST (cron is UTC: 03:00-15:55).
+    - cron: "*/5 3-15 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  # Serialize updates to alerts.json with the corporate-actions workflow.
+  group: sharesanket-data
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-orders.txt
+
+      - run: pip install -r requirements-orders.txt
+
+      - name: Check NSE and BSE order announcements
+        run: python order_alerts.py
+
+      - name: Save complete alerts and deduplication state
+        id: save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add alerts.json seen.json
+          if git diff --cached --quiet; then
+            echo "site_changed=false" >> "$GITHUB_OUTPUT"
+          else
+            if git diff --cached --quiet -- alerts.json; then
+              echo "site_changed=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "site_changed=true" >> "$GITHUB_OUTPUT"
+            fi
+            git commit -m "Update NSE and BSE order alerts"
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publish Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/deploy-pages@v4
+
