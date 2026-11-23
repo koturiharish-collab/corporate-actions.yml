@@ -4,18 +4,19 @@
 
 https://koturiharish-collab.github.io/corporate-actions.yml/
 
-Open this same link on a phone, tablet, or computer. The site and alert history are public, so anyone with the link can view them.
+Open this same link on a phone, tablet, or computer. The app interface requires an approved account; the alert feed file remains publicly readable on GitHub Pages.
 
 Share Sanket is for information only. It is not a platform for buying or selling securities and does not provide investment advice or recommendations. The scrolling notice is shown at the top of the app.
 
-Two files:
+App files:
 
-- `index.html` is the app. You do not need to edit it.
-- `alerts.json` is the data. Edit this to add folders and alerts.
+- `index.html` plus `firebase-members.js` provide the app and approval-only sign-in.
+- `firestore.rules` contains the membership security rules; publish them in Firebase Console before sign-up.
+- alerts.json contains the alert feed and remains publicly readable on GitHub Pages.
 
 ## Run it on your computer
 
-Opening `index.html` by double-click shows the app with built-in sample data. To make it read your own `alerts.json`, serve the folder:
+To use sign-in locally, serve the folder over HTTP (double-clicking the file uses `file://` and Firebase sign-in will not work):
 
     python -m http.server 8000
 
@@ -23,7 +24,7 @@ Then open http://localhost:8000 in your browser.
 
 ## Put it online
 
-Upload both files to any static host (Netlify, Vercel, GitHub Pages, Cloudflare Pages). Keep them in the same folder.
+Publish `index.html`, `firebase-members.js`, and `alerts.json` together on your static host (GitHub Pages, Netlify, Vercel, or Cloudflare Pages). Keep the same app URL.
 
 ## Data format
 
@@ -63,3 +64,17 @@ The app refreshes `alerts.json` every 60 seconds when served from a website. The
 
 Keep the Telegram bot token and chat ID in GitHub Actions Secrets named `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Do not put these values in `index.html` or `alerts.json`.
 
+## 30-member registration and approval
+
+Firebase Authentication uses email and password. New users create a request that starts as `pending`. The app stays locked until the admin approves the request. The admin approval screen has 30 member places; the admin account is separate.
+
+Before publishing the updated app:
+
+1. In Firebase Authentication settings, add `koturiharish-collab.github.io` to Authorized domains so the existing GitHub Pages link can sign users in. A local `file://` copy cannot sign in; use the HTTPS app link.
+2. Open Firestore Database > Rules, replace the rules with the contents of `firestore.rules`, then publish them. Without these rules, sign-up and approvals are denied.
+3. Publish `index.html` and `firebase-members.js` to the existing GitHub Pages repository and keep them together.
+4. Open the live app and request membership using the admin's email. Copy the account ID shown on the pending screen.
+5. In Firestore Data, create collection `admins`, use that account ID as the document ID, and add field `role` with string value `admin`. This console-only step designates the first admin; app users cannot grant themselves admin access.
+6. Sign out and back in. The admin should see **Member approvals** and can approve or reject requests.
+
+Note: the login gate controls the app interface, but `alerts.json` remains publicly readable at the GitHub Pages link, consistent with the app's public alert feed.
