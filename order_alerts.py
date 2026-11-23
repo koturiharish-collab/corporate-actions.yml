@@ -220,7 +220,7 @@ def yahoo_market_data(item, cache):
 def extract_pdf(item):
     link = item.get("link") or ""
     host = re.sub(r"^https?://", "", link).split("/", 1)[0].lower()
-    if not link.startswith("https://") or not any(x in host for x in ("nseindia.com", "bseindia.com")):
+    if not link.startswith("https://") or not host.endswith(("nseindia.com", "nseindia.in", "bseindia.com", "bseindia.in")):
         return "", "No exchange PDF attachment was available."
     try:
         response = requests.get(link, headers=HEADERS, timeout=25, stream=True)
@@ -399,12 +399,28 @@ def main():
     seen = load_seen()
     seen_set = set(seen)
     new = [x for x in items if x["id"] not in seen_set]
-    hits = [x for x in new if INCLUDE.search(f"{x.get('title', '')} {x.get('text', '')}")
+    try:
+        current_data = json.loads(ALERT_FILE.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        current_data = {}
+    existing_by_source = {a.get("source_id"): a for a in current_data.get("alerts", []) if a.get("source_id")}
+    hits = [x for x in items if INCLUDE.search(f"{x.get('title', '')} {x.get('text', '')}")
             and not EXCLUDE.search(f"{x.get('title', '')} {x.get('text', '')}")]
-    log(f"{len(new)} new announcements; {len(hits)} order-win matches")
+    new_hits = [x for x in hits if x["id"] not in seen_set]
+    # Revisit old records whose PDF was skipped by an earlier host check.
+    refresh_pdf = []
+    for item in hits:
+        old_alert = existing_by_source.get(item["id"])
+        if not old_alert or not item.get("link"):
+            continue
+        status = next((d.get("value") for d in old_alert.get("details", []) if d.get("label") == "PDF text extraction"), None)
+        if status == "No exchange PDF attachment was available.":
+            refresh_pdf.append(item)
+    to_process = new_hits + refresh_pdf
+    log(f"{len(new)} new announcements; {len(new_hits)} new order-win matches; {len(refresh_pdf)} filing refreshes")
     market_cache = {}
     changed = 0
-    for item in hits:
+    for item in to_process:
         try:
             if save_app_alert(order_alert(item, market_cache)):
                 changed += 1
