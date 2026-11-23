@@ -37,6 +37,18 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python corporate_actions.py
 
+      # Seed the app with current orders when the project files are published.
+      # The separate order-alerts workflow then checks for new orders every five minutes.
+      - name: Install order-alert dependencies on publish
+        if: github.event_name == 'push'
+        run: pip install -r requirements-orders.txt
+        continue-on-error: true
+
+      - name: Add current NSE and BSE order alerts on publish
+        if: github.event_name == 'push'
+        run: python order_alerts.py
+        continue-on-error: true
+
       - name: Save state and Share Sanket alerts
         if: always()
         run: |
