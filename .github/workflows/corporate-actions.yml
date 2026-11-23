@@ -68,8 +68,12 @@ jobs:
             git pull --rebase -q || true
             git push
           else
-            echo "site_changed=false" >> "$GITHUB_OUTPUT"
-          fi
+  if [ "$GITHUB_EVENT_NAME" = "push" ] || [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+    echo "site_changed=true" >> "$GITHUB_OUTPUT"
+  else
+    echo "site_changed=false" >> "$GITHUB_OUTPUT"
+  fi
+fi
 
       # Failure alert on any failed run. Success message only after the final scheduled scan.
       - name: Telegram status
