@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T18:45:48+05:30",
+  "updated": "2026-11-24T02:48:30.725035+05:30",
   "folders": [
     {
       "id": "emas",
@@ -146,6 +146,435 @@
     }
   ],
   "alerts": [
+    {
+      "id": "ema-death-adffoods-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "ADFFOODS",
+      "company": "ADFFOODS",
+      "title": "Death Cross (Daily)",
+      "price": 218.28,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 254.4108,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 255.2083,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:ADFFOODS"
+    },
+    {
+      "id": "ema-death-emmvee-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "EMMVEE",
+      "company": "EMMVEE",
+      "title": "Death Cross (Daily)",
+      "price": 258.75,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 279.2866,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 279.8727,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:EMMVEE"
+    },
+    {
+      "id": "ema-golden-faze3q-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "FAZE3Q",
+      "company": "FAZE3Q",
+      "title": "Golden Cross (Daily)",
+      "price": 587.65,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 494.2591,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 492.5433,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:FAZE3Q"
+    },
+    {
+      "id": "ema-golden-forcemot-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "FORCEMOT",
+      "company": "FORCEMOT",
+      "title": "Golden Cross (Daily)",
+      "price": 20285.0,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 18211.816,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 18197.4081,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:FORCEMOT"
+    },
+    {
+      "id": "ema-death-hscl-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "HSCL",
+      "company": "HSCL",
+      "title": "Death Cross (Daily)",
+      "price": 561.25,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 600.4467,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 601.6093,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:HSCL"
+    },
+    {
+      "id": "ema-death-indoamin-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "INDOAMIN",
+      "company": "INDOAMIN",
+      "title": "Death Cross (Daily)",
+      "price": 112.08,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 126.6655,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 126.9441,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:INDOAMIN"
+    },
+    {
+      "id": "ema-golden-jindalstel-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "JINDALSTEL",
+      "company": "JINDALSTEL",
+      "title": "Golden Cross (Daily)",
+      "price": 1131.9,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 1106.0386,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 1105.7229,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:JINDALSTEL"
+    },
+    {
+      "id": "ema-golden-protean-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "PROTEAN",
+      "company": "PROTEAN",
+      "title": "Golden Cross (Daily)",
+      "price": 705.6,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 635.726,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 634.1305,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:PROTEAN"
+    },
+    {
+      "id": "ema-death-sarlapoly-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "SARLAPOLY",
+      "company": "SARLAPOLY",
+      "title": "Death Cross (Daily)",
+      "price": 89.97,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 94.0453,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 94.1644,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:SARLAPOLY"
+    },
+    {
+      "id": "ema-death-sci-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "SCI",
+      "company": "SCI",
+      "title": "Death Cross (Daily)",
+      "price": 257.03,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 265.2244,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 265.4713,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:SCI"
+    },
+    {
+      "id": "ema-death-shivalik-2026-11-20",
+      "time": "2026-11-24T02:48:30.725035+05:30",
+      "folder": "emas",
+      "subfolder": "death",
+      "symbol": "SHIVALIK",
+      "company": "SHIVALIK",
+      "title": "Death Cross (Daily)",
+      "price": 282.9,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-20",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 317.1553,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 317.9323,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 below EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:SHIVALIK"
+    },
     {
       "id": "d087611d4285a99a133a026a",
       "time": "2026-11-23T13:03:41+05:30",
