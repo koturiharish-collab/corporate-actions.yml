@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T14:30:42+05:30",
+  "updated": "2026-11-23T14:45:45+05:30",
   "folders": [
     {
       "id": "emas",
@@ -2812,6 +2812,644 @@
         }
       ],
       "link": "https://nsearchives.nseindia.in/corporate/Apekshakhemka_23112026142123_SE_intimation_record_dateF_S.pdf"
+    },
+    {
+      "id": "b9b829e5f8430320c63f7aaa",
+      "parser_version": 3,
+      "time": "2026-11-23T14:45:45+05:30",
+      "folder": "orders",
+      "subfolder": "big",
+      "symbol": "ARKADE",
+      "company": "Arkade Developers Limited",
+      "title": "General Updates",
+      "price": 113.34,
+      "change_pct": 1.4064168,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Arkade Developers Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "ARKADE",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "General Updates",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "General Updates",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Arkade Developers Limited has informed the Exchange Receipt of Letter of Intent for redevelopment project in Tardeo",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "Rs. 1,500 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Big (₹100 crore or more)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 14:42:50",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 1 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "ARKADE.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/ARKADE.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T14:45:45+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹113.34",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹21,043,113,984.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹2,104.31 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "2.25",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹-1.38",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹19,934,103,552.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹168.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹92.62",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Real Estate",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Real Estate - Development",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "71.2822%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "Rs. 1,500 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "Ref No.: ADL/SE/26-27/62 \n \nDate: November 23, 2026 \n \nTo, \nThe Manager \nCorporate Relationship Department \nBSE Limited \nFloor 25, Phiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai - 400 001 \nBSE Scrip Code -544261 \nTo,  \nThe Manager \nListing Department \nNational Stock Exchange of India Limited \nExchange Plaza, Bandra Kurla Complex \nBandra (East), \nMumbai - 400 051 \nNSE Symbol :ARKADE \n \nDear Sir/Madam, \n \nSub: Business Update – Receipt of Letter of Intent for redevelopment project in Tardeo \n \nDear Sir/Madam,  \n \nPursuant to Regulation 30 of Securities and Exchange Board of India (Listing Obligations and \nDisclosure Requirements) Regulation, 2015, we hereby inform that the Company has received a \nLetter of Intent for redevelopment project in Tardeo, announcing a strategic re-entry into the \ncoveted South Mumbai (SoBo) real estate market. \n \nThe redevelopment project is spread across approximately 2 acres with a projected Gross \nDevelopment Value (GDV) of approximately Rs. 1,500 crore. \n \nYou are requested to take the above information on your records. \n \n \nThanking You, \nFor Arkade Developers Limited \n \n                                                                                                        \nAmit Mangilal Jain \nChairman & Managing Director \nDIN: 00139764 \n \n \n \n \nEncl: As above",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 14:42:50",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "387.44 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/ARKADE_23112026143931_Business_Update_-_Tardeo_Project.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Arkade Developers Limited has informed the Exchange Receipt of Letter of Intent for redevelopment project in Tardeo",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "General Updates",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:02",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026144250",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 14:42:52",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "387.44 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868802",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE0QRL01017",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Arkade Developers Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 14:42:50",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "ARKADE",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Arkade Developers Limited has received a Letter of Intent for a redevelopment project in Tardeo. This marks a strategic re-entry into the South Mumbai real estate market. The project covers approximately 2 acres. The projected Gross Development Value is approximately Rs. 1,500 crore. The company filed this business update pursuant to Regulation 30 of the SEBI Listing Obligations and Disclosure Requirements Regulations, 2015. The announcement was made on November 23, 2026. It was addressed to BSE Limited and the National Stock Exchange of India Limited. The filing was signed by Chairman and Managing Director Amit Mangilal Jain.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/ARKADE_23112026143931_Business_Update_-_Tardeo_Project.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/ARKADE_23112026143931_Business_Update_-_Tardeo_Project.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 14:42:50",
+        "attFilePath": null,
+        "attFileSize": "387.44 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/ARKADE_23112026143931_Business_Update_-_Tardeo_Project.pdf",
+        "attchmntText": "Arkade Developers Limited has informed the Exchange Receipt of Letter of Intent for redevelopment project in Tardeo",
+        "bflag": null,
+        "csvName": null,
+        "desc": "General Updates",
+        "difference": "00:00:02",
+        "dt": "23112026144250",
+        "exchdisstime": "23-Nov-2026 14:42:52",
+        "fileSize": "387.44 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868802",
+        "smIndustry": null,
+        "sm_isin": "INE0QRL01017",
+        "sm_name": "Arkade Developers Limited",
+        "sort_date": "2026-11-23 14:42:50",
+        "symbol": "ARKADE",
+        "voiceSummary": "Arkade Developers Limited has received a Letter of Intent for a redevelopment project in Tardeo. This marks a strategic re-entry into the South Mumbai real estate market. The project covers approximately 2 acres. The projected Gross Development Value is approximately Rs. 1,500 crore. The company filed this business update pursuant to Regulation 30 of the SEBI Listing Obligations and Disclosure Requirements Regulations, 2015. The announcement was made on November 23, 2026. It was addressed to BSE Limited and the National Stock Exchange of India Limited. The filing was signed by Chairman and Managing Director Amit Mangilal Jain.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/ARKADE_23112026143931_Business_Update_-_Tardeo_Project.mp3"
+      },
+      "filing_text": "General Updates\n\nArkade Developers Limited has informed the Exchange Receipt of Letter of Intent for redevelopment project in Tardeo\n\nRef No.: ADL/SE/26-27/62 \n \nDate: November 23, 2026 \n \nTo, \nThe Manager \nCorporate Relationship Department \nBSE Limited \nFloor 25, Phiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai - 400 001 \nBSE Scrip Code -544261 \nTo,  \nThe Manager \nListing Department \nNational Stock Exchange of India Limited \nExchange Plaza, Bandra Kurla Complex \nBandra (East), \nMumbai - 400 051 \nNSE Symbol :ARKADE \n \nDear Sir/Madam, \n \nSub: Business Update – Receipt of Letter of Intent for redevelopment project in Tardeo \n \nDear Sir/Madam,  \n \nPursuant to Regulation 30 of Securities and Exchange Board of India (Listing Obligations and \nDisclosure Requirements) Regulation, 2015, we hereby inform that the Company has received a \nLetter of Intent for redevelopment project in Tardeo, announcing a strategic re-entry into the \ncoveted South Mumbai (SoBo) real estate market. \n \nThe redevelopment project is spread across approximately 2 acres with a projected Gross \nDevelopment Value (GDV) of approximately Rs. 1,500 crore. \n \nYou are requested to take the above information on your records. \n \n \nThanking You, \nFor Arkade Developers Limited \n \n                                                                                                        \nAmit Mangilal Jain \nChairman & Managing Director \nDIN: 00139764 \n \n \n \n \nEncl: As above",
+      "source_id": "NSE:106868802"
+    },
+    {
+      "id": "36d7b0c448202853a024bdf6",
+      "parser_version": 3,
+      "time": "2026-11-23T14:45:45+05:30",
+      "folder": "orders",
+      "subfolder": "small",
+      "symbol": "SOLARWORLD",
+      "company": "Solarworld Energy Solutions Limited",
+      "title": "Bagging/Receiving of orders/contracts",
+      "price": 102.31,
+      "change_pct": 6.5951176,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Solarworld Energy Solutions Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "SOLARWORLD",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Solarworld Energy Solutions Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": "leading renewable energy player",
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "₹4.72 million",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Small (under ₹10 crore)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 14:39:25",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "SOLARWORLD.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/SOLARWORLD.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T14:45:45+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹102.31",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹8,867,479,552.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹886.75 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": "7.48",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "1.04",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹13.67",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹6,780,204,544.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹307.35",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹95.01",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Technology",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Solar",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "0.0532%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "₹ 4.00 \nmillion; ₹4.72 million; ₹4.72 million; ₹ 4.00 million; ₹4.72 million",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "November 23, 2026 \n \nTo, To, \nBSE Limited National Stock Exchange of India Limited \nPhiroze Jeejeebhoy Towers, Exchange Plaza, Plot No. C/1, G Block, \nDalal Street, Bandra-Kurla Complex, \nMumbai - 400001 Bandra (E), Mumbai - 400051 \nScrip Code: 544532 Symbol: SOLARWORLD \n \nSubject:  Disclosure under Regulation 30 of the Securities and Exchange Board of India (Listing Obligations \nand Disclosure Requirements) Regulations, 2015 – Receipt of Purchase Order for Supply of \nLithium-ion Batteries \n \nDear Sir/Madam, \n \nWith reference to the captioned subject and pursuant to Regulation 30 of the Securities and Exchange Board of India \n(Listing Obligations and Disclosure Requirements) Regulations, 2015 (“SEBI Listing Regulations”), we wish to \ninform you that the Company has received a Purchase Order from leading renewable energy player for the supply \nof Lithium-ion Batteries (51.2 V 100 Ah).  \n \nThe details as required under Regulation 30 of the SEBI Listing Regulations read with SEBI Master Circular \nNo. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 are enclosed herewith as \n“Annexure I”. \n \nDate and time of occurrence of event: November 21, 2026 at 12:03 p.m. \n \nKindly take the same on your record. \n \nThanking you. \n \nYours faithfully, \n \nFor Solarworld Energy Solutions Limited \n \n \n \nVarsha Bharti \nCompany Secretary and Compliance Officer \nMembership No.: A37545 \n \nEncl. A/a \n\n \n \n \n \nAnnexure I \n \nDisclosure under Regulation 30 of the SEBI Listing Regulations read with SEBI Master Circular No. \nHO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 \n \nSr. No. Particulars Details  \na)  Name of the entity awarding the \norder(s)/contract(s); \n \nLeading renewable energy player \nb)  Significant terms and conditions of \norder(s)/contract(s) awarded in brief; \nThe Purchase Order No. IE/PO/26-27/1019 dated \nNovember 20, 2026 is for the supply of 100 Nos. \nof 51.2 V 100 Ah Lithium-ion Battery, \naggregating to a basic order value of ₹ 4.00 \nmillion and a total order value of ₹4.72 million, \ninclusive of 18% IGST. The order is subject to \nthe terms and conditions specified in the Purchase \nOrder. \n \nc)  Whether order(s) / contract(s) have been \nawarded by domestic/ international entity; \n \nDomestic Entity \nd)  Order Value  ₹4.72 million (Incl. taxes) \n \ne)  Nature of order(s) / contract(s); Purchase Order \n \nf)  Whether domestic or international; Domestic \n \ng)  Time period by which the order(s)/contract(s) \nis to be executed; \n \nAs per the terms and conditions mentioned in the \nPurchase Order. \nh)  Broad consideration or size of the \norder(s)/contract(s); \nThe Purchase Order is for the supply of 100 Nos. \nof 51.2 V 100 Ah Lithium-ion Battery, having a \nbasic order value of ₹ 4.00 million and a total \norder value of ₹4.72 million, inclusive of 18% \nIGST. \n \ni)  Whether the promoter/ promoter group / \ngroup companies have any interest in the \nentity that awarded the order(s)/contract(s)? If \nyes, nature of interest and details thereof; \n \nNo \n \nj)  Whether the order(s)/contract(s) would fall \nwithin related party transactions? If yes, \nwhether the same is done at “arm’s length”. \n \nNo",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 14:39:25",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "568.83 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/SUNSHINE123_23112026143915_Intimation.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Solarworld Energy Solutions Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:00",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026143925",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 14:39:25",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "568.83 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868800",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE0TY101024",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Solarworld Energy Solutions Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 14:39:25",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "SOLARWORLD",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Solarworld Energy Solutions Limited received a purchase order from a leading domestic renewable energy player on November 21, 2026. The order, dated November 20, 2026, is for the supply of 100 units of 51.2 V 100 Ah Lithium-ion Batteries. The basic order value is 4.00 million rupees. The total order value is 4.72 million rupees, inclusive of 18 percent IGST. The company disclosed this event under Regulation 30 of the SEBI Listing Regulations. The entity awarding the order is a domestic entity. There is no promoter interest in the awarding entity. The transaction does not fall within related party transactions. Execution time is as per the purchase order terms.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/SUNSHINE123_23112026143915_Intimation.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/SUNSHINE123_23112026143915_Intimation.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 14:39:25",
+        "attFilePath": null,
+        "attFileSize": "568.83 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/SUNSHINE123_23112026143915_Intimation.pdf",
+        "attchmntText": "Solarworld Energy Solutions Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Bagging/Receiving of orders/contracts",
+        "difference": "00:00:00",
+        "dt": "23112026143925",
+        "exchdisstime": "23-Nov-2026 14:39:25",
+        "fileSize": "568.83 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868800",
+        "smIndustry": null,
+        "sm_isin": "INE0TY101024",
+        "sm_name": "Solarworld Energy Solutions Limited",
+        "sort_date": "2026-11-23 14:39:25",
+        "symbol": "SOLARWORLD",
+        "voiceSummary": "Solarworld Energy Solutions Limited received a purchase order from a leading domestic renewable energy player on November 21, 2026. The order, dated November 20, 2026, is for the supply of 100 units of 51.2 V 100 Ah Lithium-ion Batteries. The basic order value is 4.00 million rupees. The total order value is 4.72 million rupees, inclusive of 18 percent IGST. The company disclosed this event under Regulation 30 of the SEBI Listing Regulations. The entity awarding the order is a domestic entity. There is no promoter interest in the awarding entity. The transaction does not fall within related party transactions. Execution time is as per the purchase order terms.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/SUNSHINE123_23112026143915_Intimation.mp3"
+      },
+      "filing_text": "Bagging/Receiving of orders/contracts\n\nSolarworld Energy Solutions Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\nNovember 23, 2026 \n \nTo, To, \nBSE Limited National Stock Exchange of India Limited \nPhiroze Jeejeebhoy Towers, Exchange Plaza, Plot No. C/1, G Block, \nDalal Street, Bandra-Kurla Complex, \nMumbai - 400001 Bandra (E), Mumbai - 400051 \nScrip Code: 544532 Symbol: SOLARWORLD \n \nSubject:  Disclosure under Regulation 30 of the Securities and Exchange Board of India (Listing Obligations \nand Disclosure Requirements) Regulations, 2015 – Receipt of Purchase Order for Supply of \nLithium-ion Batteries \n \nDear Sir/Madam, \n \nWith reference to the captioned subject and pursuant to Regulation 30 of the Securities and Exchange Board of India \n(Listing Obligations and Disclosure Requirements) Regulations, 2015 (“SEBI Listing Regulations”), we wish to \ninform you that the Company has received a Purchase Order from leading renewable energy player for the supply \nof Lithium-ion Batteries (51.2 V 100 Ah).  \n \nThe details as required under Regulation 30 of the SEBI Listing Regulations read with SEBI Master Circular \nNo. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 are enclosed herewith as \n“Annexure I”. \n \nDate and time of occurrence of event: November 21, 2026 at 12:03 p.m. \n \nKindly take the same on your record. \n \nThanking you. \n \nYours faithfully, \n \nFor Solarworld Energy Solutions Limited \n \n \n \nVarsha Bharti \nCompany Secretary and Compliance Officer \nMembership No.: A37545 \n \nEncl. A/a \n\n \n \n \n \nAnnexure I \n \nDisclosure under Regulation 30 of the SEBI Listing Regulations read with SEBI Master Circular No. \nHO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 \n \nSr. No. Particulars Details  \na)  Name of the entity awarding the \norder(s)/contract(s); \n \nLeading renewable energy player \nb)  Significant terms and conditions of \norder(s)/contract(s) awarded in brief; \nThe Purchase Order No. IE/PO/26-27/1019 dated \nNovember 20, 2026 is for the supply of 100 Nos. \nof 51.2 V 100 Ah Lithium-ion Battery, \naggregating to a basic order value of ₹ 4.00 \nmillion and a total order value of ₹4.72 million, \ninclusive of 18% IGST. The order is subject to \nthe terms and conditions specified in the Purchase \nOrder. \n \nc)  Whether order(s) / contract(s) have been \nawarded by domestic/ international entity; \n \nDomestic Entity \nd)  Order Value  ₹4.72 million (Incl. taxes) \n \ne)  Nature of order(s) / contract(s); Purchase Order \n \nf)  Whether domestic or international; Domestic \n \ng)  Time period by which the order(s)/contract(s) \nis to be executed; \n \nAs per the terms and conditions mentioned in the \nPurchase Order. \nh)  Broad consideration or size of the \norder(s)/contract(s); \nThe Purchase Order is for the supply of 100 Nos. \nof 51.2 V 100 Ah Lithium-ion Battery, having a \nbasic order value of ₹ 4.00 million and a total \norder value of ₹4.72 million, inclusive of 18% \nIGST. \n \ni)  Whether the promoter/ promoter group / \ngroup companies have any interest in the \nentity that awarded the order(s)/contract(s)? If \nyes, nature of interest and details thereof; \n \nNo \n \nj)  Whether the order(s)/contract(s) would fall \nwithin related party transactions? If yes, \nwhether the same is done at “arm’s length”. \n \nNo",
+      "source_id": "NSE:106868800"
     }
   ]
 }
