@@ -1,6 +1,8 @@
 name: Corporate Actions Alert (Splits, Bonus, Buyback)
 
 on:
+  push:
+    branches: [main]
   schedule:
     # Every 30 minutes, Mon-Fri, 08:42-20:12 IST (cron is UTC).
     - cron: "12,42 3-14 * * 1-5"
