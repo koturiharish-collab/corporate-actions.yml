@@ -6,6 +6,8 @@ on:
   schedule:
     # Every 30 minutes, Mon-Fri, 08:42-20:12 IST (cron is UTC).
     - cron: "12,42 3-14 * * MON-FRI"
+    # Orders: every five minutes, Mon-Fri, 08:30-21:25 IST (UTC).
+    - cron: "*/5 3-15 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -32,33 +34,41 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Scan corporate actions
+        if: github.event_name != 'schedule' || github.event.schedule == '12,42 3-14 * * MON-FRI'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python corporate_actions.py
 
-      # Seed the app with current orders when the project files are published.
-      # The separate order-alerts workflow then checks for new orders every five minutes.
-      - name: Install order-alert dependencies on publish
-        if: github.event_name == 'push'
+      # The five-minute schedule checks orders; push/manual runs refresh the app data too.
+      - name: Install order-alert dependencies
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '*/5 3-15 * * 1-5')
         run: pip install -r requirements-orders.txt
         continue-on-error: true
 
-      - name: Add current NSE and BSE order alerts on publish
-        if: github.event_name == 'push'
+      - name: Check NSE and BSE order announcements
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '*/5 3-15 * * 1-5')
         run: python order_alerts.py
         continue-on-error: true
 
       - name: Save state and Share Sanket alerts
+        id: save
         if: always()
         run: |
           git add seen.json alerts.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
+            if [ "$GITHUB_EVENT_NAME" = "push" ] || [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || ! git diff --cached --quiet -- alerts.json; then
+              echo "site_changed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "site_changed=false" >> "$GITHUB_OUTPUT"
+            fi
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git commit -m "Update corporate action alerts"
             git pull --rebase -q || true
             git push
+          else
+            echo "site_changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       # Failure alert on any failed run. Success message only after the final scheduled scan.
@@ -68,11 +78,12 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           JOB_STATUS: ${{ job.status }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           HOUR=$(TZ=Asia/Kolkata date +%H)
           if [ "$JOB_STATUS" != "success" ]; then
             MSG="❌ Corporate Actions scan FAILED - check GitHub Actions logs"
-          elif [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$HOUR" -ge 20 ]; then
+          elif [ "$EVENT_SCHEDULE" = "12,42 3-14 * * MON-FRI" ] && [ "$HOUR" -ge 20 ]; then
             MSG="✅ Corporate Actions: last scan of the day done ($(TZ=Asia/Kolkata date '+%d %b %H:%M IST'))"
           else
             exit 0
@@ -82,13 +93,16 @@ jobs:
             -d text="${MSG}" > /dev/null
 
       - name: Configure GitHub Pages
+        if: steps.save.outputs.site_changed == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Publish Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
 
