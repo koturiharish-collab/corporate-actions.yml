@@ -47,7 +47,7 @@ Facts only: what was filed, what crossed, how big. No buy or sell calls, no targ
 
 ## Automatic order alerts
 
-`order_alerts.py` checks NSE and BSE corporate announcements every five minutes on weekdays. Order-win announcements are added to the existing **Orders** folder in `alerts.json`; the app publishes a new version when the data changes.
+`order_alerts.py` checks NSE and BSE corporate announcements every five minutes on weekdays from the main GitHub Actions workflow. Order-win announcements are added to the existing **Orders** folder in `alerts.json`; the app publishes a new version when the data changes.
 
 Each order alert keeps all fields returned by the exchange, the full announcement text, an official filing link, and best-effort text extracted from the filing PDF. Yahoo Finance can add a timestamped snapshot of price, market capitalization, P/E, and other available company data. If a filing does not disclose a client, order value, or execution term, or a market-data field is unavailable, the app shows that clearly instead of estimating it. The order-to-market-cap percentage is calculated only when both figures are available in INR.
 
@@ -59,7 +59,7 @@ Exchange filings are the primary source. Yahoo Finance data is supplemental and 
 
 `corporate_actions.py` now adds every newly detected NSE split, bonus issue, or buyback to `alerts.json` as well as sending the Telegram message. Each Share Sanket alert keeps all source fields from the NSE record in its **Details** section; unavailable fields display as “Not available.”
 
-The app refreshes `alerts.json` every 60 seconds when served from a website. Both scheduled workflows save changes to `alerts.json` and publish them to the same GitHub Pages link.
+The app refreshes `alerts.json` every 60 seconds when served from a website. The main GitHub Actions workflow runs corporate-action scans every 30 minutes and order scans every five minutes on weekdays, then saves and publishes changed data to the same GitHub Pages link. A separate manual workflow remains available for an on-demand order scan.
 
 Keep the Telegram bot token and chat ID in GitHub Actions Secrets named `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`. Do not put these values in `index.html` or `alerts.json`.
 
