@@ -3,7 +3,7 @@ name: Order win alerts for Share Sanket
 on:
   schedule:
     # Every 5 minutes, Mon-Fri, 08:30-21:25 IST (cron is UTC: 03:00-15:55).
-    - cron: "*/5 3-15 * * 1-5"
+    - cron: "0/5 3-15 * * 1-5"
   workflow_dispatch: {}
 
 permissions:
