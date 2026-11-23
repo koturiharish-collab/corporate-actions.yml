@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T13:03:41+05:30",
+  "updated": "2026-11-23T13:54:38+05:30",
   "folders": [
     {
       "id": "emas",
@@ -759,6 +759,1884 @@
         }
       ],
       "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_23112026113131_outcomeBMbb23112026n.pdf"
+    },
+    {
+      "id": "21313adadbcdd9d9b9fb6060",
+      "time": "2026-11-23T13:54:37+05:30",
+      "folder": "orders",
+      "subfolder": null,
+      "symbol": "PTCIL",
+      "company": "PTC Industries Limited",
+      "title": "Bagging/Receiving of orders/contracts",
+      "price": 24350.0,
+      "change_pct": 0.95376325,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "PTC Industries Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "PTCIL",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Ptc Industries Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": null,
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 13:30:57",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "No exchange PDF attachment was available.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "PTCIL.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/PTCIL.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T13:54:37+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹24,350.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹386,035,515,392.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": 259.59488,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": 77.96407,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": 23.199072,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": 93.8,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹364,971,819,008.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹26,085.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹14,499.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Metal Fabrication",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": null,
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 13:30:57",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "876.97 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/PTCINDUSTRIES_23112026133047_20261123_Press_Release_Indian_Defence_Order.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Ptc Industries Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026133057",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 13:30:58",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "876.97 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868773",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE596F01018",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "PTC Industries Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 13:30:57",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "PTCIL",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "PTC Industries Limited has secured a contract from the Indian Defence Sector for the supply of approximately 400 tonnes of Titanium ingots, bars, and rods. The order is to be executed within 12 months. The financial value of the contract is not disclosed due to strategic and confidentiality considerations. The materials are intended for critical defence applications requiring high strength and corrosion resistance. This announcement is made in compliance with Regulation 30 of the SEBI Listing Regulations. The entity awarding the order is a domestic entity. There are no related party transactions or interests held by promoters in the awarding entity.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/PTCINDUSTRIES_23112026133047_20261123_Press_Release_Indian_Defence_Order.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/PTCINDUSTRIES_23112026133047_20261123_Press_Release_Indian_Defence_Order.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 13:30:57",
+        "attFilePath": null,
+        "attFileSize": "876.97 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/PTCINDUSTRIES_23112026133047_20261123_Press_Release_Indian_Defence_Order.pdf",
+        "attchmntText": "Ptc Industries Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Bagging/Receiving of orders/contracts",
+        "difference": "00:00:01",
+        "dt": "23112026133057",
+        "exchdisstime": "23-Nov-2026 13:30:58",
+        "fileSize": "876.97 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868773",
+        "smIndustry": null,
+        "sm_isin": "INE596F01018",
+        "sm_name": "PTC Industries Limited",
+        "sort_date": "2026-11-23 13:30:57",
+        "symbol": "PTCIL",
+        "voiceSummary": "PTC Industries Limited has secured a contract from the Indian Defence Sector for the supply of approximately 400 tonnes of Titanium ingots, bars, and rods. The order is to be executed within 12 months. The financial value of the contract is not disclosed due to strategic and confidentiality considerations. The materials are intended for critical defence applications requiring high strength and corrosion resistance. This announcement is made in compliance with Regulation 30 of the SEBI Listing Regulations. The entity awarding the order is a domestic entity. There are no related party transactions or interests held by promoters in the awarding entity.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/PTCINDUSTRIES_23112026133047_20261123_Press_Release_Indian_Defence_Order.mp3"
+      },
+      "filing_text": "Bagging/Receiving of orders/contracts\n\nPtc Industries Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "source_id": "NSE:106868773"
+    },
+    {
+      "id": "eb53512265144a04069818b7",
+      "time": "2026-11-23T13:54:37+05:30",
+      "folder": "orders",
+      "subfolder": null,
+      "symbol": "PTCIL",
+      "company": "PTC Industries Limited",
+      "title": "Press Release",
+      "price": 24350.0,
+      "change_pct": 0.95376325,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "PTC Industries Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "PTCIL",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Ptc Industries Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"PTC Industries Secures Major Indian Defence Order for 400 Tonnes of Titanium Products, Strengthening India's Defence Self-Reliance\".",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": null,
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 13:28:07",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "No exchange PDF attachment was available.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "PTCIL.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/PTCIL.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T13:54:37+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹24,350.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹386,035,515,392.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": 259.59488,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": 77.96407,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": 23.199072,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": 93.8,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹364,971,819,008.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹26,085.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹14,499.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Metal Fabrication",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": null,
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 13:28:07",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "876.97 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/PTCINDUSTRIES_23112026132757_20261123_Press_Release_Indian_Defence_Order.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Ptc Industries Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"PTC Industries Secures Major Indian Defence Order for 400 Tonnes of Titanium Products, Strengthening India's Defence Self-Reliance\".",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026132807",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 13:28:08",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "876.97 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868769",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE596F01018",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "PTC Industries Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 13:28:07",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "PTCIL",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "PTC Industries Limited has secured a contract from the Indian Defence Sector for the supply of approximately 400 tonnes of Titanium ingots, bars, and rods. The order is to be executed within 12 months. The financial value of the contract is not disclosed due to strategic and confidentiality considerations. The materials are intended for critical defence applications requiring high strength and corrosion resistance. This announcement is made in compliance with Regulation 30 of the SEBI Listing Regulations. The entity awarding the order is a domestic entity. There are no related party transactions or interests held by promoters in the awarding entity.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/PTCINDUSTRIES_23112026132757_20261123_Press_Release_Indian_Defence_Order.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/PTCINDUSTRIES_23112026132757_20261123_Press_Release_Indian_Defence_Order.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 13:28:07",
+        "attFilePath": null,
+        "attFileSize": "876.97 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/PTCINDUSTRIES_23112026132757_20261123_Press_Release_Indian_Defence_Order.pdf",
+        "attchmntText": "Ptc Industries Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"PTC Industries Secures Major Indian Defence Order for 400 Tonnes of Titanium Products, Strengthening India's Defence Self-Reliance\".",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Press Release",
+        "difference": "00:00:01",
+        "dt": "23112026132807",
+        "exchdisstime": "23-Nov-2026 13:28:08",
+        "fileSize": "876.97 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868769",
+        "smIndustry": null,
+        "sm_isin": "INE596F01018",
+        "sm_name": "PTC Industries Limited",
+        "sort_date": "2026-11-23 13:28:07",
+        "symbol": "PTCIL",
+        "voiceSummary": "PTC Industries Limited has secured a contract from the Indian Defence Sector for the supply of approximately 400 tonnes of Titanium ingots, bars, and rods. The order is to be executed within 12 months. The financial value of the contract is not disclosed due to strategic and confidentiality considerations. The materials are intended for critical defence applications requiring high strength and corrosion resistance. This announcement is made in compliance with Regulation 30 of the SEBI Listing Regulations. The entity awarding the order is a domestic entity. There are no related party transactions or interests held by promoters in the awarding entity.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/PTCINDUSTRIES_23112026132757_20261123_Press_Release_Indian_Defence_Order.mp3"
+      },
+      "filing_text": "Press Release\n\nPtc Industries Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"PTC Industries Secures Major Indian Defence Order for 400 Tonnes of Titanium Products, Strengthening India's Defence Self-Reliance\".",
+      "source_id": "NSE:106868769"
+    },
+    {
+      "id": "fa47f2cec3eaaafb413725c7",
+      "time": "2026-11-23T13:54:38+05:30",
+      "folder": "orders",
+      "subfolder": null,
+      "symbol": "TITAGARH",
+      "company": "TITAGARH RAIL SYSTEMS LIMITED",
+      "title": "Press Release",
+      "price": 719.3,
+      "change_pct": -1.1611147,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "TITAGARH RAIL SYSTEMS LIMITED",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "TITAGARH",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "TITAGARH RAIL SYSTEMS LIMITED has informed the Exchange regarding a press release dated November 23, 2026, titled \"Titagarh Rail Systems bags new order from JSW for 181 BFNSM1 wagons and 3 BVCM wagons; Gets approval to manufacture auto carrier wagons expanding its product offering\".",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": "JSW",
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": null,
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 12:40:31",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "No exchange PDF attachment was available.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "TITAGARH.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/TITAGARH.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T13:54:38+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹719.30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹96,870,834,176.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": 45.324512,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": 21.487679,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": 3.765318,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": 15.87,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹103,600,848,896.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹971.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹568.70",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Railroads",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": null,
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 12:40:31",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "489.83 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/TWL_23112026124022_PressRelease23112026ACTwagons.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "TITAGARH RAIL SYSTEMS LIMITED has informed the Exchange regarding a press release dated November 23, 2026, titled \"Titagarh Rail Systems bags new order from JSW for 181 BFNSM1 wagons and 3 BVCM wagons; Gets approval to manufacture auto carrier wagons expanding its product offering\".",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026124031",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 12:40:32",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "489.83 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868732",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE615H01020",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "TITAGARH RAIL SYSTEMS LIMITED",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 12:40:31",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "TITAGARH",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Titagarh Rail Systems Limited has received an order from JSW South Rail Logistics for INR 77.09 crore for 181 BFNSM1 wagons and 3 BVCM wagons. The company also obtained route clearance from Indian Railways to manufacture and dispatch specialized auto carrier wagons. This approval connects the Bharatpur Manufacturing Unit to the DFCCIL network. Titagarh is now one of the few manufacturers capable of producing all types of freight wagons. The company is developing a prototype auto carrier wagon to offer shorter delivery timelines. Vice Chairman Umesh Chowdhary stated this expands the product portfolio and supports the national target of 3,000 MT freight loading by 2027. The announcement was filed on 23rd November 2026.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/TWL_23112026124022_PressRelease23112026ACTwagons.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/TWL_23112026124022_PressRelease23112026ACTwagons.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 12:40:31",
+        "attFilePath": null,
+        "attFileSize": "489.83 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/TWL_23112026124022_PressRelease23112026ACTwagons.pdf",
+        "attchmntText": "TITAGARH RAIL SYSTEMS LIMITED has informed the Exchange regarding a press release dated November 23, 2026, titled \"Titagarh Rail Systems bags new order from JSW for 181 BFNSM1 wagons and 3 BVCM wagons; Gets approval to manufacture auto carrier wagons expanding its product offering\".",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Press Release",
+        "difference": "00:00:01",
+        "dt": "23112026124031",
+        "exchdisstime": "23-Nov-2026 12:40:32",
+        "fileSize": "489.83 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868732",
+        "smIndustry": null,
+        "sm_isin": "INE615H01020",
+        "sm_name": "TITAGARH RAIL SYSTEMS LIMITED",
+        "sort_date": "2026-11-23 12:40:31",
+        "symbol": "TITAGARH",
+        "voiceSummary": "Titagarh Rail Systems Limited has received an order from JSW South Rail Logistics for INR 77.09 crore for 181 BFNSM1 wagons and 3 BVCM wagons. The company also obtained route clearance from Indian Railways to manufacture and dispatch specialized auto carrier wagons. This approval connects the Bharatpur Manufacturing Unit to the DFCCIL network. Titagarh is now one of the few manufacturers capable of producing all types of freight wagons. The company is developing a prototype auto carrier wagon to offer shorter delivery timelines. Vice Chairman Umesh Chowdhary stated this expands the product portfolio and supports the national target of 3,000 MT freight loading by 2027. The announcement was filed on 23rd November 2026.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/TWL_23112026124022_PressRelease23112026ACTwagons.mp3"
+      },
+      "filing_text": "Press Release\n\nTITAGARH RAIL SYSTEMS LIMITED has informed the Exchange regarding a press release dated November 23, 2026, titled \"Titagarh Rail Systems bags new order from JSW for 181 BFNSM1 wagons and 3 BVCM wagons; Gets approval to manufacture auto carrier wagons expanding its product offering\".",
+      "source_id": "NSE:106868732"
+    },
+    {
+      "id": "3c0d9f9884b9d0d96c23b0ef",
+      "time": "2026-11-23T13:54:38+05:30",
+      "folder": "orders",
+      "subfolder": "big",
+      "symbol": "SWSOLAR",
+      "company": "Sterling and Wilson Renewable Energy Limited",
+      "title": "Press Release",
+      "price": 161.82,
+      "change_pct": 4.7285943,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Sterling and Wilson Renewable Energy Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "SWSOLAR",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Sterling and Wilson Renewable Energy Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"SWREL bagged three domestic orders including L1 position for a marquee project with a combined value of more than INR 2050 crore \".",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "INR 2050 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Big (₹100 crore or more)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 11:22:48",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "No exchange PDF attachment was available.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "SWSOLAR.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/SWSOLAR.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T13:54:38+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹161.82",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹37,791,670,272.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": 18.430525,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": 10.788,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": 5.2508273,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": 8.78,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹42,719,023,104.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹260.80",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹135.02",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Technology",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Solar",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "54.2448%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "INR 2050 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 11:22:48",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "3.46 MB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/SWSOLAR_23112026112208_PRESSRELEASE.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Sterling and Wilson Renewable Energy Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"SWREL bagged three domestic orders including L1 position for a marquee project with a combined value of more than INR 2050 crore \".",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026112248",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 11:22:49",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "3.46 MB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868599",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE00M201021",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Sterling and Wilson Renewable Energy Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 11:22:48",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "SWSOLAR",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Sterling and Wilson Renewable Energy Limited received three domestic orders with a combined value exceeding INR 2050 crore. The orders include a 600 MWh BESS turnkey project from a leading PSU in Gujarat, a solar project from a private IPP in Rajasthan, and an L1 position for a turnkey solar project from a leading PSU in Madhya Pradesh. The company states these orders are in the normal course of business.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/SWSOLAR_23112026112208_PRESSRELEASE.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/SWSOLAR_23112026112208_PRESSRELEASE.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 11:22:48",
+        "attFilePath": null,
+        "attFileSize": "3.46 MB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/SWSOLAR_23112026112208_PRESSRELEASE.pdf",
+        "attchmntText": "Sterling and Wilson Renewable Energy Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"SWREL bagged three domestic orders including L1 position for a marquee project with a combined value of more than INR 2050 crore \".",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Press Release",
+        "difference": "00:00:01",
+        "dt": "23112026112248",
+        "exchdisstime": "23-Nov-2026 11:22:49",
+        "fileSize": "3.46 MB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868599",
+        "smIndustry": null,
+        "sm_isin": "INE00M201021",
+        "sm_name": "Sterling and Wilson Renewable Energy Limited",
+        "sort_date": "2026-11-23 11:22:48",
+        "symbol": "SWSOLAR",
+        "voiceSummary": "Sterling and Wilson Renewable Energy Limited received three domestic orders with a combined value exceeding INR 2050 crore. The orders include a 600 MWh BESS turnkey project from a leading PSU in Gujarat, a solar project from a private IPP in Rajasthan, and an L1 position for a turnkey solar project from a leading PSU in Madhya Pradesh. The company states these orders are in the normal course of business.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/SWSOLAR_23112026112208_PRESSRELEASE.mp3"
+      },
+      "filing_text": "Press Release\n\nSterling and Wilson Renewable Energy Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"SWREL bagged three domestic orders including L1 position for a marquee project with a combined value of more than INR 2050 crore \".",
+      "source_id": "NSE:106868599"
+    },
+    {
+      "id": "d945b6891940b749be7d2b20",
+      "time": "2026-11-23T13:54:38+05:30",
+      "folder": "orders",
+      "subfolder": null,
+      "symbol": "LT",
+      "company": "Larsen & Toubro Limited",
+      "title": "Bagging/Receiving of orders/contracts",
+      "price": 4153.0,
+      "change_pct": -1.3330188,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Larsen & Toubro Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "LT",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Larsen & Toubro Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": null,
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 09:34:04",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "No exchange PDF attachment was available.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "LT.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/LT.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T13:54:38+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹4,153.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹5,714,059,722,752.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": 31.990446,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": 23.052605,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": 5.055276,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": 129.82,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹6,422,024,683,520.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹4,440.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹3,288.10",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Engineering & Construction",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": null,
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 09:34:04",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "3.25 MB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/PAM_23112026093338_PressRelease23112026.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Larsen & Toubro Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026093404",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 09:34:05",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "3.25 MB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868466",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": "Engineering",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE018A01030",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Larsen & Toubro Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 09:34:04",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "LT",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Larsen & Toubro Limited has secured a large order for deploying an AI cluster. Its subsidiary LTN Compute will deploy additional NVIDIA B300 GPUs at its Chennai Data Center. This multi-year engagement supports an inference infrastructure provider. The deployment powers an AI-native platform for training and deploying specialized models. The initiative is part of a 10,000 GPU cluster. The Chennai campus is being developed as a gigawatt-scale AI infrastructure hub. Phase 1 is designed for 250 MW capacity. The order is classified as large, with a value between 2,500 and 5,000 crore rupees. The announcement was issued on November 23, 2026.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/PAM_23112026093338_PressRelease23112026.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/PAM_23112026093338_PressRelease23112026.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 09:34:04",
+        "attFilePath": null,
+        "attFileSize": "3.25 MB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/PAM_23112026093338_PressRelease23112026.pdf",
+        "attchmntText": "Larsen & Toubro Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Bagging/Receiving of orders/contracts",
+        "difference": "00:00:01",
+        "dt": "23112026093404",
+        "exchdisstime": "23-Nov-2026 09:34:05",
+        "fileSize": "3.25 MB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868466",
+        "smIndustry": "Engineering",
+        "sm_isin": "INE018A01030",
+        "sm_name": "Larsen & Toubro Limited",
+        "sort_date": "2026-11-23 09:34:04",
+        "symbol": "LT",
+        "voiceSummary": "Larsen & Toubro Limited has secured a large order for deploying an AI cluster. Its subsidiary LTN Compute will deploy additional NVIDIA B300 GPUs at its Chennai Data Center. This multi-year engagement supports an inference infrastructure provider. The deployment powers an AI-native platform for training and deploying specialized models. The initiative is part of a 10,000 GPU cluster. The Chennai campus is being developed as a gigawatt-scale AI infrastructure hub. Phase 1 is designed for 250 MW capacity. The order is classified as large, with a value between 2,500 and 5,000 crore rupees. The announcement was issued on November 23, 2026.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/PAM_23112026093338_PressRelease23112026.mp3"
+      },
+      "filing_text": "Bagging/Receiving of orders/contracts\n\nLarsen & Toubro Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "source_id": "NSE:106868466"
+    },
+    {
+      "id": "23189caaaa9c94e233390e91",
+      "time": "2026-11-23T13:54:38+05:30",
+      "folder": "orders",
+      "subfolder": null,
+      "symbol": "DBL",
+      "company": "Dilip Buildcon Limited",
+      "title": "Bagging/Receiving of orders/contracts",
+      "price": 400.55,
+      "change_pct": -0.47240785,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Dilip Buildcon Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "DBL",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Dilip Buildcon Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": null,
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 09:29:19",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "No exchange PDF attachment was available.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "DBL.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/DBL.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T13:54:38+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹400.55",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹65,067,274,240.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": 5.6969137,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": 15.974077,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": 0.9029958,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": 70.31,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹157,586,718,720.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹497.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹352.80",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Engineering & Construction",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": null,
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 09:29:19",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "650.50 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/DBL_23112026092902_intimation231126.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Dilip Buildcon Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Bagging/Receiving of orders/contracts",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026092919",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 09:29:20",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "650.50 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868465",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE917M01012",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Dilip Buildcon Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 09:29:19",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "DBL",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Dilip Buildcon Limited received a Letter of Award from National Buildings Construction Corporation Limited for the Development of Satellite Township Phase 1, Package 3, including Group Housing 02 and allied works in Srinagar, Jammu and Kashmir. The contract is on an Engineering, Procurement, and Construction basis with a two-year Operation and Maintenance period. The order value is Rs. 901.43 Crores, inclusive of GST. Construction works are to be completed within 24 months, followed by the specified maintenance phase. The entity awarding the order is a domestic entity. The promoter group has no interest in the awarding entity, and the order does not constitute a related party transaction. The trading window for insiders is closed for 48 hours from the date of public disclosure.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/DBL_23112026092902_intimation231126.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/DBL_23112026092902_intimation231126.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 09:29:19",
+        "attFilePath": null,
+        "attFileSize": "650.50 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/DBL_23112026092902_intimation231126.pdf",
+        "attchmntText": "Dilip Buildcon Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Bagging/Receiving of orders/contracts",
+        "difference": "00:00:01",
+        "dt": "23112026092919",
+        "exchdisstime": "23-Nov-2026 09:29:20",
+        "fileSize": "650.50 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868465",
+        "smIndustry": null,
+        "sm_isin": "INE917M01012",
+        "sm_name": "Dilip Buildcon Limited",
+        "sort_date": "2026-11-23 09:29:19",
+        "symbol": "DBL",
+        "voiceSummary": "Dilip Buildcon Limited received a Letter of Award from National Buildings Construction Corporation Limited for the Development of Satellite Township Phase 1, Package 3, including Group Housing 02 and allied works in Srinagar, Jammu and Kashmir. The contract is on an Engineering, Procurement, and Construction basis with a two-year Operation and Maintenance period. The order value is Rs. 901.43 Crores, inclusive of GST. Construction works are to be completed within 24 months, followed by the specified maintenance phase. The entity awarding the order is a domestic entity. The promoter group has no interest in the awarding entity, and the order does not constitute a related party transaction. The trading window for insiders is closed for 48 hours from the date of public disclosure.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/DBL_23112026092902_intimation231126.mp3"
+      },
+      "filing_text": "Bagging/Receiving of orders/contracts\n\nDilip Buildcon Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+      "source_id": "NSE:106868465"
     }
   ]
 }
