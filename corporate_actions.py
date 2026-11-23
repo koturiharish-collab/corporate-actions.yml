@@ -12,6 +12,7 @@ State file: seen.json (keeps alerts from being sent twice)
 import hashlib
 import json
 import os
+import re
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
@@ -215,6 +216,109 @@ def build_announcement_message(kind, item):
     return "\n".join(lines)
 
 
+def value_for(item, *names):
+    """Return the first populated value among possible NSE field names."""
+    for name in names:
+        value = item.get(name)
+        if value not in (None, "", "-"):
+            return value
+    return None
+
+
+def detail_label(key):
+    """Turn API keys such as exDate and attchmntText into readable labels."""
+    label = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", str(key))
+    return re.sub(r"[_\-]+", " ", label).strip().title()
+
+
+def all_source_details(item):
+    """Keep every NSE field, including empty fields, so details are not lost."""
+    details = []
+    for key, value in item.items():
+        if isinstance(value, (dict, list)):
+            value = json.dumps(value, ensure_ascii=False, sort_keys=True)
+        elif value == "":
+            value = None
+        details.append({"label": detail_label(key), "value": value, "source": "NSE"})
+    return details
+
+
+def make_app_alert(key, kind, item, is_announcement=False):
+    """Map a complete NSE record to Share Sanket's alert format."""
+    symbol = str(value_for(item, "symbol") or "?").strip()
+    company = value_for(item, "comp", "sm_name", "company")
+    if is_announcement:
+        category = str(value_for(item, "desc") or "").strip()
+        body = " ".join(str(value_for(item, "attchmntText") or "").split())
+        title = category or body[:140] or ANN_TITLES[kind]
+        source_link = value_for(item, "attchmntFile")
+    else:
+        title = str(value_for(item, "subject") or TITLES[kind]).strip()
+        source_link = None
+
+    action_folder = {
+        "SPLIT": "split",
+        "BONUS": "bonus",
+        "BUYBACK": "buyback",
+    }[kind]
+    quote_link = f"https://www.nseindia.com/get-quotes/equity?symbol={symbol}"
+    price = value_for(item, "price", "lastPrice", "ltp", "closePrice")
+    change_pct = value_for(item, "change_pct", "changePct", "pChange")
+    return {
+        "id": hashlib.sha256(key.encode("utf-8")).hexdigest()[:24],
+        "time": datetime.now(IST).isoformat(timespec="seconds"),
+        "folder": "corporate-actions",
+        "subfolder": action_folder,
+        "symbol": symbol,
+        "company": company or "",
+        "title": title,
+        "price": price,
+        "change_pct": change_pct,
+        "details": all_source_details(item),
+        "link": source_link or quote_link,
+    }
+
+
+def save_app_alert(alert):
+    """Add or refresh an alert in alerts.json for the hosted Share Sanket app."""
+    path = "alerts.json"
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = {"sample": False, "folders": [], "alerts": []}
+
+    # Remove built-in demo entries the first time a real alert arrives.
+    if data.get("sample"):
+        data["alerts"] = []
+        data["sample"] = False
+
+    folders = data.setdefault("folders", [])
+    if not any(folder.get("id") == "corporate-actions" for folder in folders):
+        folders.append({
+            "id": "corporate-actions",
+            "name": "Corporate Actions",
+            "subfolders": [
+                {"id": "buyback", "name": "Buybacks"},
+                {"id": "split", "name": "Stock splits"},
+                {"id": "bonus", "name": "Bonus issues"},
+                {"id": "dividend", "name": "Dividends"},
+                {"id": "rights", "name": "Rights issues"},
+                {"id": "merger", "name": "Mergers"},
+                {"id": "demerger", "name": "Demergers"},
+                {"id": "other", "name": "Other corporate actions"},
+            ],
+        })
+    alerts = data.setdefault("alerts", [])
+    alerts = [existing for existing in alerts if existing.get("id") != alert["id"]]
+    alerts.append(alert)
+    data["alerts"] = alerts
+    data["updated"] = datetime.now(IST).isoformat(timespec="seconds")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
 def collect_candidates(actions, announcements):
     """Return a list of (key, message) for every tracked item."""
     out = []
@@ -230,7 +334,7 @@ def collect_candidates(actions, announcements):
                 str(item.get("subject", "")).strip(),
             ]
         )
-        out.append((key, build_action_message(kind, item)))
+        out.append((key, build_action_message(kind, item), make_app_alert(key, kind, item)))
 
     for item in announcements or []:
         category = (item.get("desc") or "").lower()
@@ -244,7 +348,7 @@ def collect_candidates(actions, announcements):
         key = "|".join(
             ["ANN", kind, str(item.get("symbol", "")), str(item.get("an_dt", "")), digest]
         )
-        out.append((key, build_announcement_message(kind, item)))
+        out.append((key, build_announcement_message(kind, item), make_app_alert(key, kind, item, True)))
     return out
 
 
@@ -280,12 +384,13 @@ def main():
 
     sent = 0
     failed = 0
-    for key, message in candidates:
+    for key, message, app_alert in candidates:
         if key in seen:
             continue
         if first_run:
             seen.add(key)
             continue
+        save_app_alert(app_alert)
         if send_telegram(message):
             seen.add(key)
             sent += 1
@@ -306,3 +411,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
