@@ -1,9 +1,8 @@
-name: Order win alerts for Share Sanket
+name: Manual order alert scan for Share Sanket
 
 on:
-  schedule:
-    # Every 5 minutes, Mon-Fri, 08:30-21:25 IST (cron is UTC: 03:00-15:55).
-    - cron: "0/5 3-15 * * 1-5"
+  # Automatic five-minute scans run in corporate-actions.yml alongside corporate actions.
+  # Keep this manual fallback for on-demand refreshes.
   workflow_dispatch: {}
 
 permissions:
