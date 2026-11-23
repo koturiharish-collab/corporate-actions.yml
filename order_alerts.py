@@ -302,6 +302,7 @@ def order_alert(item, market_cache):
         {"label": "Filing date and time", "value": item.get("time"), "source": item.get("exchange")},
         {"label": "PDF text extraction", "value": pdf_status, "source": item.get("exchange")},
         {"label": "Yahoo Finance symbol", "value": yahoo_ticker, "source": "Yahoo Finance"},
+        {"label": "Yahoo Finance company page", "value": f"https://finance.yahoo.com/quote/{yahoo_ticker}/" if yahoo_ticker else None, "source": "Yahoo Finance"},
         {"label": "Market data snapshot captured", "value": datetime.now(IST).isoformat(timespec="seconds"), "source": "Yahoo Finance"},
         {"label": "Price at snapshot", "value": format_inr(price) if price is not None else None, "source": "Yahoo Finance"},
         {"label": "Market capitalization", "value": format_inr(market_cap) if market_cap is not None else None, "source": "Yahoo Finance"},
