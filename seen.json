@@ -7,6 +7,7 @@
  "ANN|BONUS|PASHUPATI|16-Nov-2026 10:59:42|bfdf7bec0c0f",
  "ANN|BONUS|SBCL|04-Nov-2026 14:38:41|036c56a871a4",
  "ANN|BONUS|SCPL|12-Nov-2026 17:51:31|0cbb6aeb6346",
+ "ANN|BONUS|TECHM|23-Nov-2026 14:21:59|d75aa24e59d3",
  "ANN|BONUS|TTKHLTCARE|20-Nov-2026 12:38:28|087ec5a908cd",
  "ANN|BONUS|TTKHLTCARE|20-Nov-2026 12:41:30|bf0582d9d2d0",
  "ANN|BUYBACK|ADVENZYMES|31-Oct-2026 15:39:03|2a4bf1e76a00",
@@ -172,6 +173,7 @@
  "NSE:106868786",
  "NSE:106868788",
  "NSE:106868789",
+ "NSE:106868790",
  "SPLIT|AZADIND|23-Oct-2026|Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
  "SPLIT|BANSALWIRE|16-Oct-2026|Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share",
  "SPLIT|BLSE|06-Oct-2026|Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share",
@@ -185,5 +187,6 @@
  "SPLIT|VGL|27-Nov-2026|Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share",
  "initialized",
  "keys",
- "NSE:106868790"
+ "NSE:106868793",
+ "NSE:106868791"
 ]
