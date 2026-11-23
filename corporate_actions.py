@@ -310,13 +310,20 @@ def save_app_alert(alert):
             ],
         })
     alerts = data.setdefault("alerts", [])
-    alerts = [existing for existing in alerts if existing.get("id") != alert["id"]]
+    existing = next((item for item in alerts if item.get("id") == alert["id"]), None)
+    if existing:
+        # Keep the original arrival time and avoid rewriting unchanged NSE data.
+        alert["time"] = existing.get("time") or alert["time"]
+        if existing == alert:
+            return False
+        alerts = [item for item in alerts if item.get("id") != alert["id"]]
     alerts.append(alert)
     data["alerts"] = alerts
     data["updated"] = datetime.now(IST).isoformat(timespec="seconds")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
+    return True
 
 
 def collect_candidates(actions, announcements):
@@ -385,12 +392,13 @@ def main():
     sent = 0
     failed = 0
     for key, message, app_alert in candidates:
+        # Keep all current matching NSE items visible, even if Telegram already sent them.
+        save_app_alert(app_alert)
         if key in seen:
             continue
         if first_run:
             seen.add(key)
             continue
-        save_app_alert(app_alert)
         if send_telegram(message):
             seen.add(key)
             sent += 1
