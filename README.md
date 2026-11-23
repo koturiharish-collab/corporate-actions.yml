@@ -1,5 +1,11 @@
 # Share Sanket app
 
+## Open Share Sanket
+
+https://koturiharish-collab.github.io/corporate-actions.yml/
+
+Open this same link on a phone, tablet, or computer. The site and alert history are public, so anyone with the link can view them.
+
 Two files:
 
 - `index.html` is the app. You do not need to edit it.
