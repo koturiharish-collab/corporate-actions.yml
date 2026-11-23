@@ -2,12 +2,14 @@ name: Corporate Actions Alert (Splits, Bonus, Buyback)
 
 on:
   schedule:
-    # Every 30 min, Mon-Fri, 08:42-20:12 IST (announcements come through the evening). Cron is UTC.
+    # Every 30 minutes, Mon-Fri, 08:42-20:12 IST (cron is UTC).
     - cron: "12,42 3-14 * * 1-5"
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: corporate-actions
@@ -33,19 +35,19 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python corporate_actions.py
 
-      - name: Save state
+      - name: Save state and Share Sanket alerts
         if: always()
         run: |
-          git add seen.json 2>/dev/null || true
+          git add seen.json alerts.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -m "Update corporate action alert state"
+            git commit -m "Update corporate action alerts"
             git pull --rebase -q || true
             git push
           fi
 
-      # ❌ on any failure. ✅ only from the last scheduled run of the day (20:00 IST or later).
+      # Failure alert on any failed run. Success message only after the final scheduled scan.
       - name: Telegram status
         if: always()
         env:
@@ -64,3 +66,15 @@ jobs:
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${TELEGRAM_CHAT_ID}" \
             -d text="${MSG}" > /dev/null
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Share Sanket site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publish Share Sanket site
+        uses: actions/deploy-pages@v4
+
