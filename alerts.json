@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T14:45:45+05:30",
+  "updated": "2026-11-23T15:00:50+05:30",
   "folders": [
     {
       "id": "emas",
@@ -3450,6 +3450,325 @@
       },
       "filing_text": "Bagging/Receiving of orders/contracts\n\nSolarworld Energy Solutions Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\nNovember 23, 2026 \n \nTo, To, \nBSE Limited National Stock Exchange of India Limited \nPhiroze Jeejeebhoy Towers, Exchange Plaza, Plot No. C/1, G Block, \nDalal Street, Bandra-Kurla Complex, \nMumbai - 400001 Bandra (E), Mumbai - 400051 \nScrip Code: 544532 Symbol: SOLARWORLD \n \nSubject:  Disclosure under Regulation 30 of the Securities and Exchange Board of India (Listing Obligations \nand Disclosure Requirements) Regulations, 2015 – Receipt of Purchase Order for Supply of \nLithium-ion Batteries \n \nDear Sir/Madam, \n \nWith reference to the captioned subject and pursuant to Regulation 30 of the Securities and Exchange Board of India \n(Listing Obligations and Disclosure Requirements) Regulations, 2015 (“SEBI Listing Regulations”), we wish to \ninform you that the Company has received a Purchase Order from leading renewable energy player for the supply \nof Lithium-ion Batteries (51.2 V 100 Ah).  \n \nThe details as required under Regulation 30 of the SEBI Listing Regulations read with SEBI Master Circular \nNo. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 are enclosed herewith as \n“Annexure I”. \n \nDate and time of occurrence of event: November 21, 2026 at 12:03 p.m. \n \nKindly take the same on your record. \n \nThanking you. \n \nYours faithfully, \n \nFor Solarworld Energy Solutions Limited \n \n \n \nVarsha Bharti \nCompany Secretary and Compliance Officer \nMembership No.: A37545 \n \nEncl. A/a \n\n \n \n \n \nAnnexure I \n \nDisclosure under Regulation 30 of the SEBI Listing Regulations read with SEBI Master Circular No. \nHO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 \n \nSr. No. Particulars Details  \na)  Name of the entity awarding the \norder(s)/contract(s); \n \nLeading renewable energy player \nb)  Significant terms and conditions of \norder(s)/contract(s) awarded in brief; \nThe Purchase Order No. IE/PO/26-27/1019 dated \nNovember 20, 2026 is for the supply of 100 Nos. \nof 51.2 V 100 Ah Lithium-ion Battery, \naggregating to a basic order value of ₹ 4.00 \nmillion and a total order value of ₹4.72 million, \ninclusive of 18% IGST. The order is subject to \nthe terms and conditions specified in the Purchase \nOrder. \n \nc)  Whether order(s) / contract(s) have been \nawarded by domestic/ international entity; \n \nDomestic Entity \nd)  Order Value  ₹4.72 million (Incl. taxes) \n \ne)  Nature of order(s) / contract(s); Purchase Order \n \nf)  Whether domestic or international; Domestic \n \ng)  Time period by which the order(s)/contract(s) \nis to be executed; \n \nAs per the terms and conditions mentioned in the \nPurchase Order. \nh)  Broad consideration or size of the \norder(s)/contract(s); \nThe Purchase Order is for the supply of 100 Nos. \nof 51.2 V 100 Ah Lithium-ion Battery, having a \nbasic order value of ₹ 4.00 million and a total \norder value of ₹4.72 million, inclusive of 18% \nIGST. \n \ni)  Whether the promoter/ promoter group / \ngroup companies have any interest in the \nentity that awarded the order(s)/contract(s)? If \nyes, nature of interest and details thereof; \n \nNo \n \nj)  Whether the order(s)/contract(s) would fall \nwithin related party transactions? If yes, \nwhether the same is done at “arm’s length”. \n \nNo",
       "source_id": "NSE:106868800"
+    },
+    {
+      "id": "7715771daea58ae0e19d2bd4",
+      "parser_version": 3,
+      "time": "2026-11-23T15:00:50+05:30",
+      "folder": "orders",
+      "subfolder": "big",
+      "symbol": "ARKADE",
+      "company": "Arkade Developers Limited",
+      "title": "Press Release",
+      "price": 111.8,
+      "change_pct": 0.017864149,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Arkade Developers Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "ARKADE",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Arkade Developers Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"Receipt of Letter of Intent for redevelopment project in Tardeo\".",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "₹1,500 \ncrore",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Big (₹100 crore or more)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": "40 years",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "23-Nov-2026 14:47:09",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 3 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "ARKADE.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/ARKADE.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-23T15:00:50+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹111.80",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹20,757,192,704.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹2,075.72 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "2.22",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹-1.38",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹19,934,103,552.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹168.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹92.62",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Real Estate",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Real Estate - Development",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "72.2641%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "₹1,500 \ncrore; ₹1,500 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "Ref No.: ADL/SE/26-27/63 \n \nDate: November 23, 2026 \n \nTo, \nThe Manager \nCorporate Relationship Department \nBSE Limited \nFloor 25, Phiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai - 400 001 \nBSE Scrip Code -544261 \nTo,  \nThe Manager \nListing Department \nNational Stock Exchange of India Limited \nExchange Plaza, Bandra Kurla Complex \nBandra (East), \nMumbai - 400 051 \nNSE Symbol :ARKADE \n \nDear Sir/Madam, \n \nSub: Press Release – Receipt of Letter of Intent for redevelopment project in Tardeo \n \nDear Sir/Madam,  \n \nPursuant to Regulation 30 of Securities and Exchange Board of India (Listing Obligations and \nDisclosure Requirements) Regulation, 2015, please find enclosed herewith the press release \nregarding receipt of Letter of Intent for redevelopment project in Tardeo. \n \nYou are requested to take the above information on your records. \n \n \nThanking You, \nFor Arkade Developers Limited \n \n                                                                                                        \nAmit Mangilal Jain \nChairman & Managing Director \nDIN: 00139764 \n \n \n \n \nEncl: As above \n\n\n \n \n \n \nARKADE STRENGTHENS ITS SOUTH MUMBAI FOOTPRINT WITH LANDMARK \nREDEVELOPMENT TARGETING ~1500 Cr GDV IN TARDEO \n \n~2-acre redevelopment project with a projected Gross Development Value (GDV) of ₹1,500 \ncrore reinforces Arkade’s growth ambitions in one of Mumbai’s most prestigious real estate \nmarkets. \nMumbai, 23rd November 2026: Arkade Developers, leading luxury listed real estate \ndevelopers in Mumbai, has announced its strategic re-entry into the coveted South Mumbai \n(SoBo) real estate market with an ambitious redevelopment project in Tardeo, marking a \nsignificant milestone in the company's growth journey. Building on its existing presence in \nMazagaon, Altamount Road and Carmichael Road, Arkade is further expanding its footprint \nacross South Mumbai’s premium residential landscape. \nThe redevelopment project is spread across approximately 2 acres and is expected to have a \nprojected Gross Development Value (GDV) of ₹1,500 crore, as a significant addition to \nArkade’s redevelopment portfolio. The project underscores the company’s confidence in the \nlong-term potential of South Mumbai and its commitment to identifying high-value \nredevelopment opportunities in established micro-markets across the city. \nTardeo, renowned for its central location, established social infrastructure, premium \nresidential character and excellent connectivity, continues to remain one of Mumbai’s most \nsought-after residential destinations. With limited availability of developable land and \nsustained demand for quality residential spaces, the micro-market presents compelling \nopportunities for thoughtfully conceptualized redevelopment. \nArkade’s return to South Mumbai represents more than a geographic expansion; it reflects a \nstrategic step towards strengthening its presence in Mumbai’s premium real estate \nlandscape. Leveraging its experience in residential development and redevelopment, the \ncompany aims to unlock the potential of well-established urban locations through projects \nthat combine contemporary aspirations with the enduring value of prime addresses. \nSpeaking on the acquisition, Mr. Amit Jain, CMD of Arkade Developers, said:  \nOur re-entry into South Mumbai is an important strategic milestone for Arkade. Tardeo \nrepresents the very essence of Mumbai's premium residential landscape, offering a rare \ncombination of location, legacy and long-term value. This project reflects our confidence in \nthe redevelopment potential of established neighborhoods and our ambition to create \nmeaningful value in some of Mumbai's most sought-after locations. We see this as the \nbeginning of an exciting new chapter in our journey in South Mumbai.\" \nThe Tardeo project further strengthens Arkade’s development pipeline and reflects its broader \nstrategy of capitalizing on Mumbai’s evolving urban landscape, particularly through \nredevelopment-led growth. As the city increasingly looks towards revitalizing established \n\n \n \n \nneighborhoods, Arkade aims to play a meaningful role in shaping the next phase of Mumbai’s \nresidential transformation. \nFurthermore, the company is geared up for two significant launches in Q4, Arkade Ascend, \nlocated in Malad(W) and Arkade Thane, Kasarvadavali,  having a combined projected GDV of \n2800 Cr. \nThis acquisition not only strengthens our presence in a key growth corridor but also reinforces \nour ambition to build a future-ready portfolio of landmark developments across the Mumbai \nMetropolitan Region”. \n \nAbout Arkade Developers Ltd:  \nArkade Developers is a leading luxury real estate developer in Mumbai and is listed on both \nthe exchanges, BSE (544261) and NSE (ARKADE). With a rich legacy spanning over 40 years, \nthe company has established itself as a symbol of quality and excellence. \nUnder the leadership of Chairman and Managing Director Mr. Amit Jain, Arkade Developers \nhas transformed into one of Mumbai’s most respected real estate firms. The company has \ncompleted 33 projects under his vision and created homes for over 5,800 happy families. \nGuided by the core philosophy of \"Family First,\" Arkade Developers focuses on building \nfamily-friendly homes and upholds values such as trust, transparency, commitment, and \nhappiness. Known for its timely project deliveries, Arkade Developers has made a significant \nmark in the Mumbai real estate sector, having developed over 5.8 million square feet of \nproperty, with an additional 3+ million square feet currently under construction. \nThe company's commitment to quality is reflected in its meticulous planning, innovative \ndesigns, and use of advanced technologies, which ensure that every project is delivered on \ntime and to the highest standards. \n \n \n \n \n \nFor more information, visit: https://arkade.in/ \n \n \n40+years of legacy | 33 projects completed | 5.8+ M sq. ft. developed | 3+ M sq. ft. \nunder development | 5,800+ Happy Families | Listed on BSE & NSE | Pioneers in \nTimely Delivery",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "23-Nov-2026 14:47:09",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "1.01 MB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/ARKADE_23112026144516_Press_Release.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Arkade Developers Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"Receipt of Letter of Intent for redevelopment project in Tardeo\".",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "23112026144709",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "23-Nov-2026 14:47:10",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "1.01 MB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106868806",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE0QRL01017",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Arkade Developers Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-23 14:47:09",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "ARKADE",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Arkade Developers Limited has received a Letter of Intent for a redevelopment project in Tardeo, Mumbai. The project covers approximately 2 acres and carries a projected Gross Development Value of 1500 crore rupees. This move marks the company's strategic re-entry into the South Mumbai real estate market. The announcement also notes two upcoming launches in the fourth quarter, Arkade Ascend in Malad West and Arkade Thane in Kasarvadavali, with a combined projected Gross Development Value of 2800 crore rupees. The information was submitted to BSE Limited and National Stock Exchange of India Limited pursuant to SEBI Listing Obligations and Disclosure Requirements Regulation 2015.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/ARKADE_23112026144516_Press_Release.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/ARKADE_23112026144516_Press_Release.pdf",
+      "source_data": {
+        "an_dt": "23-Nov-2026 14:47:09",
+        "attFilePath": null,
+        "attFileSize": "1.01 MB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/ARKADE_23112026144516_Press_Release.pdf",
+        "attchmntText": "Arkade Developers Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"Receipt of Letter of Intent for redevelopment project in Tardeo\".",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Press Release",
+        "difference": "00:00:01",
+        "dt": "23112026144709",
+        "exchdisstime": "23-Nov-2026 14:47:10",
+        "fileSize": "1.01 MB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106868806",
+        "smIndustry": null,
+        "sm_isin": "INE0QRL01017",
+        "sm_name": "Arkade Developers Limited",
+        "sort_date": "2026-11-23 14:47:09",
+        "symbol": "ARKADE",
+        "voiceSummary": "Arkade Developers Limited has received a Letter of Intent for a redevelopment project in Tardeo, Mumbai. The project covers approximately 2 acres and carries a projected Gross Development Value of 1500 crore rupees. This move marks the company's strategic re-entry into the South Mumbai real estate market. The announcement also notes two upcoming launches in the fourth quarter, Arkade Ascend in Malad West and Arkade Thane in Kasarvadavali, with a combined projected Gross Development Value of 2800 crore rupees. The information was submitted to BSE Limited and National Stock Exchange of India Limited pursuant to SEBI Listing Obligations and Disclosure Requirements Regulation 2015.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/ARKADE_23112026144516_Press_Release.mp3"
+      },
+      "filing_text": "Press Release\n\nArkade Developers Limited has informed the Exchange regarding a press release dated November 23, 2026, titled \"Receipt of Letter of Intent for redevelopment project in Tardeo\".\n\nRef No.: ADL/SE/26-27/63 \n \nDate: November 23, 2026 \n \nTo, \nThe Manager \nCorporate Relationship Department \nBSE Limited \nFloor 25, Phiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai - 400 001 \nBSE Scrip Code -544261 \nTo,  \nThe Manager \nListing Department \nNational Stock Exchange of India Limited \nExchange Plaza, Bandra Kurla Complex \nBandra (East), \nMumbai - 400 051 \nNSE Symbol :ARKADE \n \nDear Sir/Madam, \n \nSub: Press Release – Receipt of Letter of Intent for redevelopment project in Tardeo \n \nDear Sir/Madam,  \n \nPursuant to Regulation 30 of Securities and Exchange Board of India (Listing Obligations and \nDisclosure Requirements) Regulation, 2015, please find enclosed herewith the press release \nregarding receipt of Letter of Intent for redevelopment project in Tardeo. \n \nYou are requested to take the above information on your records. \n \n \nThanking You, \nFor Arkade Developers Limited \n \n                                                                                                        \nAmit Mangilal Jain \nChairman & Managing Director \nDIN: 00139764 \n \n \n \n \nEncl: As above \n\n\n \n \n \n \nARKADE STRENGTHENS ITS SOUTH MUMBAI FOOTPRINT WITH LANDMARK \nREDEVELOPMENT TARGETING ~1500 Cr GDV IN TARDEO \n \n~2-acre redevelopment project with a projected Gross Development Value (GDV) of ₹1,500 \ncrore reinforces Arkade’s growth ambitions in one of Mumbai’s most prestigious real estate \nmarkets. \nMumbai, 23rd November 2026: Arkade Developers, leading luxury listed real estate \ndevelopers in Mumbai, has announced its strategic re-entry into the coveted South Mumbai \n(SoBo) real estate market with an ambitious redevelopment project in Tardeo, marking a \nsignificant milestone in the company's growth journey. Building on its existing presence in \nMazagaon, Altamount Road and Carmichael Road, Arkade is further expanding its footprint \nacross South Mumbai’s premium residential landscape. \nThe redevelopment project is spread across approximately 2 acres and is expected to have a \nprojected Gross Development Value (GDV) of ₹1,500 crore, as a significant addition to \nArkade’s redevelopment portfolio. The project underscores the company’s confidence in the \nlong-term potential of South Mumbai and its commitment to identifying high-value \nredevelopment opportunities in established micro-markets across the city. \nTardeo, renowned for its central location, established social infrastructure, premium \nresidential character and excellent connectivity, continues to remain one of Mumbai’s most \nsought-after residential destinations. With limited availability of developable land and \nsustained demand for quality residential spaces, the micro-market presents compelling \nopportunities for thoughtfully conceptualized redevelopment. \nArkade’s return to South Mumbai represents more than a geographic expansion; it reflects a \nstrategic step towards strengthening its presence in Mumbai’s premium real estate \nlandscape. Leveraging its experience in residential development and redevelopment, the \ncompany aims to unlock the potential of well-established urban locations through projects \nthat combine contemporary aspirations with the enduring value of prime addresses. \nSpeaking on the acquisition, Mr. Amit Jain, CMD of Arkade Developers, said:  \nOur re-entry into South Mumbai is an important strategic milestone for Arkade. Tardeo \nrepresents the very essence of Mumbai's premium residential landscape, offering a rare \ncombination of location, legacy and long-term value. This project reflects our confidence in \nthe redevelopment potential of established neighborhoods and our ambition to create \nmeaningful value in some of Mumbai's most sought-after locations. We see this as the \nbeginning of an exciting new chapter in our journey in South Mumbai.\" \nThe Tardeo project further strengthens Arkade’s development pipeline and reflects its broader \nstrategy of capitalizing on Mumbai’s evolving urban landscape, particularly through \nredevelopment-led growth. As the city increasingly looks towards revitalizing established \n\n \n \n \nneighborhoods, Arkade aims to play a meaningful role in shaping the next phase of Mumbai’s \nresidential transformation. \nFurthermore, the company is geared up for two significant launches in Q4, Arkade Ascend, \nlocated in Malad(W) and Arkade Thane, Kasarvadavali,  having a combined projected GDV of \n2800 Cr. \nThis acquisition not only strengthens our presence in a key growth corridor but also reinforces \nour ambition to build a future-ready portfolio of landmark developments across the Mumbai \nMetropolitan Region”. \n \nAbout Arkade Developers Ltd:  \nArkade Developers is a leading luxury real estate developer in Mumbai and is listed on both \nthe exchanges, BSE (544261) and NSE (ARKADE). With a rich legacy spanning over 40 years, \nthe company has established itself as a symbol of quality and excellence. \nUnder the leadership of Chairman and Managing Director Mr. Amit Jain, Arkade Developers \nhas transformed into one of Mumbai’s most respected real estate firms. The company has \ncompleted 33 projects under his vision and created homes for over 5,800 happy families. \nGuided by the core philosophy of \"Family First,\" Arkade Developers focuses on building \nfamily-friendly homes and upholds values such as trust, transparency, commitment, and \nhappiness. Known for its timely project deliveries, Arkade Developers has made a significant \nmark in the Mumbai real estate sector, having developed over 5.8 million square feet of \nproperty, with an additional 3+ million square feet currently under construction. \nThe company's commitment to quality is reflected in its meticulous planning, innovative \ndesigns, and use of advanced technologies, which ensure that every project is delivered on \ntime and to the highest standards. \n \n \n \n \n \nFor more information, visit: https://arkade.in/ \n \n \n40+years of legacy | 33 projects completed | 5.8+ M sq. ft. developed | 3+ M sq. ft. \nunder development | 5,800+ Happy Families | Listed on BSE & NSE | Pioneers in \nTimely Delivery",
+      "source_id": "NSE:106868806"
     }
   ]
 }
