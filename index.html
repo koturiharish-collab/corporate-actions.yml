@@ -214,6 +214,42 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   .chip { min-height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) { .side { transition: none; } }
+[hidden] { display: none !important; }
+.member-gate { min-height: calc(100vh - var(--notice-h)); display: grid; place-items: center; padding: 28px 16px; }
+.member-card { width: min(460px, 100%); padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 18px 55px rgba(10,25,50,.12); }
+.member-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font: 600 18px "Space Grotesk",system-ui,sans-serif; }
+.member-brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: #2563EB; color: white; font-weight: 700; }
+.member-card h2 { margin: 0 0 8px; font: 700 25px "Space Grotesk",system-ui,sans-serif; }
+.member-intro { margin: 0 0 20px; color: var(--muted); }
+.member-field { display: block; margin: 14px 0; font-size: 13px; font-weight: 600; }
+.member-field input { width: 100%; min-height: 44px; margin-top: 6px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+.member-message { min-height: 22px; margin: 10px 0; color: var(--muted); font-size: 13px; }
+.member-message.error { color: #B42318; }
+.member-message.success { color: #087443; }
+.member-card .btn { width: 100%; justify-content: center; margin-top: 4px; }
+.member-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin: 14px 0; }
+.link-btn { padding: 4px 0; border: 0; background: transparent; color: var(--link); cursor: pointer; font-size: 13px; font-weight: 600; }
+.member-note { display: block; margin-top: 18px; color: var(--muted); font-size: 12px; }
+.member-uid { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; color: var(--muted); font-size: 12px; }
+.member-uid code { overflow-wrap: anywhere; color: var(--fg); }
+.member-controls { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+#sessionLabel { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 12px; }
+.member-controls button, .secondary-btn { min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); cursor: pointer; font-size: 13px; font-weight: 600; }
+.member-controls .btn { min-height: 40px; }
+.admin-panel { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 18px; background: rgba(7,15,29,.68); }
+.admin-card { width: min(760px, 100%); max-height: min(88vh, 900px); overflow: auto; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 22px 70px rgba(0,0,0,.28); }
+.admin-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.admin-head h2 { margin: 0; font: 700 23px "Space Grotesk",system-ui,sans-serif; }
+.admin-card h3 { margin: 22px 0 8px; font: 600 16px "Space Grotesk",system-ui,sans-serif; }
+#memberCapText { color: var(--muted); }
+.member-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); }
+.member-row-details { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.member-row-details strong { overflow-wrap: anywhere; }
+.member-row-details span { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.member-row-actions { display: flex; flex: 0 0 auto; gap: 8px; }
+.member-row-actions .btn { min-height: 40px; padding: 0 12px; }
+.member-status-badge { color: #087443; font-size: 13px; font-weight: 600; }
+@media (max-width: 860px) { .member-controls { width: 100%; justify-content: flex-start; } #sessionLabel { flex: 1 1 auto; } .admin-card { padding: 18px; } .member-row { align-items: flex-start; flex-direction: column; } }
 </style>
 
 <div class="notice" role="note" aria-label="Informational only: Share Sanket is not a buying or selling platform. I am not a SEBI-registered research analyst or investment adviser. Verify all information independently before buying or selling.">
@@ -222,7 +258,31 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     <span>INFORMATION ONLY · Share Sanket is not a platform for buying or selling securities · I am not a SEBI-registered research analyst or investment adviser · Verify all information independently before buying or selling.</span>
   </div>
 </div>
-<div class="app">
+<div class="member-gate" id="memberGate">
+  <section class="member-card" aria-labelledby="gateTitle">
+    <div class="member-brand"><span class="member-brand-mark">SS</span><span>Share Sanket · Members</span></div>
+    <h2 id="gateTitle">Sign in to Share Sanket</h2>
+    <p class="member-intro" id="gateIntro">Sign in with the email and password you registered with.</p>
+    <form id="memberForm" novalidate>
+      <label class="member-field" id="nameField" hidden>Full name<input id="memberName" autocomplete="name" minlength="2"></label>
+      <label class="member-field">Email address<input id="memberEmail" type="email" autocomplete="email" required></label>
+      <label class="member-field">Password<input id="memberPassword" type="password" autocomplete="current-password" minlength="6" required></label>
+      <button class="btn" id="authSubmit" type="submit">Sign in</button>
+      <p class="member-message" id="authNotice" role="status" aria-live="polite"></p>
+    </form>
+    <div id="accountStatus" hidden>
+      <p class="member-message" id="statusMessage" role="status" aria-live="polite">Checking your membership…</p>
+      <div class="member-uid"><span>Account ID:</span><code id="memberUid"></code><button class="link-btn" id="copyUid" type="button">Copy account ID</button></div>
+      <button class="secondary-btn" id="waitSignOut" type="button">Sign out</button>
+    </div>
+    <div class="member-links" id="authLinks">
+      <button class="link-btn" id="authModeToggle" type="button">Request membership</button>
+      <button class="link-btn" id="resetPassword" type="button">Forgot password?</button>
+    </div>
+    <small class="member-note">Each membership request is reviewed by the Share Sanket admin. Access is granted only after approval; there are 30 member places.</small>
+  </section>
+</div>
+<div class="app" id="appShell" hidden>
   <aside class="side" id="side" aria-label="Folders"></aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="main">
@@ -230,6 +290,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
       <button type="button" class="menu" id="menu" aria-label="Open folders" aria-expanded="false" aria-controls="side"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7H20"/><path d="M4 12H20"/><path d="M4 17H20"/></svg></span></button>
       <h1 id="heading"></h1>
       <label class="search"><span class="sr">Search alerts</span><input id="q" type="search" placeholder="Search company, symbol or text" autocomplete="off"></label>
+      <div class="member-controls" id="memberControls" hidden><span id="sessionLabel"></span><button class="btn" id="adminOpen" type="button" hidden>Member approvals</button><button id="signOutTop" type="button">Sign out</button></div>
     </header>
     <div class="chips" id="chips"></div>
     <div id="content"></div>
@@ -237,7 +298,16 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   </main>
 </div>
 
-<script type="application/json" id="seed">{"sample":false,"updated":"2026-11-23T13:03:41+05:30","folders":[{"id":"emas","name":"EMAs","subfolders":[{"id":"ema21","name":"21 EMA"},{"id":"ema50","name":"50 EMA"},{"id":"ema200","name":"200 EMA"},{"id":"golden","name":"Golden Cross"},{"id":"death","name":"Death Cross"}]},{"id":"orders","name":"Orders","subfolders":[{"id":"big","name":"Big orders"},{"id":"medium","name":"Medium orders"},{"id":"small","name":"Small orders"}]},{"id":"corporate-actions","name":"Corporate Actions","subfolders":[{"id":"buyback","name":"Buybacks"},{"id":"split","name":"Stock splits"},{"id":"bonus","name":"Bonus issues"},{"id":"dividend","name":"Dividends"},{"id":"rights","name":"Rights issues"},{"id":"merger","name":"Mergers"},{"id":"demerger","name":"Demergers"},{"id":"other","name":"Other corporate actions"}]},{"id":"results","name":"Results","subfolders":[{"id":"quarterly","name":"Quarterly results"},{"id":"profit-up","name":"Profit up"},{"id":"profit-down","name":"Profit down"}]},{"id":"promoter","name":"Promoter activity","subfolders":[{"id":"buying","name":"Promoter buying"},{"id":"selling","name":"Promoter selling"},{"id":"bulk","name":"Bulk deals"},{"id":"block","name":"Block deals"}]},{"id":"volume","name":"Volume","subfolders":[{"id":"high","name":"High volume"}]},{"id":"news","name":"News","subfolders":[{"id":"company","name":"By company"}]}],"alerts":[{"id":"d087611d4285a99a133a026a","time":"2026-11-23T13:03:41+05:30","folder":"corporate-actions","subfolder":"buyback","symbol":"ZEEL","company":"Zee Entertainment Enterprises Limited","title":"Buy Back","price":null,"change_pct":null,"details":[{"label":"Bc End Date","value":"-","source":"NSE"},{"label":"Bc Start Date","value":"-","source":"NSE"},{"label":"Ca Broadcast Date","value":null,"source":"NSE"},{"label":"Comp","value":"Zee Entertainment Enterprises Limited","source":"NSE"},{"label":"Ex Date","value":"25-Nov-2026","source":"NSE"},{"label":"Face Val","value":"1","source":"NSE"},{"label":"Ind","value":"-","source":"NSE"},{"label":"Isin","value":"INE256A01028","source":"NSE"},{"label":"Nd End Date","value":"-","source":"NSE"},{"label":"Nd Start Date","value":"-","source":"NSE"},{"label":"Rec Date","value":"25-Nov-2026","source":"NSE"},{"label":"Series","value":"EQ","source":"NSE"},{"label":"Subject","value":"Buy Back","source":"NSE"},{"label":"Symbol","value":"ZEEL","source":"NSE"}],"link":"https://www.nseindia.com/get-quotes/equity?symbol=ZEEL"},{"id":"944ba23533a01f71934b7727","time":"2026-11-23T13:03:41+05:30","folder":"corporate-actions","subfolder":"split","symbol":"VGL","company":"VARVEE GLOBAL LIMITED","title":"Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share","price":null,"change_pct":null,"details":[{"label":"Bc End Date","value":"-","source":"NSE"},{"label":"Bc Start Date","value":"-","source":"NSE"},{"label":"Ca Broadcast Date","value":null,"source":"NSE"},{"label":"Comp","value":"VARVEE GLOBAL LIMITED","source":"NSE"},{"label":"Ex Date","value":"27-Nov-2026","source":"NSE"},{"label":"Face Val","value":"5","source":"NSE"},{"label":"Ind","value":"-","source":"NSE"},{"label":"Isin","value":"INE273D01019","source":"NSE"},{"label":"Nd End Date","value":"-","source":"NSE"},{"label":"Nd Start Date","value":"-","source":"NSE"},{"label":"Rec Date","value":"27-Nov-2026","source":"NSE"},{"label":"Series","value":"EQ","source":"NSE"},{"label":"Subject","value":"Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share","source":"NSE"},{"label":"Symbol","value":"VGL","source":"NSE"}],"link":"https://www.nseindia.com/get-quotes/equity?symbol=VGL"},{"id":"9138a14913e7d19320aaa848","time":"2026-11-23T13:03:41+05:30","folder":"corporate-actions","subfolder":"split","symbol":"INTERARCH","company":"Interarch Building Solutions Limited","title":"Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share","price":null,"change_pct":null,"details":[{"label":"Bc End Date","value":"-","source":"NSE"},{"label":"Bc Start Date","value":"-","source":"NSE"},{"label":"Ca Broadcast Date","value":null,"source":"NSE"},{"label":"Comp","value":"Interarch Building Solutions Limited","source":"NSE"},{"label":"Ex Date","value":"30-Nov-2026","source":"NSE"},{"label":"Face Val","value":"10","source":"NSE"},{"label":"Ind","value":"-","source":"NSE"},{"label":"Isin","value":"INE00M901018","source":"NSE"},{"label":"Nd End Date","value":"-","source":"NSE"},{"label":"Nd Start Date","value":"-","source":"NSE"},{"label":"Rec Date","value":"30-Nov-2026","source":"NSE"},{"label":"Series","value":"EQ","source":"NSE"},{"label":"Subject","value":"Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share","source":"NSE"},{"label":"Symbol","value":"INTERARCH","source":"NSE"}],"link":"https://www.nseindia.com/get-quotes/equity?symbol=INTERARCH"},{"id":"d8c1e3443853eddda9a85831","time":"2026-11-23T13:03:41+05:30","folder":"corporate-actions","subfolder":"split","symbol":"SPAL","company":"S. P. Apparels Limited","title":"Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share","price":null,"change_pct":null,"details":[{"label":"Bc End Date","value":"-","source":"NSE"},{"label":"Bc Start Date","value":"-","source":"NSE"},{"label":"Ca Broadcast Date","value":null,"source":"NSE"},{"label":"Comp","value":"S. P. Apparels Limited","source":"NSE"},{"label":"Ex Date","value":"10-Dec-2026","source":"NSE"},{"label":"Face Val","value":"10","source":"NSE"},{"label":"Ind","value":"-","source":"NSE"},{"label":"Isin","value":"INE212I01016","source":"NSE"},{"label":"Nd End Date","value":"-","source":"NSE"},{"label":"Nd Start Date","value":"-","source":"NSE"},{"label":"Rec Date","value":"10-Dec-2026","source":"NSE"},{"label":"Series","value":"EQ","source":"NSE"},{"label":"Subject","value":"Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share","source":"NSE"},{"label":"Symbol","value":"SPAL","source":"NSE"}],"link":"https://www.nseindia.com/get-quotes/equity?symbol=SPAL"},{"id":"851218d4e2503594db76b83d","time":"2026-11-23T13:03:41+05:30","folder":"corporate-actions","subfolder":"buyback","symbol":"GLOBAL","company":"Global Education Limited","title":"Buyback","price":null,"change_pct":null,"details":[{"label":"An Dt","value":"23-Nov-2026 12:28:16","source":"NSE"},{"label":"Att File Path","value":null,"source":"NSE"},{"label":"Att File Size","value":"763.46 KB","source":"NSE"},{"label":"Attchmnt File","value":"https://nsearchives.nseindia.in/corporate/GLOBAL_23112026122738_Intimation_of_Buy_Back.pdf","source":"NSE"},{"label":"Attchmnt Text","value":"Global Education Limited has given Intimation regarding opening of the Buy-back Offer of Equity Shares of Global Education Limited through the Tender Offer route with effect from November 23, 2026.","source":"NSE"},{"label":"Bflag","value":null,"source":"NSE"},{"label":"Csv Name","value":null,"source":"NSE"},{"label":"Desc","value":"Buyback","source":"NSE"},{"label":"Difference","value":"00:00:00","source":"NSE"},{"label":"Dt","value":"23112026122816","source":"NSE"},{"label":"Exchdisstime","value":"23-Nov-2026 12:28:16","source":"NSE"},{"label":"File Size","value":"763.46 KB","source":"NSE"},{"label":"Has Xbrl","value":true,"source":"NSE"},{"label":"Nas Upload Flag","value":null,"source":"NSE"},{"label":"Obj Upload Flag","value":null,"source":"NSE"},{"label":"Old New","value":null,"source":"NSE"},{"label":"Orgid","value":null,"source":"NSE"},{"label":"Seq Id","value":"106868690","source":"NSE"},{"label":"Sm Industry","value":null,"source":"NSE"},{"label":"Sm Isin","value":"INE291W01011","source":"NSE"},{"label":"Sm Name","value":"Global Education Limited","source":"NSE"},{"label":"Sort Date","value":"2026-11-23 12:28:16","source":"NSE"},{"label":"Symbol","value":"GLOBAL","source":"NSE"},{"label":"Voice Summary","value":"Global Education Limited has opened its buy-back offer for up to 14,75,000 fully paid-up equity shares of face value Rs. 2 each. The buy-back price is Rs. 162 per share, with an aggregate consideration not exceeding Rs. 23,89,50,000. The offer was approved by the Board on September 24, 2026, and by shareholders via postal ballot, with results declared on October 28, 2026. The buy-back opens on Monday, November 23, 2026, and closes on Monday, November 30, 2026. The record date for eligibility was Wednesday, November 18, 2026. Eligible shareholders holding shares as of the record date may tender their shares through stock brokers. The offer is conducted through the tender offer route via the National Stock Exchange of India Limited. Kreo Capital Private Limited is the manager, and Bigshare Services Private Limited is the registrar.","source":"NSE"},{"label":"Voice Url","value":"https://nsearchives.nseindia.in/ann_voice/GLOBAL_23112026122738_Intimation_of_Buy_Back.mp3","source":"NSE"}],"link":"https://nsearchives.nseindia.in/corporate/GLOBAL_23112026122738_Intimation_of_Buy_Back.pdf"},{"id":"1e06d151f5d38e4dbadf4609","time":"2026-11-23T13:03:41+05:30","folder":"corporate-actions","subfolder":"buyback","symbol":"DALBHARAT","company":"Dalmia Bharat Limited","title":"Outcome of Board Meeting","price":null,"change_pct":null,"details":[{"label":"An Dt","value":"23-Nov-2026 11:32:06","source":"NSE"},{"label":"Att File Path","value":null,"source":"NSE"},{"label":"Att File Size","value":"478.09 KB","source":"NSE"},{"label":"Attchmnt File","value":"https://nsearchives.nseindia.in/corporate/DALBHARAT_23112026113131_outcomeBMbb23112026n.pdf","source":"NSE"},{"label":"Attchmnt Text","value":"Dalmia Bharat Limited has informed the Exchange regarding Outcome of Board Meeting held on November 23, 2026, inter-alia approving buyback of equity shares","source":"NSE"},{"label":"Bflag","value":null,"source":"NSE"},{"label":"Csv Name","value":null,"source":"NSE"},{"label":"Desc","value":"Outcome of Board Meeting","source":"NSE"},{"label":"Difference","value":"00:00:02","source":"NSE"},{"label":"Dt","value":"23112026113206","source":"NSE"},{"label":"Exchdisstime","value":"23-Nov-2026 11:32:08","source":"NSE"},{"label":"File Size","value":"478.09 KB","source":"NSE"},{"label":"Has Xbrl","value":true,"source":"NSE"},{"label":"Nas Upload Flag","value":null,"source":"NSE"},{"label":"Obj Upload Flag","value":null,"source":"NSE"},{"label":"Old New","value":null,"source":"NSE"},{"label":"Orgid","value":null,"source":"NSE"},{"label":"Seq Id","value":"106868609","source":"NSE"},{"label":"Sm Industry","value":null,"source":"NSE"},{"label":"Sm Isin","value":"INE00R701025","source":"NSE"},{"label":"Sm Name","value":"Dalmia Bharat Limited","source":"NSE"},{"label":"Sort Date","value":"2026-11-23 11:32:06","source":"NSE"},{"label":"Symbol","value":"DALBHARAT","source":"NSE"},{"label":"Voice Summary","value":"Dalmia Bharat Limited board approved a buyback of up to 37,83,783 equity shares at a maximum price of INR 1,850 per share. The total buyback size is capped at INR 700,00,00,000. This represents approximately 2.02% of the paid-up equity share capital. The buyback excludes promoters and persons in control. Funds will be deployed via the open market route through BSE Limited and National Stock Exchange of India Limited. The company must utilize at least INR 525,00,00,000 for the buyback. At least 40% of the maximum size, amounting to INR 280,00,00,000, must be spent within the initial 66 working days. Mr. Rajeev Kumar is appointed as the Compliance Officer for this transaction. A public announcement detailing the process and timelines will be released within two working days from the board resolution date.","source":"NSE"},{"label":"Voice Url","value":"https://nsearchives.nseindia.in/ann_voice/DALBHARAT_23112026113131_outcomeBMbb23112026n.mp3","source":"NSE"}],"link":"https://nsearchives.nseindia.in/corporate/DALBHARAT_23112026113131_outcomeBMbb23112026n.pdf"}]}</script>
+<div class="admin-panel" id="adminPanel" hidden>
+  <section class="admin-card" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="admin-head"><h2 id="adminTitle">Member approvals</h2><button class="secondary-btn" id="adminClose" type="button">Close</button></div>
+    <p id="memberCapText">Approved member places: 0 / 30 (admin account is separate).</p>
+    <p class="member-message" id="adminNotice" role="status" aria-live="polite"></p>
+    <h3>Pending requests</h3><div id="pendingUsers"></div>
+    <h3>Approved members</h3><div id="approvedUsers"></div>
+  </section>
+</div>
+<script type="application/json" id="seed">{"sample":false,"folders":[{"id":"emas","name":"EMAs","subfolders":[{"id":"ema21","name":"21 EMA"},{"id":"ema50","name":"50 EMA"},{"id":"ema200","name":"200 EMA"},{"id":"golden","name":"Golden Cross"},{"id":"death","name":"Death Cross"}]},{"id":"orders","name":"Orders","subfolders":[{"id":"big","name":"Big orders"},{"id":"medium","name":"Medium orders"},{"id":"small","name":"Small orders"}]},{"id":"corporate-actions","name":"Corporate Actions","subfolders":[{"id":"buyback","name":"Buybacks"},{"id":"split","name":"Stock splits"},{"id":"bonus","name":"Bonus issues"},{"id":"dividend","name":"Dividends"},{"id":"rights","name":"Rights issues"},{"id":"merger","name":"Mergers"},{"id":"demerger","name":"Demergers"},{"id":"other","name":"Other corporate actions"}]},{"id":"results","name":"Results","subfolders":[{"id":"quarterly","name":"Quarterly results"},{"id":"profit-up","name":"Profit up"},{"id":"profit-down","name":"Profit down"}]},{"id":"promoter","name":"Promoter activity","subfolders":[{"id":"buying","name":"Promoter buying"},{"id":"selling","name":"Promoter selling"},{"id":"bulk","name":"Bulk deals"},{"id":"block","name":"Block deals"}]},{"id":"volume","name":"Volume","subfolders":[{"id":"high","name":"High volume"}]},{"id":"news","name":"News","subfolders":[{"id":"company","name":"By company"}]}],"alerts":[]}</script>
 <script>
 (function () {
   'use strict';
@@ -511,6 +581,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   render();
 
   function refreshAlerts() {
+    if (!window.ssMemberAuthorized) return;
     var feedUrl = window.location.protocol === 'file:' ? 'https://koturiharish-collab.github.io/corporate-actions.yml/alerts.json' : 'alerts.json';
     fetch(feedUrl, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('not found'); return r.json(); }).then(function (d) {
       data = prep(d);
@@ -518,12 +589,14 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
       render();
     }).catch(function () {});
   }
-  refreshAlerts();
+  window.ssMemberAuthorized = false;
+  window.ssMemberStart = function () { window.ssMemberAuthorized = true; refreshAlerts(); };
+  window.ssMemberStop = function () { window.ssMemberAuthorized = false; };
   // Keep the hosted app current on desktop and mobile without a manual reload.
   window.setInterval(refreshAlerts, 60000);
 })();
 </script>
 
+  <script type="module" src="firebase-members.js"></script>
 </body>
 </html>
-
