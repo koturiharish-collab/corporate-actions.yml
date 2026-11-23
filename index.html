@@ -103,6 +103,12 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; line-height: 1.45; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+:root { --notice-h: 42px; }
+.notice { position: sticky; top: 0; z-index: 40; height: calc(var(--notice-h) + env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px); overflow: hidden; display: flex; align-items: center; background: #8A2A18; color: #FFF7ED; border-bottom: 1px solid rgba(255,255,255,.18); }
+.notice-track { display: flex; width: max-content; min-width: 200%; animation: notice-scroll 42s linear infinite; }
+.notice-track span { flex: 0 0 auto; padding-right: 4rem; white-space: nowrap; font-size: 13px; font-weight: 600; letter-spacing: .01em; }
+@keyframes notice-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .notice-track { animation: none; min-width: 100%; justify-content: center; } .notice-track span:nth-child(2) { display: none; } }
 button, input { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -112,7 +118,7 @@ button, input { font: inherit; color: inherit; }
 .app { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; }
 
 /* Sidebar */
-.side { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: var(--side-bg); color: var(--side-fg); display: flex; flex-direction: column; gap: 2px; padding-block: 16px 20px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: 12px; }
+.side { position: sticky; top: calc(var(--notice-h) + env(safe-area-inset-top, 0px)); align-self: start; height: calc(100vh - var(--notice-h) - env(safe-area-inset-top, 0px)); overflow-y: auto; background: var(--side-bg); color: var(--side-fg); display: flex; flex-direction: column; gap: 2px; padding-block: 16px 20px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: 12px; }
 .side :focus-visible { outline-color: #8FB0F5; }
 .brand { display: flex; align-items: center; gap: 10px; padding: 4px 0 14px; font-family: "Space Grotesk", system-ui, sans-serif; font-size: 20px; font-weight: 600; color: #FFFFFF; letter-spacing: -0.01em; }
 .logo { width: 32px; height: 32px; border-radius: 8px; background: #2563EB; display: grid; place-items: center; flex: 0 0 auto; }
@@ -128,7 +134,7 @@ button, input { font: inherit; color: inherit; }
 
 /* Main */
 .main { min-width: 0; padding-left: 24px; padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-bottom: 32px; }
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px 0 12px; }
+.top { position: sticky; top: calc(var(--notice-h) + env(safe-area-inset-top, 0px)); z-index: 5; background: var(--bg); display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px 0 12px; }
 .menu { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); cursor: pointer; place-items: center; }
 h1 { margin: 0; flex: 1 1 200px; min-width: 0; font-family: "Space Grotesk", system-ui, sans-serif; font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
 h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-left: 8px; }
@@ -173,10 +179,10 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
 .star[aria-pressed="true"] { color: var(--star); }
 .star[aria-pressed="true"] svg { fill: currentColor; }
 .details { padding: 0 16px 16px 68px; }
-.drow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.drow { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--line); }
 .dl { color: var(--muted); font-size: 14px; }
-.rv { display: flex; align-items: center; gap: 10px; }
-.dv { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px; font-weight: 600; }
+.rv { display: flex; align-items: flex-start; justify-content: flex-end; flex-wrap: wrap; gap: 10px; max-width: 78%; min-width: 0; }
+.dv { max-width: 100%; overflow-wrap: anywhere; white-space: pre-wrap; text-align: right; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px; font-weight: 600; }
 .dv.na { font-family: Inter, system-ui, sans-serif; font-weight: 500; color: var(--muted); }
 .src { padding: 1px 6px; border: 1px solid var(--line); border-radius: 4px; font-size: 11px; color: var(--muted); white-space: nowrap; }
 .none { margin: 0; padding: 10px 0; color: var(--muted); font-size: 14px; }
@@ -198,17 +204,24 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
 
 @media (max-width: 860px) {
   .app { grid-template-columns: minmax(0, 1fr); }
-  .side { position: fixed; left: 0; top: 0; bottom: 0; z-index: 26; width: min(86vw, 320px); height: 100%; padding-top: calc(16px + env(safe-area-inset-top, 0px)); transform: translateX(-100%); visibility: hidden; transition: transform 0.2s ease, visibility 0s linear 0.2s; }
+  .side { position: fixed; left: 0; top: calc(var(--notice-h) + env(safe-area-inset-top, 0px)); bottom: 0; z-index: 26; width: min(86vw, 320px); height: calc(100% - var(--notice-h) - env(safe-area-inset-top, 0px)); padding-top: 16px; transform: translateX(-100%); visibility: hidden; transition: transform 0.2s ease, visibility 0s linear 0.2s; }
   .side.open { transform: none; visibility: visible; transition: transform 0.2s ease; }
   .nav.sub { min-height: 44px; }
   .main { padding-left: max(16px, env(safe-area-inset-left, 0px)); }
   .menu { display: grid; }
   .details { padding-left: 16px; }
+  .rv { max-width: 100%; }
   .chip { min-height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) { .side { transition: none; } }
 </style>
 
+<div class="notice" role="note" aria-label="Informational only: Share Sanket is not a buying or selling platform. I am not a SEBI-registered research analyst or investment adviser. Verify all information independently before buying or selling.">
+  <div class="notice-track" aria-hidden="true">
+    <span>INFORMATION ONLY · Share Sanket is not a platform for buying or selling securities · I am not a SEBI-registered research analyst or investment adviser · Verify all information independently before buying or selling.</span>
+    <span>INFORMATION ONLY · Share Sanket is not a platform for buying or selling securities · I am not a SEBI-registered research analyst or investment adviser · Verify all information independently before buying or selling.</span>
+  </div>
+</div>
 <div class="app">
   <aside class="side" id="side" aria-label="Folders"></aside>
   <div class="scrim" id="scrim" hidden></div>
@@ -220,7 +233,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     </header>
     <div class="chips" id="chips"></div>
     <div id="content"></div>
-    <p class="disc">Share Sanket shows information from public filings and price data. Nothing here is investment advice or a recommendation to buy, sell or hold any security. Not registered with SEBI as a research analyst or investment adviser.</p>
+    <p class="disc">For information only. Share Sanket is not a platform for buying or selling securities and does not provide investment advice or recommendations. I am not a SEBI-registered research analyst or investment adviser. Verify all information independently with official sources before buying or selling.</p>
   </main>
 </div>
 
@@ -362,7 +375,11 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     else if (view.type === 'folder') list = data.alerts.filter(function (a) { return a.folder === view.folder && (!view.sub || a.subfolder === view.sub); });
     else list = data.alerts;
     var q = query.trim().toLowerCase();
-    if (q) list = list.filter(function (a) { return [a.company, a.symbol, a.title].join(' ').toLowerCase().indexOf(q) > -1; });
+    if (q) list = list.filter(function (a) {
+      var searchable = [a.company, a.symbol, a.title, a.filing_text];
+      (Array.isArray(a.details) ? a.details : []).forEach(function (it) { searchable.push(it.label, it.value, it.source); });
+      return searchable.join(' ').toLowerCase().indexOf(q) > -1;
+    });
     return list;
   }
 
