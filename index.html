@@ -400,9 +400,11 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     if (!items.length) wrap.appendChild(h('p', { class: 'none', text: 'No further details for this alert yet.' }));
     items.forEach(function (it) {
       var empty = it.value === undefined || it.value === null || it.value === '';
+      var valueText = empty ? 'Not available' : String(it.value);
+      var valueNode = empty ? h('span', { class: 'dv na', text: valueText }) : /^https?:\/\//i.test(valueText) ? h('a', { class: 'dv', href: valueText, target: '_blank', rel: 'noopener noreferrer', text: valueText }) : h('span', { class: 'dv', text: valueText });
       wrap.appendChild(h('div', { class: 'drow' },
         h('span', { class: 'dl', text: it.label || '' }),
-        h('span', { class: 'rv' }, h('span', { class: 'dv' + (empty ? ' na' : ''), text: empty ? 'Not available' : String(it.value) }), it.source ? h('span', { class: 'src', text: it.source }) : null)));
+        h('span', { class: 'rv' }, valueNode, it.source ? h('span', { class: 'src', text: it.source }) : null)));
     });
     if (a.link && /^https?:\/\//i.test(a.link)) wrap.appendChild(h('div', { class: 'actions' }, h('a', { class: 'btn', href: a.link, target: '_blank', rel: 'noopener noreferrer', text: 'Open source filing' })));
     return wrap;
