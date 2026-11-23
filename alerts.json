@@ -1,0 +1,150 @@
+{
+  "sample": false,
+  "updated": "2026-11-23T12:52:47+05:30",
+  "folders": [
+    {
+      "id": "emas",
+      "name": "EMAs",
+      "subfolders": [
+        {
+          "id": "ema21",
+          "name": "21 EMA"
+        },
+        {
+          "id": "ema50",
+          "name": "50 EMA"
+        },
+        {
+          "id": "ema200",
+          "name": "200 EMA"
+        },
+        {
+          "id": "golden",
+          "name": "Golden Cross"
+        },
+        {
+          "id": "death",
+          "name": "Death Cross"
+        }
+      ]
+    },
+    {
+      "id": "orders",
+      "name": "Orders",
+      "subfolders": [
+        {
+          "id": "big",
+          "name": "Big orders"
+        },
+        {
+          "id": "medium",
+          "name": "Medium orders"
+        },
+        {
+          "id": "small",
+          "name": "Small orders"
+        }
+      ]
+    },
+    {
+      "id": "corporate-actions",
+      "name": "Corporate Actions",
+      "subfolders": [
+        {
+          "id": "buyback",
+          "name": "Buybacks"
+        },
+        {
+          "id": "split",
+          "name": "Stock splits"
+        },
+        {
+          "id": "bonus",
+          "name": "Bonus issues"
+        },
+        {
+          "id": "dividend",
+          "name": "Dividends"
+        },
+        {
+          "id": "rights",
+          "name": "Rights issues"
+        },
+        {
+          "id": "merger",
+          "name": "Mergers"
+        },
+        {
+          "id": "demerger",
+          "name": "Demer gers"
+        },
+        {
+          "id": "other",
+          "name": "Other corporate actions"
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "name": "Results",
+      "subfolders": [
+        {
+          "id": "quarterly",
+          "name": "Quarterly results"
+        },
+        {
+          "id": "profit-up",
+          "name": "Profit up"
+        },
+        {
+          "id": "profit-down",
+          "name": "Profit down"
+        }
+      ]
+    },
+    {
+      "id": "promoter",
+      "name": "Promoter activity",
+      "subfolders": [
+        {
+          "id": "buying",
+          "name": "Promoter buying"
+        },
+        {
+          "id": "selling",
+          "name": "Promoter selling"
+        },
+        {
+          "id": "bulk",
+          "name": "Bulk deals"
+        },
+        {
+          "id": "block",
+          "name": "Block deals"
+        }
+      ]
+    },
+    {
+      "id": "volume",
+      "name": "Volume",
+      "subfolders": [
+        {
+          "id": "high",
+          "name": "High volume"
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "name": "News",
+      "subfolders": [
+        {
+          "id": "company",
+          "name": "By company"
+        }
+      ]
+    }
+  ],
+  "alerts": []
+}
+
