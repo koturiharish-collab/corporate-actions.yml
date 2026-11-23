@@ -55,7 +55,7 @@ EXCLUDE = re.compile(
     re.I,
 )
 MONEY = re.compile(
-    r"(?P<currency>₹|\bINR\b|\bRs\.?\s*)\s*"
+    r"(?P<currency>₹|\bINR\.?|\bRs\.?)\s*"
     r"(?P<number>[0-9][0-9,]*(?:\.[0-9]+)?)\s*"
     r"(?P<unit>crores?|crs?|lakhs?|lacs?|millions?|mn|billions?|bn)?",
     re.I,
@@ -154,26 +154,35 @@ def find_client(text):
         r"\b(?:client|customer|end\s+user)\s*[:\-]\s*([^,.;\n]{2,80})",
         r"\b(?:awarded\s+by|awarded\s+to\s+the\s+company\s+by|received\s+from)\s+([A-Z][A-Za-z0-9&.,()' -]{1,70}?)(?=\s+(?:for|worth|valued|to\s+manufacture|including|comprising)\b|[,.;]|$)",
     ]
+    matches = []
     for pattern in patterns:
-        match = re.search(pattern, text or "", re.I)
-        if match:
+        for match in re.finditer(pattern, text or "", re.I):
             value = re.sub(r"\s+", " ", match.group(1)).strip(" ,.;")
             if value and value.lower() not in {"the exchange", "the company", "its customer"}:
-                return value
-    return None
+                matches.append(value)
+    return max(matches, key=len) if matches else None
 
 
 def find_execution(text):
+    duration = r"\d+(?:\.\d+)?\s+(?:working\s+)?(?:days?|weeks?|months?|years?)"
     patterns = [
-        r"\b(?:execution|completion|delivery)\s+(?:period|timeline|schedule)\s*(?:is|of|:|will be|expected to be)?\s*([^.;\n]{2,140})",
-        r"\b(?:within|over)\s+\d+\s+(?:working\s+)?(?:days?|weeks?|months?|years?)\b",
+        rf"\b(?:execution|completion|delivery)\s+(?:period|timeline|schedule|duration)[^.;]{{0,50}}?({duration})\b",
+        rf"\btime\s+period[^.;]{{0,140}}?(?:to\s+be\s+)?(?:executed|completed|delivered)[^.;]{{0,50}}?({duration})\b",
+        rf"\b({duration})\s+for\s+completion\s+of\s+[^.;]{{0,90}}",
+        rf"\b(?:within|over|in)\s+({duration})\b",
         r"\b(?:by|before|until)\s+(?:March|April|May|June|July|August|September|October|November|December|January|February)\s+\d{4}\b",
     ]
     for pattern in patterns:
         match = re.search(pattern, text or "", re.I)
         if match:
-            return re.sub(r"\s+", " ", match.group(1) if match.lastindex else match.group(0)).strip(" ,.;")
+            value = match.group(1) if match.lastindex else match.group(0)
+            return re.sub(r"\s+", " ", value).strip(" ,.;")
     return None
+
+
+def undisclosed_order_value(text):
+    match = re.search(r"(?:consideration|size|value)[^.;\n]{0,140}\bnot disclosed\b[^.;\n]{0,140}", text or "", re.I)
+    return re.sub(r"\s+", " ", match.group(0)).strip(" ,.;") if match else None
 
 
 def yahoo_search(company):
@@ -296,7 +305,7 @@ def order_alert(item, market_cache):
         {"label": "Filing title", "value": item.get("title"), "source": item.get("exchange")},
         {"label": "Order / project description", "value": item.get("text"), "source": item.get("exchange")},
         {"label": "Client / counterparty", "value": find_client(full_text), "source": item.get("exchange")},
-        {"label": "Reported order value", "value": order_amount["text"] if order_amount else None, "source": item.get("exchange")},
+        {"label": "Reported order value", "value": order_amount["text"] if order_amount else undisclosed_order_value(full_text), "source": item.get("exchange")},
         {"label": "Order size band", "value": size_band, "source": "Rule based only on disclosed order value"},
         {"label": "Execution / delivery period", "value": find_execution(full_text), "source": item.get("exchange")},
         {"label": "Filing date and time", "value": item.get("time"), "source": item.get("exchange")},
@@ -328,7 +337,7 @@ def order_alert(item, market_cache):
     change = clean_number(market.get("regularMarketChangePercent"))
     title = item.get("title") or item.get("category") or "Order win announcement"
     return {
-        "id": alert_id, "time": now, "folder": "orders", "subfolder": subfolder,
+        "id": alert_id, "parser_version": 2, "time": now, "folder": "orders", "subfolder": subfolder,
         "symbol": str(item.get("symbol") or ""), "company": item.get("company") or "",
         "title": title, "price": price, "change_pct": change, "details": details,
         "link": item.get("link") or "", "source_data": item.get("source_data") or {},
@@ -414,7 +423,7 @@ def main():
         if not old_alert or not item.get("link"):
             continue
         status = next((d.get("value") for d in old_alert.get("details", []) if d.get("label") == "PDF text extraction"), None)
-        if status == "No exchange PDF attachment was available.":
+        if old_alert.get("parser_version", 0) < 2 or status == "No exchange PDF attachment was available.":
             refresh_pdf.append(item)
     to_process = new_hits + refresh_pdf
     log(f"{len(new)} new announcements; {len(new_hits)} new order-win matches; {len(refresh_pdf)} filing refreshes")
