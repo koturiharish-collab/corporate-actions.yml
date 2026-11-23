@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, query, where, serverTimestamp, runTransaction } from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCFUjKRCQULg1wyMEHqC0ttkRMjqYKV_qE',
+  apiKey: 'AIzaSyCFUjKRCQUlg1wyMEHqc0ttkRMjqYkV_qE',
   authDomain: 'market-sanket.firebaseapp.com',
   projectId: 'market-sanket',
   appId: '1:371783165561:web:8008cfd9d891d17e9096a8'
