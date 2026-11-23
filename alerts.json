@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-23T13:57:18+05:30",
+  "updated": "2026-11-23T14:00:28+05:30",
   "folders": [
     {
       "id": "emas",
@@ -762,14 +762,15 @@
     },
     {
       "id": "21313adadbcdd9d9b9fb6060",
+      "parser_version": 2,
       "time": "2026-11-23T13:54:37+05:30",
       "folder": "orders",
       "subfolder": null,
       "symbol": "PTCIL",
       "company": "PTC Industries Limited",
       "title": "Bagging/Receiving of orders/contracts",
-      "price": 24375.0,
-      "change_pct": 1.0574331,
+      "price": 24415.0,
+      "change_pct": 1.2235587,
       "details": [
         {
           "label": "Source exchange",
@@ -818,7 +819,7 @@
         },
         {
           "label": "Execution / delivery period",
-          "value": null,
+          "value": "12 Months",
           "source": "NSE"
         },
         {
@@ -843,32 +844,32 @@
         },
         {
           "label": "Market data snapshot captured",
-          "value": "2026-11-23T13:57:11+05:30",
+          "value": "2026-11-23T14:00:22+05:30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Price at snapshot",
-          "value": "₹24,375.00",
+          "value": "₹24,415.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Market capitalization",
-          "value": "₹386,431,877,120.00",
+          "value": "₹387,066,003,456.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Trailing P/E",
-          "value": 259.8614,
+          "value": 260.28784,
           "source": "Yahoo Finance"
         },
         {
           "label": "Forward P/E",
-          "value": 78.04412,
+          "value": 78.172195,
           "source": "Yahoo Finance"
         },
         {
           "label": "Price-to-book",
-          "value": 23.22289,
+          "value": 23.261,
           "source": "Yahoo Finance"
         },
         {
@@ -1075,14 +1076,15 @@
     },
     {
       "id": "eb53512265144a04069818b7",
+      "parser_version": 2,
       "time": "2026-11-23T13:54:37+05:30",
       "folder": "orders",
       "subfolder": null,
       "symbol": "PTCIL",
       "company": "PTC Industries Limited",
       "title": "Press Release",
-      "price": 24375.0,
-      "change_pct": 1.0574331,
+      "price": 24415.0,
+      "change_pct": 1.2235587,
       "details": [
         {
           "label": "Source exchange",
@@ -1131,7 +1133,7 @@
         },
         {
           "label": "Execution / delivery period",
-          "value": null,
+          "value": "12 Months",
           "source": "NSE"
         },
         {
@@ -1156,32 +1158,32 @@
         },
         {
           "label": "Market data snapshot captured",
-          "value": "2026-11-23T13:57:13+05:30",
+          "value": "2026-11-23T14:00:23+05:30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Price at snapshot",
-          "value": "₹24,375.00",
+          "value": "₹24,415.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Market capitalization",
-          "value": "₹386,431,877,120.00",
+          "value": "₹387,066,003,456.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Trailing P/E",
-          "value": 259.8614,
+          "value": 260.28784,
           "source": "Yahoo Finance"
         },
         {
           "label": "Forward P/E",
-          "value": 78.04412,
+          "value": 78.172195,
           "source": "Yahoo Finance"
         },
         {
           "label": "Price-to-book",
-          "value": 23.22289,
+          "value": 23.261,
           "source": "Yahoo Finance"
         },
         {
@@ -1388,14 +1390,15 @@
     },
     {
       "id": "fa47f2cec3eaaafb413725c7",
+      "parser_version": 2,
       "time": "2026-11-23T13:54:38+05:30",
       "folder": "orders",
-      "subfolder": null,
+      "subfolder": "medium",
       "symbol": "TITAGARH",
       "company": "TITAGARH RAIL SYSTEMS LIMITED",
       "title": "Press Release",
-      "price": 719.1,
-      "change_pct": -1.1885984,
+      "price": 719.3,
+      "change_pct": -1.1611147,
       "details": [
         {
           "label": "Source exchange",
@@ -1429,22 +1432,22 @@
         },
         {
           "label": "Client / counterparty",
-          "value": "JSW",
+          "value": "JSW(South) Rail Logistics Pvt Ltd",
           "source": "NSE"
         },
         {
           "label": "Reported order value",
-          "value": null,
+          "value": "INR. 77.09 crs",
           "source": "NSE"
         },
         {
           "label": "Order size band",
-          "value": null,
+          "value": "Medium (₹10 crore to under ₹100 crore)",
           "source": "Rule based only on disclosed order value"
         },
         {
           "label": "Execution / delivery period",
-          "value": "s to the customers",
+          "value": null,
           "source": "NSE"
         },
         {
@@ -1469,32 +1472,32 @@
         },
         {
           "label": "Market data snapshot captured",
-          "value": "2026-11-23T13:57:13+05:30",
+          "value": "2026-11-23T14:00:24+05:30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Price at snapshot",
-          "value": "₹719.10",
+          "value": "₹719.30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Market capitalization",
-          "value": "₹96,843,898,880.00",
+          "value": "₹96,870,834,176.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Trailing P/E",
-          "value": 45.31191,
+          "value": 45.324512,
           "source": "Yahoo Finance"
         },
         {
           "label": "Forward P/E",
-          "value": 21.481703,
+          "value": 21.487679,
           "source": "Yahoo Finance"
         },
         {
           "label": "Price-to-book",
-          "value": 3.7642708,
+          "value": 3.765318,
           "source": "Yahoo Finance"
         },
         {
@@ -1529,12 +1532,12 @@
         },
         {
           "label": "Order value / market cap",
-          "value": null,
+          "value": "0.7958%",
           "source": "Calculated only when reported INR order value and INR market cap are both available"
         },
         {
           "label": "All monetary figures found in filing",
-          "value": null,
+          "value": "INR. 77.09 crs",
           "source": "NSE"
         },
         {
@@ -1701,14 +1704,15 @@
     },
     {
       "id": "3c0d9f9884b9d0d96c23b0ef",
+      "parser_version": 2,
       "time": "2026-11-23T13:54:38+05:30",
       "folder": "orders",
       "subfolder": "big",
       "symbol": "SWSOLAR",
       "company": "Sterling and Wilson Renewable Energy Limited",
       "title": "Press Release",
-      "price": 161.85,
-      "change_pct": 4.7437234,
+      "price": 161.55,
+      "change_pct": 4.549572,
       "details": [
         {
           "label": "Source exchange",
@@ -1782,32 +1786,32 @@
         },
         {
           "label": "Market data snapshot captured",
-          "value": "2026-11-23T13:57:16+05:30",
+          "value": "2026-11-23T14:00:25+05:30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Price at snapshot",
-          "value": "₹161.85",
+          "value": "₹161.55",
           "source": "Yahoo Finance"
         },
         {
           "label": "Market capitalization",
-          "value": "₹37,798,674,432.00",
+          "value": "₹37,728,612,352.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Trailing P/E",
-          "value": 18.433943,
+          "value": 18.399773,
           "source": "Yahoo Finance"
         },
         {
           "label": "Forward P/E",
-          "value": 10.79,
+          "value": 10.77,
           "source": "Yahoo Finance"
         },
         {
           "label": "Price-to-book",
-          "value": 5.251801,
+          "value": 5.2420664,
           "source": "Yahoo Finance"
         },
         {
@@ -1842,7 +1846,7 @@
         },
         {
           "label": "Order value / market cap",
-          "value": "54.2347%",
+          "value": "54.3354%",
           "source": "Calculated only when reported INR order value and INR market cap are both available"
         },
         {
@@ -2014,14 +2018,15 @@
     },
     {
       "id": "d945b6891940b749be7d2b20",
+      "parser_version": 2,
       "time": "2026-11-23T13:54:38+05:30",
       "folder": "orders",
       "subfolder": null,
       "symbol": "LT",
       "company": "Larsen & Toubro Limited",
       "title": "Bagging/Receiving of orders/contracts",
-      "price": 4155.0,
-      "change_pct": -1.2853127,
+      "price": 4153.3,
+      "change_pct": -1.3250449,
       "details": [
         {
           "label": "Source exchange",
@@ -2095,32 +2100,32 @@
         },
         {
           "label": "Market data snapshot captured",
-          "value": "2026-11-23T13:57:17+05:30",
+          "value": "2026-11-23T14:00:27+05:30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Price at snapshot",
-          "value": "₹4,155.00",
+          "value": "₹4,153.30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Market capitalization",
-          "value": "₹5,716,811,710,464.00",
+          "value": "₹5,714,472,337,408.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Trailing P/E",
-          "value": 32.00585,
+          "value": 31.992756,
           "source": "Yahoo Finance"
         },
         {
           "label": "Forward P/E",
-          "value": 23.063705,
+          "value": 23.054268,
           "source": "Yahoo Finance"
         },
         {
           "label": "Price-to-book",
-          "value": 5.05771,
+          "value": 5.0556407,
           "source": "Yahoo Finance"
         },
         {
@@ -2327,14 +2332,15 @@
     },
     {
       "id": "23189caaaa9c94e233390e91",
+      "parser_version": 2,
       "time": "2026-11-23T13:54:38+05:30",
       "folder": "orders",
       "subfolder": "big",
       "symbol": "DBL",
       "company": "Dilip Buildcon Limited",
       "title": "Bagging/Receiving of orders/contracts",
-      "price": 399.8,
-      "change_pct": -0.6572481,
+      "price": 400.95,
+      "change_pct": -0.37290242,
       "details": [
         {
           "label": "Source exchange",
@@ -2383,7 +2389,7 @@
         },
         {
           "label": "Execution / delivery period",
-          "value": null,
+          "value": "24 Months",
           "source": "NSE"
         },
         {
@@ -2408,32 +2414,32 @@
         },
         {
           "label": "Market data snapshot captured",
-          "value": "2026-11-23T13:57:18+05:30",
+          "value": "2026-11-23T14:00:28+05:30",
           "source": "Yahoo Finance"
         },
         {
           "label": "Price at snapshot",
-          "value": "₹399.80",
+          "value": "₹400.95",
           "source": "Yahoo Finance"
         },
         {
           "label": "Market capitalization",
-          "value": "₹64,945,442,816.00",
+          "value": "₹65,132,257,280.00",
           "source": "Yahoo Finance"
         },
         {
           "label": "Trailing P/E",
-          "value": 5.686247,
+          "value": 5.7026033,
           "source": "Yahoo Finance"
         },
         {
           "label": "Forward P/E",
-          "value": 15.944166,
+          "value": 15.99003,
           "source": "Yahoo Finance"
         },
         {
           "label": "Price-to-book",
-          "value": 0.901305,
+          "value": 0.90389764,
           "source": "Yahoo Finance"
         },
         {
@@ -2468,7 +2474,7 @@
         },
         {
           "label": "Order value / market cap",
-          "value": "13.8798%",
+          "value": "13.8400%",
           "source": "Calculated only when reported INR order value and INR market cap are both available"
         },
         {
