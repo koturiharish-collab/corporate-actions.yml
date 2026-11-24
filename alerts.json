@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-24T16:03:01+05:30",
+  "updated": "2026-11-24T16:36:19+05:30",
   "folders": [
     {
       "id": "emas",
@@ -29017,6 +29017,644 @@
       },
       "filing_text": "Awarding of order(s)/contract(s)\n\nVascon Engineers Limited receives Letter of Intent for Construction of Shell & Core works for T1, T2 & T3 at Mohan Society Redevelopment project, Borivali from Kanakia Transparent Developers Pvt. Ltd\n\nNovember 24, 2026 \n \nTo,  \nNational Stock Exchange of India Limited \nListing Department, \nExchange Plaza, \nBandra (E), Mumbai – 400 051 \nRef Symbol: VASCONEQ \n \n \nTo, \nBSE Limited \nThe Department of Corporate Services \nPhiroze Jeejeebhoy Towers, Dalal Street, \nFort, Mumbai 400 001 \nRef: Scrip Code: 533156 \n \nSubject: Vascon Engineers Limited receives Letter of Intent for Construction of \nShell & Core works for T1, T2 & T3 at Mohan Society Redevelopment \nproject, Borivali from Kanakia Transparent Developers Pvt. Ltd \n \nRef:  Disclosure under Regulation 30 of SEBI (LODR) Regulations, 2015 \n \nDear Sir, \n \nWe are pleased to inform you that Vascon Engineers Limited has received a Letter of \nIntent amounting to Rs. 195.00 Crore (Rupees One Hundred & Ninety Five Crore) \n(excluding taxes) from Kanakia Transparent Developers Pvt. Ltd. \n \nThis contract is for the construction of shell and core works for the Mohan Society \nRedevelopment Project located in Borivali, Mumbai. \n \nThe total work period is 24 months on mutually agreed terms. \n \nYou are requested to kindly take the same on record. \n \nThanking you, \nFor Vascon Engineers Limited \n \n \n \nNeelam Piyush Pipada \nCompany Secretary and Compliance Officer \nM No: A31721 \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \nDisclosure required pursuant to Regulation 30 of the Listing Regulations read with Para \nA of Part A of Schedule III to the Listing Regulations and the SEBI Circular having \nreference no. CIR/CFD/CMD/4/2015 dated September 9, 2015. \nAnnexure-A \nDisclosure Requirement Details \na) Name of the entity awarding the \norder(s)/contract(s); \nKanakia Transparent Developers Pvt. \nLtd \nb) Significant terms and conditions of \norder(s)/contract(s) awarded in \nbrief; \nConstruction of Shell & Core Works for \nKanakia Mohan Society Redevelopment \nProject at Borivali, Mumbai \nc) Whether order(s) / contract(s) have \nbeen awarded by domestic/ \ninternational entity; \nDomestic  \nd) Nature of order(s) / contract(s) BOQ basis \ne) Whether domestic or international Domestic \nf) Time period by which the \norder(s)/contract(s) is to be executed \nThe work has to be completed within 24 \nmonths on the mutual agreed terms  \ng) Broad consideration or size of the \norder(s)/contract(s) \nRs. 195.00/- Crore (Rupees One \nHundred and Ninety Crores only) \n(excluding taxes) \nh) Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded \nthe order(s)/contract(s)? If yes, \nnature of interest and details thereof; \nNot Applicable  \ni) Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the \nsame is done at “arms-length” \nNot Applicable",
       "source_id": "NSE:106869659"
+    },
+    {
+      "id": "8ac6dc27012f39297f8ef37f",
+      "parser_version": 3,
+      "time": "2026-11-24T16:36:18+05:30",
+      "folder": "orders",
+      "subfolder": "medium",
+      "symbol": "RPTECH",
+      "company": "Rashi Peripherals Limited",
+      "title": "Action(s) taken or orders passed",
+      "price": 647.05,
+      "change_pct": -0.48447004,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Rashi Peripherals Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "RPTECH",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Action(s) taken or orders passed",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Action(s) taken or orders passed",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Rashi Peripherals Limited has informed the Exchange that the Company has received communication of order on November 24, 2026, from the office of Commissioner of customs (NS-V), Jawaharlal Nehru Custom House, Nhava Sheva, District Raigad, Maharashtra (order passed date: November 12, 2026) as per the details attached herewith.",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "Rs. 34,62,17,701",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Medium (₹10 crore to under ₹100 crore)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "24-Nov-2026 16:28:24",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "RPTECH.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/RPTECH.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-24T16:36:18+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹647.05",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹42,967,834,624.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹4,296.78 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": "11.22",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "1.91",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹57.67",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹61,845,532,672.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹1,004.70",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹316.30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Technology",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Electronics & Computer Distribution",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "0.8058%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "Rs. 34,62,17,701; Rs. 34.63 Cr; Rs. 1.24 Lakhs",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "Rashi Peripherals Limited \nRegd. Office: Ariisto House, 5th Floor, Corner of Telli Galli, Andheri (East), Mumbai, Maharashtra – 400069, India \n• Tel: +91-22-6177 1771 | Fax +91-22-61771999 • www.rptechindia.com • investors@rptechindia.com | CIN: L30007MH1989PLC051039 \n   \n  November 24, 2026 \n        \nTo,  \nListing Operation Department  \nBSE Limited  \nP.J.  Towers, Dalal Street,  \nMumbai – 400001  \n \nScrip Code: 544119 \n \nListing Compliance Department \nThe National Stock Exchange of India Limited \nExchange Plaza, C-1, G Block, Bandra-Kurla Complex, \nBandra (E) Mumbai – 400051  \n \nSymbol: RPTECH \n                                                                                                                                                                                                                                                                                                                                   \nSub.:  Intimation under Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 \n \nDear Sir/Madam, \n \nThis is to inform that the Company has received an order with reference no.  198/2026-27 / COMMR \n/ GR – VA/ NS – V/ CAC / JNCH dated 12th November, 2026 from the office of the Commissioner of \nCustoms ( NS -V), Jawaharlal Nehru Custom House, Nhava Sheva, District Raigad, Maharashtra for \nconfirmation of the demand of customs duty, interest and penalty in proceedings against the Company \nvide Show Cause Notice (SCN No. 1834/2025-26/ Commr/Gr-VA/NS-V/CAC/ JNCH dated 13.01.2026).   \nThe aforesaid order has confirmed the demand by Office of Commissioner of Customs amounting to \nRs. 34,62,17,701/- (Rupees Thirty Four Crores Sixty Two Lakhs Seventeen Thousand Seven Hundred \nOne only) with applicable interest thereon, as following: \n \nDescription  Amount ( Rs.) \nDifferential Duty Demand           17,31,70,772  \nPenalty U/s 114A           17,31,70,772  \n    34,63,41,544  \nDuty paid previously  1,23,843 \nNet payable excluding applicable Interest    34,62,17,701  \n \nThe Company believes it has strong grounds on merits and is consulting tax experts to take \nappropriate steps, including filing an appeal before the appropriate authority, to contest the said \ndemand. \n \nDetails as required under Regulation 30 of the SEBI Listing Regulations and SEBI Master Circular no. \nSEBI/HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026, each as amended is \nenclosed herewith as Annexure A. \n \nYours faithfully, \nFor RASHI PERIPHERALS LIMITED \n \n \nArvind Bajoria \nCompany Secretary and Compliance Officer \n \nEncl.: As above \n\n \n \nRashi Peripherals Limited \nRegd. Office: Ariisto House, 5th Floor, Corner of Telli Galli, Andheri (East), Mumbai, Maharashtra – 400069, India \n• Tel: +91-22-6177 1771 | Fax +91-22-61771999 • www.rptechindia.com • investors@rptechindia.com | CIN: L30007MH1989PLC051039 \n \n       Annexure – A \n \n \n(i) \n \nName of the authority  \n \n \nOffice of the Commissioner of Customs ( NS -\nV), Jawaharlal Nehru Custom House, Nhava \nSheva,  District Raigad,  Maharashtra \n \n \n(ii) \n \nNature and details of the \naction(s) taken or order(s) \npassed \n \nCommissioner of Customs ( NS -V), Jawaharlal \nNehru Custom House, Nhava Sheva,  District \nRaigad,  Maharashtra has passed order towards \nAdjudication of Show Cause Notice (SCN No. \n1834/2025-26/Commr/Gr-VA/NS-V/CAC/ JNCH \ndated 13.01.2026 \n \n \n \n(iii) \n \nDate of receipt of direction or \norder, including any ad-interim \nor interim orders, or any other \ncommunication from the \nauthority \n \n \n24th November, 2026  ( 10:00 Hours ) \n \n \n(iv) \n \nDetails of the \nviolation(s)/contravention(s) \ncommitted or alleged to be \ncommitted; \n \n(SCN No. 1834/2025-26/Commr/Gr-VA/NS-\nV/CAC/ JNCH dated 13.01.2026 alleged that \nCompany had made a wrong classification of \ngoods imported and was liable to pay additional \ncustoms duty ( alongwith penalty and interest ) \nu/s 28(4) of the Customs act ,1962. \n \nThe aforesaid demand has been confirmed as per \nthe order Passed on 12-11-2026.  \n \n \n \n \n(v) \n \nImpact on financial, operation \nor other activities of the listed \nentity, quantifiable in monetary \nterms to the extent possible. \n \n \nDemand of approx. Rs. 34.63 Cr. (including  \npenalty) alongwith applicable interest, against \nthe company has been confirmed, out of which \nRs. 1.24 Lakhs previously paid.  The aforesaid \ndemand will be classified as contingent liability \nin financial statement of the Company. \n \nCompany is in discussion with its tax experts \nregarding filing of appeal before CESTAT, against \nthe aforesaid order, and avail its rights to defend \nitself against the said demand.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "24-Nov-2026 16:28:24",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "480.48 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/RASHI2024_24112026162734_Customs_Order_Intimation.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Rashi Peripherals Limited has informed the Exchange that the Company has received communication of order on November 24, 2026, from the office of Commissioner of customs (NS-V), Jawaharlal Nehru Custom House, Nhava Sheva, District Raigad, Maharashtra (order passed date: November 12, 2026) as per the details attached herewith.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Action(s) taken or orders passed",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "24112026162824",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "24-Nov-2026 16:28:25",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "480.48 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106869685",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE0J1F01024",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Rashi Peripherals Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-24 16:28:24",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "RPTECH",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Rashi Peripherals Limited received an order from the Commissioner of Customs dated 12th November 2026 confirming a demand of Rs. 34,62,17,701. This amount includes differential duty of Rs. 17,31,70,772 and penalty under section 114A of Rs. 17,31,70,772. The demand arises from Show Cause Notice 1834/2025-26 dated 13.01.2026 regarding wrong classification of imported goods. Rs. 1,23,843 was previously paid. The net payable excluding interest is Rs. 34,62,17,701. The company states it has strong grounds to contest the demand. It is consulting tax experts to file an appeal before CESTAT. The demand will be classified as a contingent liability in the financial statements. The order was received on 24th November 2026.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/RASHI2024_24112026162734_Customs_Order_Intimation.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/RASHI2024_24112026162734_Customs_Order_Intimation.pdf",
+      "source_data": {
+        "an_dt": "24-Nov-2026 16:28:24",
+        "attFilePath": null,
+        "attFileSize": "480.48 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/RASHI2024_24112026162734_Customs_Order_Intimation.pdf",
+        "attchmntText": "Rashi Peripherals Limited has informed the Exchange that the Company has received communication of order on November 24, 2026, from the office of Commissioner of customs (NS-V), Jawaharlal Nehru Custom House, Nhava Sheva, District Raigad, Maharashtra (order passed date: November 12, 2026) as per the details attached herewith.",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Action(s) taken or orders passed",
+        "difference": "00:00:01",
+        "dt": "24112026162824",
+        "exchdisstime": "24-Nov-2026 16:28:25",
+        "fileSize": "480.48 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106869685",
+        "smIndustry": null,
+        "sm_isin": "INE0J1F01024",
+        "sm_name": "Rashi Peripherals Limited",
+        "sort_date": "2026-11-24 16:28:24",
+        "symbol": "RPTECH",
+        "voiceSummary": "Rashi Peripherals Limited received an order from the Commissioner of Customs dated 12th November 2026 confirming a demand of Rs. 34,62,17,701. This amount includes differential duty of Rs. 17,31,70,772 and penalty under section 114A of Rs. 17,31,70,772. The demand arises from Show Cause Notice 1834/2025-26 dated 13.01.2026 regarding wrong classification of imported goods. Rs. 1,23,843 was previously paid. The net payable excluding interest is Rs. 34,62,17,701. The company states it has strong grounds to contest the demand. It is consulting tax experts to file an appeal before CESTAT. The demand will be classified as a contingent liability in the financial statements. The order was received on 24th November 2026.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/RASHI2024_24112026162734_Customs_Order_Intimation.mp3"
+      },
+      "filing_text": "Action(s) taken or orders passed\n\nRashi Peripherals Limited has informed the Exchange that the Company has received communication of order on November 24, 2026, from the office of Commissioner of customs (NS-V), Jawaharlal Nehru Custom House, Nhava Sheva, District Raigad, Maharashtra (order passed date: November 12, 2026) as per the details attached herewith.\n\nRashi Peripherals Limited \nRegd. Office: Ariisto House, 5th Floor, Corner of Telli Galli, Andheri (East), Mumbai, Maharashtra – 400069, India \n• Tel: +91-22-6177 1771 | Fax +91-22-61771999 • www.rptechindia.com • investors@rptechindia.com | CIN: L30007MH1989PLC051039 \n   \n  November 24, 2026 \n        \nTo,  \nListing Operation Department  \nBSE Limited  \nP.J.  Towers, Dalal Street,  \nMumbai – 400001  \n \nScrip Code: 544119 \n \nListing Compliance Department \nThe National Stock Exchange of India Limited \nExchange Plaza, C-1, G Block, Bandra-Kurla Complex, \nBandra (E) Mumbai – 400051  \n \nSymbol: RPTECH \n                                                                                                                                                                                                                                                                                                                                   \nSub.:  Intimation under Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 \n \nDear Sir/Madam, \n \nThis is to inform that the Company has received an order with reference no.  198/2026-27 / COMMR \n/ GR – VA/ NS – V/ CAC / JNCH dated 12th November, 2026 from the office of the Commissioner of \nCustoms ( NS -V), Jawaharlal Nehru Custom House, Nhava Sheva, District Raigad, Maharashtra for \nconfirmation of the demand of customs duty, interest and penalty in proceedings against the Company \nvide Show Cause Notice (SCN No. 1834/2025-26/ Commr/Gr-VA/NS-V/CAC/ JNCH dated 13.01.2026).   \nThe aforesaid order has confirmed the demand by Office of Commissioner of Customs amounting to \nRs. 34,62,17,701/- (Rupees Thirty Four Crores Sixty Two Lakhs Seventeen Thousand Seven Hundred \nOne only) with applicable interest thereon, as following: \n \nDescription  Amount ( Rs.) \nDifferential Duty Demand           17,31,70,772  \nPenalty U/s 114A           17,31,70,772  \n    34,63,41,544  \nDuty paid previously  1,23,843 \nNet payable excluding applicable Interest    34,62,17,701  \n \nThe Company believes it has strong grounds on merits and is consulting tax experts to take \nappropriate steps, including filing an appeal before the appropriate authority, to contest the said \ndemand. \n \nDetails as required under Regulation 30 of the SEBI Listing Regulations and SEBI Master Circular no. \nSEBI/HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026, each as amended is \nenclosed herewith as Annexure A. \n \nYours faithfully, \nFor RASHI PERIPHERALS LIMITED \n \n \nArvind Bajoria \nCompany Secretary and Compliance Officer \n \nEncl.: As above \n\n \n \nRashi Peripherals Limited \nRegd. Office: Ariisto House, 5th Floor, Corner of Telli Galli, Andheri (East), Mumbai, Maharashtra – 400069, India \n• Tel: +91-22-6177 1771 | Fax +91-22-61771999 • www.rptechindia.com • investors@rptechindia.com | CIN: L30007MH1989PLC051039 \n \n       Annexure – A \n \n \n(i) \n \nName of the authority  \n \n \nOffice of the Commissioner of Customs ( NS -\nV), Jawaharlal Nehru Custom House, Nhava \nSheva,  District Raigad,  Maharashtra \n \n \n(ii) \n \nNature and details of the \naction(s) taken or order(s) \npassed \n \nCommissioner of Customs ( NS -V), Jawaharlal \nNehru Custom House, Nhava Sheva,  District \nRaigad,  Maharashtra has passed order towards \nAdjudication of Show Cause Notice (SCN No. \n1834/2025-26/Commr/Gr-VA/NS-V/CAC/ JNCH \ndated 13.01.2026 \n \n \n \n(iii) \n \nDate of receipt of direction or \norder, including any ad-interim \nor interim orders, or any other \ncommunication from the \nauthority \n \n \n24th November, 2026  ( 10:00 Hours ) \n \n \n(iv) \n \nDetails of the \nviolation(s)/contravention(s) \ncommitted or alleged to be \ncommitted; \n \n(SCN No. 1834/2025-26/Commr/Gr-VA/NS-\nV/CAC/ JNCH dated 13.01.2026 alleged that \nCompany had made a wrong classification of \ngoods imported and was liable to pay additional \ncustoms duty ( alongwith penalty and interest ) \nu/s 28(4) of the Customs act ,1962. \n \nThe aforesaid demand has been confirmed as per \nthe order Passed on 12-11-2026.  \n \n \n \n \n(v) \n \nImpact on financial, operation \nor other activities of the listed \nentity, quantifiable in monetary \nterms to the extent possible. \n \n \nDemand of approx. Rs. 34.63 Cr. (including  \npenalty) alongwith applicable interest, against \nthe company has been confirmed, out of which \nRs. 1.24 Lakhs previously paid.  The aforesaid \ndemand will be classified as contingent liability \nin financial statement of the Company. \n \nCompany is in discussion with its tax experts \nregarding filing of appeal before CESTAT, against \nthe aforesaid order, and avail its rights to defend \nitself against the said demand.",
+      "source_id": "NSE:106869685"
+    },
+    {
+      "id": "42f7a2bca28d533430027ffd",
+      "parser_version": 3,
+      "time": "2026-11-24T16:36:19+05:30",
+      "folder": "orders",
+      "subfolder": "big",
+      "symbol": "RMC",
+      "company": "RMC Switchgears Limited",
+      "title": "Press Release",
+      "price": 163.61,
+      "change_pct": -5.1261215,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "RMC Switchgears Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "RMC",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Rmc Switchgears Limited has informed the Exchange regarding a press release dated November 24, 2026, titled \"Disclosure pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015   Press Release titled  RMC Switchgears receives Letter of Intent for an estimated &#8377;521.84 crore turnkey distribution-infrastructure package in Maharashtra  \".",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "₹521.84 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Big (₹100 crore or more)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "24-Nov-2026 16:16:01",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 3 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "RMC.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/RMC.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-24T16:36:19+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹163.61",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹1,731,299,712.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹173.13 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": "8.50",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "1.22",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹19.25",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹3,687,493,376.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹530.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹162.35",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Electrical Equipment & Parts",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "301.4152%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "₹521.84 crore; ₹521.84 crore; ₹521.84 crore; ₹521.84 crore",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "+91 141 4400222  \n        www.rmcindia.in        \nadmin@rmcindia.in \n                   CIN : L25111RJ1994PLC008698  \n      Corp. Office : B-11 (B&C), Malviya Industrial Area, Jaipur-302017 (Rajasthan)  \n     Regd. Office & Factory : Khasra No. 163, 164, Village-Badodiya, Tehsil-Kotkhawada, District- Jaipur,Rajasthan-303908  \n \n \n \nDate: 24.11.2026  \n \nTo  \nSr. General Manager \nDepartment of Corporate Services \nBSE Limited  \nPhiroze Jeejeebhoy Towers  \nDalal Street Mumbai - 400001  \nScrip Code: 540358  \nTo  \nSr. General Manager \nListing Department  \nNational Stock Exchange of India Limited  \nExchange Plaza, C-1, Block G  \nBandra Kurla Complex Bandra (E),  \nMumbai - 400 051  \nSymbol: RMC \n \nSubject: - Disclosure pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015 – Press Release \ntitled “RMC Switchgears receives Letter of Intent for an estimated ₹521.84 crore turnkey distribution-\ninfrastructure package in Maharashtra”  \n  \nDear Sir/Madam,  \n \nPursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, \n2015, we are pleased to inform that the Company is submitting herewith the Press Release titled “RMC \nSwitchgears receives Letter of Intent for an estimated ₹521.84 crore turnkey distribution-infrastructure \npackage in Maharashtra. \n  \nPlease consider this information as relevant disclosure pursuant to Regulation 30 and other applicable \nprovisions of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.  \n \nYou are requested to kindly take the same on record and acknowledge.   \n \nThanking You \n \nFor and on behalf of \nRMC Switchgears Limited \n \n \n \nShivani Bairathi \nCompliance Officer & Company Secretary  \nACS-42636 \n \n \nEnclosed: As above \n \n \n \n \n\n         +91 141 4400222  \n        www.rmcindia.in        \nadmin@rmcindia.in \n                   CIN : L25111RJ1994PLC008698  \n      Corp. Office : B-11 (B&C), Malviya Industrial Area, Jaipur-302017 (Rajasthan)  \n     Regd. Office & Factory : Khasra No. 163, 164, Village-Badodiya, Tehsil-Kotkhawada, District- Jaipur,Rajasthan-303908  \n \n \nFOR IMMEDIATE RELEASE \nRMC Switchgears receives Letter of Intent for an estimated ₹521.84 crore turnkey distribution-\ninfrastructure package in Maharashtra  \n \nThe proposed work package covers substations, transformers, HT lines and allied infrastructure \nunder an ADB-funded programme \n \nJaipur, 24 November 2026: RMC Switchgears Limited (NSE: RMC; BSE: 540358), a power \ninfrastructure, engineering and EPC solutions company, has received a Letter of Intent for the \ndevelopment of distribution infrastructure and system strengthening works, covering the construction \nof new substations, augmentation of existing substations, additional power transformers, HT lines and \nallied works. \n \nThe package includes the supply, testing, transportation, construction, erection, testing and \ncommissioning of new substations; augmentation of existing substations; additional power \ntransformers; HT lines; and other allied distribution works. It also includes the associated civil works, \nplant and equipment, installation and performance-guarantee responsibilities. \n \nThe estimated basic order cost is ₹521.84 crore.  \n \nMr. Ankit Agarwal, CEO & Whole-time Director, RMC Switchgears Limited, said: \n \n“This is a significant opportunity for RMC to demonstrate its end-to-end execution capability on a complex, \nutility-grade distribution-infrastructure programme. The ADR package spans the full project lifecycle - \nfrom civil works and equipment supply through installation, commissioning and performance assurance - \nand reinforces our ability to deliver integrated electrical EPC solutions at scale. \n \n“The engagement further builds on our experience in Maharashtra and strengthens our credentials in \nhigh-value distribution infrastructure. We remain focused on disciplined execution, rigorous project \ncontrols and delivering dependable outcomes for the utility ecosystem.” \n \nThe engagement is expected to strengthen RMC’s electrical EPC execution pipeline and expand its \nparticipation in India’s distribution-network modernisation opportunity. It also builds on the \nCompany’s existing experience of distribution infrastructure work in Jalna and Satara. \n \nAbout RMC Switchgears Limited \n \nRMC Switchgears Limited (NSE: RMC; BSE: 540358) is a Jaipur-based power infrastructure and \nelectrical-engineering company with over three decades of experience. The Company delivers \nintegrated solutions across electrical products, power-distribution and transmission EPC, solar EPC and \nsmart-grid infrastructure, combining manufacturing, engineering, project execution and O&M \ncapabilities. Its portfolio includes smart-meter enclosures, feeder pillars, distribution boxes, electrical  \npanels and the IS 14772-certified PulseBox™ smart LT distribution box. RMC serves state utilities, \nDISCOMs, PSUs, AMISPs and EPC partners, supporting the modernisation, reliability and sustainability  \n\n         +91 141 4400222  \n        www.rmcindia.in        \nadmin@rmcindia.in \n                   CIN : L25111RJ1994PLC008698  \n      Corp. Office : B-11 (B&C), Malviya Industrial Area, Jaipur-302017 (Rajasthan)  \n     Regd. Office & Factory : Khasra No. 163, 164, Village-Badodiya, Tehsil-Kotkhawada, District- Jaipur,Rajasthan-303908  \n \n \nof India’s power networks. \n \nForward-looking statement \n \nCertain statements in this release may be forward-looking in nature, including statements relating to \nthe proposed project’s acceptance, execution, timing and financial impact. Actual outcomes may differ \ndue to contractual terms, approvals, project conditions, execution risks and other factors beyond the \nCompany’s control. \n \n \n enquiry@dickensonworld.com \n www.dickensonworld.com \n \nFor more information, please contact: \nRMC Switchgears Limited \n \nMrs. Shivani Bairathi \nCompany Secretary and Compliance Officer \ncs@rmcindia.in \n \nDickenson World \nMr. Manoj Saha \nDirector \nmanoj.saha@dickensonworld.com \n \nSafe Harbor \nThis communication is a business update and may include forward-looking statements based on \nmanagement’s current views and assumptions. Actual results may differ materially due to risks and \nuncertainties, including changes in regulations, market conditions, procurement frameworks, and \nexecution-related factors.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "24-Nov-2026 16:16:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "823.60 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/RMC_24112026161505_PRESS_RELEASE_24112026.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Rmc Switchgears Limited has informed the Exchange regarding a press release dated November 24, 2026, titled \"Disclosure pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015   Press Release titled  RMC Switchgears receives Letter of Intent for an estimated &#8377;521.84 crore turnkey distribution-infrastructure package in Maharashtra  \".",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Press Release",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "24112026161601",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "24-Nov-2026 16:16:02",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "823.60 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106869675",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE655V01019",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "RMC Switchgears Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-24 16:16:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "RMC",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "RMC Switchgears Limited received a Letter of Intent for an estimated 521.84 crore turnkey distribution infrastructure package in Maharashtra. The project is funded by the Asian Development Bank. It covers the supply, testing, transportation, construction, erection, testing, and commissioning of new substations. The scope includes augmentation of existing substations, additional power transformers, high tension lines, and allied works. The company stated the engagement builds on its experience in Jalna and Satara. The release notes that actual outcomes may differ due to contractual terms, approvals, and execution risks. This disclosure is pursuant to Regulation 30 of the SEBI LODR Regulations, 2015. The announcement was dated 24 November 2026.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/RMC_24112026161505_PRESS_RELEASE_24112026.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/RMC_24112026161505_PRESS_RELEASE_24112026.pdf",
+      "source_data": {
+        "an_dt": "24-Nov-2026 16:16:01",
+        "attFilePath": null,
+        "attFileSize": "823.60 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/RMC_24112026161505_PRESS_RELEASE_24112026.pdf",
+        "attchmntText": "Rmc Switchgears Limited has informed the Exchange regarding a press release dated November 24, 2026, titled \"Disclosure pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015   Press Release titled  RMC Switchgears receives Letter of Intent for an estimated &#8377;521.84 crore turnkey distribution-infrastructure package in Maharashtra  \".",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Press Release",
+        "difference": "00:00:01",
+        "dt": "24112026161601",
+        "exchdisstime": "24-Nov-2026 16:16:02",
+        "fileSize": "823.60 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106869675",
+        "smIndustry": null,
+        "sm_isin": "INE655V01019",
+        "sm_name": "RMC Switchgears Limited",
+        "sort_date": "2026-11-24 16:16:01",
+        "symbol": "RMC",
+        "voiceSummary": "RMC Switchgears Limited received a Letter of Intent for an estimated 521.84 crore turnkey distribution infrastructure package in Maharashtra. The project is funded by the Asian Development Bank. It covers the supply, testing, transportation, construction, erection, testing, and commissioning of new substations. The scope includes augmentation of existing substations, additional power transformers, high tension lines, and allied works. The company stated the engagement builds on its experience in Jalna and Satara. The release notes that actual outcomes may differ due to contractual terms, approvals, and execution risks. This disclosure is pursuant to Regulation 30 of the SEBI LODR Regulations, 2015. The announcement was dated 24 November 2026.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/RMC_24112026161505_PRESS_RELEASE_24112026.mp3"
+      },
+      "filing_text": "Press Release\n\nRmc Switchgears Limited has informed the Exchange regarding a press release dated November 24, 2026, titled \"Disclosure pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015   Press Release titled  RMC Switchgears receives Letter of Intent for an estimated &#8377;521.84 crore turnkey distribution-infrastructure package in Maharashtra  \".\n\n+91 141 4400222  \n        www.rmcindia.in        \nadmin@rmcindia.in \n                   CIN : L25111RJ1994PLC008698  \n      Corp. Office : B-11 (B&C), Malviya Industrial Area, Jaipur-302017 (Rajasthan)  \n     Regd. Office & Factory : Khasra No. 163, 164, Village-Badodiya, Tehsil-Kotkhawada, District- Jaipur,Rajasthan-303908  \n \n \n \nDate: 24.11.2026  \n \nTo  \nSr. General Manager \nDepartment of Corporate Services \nBSE Limited  \nPhiroze Jeejeebhoy Towers  \nDalal Street Mumbai - 400001  \nScrip Code: 540358  \nTo  \nSr. General Manager \nListing Department  \nNational Stock Exchange of India Limited  \nExchange Plaza, C-1, Block G  \nBandra Kurla Complex Bandra (E),  \nMumbai - 400 051  \nSymbol: RMC \n \nSubject: - Disclosure pursuant to Regulation 30 of the SEBI (LODR) Regulations, 2015 – Press Release \ntitled “RMC Switchgears receives Letter of Intent for an estimated ₹521.84 crore turnkey distribution-\ninfrastructure package in Maharashtra”  \n  \nDear Sir/Madam,  \n \nPursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, \n2015, we are pleased to inform that the Company is submitting herewith the Press Release titled “RMC \nSwitchgears receives Letter of Intent for an estimated ₹521.84 crore turnkey distribution-infrastructure \npackage in Maharashtra. \n  \nPlease consider this information as relevant disclosure pursuant to Regulation 30 and other applicable \nprovisions of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.  \n \nYou are requested to kindly take the same on record and acknowledge.   \n \nThanking You \n \nFor and on behalf of \nRMC Switchgears Limited \n \n \n \nShivani Bairathi \nCompliance Officer & Company Secretary  \nACS-42636 \n \n \nEnclosed: As above \n \n \n \n \n\n         +91 141 4400222  \n        www.rmcindia.in        \nadmin@rmcindia.in \n                   CIN : L25111RJ1994PLC008698  \n      Corp. Office : B-11 (B&C), Malviya Industrial Area, Jaipur-302017 (Rajasthan)  \n     Regd. Office & Factory : Khasra No. 163, 164, Village-Badodiya, Tehsil-Kotkhawada, District- Jaipur,Rajasthan-303908  \n \n \nFOR IMMEDIATE RELEASE \nRMC Switchgears receives Letter of Intent for an estimated ₹521.84 crore turnkey distribution-\ninfrastructure package in Maharashtra  \n \nThe proposed work package covers substations, transformers, HT lines and allied infrastructure \nunder an ADB-funded programme \n \nJaipur, 24 November 2026: RMC Switchgears Limited (NSE: RMC; BSE: 540358), a power \ninfrastructure, engineering and EPC solutions company, has received a Letter of Intent for the \ndevelopment of distribution infrastructure and system strengthening works, covering the construction \nof new substations, augmentation of existing substations, additional power transformers, HT lines and \nallied works. \n \nThe package includes the supply, testing, transportation, construction, erection, testing and \ncommissioning of new substations; augmentation of existing substations; additional power \ntransformers; HT lines; and other allied distribution works. It also includes the associated civil works, \nplant and equipment, installation and performance-guarantee responsibilities. \n \nThe estimated basic order cost is ₹521.84 crore.  \n \nMr. Ankit Agarwal, CEO & Whole-time Director, RMC Switchgears Limited, said: \n \n“This is a significant opportunity for RMC to demonstrate its end-to-end execution capability on a complex, \nutility-grade distribution-infrastructure programme. The ADR package spans the full project lifecycle - \nfrom civil works and equipment supply through installation, commissioning and performance assurance - \nand reinforces our ability to deliver integrated electrical EPC solutions at scale. \n \n“The engagement further builds on our experience in Maharashtra and strengthens our credentials in \nhigh-value distribution infrastructure. We remain focused on disciplined execution, rigorous project \ncontrols and delivering dependable outcomes for the utility ecosystem.” \n \nThe engagement is expected to strengthen RMC’s electrical EPC execution pipeline and expand its \nparticipation in India’s distribution-network modernisation opportunity. It also builds on the \nCompany’s existing experience of distribution infrastructure work in Jalna and Satara. \n \nAbout RMC Switchgears Limited \n \nRMC Switchgears Limited (NSE: RMC; BSE: 540358) is a Jaipur-based power infrastructure and \nelectrical-engineering company with over three decades of experience. The Company delivers \nintegrated solutions across electrical products, power-distribution and transmission EPC, solar EPC and \nsmart-grid infrastructure, combining manufacturing, engineering, project execution and O&M \ncapabilities. Its portfolio includes smart-meter enclosures, feeder pillars, distribution boxes, electrical  \npanels and the IS 14772-certified PulseBox™ smart LT distribution box. RMC serves state utilities, \nDISCOMs, PSUs, AMISPs and EPC partners, supporting the modernisation, reliability and sustainability  \n\n         +91 141 4400222  \n        www.rmcindia.in        \nadmin@rmcindia.in \n                   CIN : L25111RJ1994PLC008698  \n      Corp. Office : B-11 (B&C), Malviya Industrial Area, Jaipur-302017 (Rajasthan)  \n     Regd. Office & Factory : Khasra No. 163, 164, Village-Badodiya, Tehsil-Kotkhawada, District- Jaipur,Rajasthan-303908  \n \n \nof India’s power networks. \n \nForward-looking statement \n \nCertain statements in this release may be forward-looking in nature, including statements relating to \nthe proposed project’s acceptance, execution, timing and financial impact. Actual outcomes may differ \ndue to contractual terms, approvals, project conditions, execution risks and other factors beyond the \nCompany’s control. \n \n \n enquiry@dickensonworld.com \n www.dickensonworld.com \n \nFor more information, please contact: \nRMC Switchgears Limited \n \nMrs. Shivani Bairathi \nCompany Secretary and Compliance Officer \ncs@rmcindia.in \n \nDickenson World \nMr. Manoj Saha \nDirector \nmanoj.saha@dickensonworld.com \n \nSafe Harbor \nThis communication is a business update and may include forward-looking statements based on \nmanagement’s current views and assumptions. Actual results may differ materially due to risks and \nuncertainties, including changes in regulations, market conditions, procurement frameworks, and \nexecution-related factors.",
+      "source_id": "NSE:106869675"
     }
   ]
 }
