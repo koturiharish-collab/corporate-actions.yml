@@ -1,4 +1,70 @@
+
 {
-  "updated": "",
-  "results": []
+  "updated": "2026-11-24T16:13:46.561543+05:30",
+  "results": [
+    {
+      "symbol": "SFCTECH",
+      "company": "SFC Environmental Technologies Limited",
+      "period": "Q2 FY2026-27",
+      "published_at": "2026-11-23",
+      "source": "NSE",
+      "subject": "Outcome of Board Meeting held on November 23, 2026",
+      "details": "Approval of unaudited standalone and consolidated financial results for the quarter and half year ended September 30, 2026.",
+      "source_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+      "attachment_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+      "result_scope": "Standalone and Consolidated",
+      "financials_by_scope": {
+        "standalone": {
+          "revenue": 998.51,
+          "net_profit": 50.78,
+          "eps": 0.57,
+          "previous_year_revenue": 527.88,
+          "previous_year_net_profit": -3.55,
+          "previous_year_eps": -0.01,
+          "revenue_yoy": 89.15,
+          "net_profit_yoy": null,
+          "eps_yoy": null,
+          "net_margin": 5.09,
+          "profit_turnaround": true
+        },
+        "consolidated": {
+          "revenue": 1627.28,
+          "net_profit": 22.65,
+          "eps": 0.24,
+          "previous_year_revenue": 965.95,
+          "previous_year_net_profit": -2.36,
+          "previous_year_eps": -0.03,
+          "revenue_yoy": 68.46,
+          "net_profit_yoy": null,
+          "eps_yoy": null,
+          "net_margin": 1.39,
+          "profit_turnaround": true
+        }
+      },
+      "financials": {
+        "revenue": 1627.28,
+        "net_profit": 22.65,
+        "eps": 0.24,
+        "previous_year_revenue": 965.95,
+        "previous_year_net_profit": -2.36,
+        "previous_year_eps": -0.03,
+        "revenue_yoy": 68.46,
+        "net_margin": 1.39,
+        "profit_turnaround": true
+      },
+      "expectations": {},
+      "data_status": "Standalone and consolidated Q2 figures visually verified against official NSE PDF pages 4 and 13",
+      "financial_units": "INR millions",
+      "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+      "telegram_notified": false,
+      "primary_scope": "consolidated",
+      "ratings_by_scope": {
+        "standalone": "Excellent",
+        "consolidated": "Excellent"
+      },
+      "rating": "Excellent",
+      "expectations_rating": "Not Available",
+      "processed_at": "2026-11-24T16:13:46.561518+05:30"
+    }
+  ]
 }
