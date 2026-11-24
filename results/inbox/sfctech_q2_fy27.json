@@ -11,6 +11,19 @@
       "source_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
       "attachment_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
       "financials": {},
+      "financials_by_scope": {
+        "standalone": {
+          "revenue": 998.51,
+          "net_profit": 50.78,
+          "eps": 0.57,
+          "previous_year_revenue": 527.88,
+          "previous_year_net_profit": -3.55,
+          "previous_year_eps": -0.01
+        },
+        "consolidated": {}
+      },
+      "financial_units": "INR millions",
+      "data_status": "Standalone Q2 figures extracted from official NSE filing; consolidated figures pending verification",
       "expectations": {}
     }
   ]
