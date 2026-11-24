@@ -1,129 +1,115 @@
 
-"""
-Share Sanket - Results Scanner
-Processes verified company financial-result announcements.
-
-Input:
-    results/source_announcements.json
-
-Outputs:
-    results/alerts.json
-    results/history.json
-    results/calendar.json
-
-Telegram:
-    RESULTS_TELEGRAM_BOT_TOKEN
-    RESULTS_TELEGRAM_CHAT_ID
-
-Important:
-    This version processes a normalized source file.
-    It does not scrape NSE/BSE directly. A verified and permitted
-    official-data source adapter will be connected separately.
-"""
-
 import json
 import os
-import hashlib
-from datetime import datetime, timezone
+import tempfile
+from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
+from zoneinfo import ZoneInfo
 
 import requests
 
-
 BASE_DIR = Path(__file__).resolve().parent
-
 SOURCE_FILE = BASE_DIR / "source_announcements.json"
 ALERTS_FILE = BASE_DIR / "alerts.json"
 HISTORY_FILE = BASE_DIR / "history.json"
 CALENDAR_FILE = BASE_DIR / "calendar.json"
 
+IST = ZoneInfo("Asia/Kolkata")
+
 BOT_TOKEN = os.getenv("RESULTS_TELEGRAM_BOT_TOKEN", "")
 CHAT_ID = os.getenv("RESULTS_TELEGRAM_CHAT_ID", "")
 
-IST = timezone.utc
+RATINGS = [
+    "Stellar",
+    "Excellent",
+    "Strong",
+    "Average",
+    "Weak",
+    "Disappointing",
+    "Insufficient Data",
+]
 
 
-def now_iso():
+def now_ist():
     return datetime.now(IST).isoformat()
 
 
 def load_json(path, default):
-    if not path.exists():
-        return default
-
     try:
-        with path.open("r", encoding="utf-8") as file:
+        with open(path, "r", encoding="utf-8") as file:
             return json.load(file)
-    except (json.JSONDecodeError, OSError) as exc:
-        raise RuntimeError(f"Cannot safely read {path.name}: {exc}")
+    except (FileNotFoundError, json.JSONDecodeError):
+        return default
 
 
 def save_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
 
-    temp_path = path.with_suffix(path.suffix + ".tmp")
+    with tempfile.NamedTemporaryFile(
+        "w",
+        encoding="utf-8",
+        dir=path.parent,
+        delete=False
+    ) as temp:
+        json.dump(data, temp, indent=2, ensure_ascii=False)
+        temp.write("\n")
+        temp_path = temp.name
 
-    with temp_path.open("w", encoding="utf-8") as file:
-        json.dump(data, file, indent=2, ensure_ascii=False)
-
-    temp_path.replace(path)
-
-
-def make_id(item):
-    identity = "|".join([
-        str(item.get("symbol", "")).upper().strip(),
-        str(item.get("period", "")).strip(),
-        str(item.get("published_at", "")).strip(),
-        str(item.get("source_url", "")).strip(),
-    ])
-
-    return hashlib.sha256(identity.encode("utf-8")).hexdigest()[:20]
+    os.replace(temp_path, path)
 
 
 def valid_announcement(item):
-    required = [
-        "symbol",
-        "company",
-        "period",
-        "published_at",
-        "source",
-        "source_url",
-    ]
-
     if not isinstance(item, dict):
         return False
 
-    if any(not str(item.get(key, "")).strip() for key in required):
+    required = ["symbol", "company", "subject", "source_url"]
+
+    if not all(item.get(key) for key in required):
         return False
 
-    url = str(item["source_url"]).strip()
+    try:
+        parsed = urlparse(item["source_url"])
+        if parsed.scheme != "https" or not parsed.hostname:
+            return False
+    except Exception:
+        return False
 
-    return url.startswith("https://")
+    return True
 
 
-def number_or_none(value):
+def number(value):
     if value is None or value == "":
         return None
 
     try:
-        return float(value)
-    except (TypeError, ValueError):
+        result = float(str(value).replace(",", "").replace("₹", "").strip())
+        return result if result == result and abs(result) != float("inf") else None
+    except (ValueError, TypeError):
         return None
 
 
-def calculate_growth(current, previous):
-    current = number_or_none(current)
-    previous = number_or_none(previous)
+def get_growth(current, previous):
+    current = number(current)
+    previous = number(previous)
 
     if current is None or previous is None or previous == 0:
+        return None
+
+    # A percentage growth figure is misleading when the previous
+    # period was a loss. Handle this as a turnaround instead.
+    if previous < 0 <= current:
+        return None
+
+    if previous < 0 and current < 0:
         return None
 
     return round(((current - previous) / abs(previous)) * 100, 2)
 
 
 def calculate_margin(profit, revenue):
-    profit = number_or_none(profit)
-    revenue = number_or_none(revenue)
+    profit = number(profit)
+    revenue = number(revenue)
 
     if profit is None or revenue in (None, 0):
         return None
@@ -132,244 +118,324 @@ def calculate_margin(profit, revenue):
 
 
 def enrich_financials(item):
-    financials = item.get("financials", {})
+    financials = item.get("financials")
+    if not isinstance(financials, dict):
+        financials = {}
 
-    revenue = number_or_none(financials.get("revenue"))
-    net_profit = number_or_none(financials.get("net_profit"))
-    operating_profit = number_or_none(
-        financials.get("operating_profit")
+    item["financials"] = financials
+
+    revenue = number(financials.get("revenue"))
+    previous_revenue = number(financials.get("revenue_previous"))
+
+    net_profit = number(financials.get("net_profit"))
+    previous_net_profit = number(financials.get("net_profit_previous"))
+
+    operating_profit = number(financials.get("operating_profit"))
+    eps = number(financials.get("eps"))
+    previous_eps = number(financials.get("eps_previous"))
+
+    financials["revenue_yoy"] = get_growth(
+        revenue, previous_revenue
     )
 
-    financials["net_profit_margin"] = calculate_margin(
+    financials["net_profit_yoy"] = get_growth(
+        net_profit, previous_net_profit
+    )
+
+    financials["eps_yoy"] = get_growth(
+        eps, previous_eps
+    )
+
+    financials["net_margin"] = calculate_margin(
         net_profit, revenue
     )
 
-    financials["operating_profit_margin"] = calculate_margin(
+    financials["operating_margin"] = calculate_margin(
         operating_profit, revenue
     )
 
-    financials["revenue_yoy_growth"] = calculate_growth(
-        financials.get("revenue"),
-        financials.get("previous_year_revenue"),
+    financials["profit_turnaround"] = (
+        previous_net_profit is not None
+        and previous_net_profit < 0
+        and net_profit is not None
+        and net_profit > 0
     )
 
-    financials["net_profit_yoy_growth"] = calculate_growth(
-        financials.get("net_profit"),
-        financials.get("previous_year_net_profit"),
+    financials["revenue_growth_available"] = (
+        financials["revenue_yoy"] is not None
     )
 
-    financials["eps_yoy_growth"] = calculate_growth(
-        financials.get("eps"),
-        financials.get("previous_year_eps"),
-    )
-
-    item["financials"] = financials
     return item
 
 
 def assess_results(item):
-    """
-    Conservative descriptive assessment.
-    This is not investment advice or a buy/sell signal.
-    """
-
     financials = item.get("financials", {})
 
-    revenue_growth = number_or_none(
-        financials.get("revenue_yoy_growth")
-    )
-    profit_growth = number_or_none(
-        financials.get("net_profit_yoy_growth")
-    )
-    eps_growth = number_or_none(
-        financials.get("eps_yoy_growth")
-    )
+    if not isinstance(financials, dict):
+        return "Insufficient Data"
 
-    values = [
-        value for value in
-        [revenue_growth, profit_growth, eps_growth]
-        if value is not None
-    ]
+    metrics = []
 
-    if len(values) < 2:
-        return "Insufficient data"
+    revenue_growth = financials.get("revenue_yoy")
+    profit_growth = financials.get("net_profit_yoy")
+    eps_growth = financials.get("eps_yoy")
 
-    positive = sum(value > 0 for value in values)
-    negative = sum(value < 0 for value in values)
+    for value in [revenue_growth, profit_growth, eps_growth]:
+        if isinstance(value, (int, float)):
+            metrics.append(value)
 
-    if positive == len(values):
-        if all(value >= 20 for value in values):
-            return "Stellar"
-        if all(value >= 10 for value in values):
-            return "Excellent"
+    turnaround = financials.get("profit_turnaround", False)
+
+    # Do not rate an announcement using missing or unverified figures.
+    if len(metrics) < 2 and not turnaround:
+        return "Insufficient Data"
+
+    score = 0
+
+    for value in metrics:
+        if value >= 25:
+            score += 2
+        elif value >= 5:
+            score += 1
+        elif value <= -25:
+            score -= 2
+        elif value < 0:
+            score -= 1
+
+    if turnaround:
+        score += 2
+
+    net_margin = number(financials.get("net_margin"))
+    operating_margin = number(financials.get("operating_margin"))
+
+    if net_margin is not None and net_margin < 0:
+        score -= 1
+
+    if operating_margin is not None and operating_margin < 0:
+        score -= 1
+
+    if len(metrics) >= 3 and score >= 6:
+        return "Stellar"
+
+    if score >= 4:
+        return "Excellent"
+
+    if score >= 2:
         return "Strong"
 
-    if negative == len(values):
-        return "Weak"
+    if score >= 0:
+        return "Average"
 
-    if positive > negative:
-        return "Mixed - improving"
+    if score <= -4:
+        return "Disappointing"
 
-    if negative > positive:
-        return "Mixed - weakening"
-
-    return "Mixed"
+    return "Weak"
 
 
 def assess_expectations(item):
-    """
-    Only compare when a genuine analyst-consensus estimate
-    and its source are supplied.
-    """
-
     expectations = item.get("expectations", {})
 
+    if not isinstance(expectations, dict):
+        return "Not Available"
+
     source = expectations.get("source")
-    estimate = number_or_none(expectations.get("net_profit"))
-    actual = number_or_none(
-        item.get("financials", {}).get("net_profit")
-    )
+    estimate = number(expectations.get("estimate"))
+    actual = number(expectations.get("actual"))
+    analyst_count = number(expectations.get("analyst_count"))
+    estimate_date = expectations.get("estimate_date")
 
-    if not source or estimate is None or actual is None:
+    if not all([source, estimate_date]):
         return "Not Available"
 
-    if estimate == 0:
+    if estimate is None or actual is None:
         return "Not Available"
 
-    difference = ((actual - estimate) / abs(estimate)) * 100
+    if analyst_count is None or analyst_count <= 0:
+        return "Not Available"
 
-    if difference > 2:
+    if actual > estimate:
         return "Beat Estimates"
 
-    if difference < -2:
+    if actual < estimate:
         return "Missed Estimates"
 
     return "In-line"
 
 
+def stable_id(item):
+    if item.get("id"):
+        return str(item["id"])
+
+    return "|".join([
+        str(item.get("symbol", "")),
+        str(item.get("period", "")),
+        str(item.get("published_at", "")),
+        str(item.get("source_url", "")),
+    ])
+
+
 def send_telegram(item):
     if not BOT_TOKEN or not CHAT_ID:
-        print("Telegram secrets not configured; skipping message.")
+        print("Telegram secrets not configured. Notification skipped.")
         return False
 
     financials = item.get("financials", {})
 
     message = (
-        "📊 SHARE SANKET — RESULTS\n\n"
-        f"🏢 {item['company']} ({item['symbol']})\n"
-        f"📅 Period: {item['period']}\n"
-        f"⭐ Assessment: {item.get('assessment', 'Not Available')}\n"
-        f"📈 Expectations: {item.get('expectation_status', 'Not Available')}\n\n"
-        f"Revenue: {financials.get('revenue', 'N/A')}\n"
-        f"Net Profit: {financials.get('net_profit', 'N/A')}\n"
-        f"EPS: {financials.get('eps', 'N/A')}\n"
-        f"Operating Margin: "
-        f"{financials.get('operating_profit_margin', 'N/A')}%\n"
-        f"Net Profit Margin: "
-        f"{financials.get('net_profit_margin', 'N/A')}%\n\n"
-        f"Source: {item['source']}\n"
-        f"{item['source_url']}\n\n"
-        "Information only. Not investment advice."
+        "📊 SHARE SANKET - RESULTS\n\n"
+        f"Company: {item.get('company', 'N/A')}\n"
+        f"Symbol: {item.get('symbol', 'N/A')}\n"
+        f"Period: {item.get('period', 'N/A')}\n"
+        f"Rating: {item.get('rating', 'Insufficient Data')}\n"
+        f"Expectations: {item.get('expectations_rating', 'Not Available')}\n"
+        f"Revenue: {financials.get('revenue', 'Not Available')}\n"
+        f"Net Profit: {financials.get('net_profit', 'Not Available')}\n"
+        f"EPS: {financials.get('eps', 'Not Available')}\n\n"
+        f"Source: {item.get('source', 'N/A')}\n"
+        f"{item.get('source_url', '')}\n\n"
+        "For information only. Not investment advice."
     )
 
-    response = requests.post(
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
-        json={
-            "chat_id": CHAT_ID,
-            "text": message,
-            "disable_web_page_preview": True,
-        },
-        timeout=20,
-    )
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
-    response.raise_for_status()
+    try:
+        response = requests.post(
+            url,
+            json={
+                "chat_id": CHAT_ID,
+                "text": message,
+                "disable_web_page_preview": True,
+            },
+            timeout=20,
+        )
+        response.raise_for_status()
 
-    result = response.json()
+        result = response.json()
+        if not result.get("ok"):
+            print("Telegram API did not confirm message delivery.")
+            return False
 
-    if not result.get("ok"):
-        raise RuntimeError("Telegram rejected the message.")
+        return True
 
-    return True
+    except requests.RequestException as error:
+        print(f"Telegram notification failed: {error}")
+        return False
 
 
 def main():
-    source = load_json(SOURCE_FILE, {"announcements": []})
+    source_data = load_json(SOURCE_FILE, {"announcements": []})
+    alerts_data = load_json(ALERTS_FILE, {"updated": "", "alerts": []})
+    history_data = load_json(HISTORY_FILE, {"updated": "", "results": []})
+    calendar_data = load_json(CALENDAR_FILE, {"updated": "", "calendar": []})
 
-    if not isinstance(source.get("announcements"), list):
-        raise RuntimeError("Invalid source_announcements.json format.")
+    announcements = source_data.get("announcements", [])
 
-    alerts = load_json(ALERTS_FILE, {
-        "updated": "",
-        "alerts": [],
-    })
+    if not isinstance(announcements, list):
+        print("Invalid announcements format.")
+        return
 
-    history = load_json(HISTORY_FILE, {
-        "updated": "",
-        "results": [],
-    })
+    alerts = alerts_data.get("alerts", [])
+    history = history_data.get("results", [])
+    calendar = calendar_data.get("calendar", [])
 
-    calendar = load_json(CALENDAR_FILE, {
-        "updated": "",
-        "calendar": [],
-    })
+    if not isinstance(alerts, list):
+        alerts = []
+    if not isinstance(history, list):
+        history = []
+    if not isinstance(calendar, list):
+        calendar = []
 
-    existing_ids = {
-        item.get("id")
-        for item in alerts.get("alerts", [])
-        if item.get("id")
-    }
+    old_alerts = {stable_id(item): item for item in alerts}
+    old_history = {stable_id(item): item for item in history}
+    old_calendar = {stable_id(item): item for item in calendar}
 
-    new_count = 0
+    processed = 0
 
-    for original in source["announcements"]:
+    for original in announcements:
         if not valid_announcement(original):
             print("Skipping invalid announcement.")
             continue
 
         item = dict(original)
-        item["id"] = make_id(item)
+        item["id"] = stable_id(item)
 
-        if item["id"] in existing_ids:
-            continue
+        previous_record = old_alerts.get(item["id"], {})
+        was_known = bool(previous_record)
 
         item = enrich_financials(item)
-        item["assessment"] = assess_results(item)
-        item["expectation_status"] = assess_expectations(item)
-        item["processed_at"] = now_iso()
+        item["rating"] = assess_results(item)
+        item["expectations_rating"] = assess_expectations(item)
 
-        alerts["alerts"].append(item)
-        history["results"].append(item)
+        item["data_status"] = item.get(
+            "data_status",
+            "Announcement detected - figures not verified"
+        )
 
-        calendar["calendar"].append({
+        item["processed_at"] = now_ist()
+
+        # Preserve notification status when refreshing an existing record.
+        item["telegram_notified"] = previous_record.get(
+            "telegram_notified", False
+        )
+
+        old_alerts[item["id"]] = item
+        old_history[item["id"]] = item
+
+        # Keep the calendar record for the announcement.
+        old_calendar[item["id"]] = {
             "id": item["id"],
-            "symbol": item["symbol"],
-            "company": item["company"],
-            "period": item["period"],
-            "published_at": item["published_at"],
-            "source_url": item["source_url"],
+            "symbol": item.get("symbol"),
+            "company": item.get("company"),
+            "period": item.get("period"),
+            "published_at": item.get("published_at"),
+            "source": item.get("source"),
+            "source_url": item.get("source_url"),
             "status": "Announced",
-        })
+        }
 
-        existing_ids.add(item["id"])
-        new_count += 1
+        processed += 1
 
-        try:
-            send_telegram(item)
-        except requests.RequestException as exc:
-            print(f"Telegram delivery failed: {exc}")
+        if not was_known:
+            print(f"New result announcement: {item['symbol']}")
+        else:
+            print(f"Updated result record: {item['symbol']}")
 
-    timestamp = now_iso()
+    final_alerts = list(old_alerts.values())
+    final_history = list(old_history.values())
+    final_calendar = list(old_calendar.values())
 
-    if new_count:
-        alerts["updated"] = timestamp
-        history["updated"] = timestamp
-        calendar["updated"] = timestamp
+    # Save records before sending notifications.
+    # Failed notifications remain unmarked and can be retried next run.
+    timestamp = now_ist()
 
-        save_json(ALERTS_FILE, alerts)
-        save_json(HISTORY_FILE, history)
-        save_json(CALENDAR_FILE, calendar)
+    save_json(ALERTS_FILE, {
+        "updated": timestamp,
+        "alerts": final_alerts,
+    })
 
-    print(f"New results processed: {new_count}")
+    save_json(HISTORY_FILE, {
+        "updated": timestamp,
+        "results": final_history,
+    })
+
+    save_json(CALENDAR_FILE, {
+        "updated": timestamp,
+        "calendar": final_calendar,
+    })
+
+    for item in final_alerts:
+        if not item.get("telegram_notified", False):
+            if send_telegram(item):
+                item["telegram_notified"] = True
+                item["telegram_notified_at"] = now_ist()
+
+    save_json(ALERTS_FILE, {
+        "updated": now_ist(),
+        "alerts": final_alerts,
+    })
+
+    print(f"Announcements processed: {processed}")
+    print(f"Total results in history: {len(final_history)}")
     print("Results scanner completed.")
 
 
