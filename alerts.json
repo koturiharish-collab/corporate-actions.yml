@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-24T02:48:30.725035+05:30",
+  "updated": "2026-11-24T07:57:56.113866+05:30",
   "folders": [
     {
       "id": "emas",
@@ -146,6 +146,123 @@
     }
   ],
   "alerts": [
+    {
+      "id": "ema-golden-cdsl-2026-11-23",
+      "time": "2026-11-24T07:57:56.113866+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "CDSL",
+      "company": "CDSL",
+      "title": "Golden Cross (Daily)",
+      "price": 1395.0,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-23",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 1337.4539,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 1336.9633,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:CDSL"
+    },
+    {
+      "id": "ema-golden-roto-2026-11-23",
+      "time": "2026-11-24T07:57:56.113866+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "ROTO",
+      "company": "ROTO",
+      "title": "Golden Cross (Daily)",
+      "price": 71.3,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-23",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 65.0546,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 64.8945,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:ROTO"
+    },
+    {
+      "id": "ema-golden-tvsscs-2026-11-23",
+      "time": "2026-11-24T07:57:56.113866+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "TVSSCS",
+      "company": "TVSSCS",
+      "title": "Golden Cross (Daily)",
+      "price": 129.77,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-23",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 124.3473,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 124.2583,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:TVSSCS"
+    },
     {
       "id": "ema-death-adffoods-2026-11-20",
       "time": "2026-11-24T02:48:30.725035+05:30",
