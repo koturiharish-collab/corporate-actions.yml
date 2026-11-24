@@ -6,9 +6,11 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: share-sanket-results
+  group: sharesanket-data
   cancel-in-progress: false
 
 jobs:
@@ -126,7 +128,7 @@ jobs:
             echo "No Results JSON changes to publish."
           else
             git commit -m "Publish updated Share Sanket Results data"
-            git push
+            git push origin HEAD:main
             echo "Results JSON files published to repository."
           fi
 
@@ -140,6 +142,17 @@ jobs:
             results/calendar.json
           if-no-files-found: error
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Share Sanket site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publish Share Sanket site
+        uses: actions/deploy-pages@v4
+
       - name: Report validation
         run: |
           echo "Results module validation completed."
@@ -147,6 +160,6 @@ jobs:
           echo "PDF text extraction completed."
           echo "Financial review generated."
           echo "Results Scanner executed."
-          echo "Results JSON files committed when changed."
-          echo "GitHub Pages can serve the published JSON files."
+          echo "Results JSON files published."
+          echo "Share Sanket website deployment completed."
           echo "Financial figures must be verified before publication."
