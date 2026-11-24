@@ -539,6 +539,118 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(fallback); else fallback();
   }
 
+     var resultsFeed = [];
+  var resultsLoading = false;
+  var resultsLoaded = false;
+
+  function loadResultsFeed() {
+    if (resultsLoading || resultsLoaded) return;
+    resultsLoading = true;
+
+    fetch('results/alerts.json', { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('Results file unavailable');
+        return r.json();
+      })
+      .then(function (d) {
+        resultsFeed = Array.isArray(d.alerts) ? d.alerts : [];
+        resultsLoaded = true;
+        resultsLoading = false;
+        if (view.type === 'folder' && view.folder === 'results') render();
+      })
+      .catch(function () {
+        resultsLoading = false;
+      });
+  }
+
+  function renderResults(c) {
+    loadResultsFeed();
+
+    var items = resultsFeed.slice();
+    var q = query.trim().toLowerCase();
+
+    if (q) {
+      items = items.filter(function (a) {
+        return [a.symbol, a.company, a.period, a.rating]
+          .join(' ').toLowerCase().indexOf(q) > -1;
+      });
+    }
+
+    if (!items.length) {
+      c.appendChild(h('div', { class: 'empty' },
+        h('strong', { text: resultsLoading ? 'Loading results...' : 'No results available' }),
+        resultsLoading ? 'Please wait.' : 'Verified company results will appear here.'
+      ));
+      return;
+    }
+
+    items.forEach(function (a) {
+      var scopes = a.financials_by_scope || {};
+      var primary = a.primary_scope || 'consolidated';
+      var f = scopes[primary] || a.financials || {};
+      var rating = (a.ratings_by_scope || {})[primary] || a.rating || 'Insufficient Data';
+
+      var card = h('div', { class: 'doc' });
+
+      card.appendChild(h('span', {
+        class: 'tag f-results',
+        text: String(rating).toUpperCase() + ' RESULTS'
+      }));
+
+      card.appendChild(h('h2', {
+        text: (a.company || a.symbol) + ' · ' + (a.symbol || '')
+      }));
+
+      card.appendChild(h('p', {
+        text: (a.period || '') + ' · ' + primary.toUpperCase() + ' · Published ' + (a.published_at || 'Date unavailable')
+      }));
+
+      var metrics = [
+        ['Revenue', f.revenue],
+        ['Previous-year revenue', f.previous_year_revenue],
+        ['Revenue growth', f.revenue_yoy],
+        ['Net profit', f.net_profit],
+        ['Previous-year net profit', f.previous_year_net_profit],
+        ['EPS', f.eps],
+        ['Net profit margin', f.net_margin],
+        ['Operating margin', f.operating_margin],
+        ['EBITDA', f.ebitda]
+      ];
+
+      var table = h('table');
+      var body = h('tbody');
+
+      metrics.forEach(function (m) {
+        var value = m[1] === null || m[1] === undefined
+          ? 'Not available'
+          : m[1] + (m[0].indexOf('growth') > -1 || m[0].indexOf('margin') > -1 ? '%' : '');
+
+        body.appendChild(h('tr', null,
+          h('td', { text: m[0] }),
+          h('td', { text: value })
+        ));
+      });
+
+      table.appendChild(body);
+      card.appendChild(h('div', { class: 'scroll' }, table));
+
+      card.appendChild(h('p', {
+        text: 'Analyst expectations: ' + (a.expectations_rating || 'Not Available')
+      }));
+
+      if (a.source_url) {
+        card.appendChild(h('a', {
+          class: 'btn',
+          href: a.source_url,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          text: 'Open official filing'
+        }));
+      }
+
+      c.appendChild(card);
+    });
+  }
   function renderContent() {
     var c = document.getElementById('content'); c.textContent = '';
     var list = view.type === 'format' ? [] : currentAlerts();
