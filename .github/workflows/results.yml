@@ -1,0 +1,70 @@
+
+name: Share Sanket - Results Scanner
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: share-sanket-results
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate Results Module
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Validate Results JSON files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          files = {
+              "alerts.json": "alerts",
+              "history.json": "results",
+              "calendar.json": "calendar",
+          }
+
+          for filename, key in files.items():
+              path = Path("results") / filename
+
+              if not path.exists():
+                  raise SystemExit(f"Missing file: {path}")
+
+              with path.open(encoding="utf-8") as f:
+                  data = json.load(f)
+
+              if not isinstance(data.get(key), list):
+                  raise SystemExit(f"Invalid structure: {path}")
+
+              print(f"PASS: {path}")
+
+          PY
+
+      - name: Validate Python syntax
+        run: |
+          python -m py_compile results/results_scanner.py
+          echo "Results scanner syntax is valid."
+
+      - name: Report validation
+        run: |
+          echo "Results module validation completed."
+          echo "No financial data was published."
+          echo "No Telegram message was sent."
