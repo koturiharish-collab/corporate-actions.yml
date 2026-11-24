@@ -1,3 +1,4 @@
+
 {
   "announcements": [
     {
@@ -20,10 +21,17 @@
           "previous_year_net_profit": -3.55,
           "previous_year_eps": -0.01
         },
-        "consolidated": {}
+        "consolidated": {
+          "revenue": 1627.28,
+          "net_profit": 22.65,
+          "eps": 0.24,
+          "previous_year_revenue": 965.95,
+          "previous_year_net_profit": -2.36,
+          "previous_year_eps": -0.03
+        }
       },
       "financial_units": "INR millions",
-      "data_status": "Standalone Q2 figures extracted from official NSE filing; consolidated figures pending verification",
+      "data_status": "Standalone and consolidated Q2 figures visually verified against official NSE PDF pages 4 and 13",
       "expectations": {}
     }
   ]
