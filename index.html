@@ -660,6 +660,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     if (view.type !== 'format') hd.appendChild(h('span', { class: 'n', text: String(list.length) }));
     document.querySelector('.search').hidden = view.type === 'format';
     if (view.type === 'format') { renderDoc(c); return; }
+    if (view.type === 'folder' && view.folder === 'results') { renderResults(c); return; }
     if (data.sample) c.appendChild(h('p', { class: 'note', text: 'Sample data. Replace alerts.json with your own alerts. See "Data format" in the sidebar.' }));
     if (!list.length) {
       var msg = query.trim() ? 'No alerts match your search.' : view.type === 'watch' ? 'Tap the star on any alert to add its stock here.' : 'Add alerts to alerts.json with this folder id and they will appear here.';
