@@ -1,4 +1,19 @@
 
+"""
+Share Sanket - Results Scanner
+
+Features:
+- Processes standalone and consolidated financial results separately.
+- Calculates revenue, profit and EPS growth.
+- Calculates net and operating margins.
+- Generates separate ratings for each reporting scope.
+- Uses consolidated results as the default headline scope.
+- Maintains alerts, history and results calendar.
+- Sends Telegram notifications when configured.
+- Preserves existing records and notification status.
+- Does not invent analyst estimates or financial figures.
+"""
+
 import json
 import os
 import tempfile
@@ -9,7 +24,9 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+
 BASE_DIR = Path(__file__).resolve().parent
+
 SOURCE_FILE = BASE_DIR / "source_announcements.json"
 ALERTS_FILE = BASE_DIR / "alerts.json"
 HISTORY_FILE = BASE_DIR / "history.json"
@@ -20,15 +37,7 @@ IST = ZoneInfo("Asia/Kolkata")
 BOT_TOKEN = os.getenv("RESULTS_TELEGRAM_BOT_TOKEN", "")
 CHAT_ID = os.getenv("RESULTS_TELEGRAM_CHAT_ID", "")
 
-RATINGS = [
-    "Stellar",
-    "Excellent",
-    "Strong",
-    "Average",
-    "Weak",
-    "Disappointing",
-    "Insufficient Data",
-]
+SCOPES = ("standalone", "consolidated")
 
 
 def now_ist():
@@ -52,7 +61,13 @@ def save_json(path, data):
         dir=path.parent,
         delete=False
     ) as temp:
-        json.dump(data, temp, indent=2, ensure_ascii=False)
+        json.dump(
+            data,
+            temp,
+            indent=2,
+            ensure_ascii=False,
+            allow_nan=False
+        )
         temp.write("\n")
         temp_path = temp.name
 
@@ -70,8 +85,23 @@ def valid_announcement(item):
 
     try:
         parsed = urlparse(item["source_url"])
+
         if parsed.scheme != "https" or not parsed.hostname:
             return False
+
+        allowed_domains = (
+            "nseindia.com",
+            "nseindia.in",
+            "bseindia.com",
+        )
+
+        if not any(
+            parsed.hostname == domain
+            or parsed.hostname.endswith("." + domain)
+            for domain in allowed_domains
+        ):
+            return False
+
     except Exception:
         return False
 
@@ -83,8 +113,15 @@ def number(value):
         return None
 
     try:
-        result = float(str(value).replace(",", "").replace("₹", "").strip())
-        return result if result == result and abs(result) != float("inf") else None
+        result = float(
+            str(value).replace(",", "").replace("₹", "").strip()
+        )
+
+        if result != result or abs(result) == float("inf"):
+            return None
+
+        return result
+
     except (ValueError, TypeError):
         return None
 
@@ -96,12 +133,8 @@ def get_growth(current, previous):
     if current is None or previous is None or previous == 0:
         return None
 
-    # A percentage growth figure is misleading when the previous
-    # period was a loss. Handle this as a turnaround instead.
-    if previous < 0 <= current:
-        return None
-
-    if previous < 0 and current < 0:
+    # Do not calculate misleading percentage growth from a loss.
+    if previous < 0:
         return None
 
     return round(((current - previous) / abs(previous)) * 100, 2)
@@ -117,22 +150,44 @@ def calculate_margin(profit, revenue):
     return round((profit / revenue) * 100, 2)
 
 
-def enrich_financials(item):
-    financials = item.get("financials")
+def enrich_financial_record(financials):
+    """Calculate derived financial metrics for one scope."""
+
     if not isinstance(financials, dict):
         financials = {}
 
-    item["financials"] = financials
+    financials = dict(financials)
 
     revenue = number(financials.get("revenue"))
-    previous_revenue = number(financials.get("revenue_previous"))
+
+    previous_revenue = number(
+        financials.get(
+            "previous_year_revenue",
+            financials.get("revenue_previous")
+        )
+    )
 
     net_profit = number(financials.get("net_profit"))
-    previous_net_profit = number(financials.get("net_profit_previous"))
 
-    operating_profit = number(financials.get("operating_profit"))
+    previous_net_profit = number(
+        financials.get(
+            "previous_year_net_profit",
+            financials.get("net_profit_previous")
+        )
+    )
+
+    operating_profit = number(
+        financials.get("operating_profit")
+    )
+
     eps = number(financials.get("eps"))
-    previous_eps = number(financials.get("eps_previous"))
+
+    previous_eps = number(
+        financials.get(
+            "previous_year_eps",
+            financials.get("eps_previous")
+        )
+    )
 
     financials["revenue_yoy"] = get_growth(
         revenue, previous_revenue
@@ -165,28 +220,93 @@ def enrich_financials(item):
         financials["revenue_yoy"] is not None
     )
 
+    return financials
+
+
+def has_financial_data(financials):
+    if not isinstance(financials, dict):
+        return False
+
+    return any(
+        number(financials.get(field)) is not None
+        for field in ("revenue", "net_profit", "eps")
+    )
+
+
+def enrich_financials(item):
+    """
+    Enrich standalone and consolidated figures independently.
+
+    Consolidated is the default headline scope.
+    Legacy financials are retained as a fallback.
+    """
+
+    scopes = item.get("financials_by_scope", {})
+
+    if not isinstance(scopes, dict):
+        scopes = {}
+
+    enriched = {
+        "standalone": enrich_financial_record(
+            scopes.get("standalone", {})
+        ),
+        "consolidated": enrich_financial_record(
+            scopes.get("consolidated", {})
+        ),
+    }
+
+    # Support older announcements using the legacy field.
+    legacy = item.get("financials", {})
+
+    if not has_financial_data(enriched["standalone"]) and not has_financial_data(enriched["consolidated"]):
+        if has_financial_data(legacy):
+            enriched["consolidated"] = enrich_financial_record(legacy)
+
+    selected = item.get("primary_scope")
+
+    if selected not in SCOPES:
+        if has_financial_data(enriched["consolidated"]):
+            selected = "consolidated"
+        elif has_financial_data(enriched["standalone"]):
+            selected = "standalone"
+        else:
+            selected = "consolidated"
+
+    if not has_financial_data(enriched[selected]):
+        alternate = (
+            "standalone"
+            if selected == "consolidated"
+            else "consolidated"
+        )
+
+        if has_financial_data(enriched[alternate]):
+            selected = alternate
+
+    item["financials_by_scope"] = enriched
+    item["primary_scope"] = selected
+
+    # Keep compatibility with existing UI and scanner fields.
+    item["financials"] = dict(enriched[selected])
+
     return item
 
 
-def assess_results(item):
-    financials = item.get("financials", {})
+def assess_scope(financials):
+    """Rate one reporting scope using available financial evidence."""
 
     if not isinstance(financials, dict):
         return "Insufficient Data"
 
     metrics = []
 
-    revenue_growth = financials.get("revenue_yoy")
-    profit_growth = financials.get("net_profit_yoy")
-    eps_growth = financials.get("eps_yoy")
+    for field in ("revenue_yoy", "net_profit_yoy", "eps_yoy"):
+        value = number(financials.get(field))
 
-    for value in [revenue_growth, profit_growth, eps_growth]:
-        if isinstance(value, (int, float)):
+        if value is not None:
             metrics.append(value)
 
     turnaround = financials.get("profit_turnaround", False)
 
-    # Do not rate an announcement using missing or unverified figures.
     if len(metrics) < 2 and not turnaround:
         return "Insufficient Data"
 
@@ -206,7 +326,9 @@ def assess_results(item):
         score += 2
 
     net_margin = number(financials.get("net_margin"))
-    operating_margin = number(financials.get("operating_margin"))
+    operating_margin = number(
+        financials.get("operating_margin")
+    )
 
     if net_margin is not None and net_margin < 0:
         score -= 1
@@ -232,6 +354,25 @@ def assess_results(item):
     return "Weak"
 
 
+def assess_results(item):
+    scopes = item.get("financials_by_scope", {})
+
+    if not isinstance(scopes, dict):
+        scopes = {}
+
+    item["ratings_by_scope"] = {
+        "standalone": assess_scope(scopes.get("standalone", {})),
+        "consolidated": assess_scope(scopes.get("consolidated", {})),
+    }
+
+    selected = item.get("primary_scope", "consolidated")
+
+    return item["ratings_by_scope"].get(
+        selected,
+        "Insufficient Data"
+    )
+
+
 def assess_expectations(item):
     expectations = item.get("expectations", {})
 
@@ -244,7 +385,7 @@ def assess_expectations(item):
     analyst_count = number(expectations.get("analyst_count"))
     estimate_date = expectations.get("estimate_date")
 
-    if not all([source, estimate_date]):
+    if not source or not estimate_date:
         return "Not Available"
 
     if estimate is None or actual is None:
@@ -274,23 +415,43 @@ def stable_id(item):
     ])
 
 
+def telegram_scope_text(item, scope):
+    financials = item.get(
+        "financials_by_scope", {}
+    ).get(scope, {})
+
+    if not isinstance(financials, dict):
+        financials = {}
+
+    rating = item.get(
+        "ratings_by_scope", {}
+    ).get(scope, "Insufficient Data")
+
+    return (
+        f"\n{scope.title()} Results\n"
+        f"Rating: {rating}\n"
+        f"Revenue: {financials.get('revenue', 'Not Available')}\n"
+        f"Net Profit: {financials.get('net_profit', 'Not Available')}\n"
+        f"EPS: {financials.get('eps', 'Not Available')}\n"
+        f"Revenue YoY: {financials.get('revenue_yoy', 'Not Available')}\n"
+    )
+
+
 def send_telegram(item):
     if not BOT_TOKEN or not CHAT_ID:
         print("Telegram secrets not configured. Notification skipped.")
         return False
 
-    financials = item.get("financials", {})
-
     message = (
-        "📊 SHARE SANKET - RESULTS\n\n"
+        "SHARE SANKET - RESULTS\n\n"
         f"Company: {item.get('company', 'N/A')}\n"
         f"Symbol: {item.get('symbol', 'N/A')}\n"
         f"Period: {item.get('period', 'N/A')}\n"
-        f"Rating: {item.get('rating', 'Insufficient Data')}\n"
         f"Expectations: {item.get('expectations_rating', 'Not Available')}\n"
-        f"Revenue: {financials.get('revenue', 'Not Available')}\n"
-        f"Net Profit: {financials.get('net_profit', 'Not Available')}\n"
-        f"EPS: {financials.get('eps', 'Not Available')}\n\n"
+        f"Units: {item.get('financial_units', 'Not specified')}\n"
+        + telegram_scope_text(item, "standalone")
+        + telegram_scope_text(item, "consolidated")
+        + "\n"
         f"Source: {item.get('source', 'N/A')}\n"
         f"{item.get('source_url', '')}\n\n"
         "For information only. Not investment advice."
@@ -308,9 +469,11 @@ def send_telegram(item):
             },
             timeout=20,
         )
+
         response.raise_for_status()
 
         result = response.json()
+
         if not result.get("ok"):
             print("Telegram API did not confirm message delivery.")
             return False
@@ -323,10 +486,25 @@ def send_telegram(item):
 
 
 def main():
-    source_data = load_json(SOURCE_FILE, {"announcements": []})
-    alerts_data = load_json(ALERTS_FILE, {"updated": "", "alerts": []})
-    history_data = load_json(HISTORY_FILE, {"updated": "", "results": []})
-    calendar_data = load_json(CALENDAR_FILE, {"updated": "", "calendar": []})
+    source_data = load_json(
+        SOURCE_FILE,
+        {"announcements": []}
+    )
+
+    alerts_data = load_json(
+        ALERTS_FILE,
+        {"updated": "", "alerts": []}
+    )
+
+    history_data = load_json(
+        HISTORY_FILE,
+        {"updated": "", "results": []}
+    )
+
+    calendar_data = load_json(
+        CALENDAR_FILE,
+        {"updated": "", "calendar": []}
+    )
 
     announcements = source_data.get("announcements", [])
 
@@ -340,14 +518,30 @@ def main():
 
     if not isinstance(alerts, list):
         alerts = []
+
     if not isinstance(history, list):
         history = []
+
     if not isinstance(calendar, list):
         calendar = []
 
-    old_alerts = {stable_id(item): item for item in alerts}
-    old_history = {stable_id(item): item for item in history}
-    old_calendar = {stable_id(item): item for item in calendar}
+    old_alerts = {
+        stable_id(item): item
+        for item in alerts
+        if isinstance(item, dict)
+    }
+
+    old_history = {
+        stable_id(item): item
+        for item in history
+        if isinstance(item, dict)
+    }
+
+    old_calendar = {
+        stable_id(item): item
+        for item in calendar
+        if isinstance(item, dict)
+    }
 
     processed = 0
 
@@ -362,26 +556,32 @@ def main():
         previous_record = old_alerts.get(item["id"], {})
         was_known = bool(previous_record)
 
+        # Preserve notification state on updates.
+        item["telegram_notified"] = previous_record.get(
+            "telegram_notified", False
+        )
+
+        if previous_record.get("telegram_notified_at"):
+            item["telegram_notified_at"] = previous_record[
+                "telegram_notified_at"
+            ]
+
         item = enrich_financials(item)
+
         item["rating"] = assess_results(item)
+
         item["expectations_rating"] = assess_expectations(item)
+
+        item["processed_at"] = now_ist()
 
         item["data_status"] = item.get(
             "data_status",
             "Announcement detected - figures not verified"
         )
 
-        item["processed_at"] = now_ist()
-
-        # Preserve notification status when refreshing an existing record.
-        item["telegram_notified"] = previous_record.get(
-            "telegram_notified", False
-        )
-
         old_alerts[item["id"]] = item
         old_history[item["id"]] = item
 
-        # Keep the calendar record for the announcement.
         old_calendar[item["id"]] = {
             "id": item["id"],
             "symbol": item.get("symbol"),
@@ -400,14 +600,25 @@ def main():
         else:
             print(f"Updated result record: {item['symbol']}")
 
+        print(
+            "Standalone rating:",
+            item["ratings_by_scope"]["standalone"]
+        )
+
+        print(
+            "Consolidated rating:",
+            item["ratings_by_scope"]["consolidated"]
+        )
+
+        print("Primary scope:", item["primary_scope"])
+
     final_alerts = list(old_alerts.values())
     final_history = list(old_history.values())
     final_calendar = list(old_calendar.values())
 
-    # Save records before sending notifications.
-    # Failed notifications remain unmarked and can be retried next run.
     timestamp = now_ist()
 
+    # Save all data before attempting Telegram delivery.
     save_json(ALERTS_FILE, {
         "updated": timestamp,
         "alerts": final_alerts,
@@ -423,6 +634,7 @@ def main():
         "calendar": final_calendar,
     })
 
+    # Retry notifications that have not been confirmed.
     for item in final_alerts:
         if not item.get("telegram_notified", False):
             if send_telegram(item):
@@ -434,6 +646,9 @@ def main():
         "alerts": final_alerts,
     })
 
+    print("--------------------------------")
+    print("SHARE SANKET RESULTS SCANNER")
+    print("--------------------------------")
     print(f"Announcements processed: {processed}")
     print(f"Total results in history: {len(final_history)}")
     print("Results scanner completed.")
