@@ -1,6 +1,5 @@
-
 {
-  "updated": "2026-11-24T16:13:46.561543+05:30",
+  "updated": "2026-11-24T17:14:39.473088+05:30",
   "results": [
     {
       "symbol": "SFCTECH",
@@ -18,6 +17,11 @@
           "revenue": 998.51,
           "net_profit": 50.78,
           "eps": 0.57,
+          "operating_profit": null,
+          "gross_profit": null,
+          "ebitda": null,
+          "total_debt": null,
+          "cash_flow": null,
           "previous_year_revenue": 527.88,
           "previous_year_net_profit": -3.55,
           "previous_year_eps": -0.01,
@@ -25,12 +29,19 @@
           "net_profit_yoy": null,
           "eps_yoy": null,
           "net_margin": 5.09,
-          "profit_turnaround": true
+          "operating_margin": null,
+          "profit_turnaround": true,
+          "revenue_growth_available": true
         },
         "consolidated": {
           "revenue": 1627.28,
           "net_profit": 22.65,
           "eps": 0.24,
+          "operating_profit": null,
+          "gross_profit": null,
+          "ebitda": null,
+          "total_debt": null,
+          "cash_flow": null,
           "previous_year_revenue": 965.95,
           "previous_year_net_profit": -2.36,
           "previous_year_eps": -0.03,
@@ -38,19 +49,30 @@
           "net_profit_yoy": null,
           "eps_yoy": null,
           "net_margin": 1.39,
-          "profit_turnaround": true
+          "operating_margin": null,
+          "profit_turnaround": true,
+          "revenue_growth_available": true
         }
       },
       "financials": {
         "revenue": 1627.28,
         "net_profit": 22.65,
         "eps": 0.24,
+        "operating_profit": null,
+        "gross_profit": null,
+        "ebitda": null,
+        "total_debt": null,
+        "cash_flow": null,
         "previous_year_revenue": 965.95,
         "previous_year_net_profit": -2.36,
         "previous_year_eps": -0.03,
         "revenue_yoy": 68.46,
+        "net_profit_yoy": null,
+        "eps_yoy": null,
         "net_margin": 1.39,
-        "profit_turnaround": true
+        "operating_margin": null,
+        "profit_turnaround": true,
+        "revenue_growth_available": true
       },
       "expectations": {},
       "data_status": "Standalone and consolidated Q2 figures visually verified against official NSE PDF pages 4 and 13",
@@ -64,7 +86,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-24T16:13:46.561518+05:30"
+      "processed_at": "2026-11-24T17:14:39.473066+05:30"
     }
   ]
 }
