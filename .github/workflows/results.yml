@@ -45,9 +45,6 @@ jobs:
           for filename, key in files.items():
               path = Path("results") / filename
 
-              if not path.exists():
-                  raise SystemExit(f"Missing file: {path}")
-
               with path.open(encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -61,10 +58,37 @@ jobs:
       - name: Validate Python syntax
         run: |
           python -m py_compile results/results_scanner.py
-          echo "Results scanner syntax is valid."
+          python -m py_compile results/source_adapter.py
+          echo "Both Python files are valid."
+
+      - name: Run Results Source Adapter
+        run: |
+          python results/source_adapter.py
+
+      - name: Validate generated announcements
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("results/source_announcements.json")
+
+          if not path.exists():
+              raise SystemExit("Source announcements file missing")
+
+          with path.open(encoding="utf-8") as f:
+              data = json.load(f)
+
+          if not isinstance(data.get("announcements"), list):
+              raise SystemExit("Invalid announcements structure")
+
+          print("PASS: Source adapter output")
+          print("Records:", len(data["announcements"]))
+
+          PY
 
       - name: Report validation
         run: |
           echo "Results module validation completed."
+          echo "No Telegram messages were sent."
           echo "No financial data was published."
-          echo "No Telegram message was sent."
