@@ -60,6 +60,7 @@ jobs:
           python -m py_compile results/results_scanner.py
           python -m py_compile results/source_adapter.py
           python -m py_compile results/pdf_extractor.py
+          python -m py_compile results/financial_extractor.py
           echo "All Results Python files are valid."
 
       - name: Run Results Source Adapter
@@ -70,11 +71,22 @@ jobs:
         run: |
           python results/pdf_extractor.py SFC_TEST "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf"
 
+      - name: Run Financial Statement Extractor
+        run: |
+          python results/financial_extractor.py SFC_TEST
+
       - name: Upload extracted PDF text
         uses: actions/upload-artifact@v4
         with:
           name: sfc-results-pdf-text
           path: results/extracted/
+          if-no-files-found: error
+
+      - name: Upload Financial Review
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfc-financial-review
+          path: results/review/SFC_TEST_financial_review.json
           if-no-files-found: error
 
       - name: Validate generated announcements
@@ -116,7 +128,9 @@ jobs:
         run: |
           echo "Results module validation completed."
           echo "Results Source Adapter completed."
+          echo "PDF text extraction completed."
+          echo "Financial review generated."
           echo "Results Scanner executed."
           echo "Results JSON files uploaded."
           echo "Financial figures still require verification."
-          echo "Telegram notifications are not configured in this workflow."
+          echo "No financial figures automatically published."
