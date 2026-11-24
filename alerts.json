@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated": "2026-11-24T15:06:29+05:30",
+  "updated": "2026-11-24T16:03:01+05:30",
   "folders": [
     {
       "id": "emas",
@@ -28698,6 +28698,325 @@
       },
       "filing_text": "Bagging/Receiving of orders/contracts\n\nAffordable Robotic & Automation Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\nEmail: account@arapl.co.in \nWebsite: www.arapl.co.in \n \n \nAffordable Robotic & Automation Limited CIN: L29299PN2010PLC135298 \n \nAddress: Village Wadki, Gat No. 1209 Taluka Haveli, Dist. Pune, Pune, Maharashtra, India - 412308 \nMobile: +91-7720018914 \nDate: November 24, 2026 \n \nSubject: Intimation under Regulation 30 of SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 - Receipt of Purchase Orders. \n \nPursuant to Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) Regulations, \n2015 (“SEBI Listing Regulations”), we hereby inform you that the Company has received purchase \norders from 2 (Two) esteemed domestic customers for the supply of robotic welding lines. \n \nThe aforesaid purchase orders have been received in the ordinary course of business of the Company \nand are subject to the terms and conditions stipulated therein. \n \nThe details required to be disclosed under Regulation 30 read with Part A of Schedule III of the SEBI \nListing Regulations and SEBI Master Circular No. HO/49/14/14(7)2025-CFDPOD2/I/3762/2026 dated \nJanuary 30, 2026, as amended, are enclosed herewith as Annexure A to this letter. \n \nWe request you to kindly take the above information on your records. \n \nThanking you, \n \nYours faithfully, \n \nFor Affordable Robotic & Automation Limited   \n \n \n \n \nMilind Padole \nManaging Director \nDIN: 02140324 \n \nTo, \nThe Manager Listing department \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, Fort, \nMumbai – 400 001 \nTo, \nThe Manager Listing department \nNSE Limited \n“Exchange Plaza”,  \nBandra – Kurla Complex, \nBandra (EAST), Mumbai – 400051 \nBSE SCRIP CODE: 541402 NSE SYMBOL: AFFORDABLE \n\n \nEmail: account@arapl.co.in \nWebsite: www.arapl.co.in \n \n \nAffordable Robotic & Automation Limited CIN: L29299PN2010PLC135298 \n \nAddress: Village Wadki, Gat No. 1209 Taluka Haveli, Dist. Pune, Pune, Maharashtra, India - 412308 \nMobile: +91-7720018914 \nAnnexure A \n \nDisclosure of Information pursuant to Regulation 30 read with Part A of Schedule III of the SEBI \nListing Regulations and SEBI Master Circular No. HO/49/14/14(7)2025-CFDPOD2/I/3762/2026 \ndated January 30, 2026. \n \nSr. \nNo. \nParticulars Details \n(1) (2) \na.  Name of the entity \nawarding the order(s)/ \ncontract(s); \nNot disclosed due to \nconfidentiality \nNot disclosed due to \nconfidentiality \nb.  Significant terms and \nconditions of \norder(s)/contract(s) \nawarded in brief; \nSupply of robotic welding line Supply of robotic welding line \nc.  Whether order(s) / \ncontract(s) have been \nawarded by domestic/ \ninternational entity \nBy Domestic entity By Domestic entity \nd.  Nature of order(s) / \ncontract(s); \nTurnkey Project Turnkey Project \ne.  whether domestic or \ninternational; \nDomestic Domestic \nf.  time period by which the \norder(s)/contract(s) is to be \nexecuted; \nMaterial should be delivered as \nper the terms mentioned in the \nPurchase Order  \nMaterial should be delivered as \nper the terms mentioned in the \nPurchase Order  \ng.  broad consideration or size \nof the order(s)/contract(s); \nApprox. ₹39,85,78,569.60/- \n(Rupees Thirty-Nine Crore \nEighty-Five Lakh Seventy-\nEight Thousand Five Hundred \nSixty-Nine and Sixty Paise \nOnly) \nApprox. ₹7,83,35,775/- \n(Rupees Seven Crore Eighty-\nThree Lakh Thirty-Five \nThousand Seven Hundred \nSeventy-Five Only). \nh.  Whether the promoter/ \npromoter group / group \ncompanies have any \ninterest in the entity that \nawarded the order(s)/ \ncontract(s)? If yes, nature of \ninterest and details thereof \nNo No \ni.  whether the order(s)/ \ncontract(s) would fall \nwithin related party \ntransactions? If yes, \nwhether the same is done at \n“arm’s length”. \nNo No",
       "source_id": "NSE:106869606"
+    },
+    {
+      "id": "27e1398753de4466ba3ab92d",
+      "parser_version": 3,
+      "time": "2026-11-24T16:03:01+05:30",
+      "folder": "orders",
+      "subfolder": "small",
+      "symbol": "VASCONEQ",
+      "company": "Vascon Engineers Limited",
+      "title": "Awarding of order(s)/contract(s)",
+      "price": 29.76,
+      "change_pct": -0.89910245,
+      "details": [
+        {
+          "label": "Source exchange",
+          "value": "NSE",
+          "source": "NSE"
+        },
+        {
+          "label": "Company",
+          "value": "Vascon Engineers Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange symbol / code",
+          "value": "VASCONEQ",
+          "source": "NSE"
+        },
+        {
+          "label": "Announcement category",
+          "value": "Awarding of order(s)/contract(s)",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing title",
+          "value": "Awarding of order(s)/contract(s)",
+          "source": "NSE"
+        },
+        {
+          "label": "Order / project description",
+          "value": "Vascon Engineers Limited receives Letter of Intent for Construction of Shell & Core works for T1, T2 & T3 at Mohan Society Redevelopment project, Borivali from Kanakia Transparent Developers Pvt. Ltd",
+          "source": "NSE"
+        },
+        {
+          "label": "Client / counterparty",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Reported order value",
+          "value": "Rs. 195.00",
+          "source": "NSE"
+        },
+        {
+          "label": "Order size band",
+          "value": "Small (under ₹10 crore)",
+          "source": "Rule based only on disclosed order value"
+        },
+        {
+          "label": "Execution / delivery period",
+          "value": "24 months",
+          "source": "NSE"
+        },
+        {
+          "label": "Filing date and time",
+          "value": "24-Nov-2026 15:53:40",
+          "source": "NSE"
+        },
+        {
+          "label": "PDF text extraction",
+          "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+          "source": "NSE"
+        },
+        {
+          "label": "Yahoo Finance symbol",
+          "value": "VASCONEQ.NS",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Yahoo Finance company page",
+          "value": "https://finance.yahoo.com/quote/VASCONEQ.NS/",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market data snapshot captured",
+          "value": "2026-11-24T16:03:01+05:30",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price at snapshot",
+          "value": "₹29.76",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization",
+          "value": "₹6,912,740,352.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Market capitalization (INR crore)",
+          "value": "₹691.27 crore",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing P/E",
+          "value": "22.72",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Forward P/E",
+          "value": null,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Price-to-book",
+          "value": "0.58",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Trailing EPS",
+          "value": "₹1.31",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Enterprise value",
+          "value": "₹8,481,600,000.00",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week high",
+          "value": "₹52.31",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "52-week low",
+          "value": "₹26.75",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Sector",
+          "value": "Industrials",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Industry",
+          "value": "Engineering & Construction",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Order value / market cap",
+          "value": "0.0000%",
+          "source": "Calculated only when reported INR order value and INR market cap are both available"
+        },
+        {
+          "label": "All monetary figures found in filing",
+          "value": "Rs. 195.00 Crore; Rs. 195.00",
+          "source": "NSE"
+        },
+        {
+          "label": "Complete extracted filing text",
+          "value": "November 24, 2026 \n \nTo,  \nNational Stock Exchange of India Limited \nListing Department, \nExchange Plaza, \nBandra (E), Mumbai – 400 051 \nRef Symbol: VASCONEQ \n \n \nTo, \nBSE Limited \nThe Department of Corporate Services \nPhiroze Jeejeebhoy Towers, Dalal Street, \nFort, Mumbai 400 001 \nRef: Scrip Code: 533156 \n \nSubject: Vascon Engineers Limited receives Letter of Intent for Construction of \nShell & Core works for T1, T2 & T3 at Mohan Society Redevelopment \nproject, Borivali from Kanakia Transparent Developers Pvt. Ltd \n \nRef:  Disclosure under Regulation 30 of SEBI (LODR) Regulations, 2015 \n \nDear Sir, \n \nWe are pleased to inform you that Vascon Engineers Limited has received a Letter of \nIntent amounting to Rs. 195.00 Crore (Rupees One Hundred & Ninety Five Crore) \n(excluding taxes) from Kanakia Transparent Developers Pvt. Ltd. \n \nThis contract is for the construction of shell and core works for the Mohan Society \nRedevelopment Project located in Borivali, Mumbai. \n \nThe total work period is 24 months on mutually agreed terms. \n \nYou are requested to kindly take the same on record. \n \nThanking you, \nFor Vascon Engineers Limited \n \n \n \nNeelam Piyush Pipada \nCompany Secretary and Compliance Officer \nM No: A31721 \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \nDisclosure required pursuant to Regulation 30 of the Listing Regulations read with Para \nA of Part A of Schedule III to the Listing Regulations and the SEBI Circular having \nreference no. CIR/CFD/CMD/4/2015 dated September 9, 2015. \nAnnexure-A \nDisclosure Requirement Details \na) Name of the entity awarding the \norder(s)/contract(s); \nKanakia Transparent Developers Pvt. \nLtd \nb) Significant terms and conditions of \norder(s)/contract(s) awarded in \nbrief; \nConstruction of Shell & Core Works for \nKanakia Mohan Society Redevelopment \nProject at Borivali, Mumbai \nc) Whether order(s) / contract(s) have \nbeen awarded by domestic/ \ninternational entity; \nDomestic  \nd) Nature of order(s) / contract(s) BOQ basis \ne) Whether domestic or international Domestic \nf) Time period by which the \norder(s)/contract(s) is to be executed \nThe work has to be completed within 24 \nmonths on the mutual agreed terms  \ng) Broad consideration or size of the \norder(s)/contract(s) \nRs. 195.00/- Crore (Rupees One \nHundred and Ninety Crores only) \n(excluding taxes) \nh) Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded \nthe order(s)/contract(s)? If yes, \nnature of interest and details thereof; \nNot Applicable  \ni) Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the \nsame is done at “arms-length” \nNot Applicable",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · An Dt",
+          "value": "24-Nov-2026 15:53:40",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Att File Size",
+          "value": "342.64 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/VASCONEQ_24112026155249_24112026LetterofIntent_Kanakia_Sd.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Attchmnt Text",
+          "value": "Vascon Engineers Limited receives Letter of Intent for Construction of Shell & Core works for T1, T2 & T3 at Mohan Society Redevelopment project, Borivali from Kanakia Transparent Developers Pvt. Ltd",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Desc",
+          "value": "Awarding of order(s)/contract(s)",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Difference",
+          "value": "00:00:00",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Dt",
+          "value": "24112026155340",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Exchdisstime",
+          "value": "24-Nov-2026 15:53:40",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · File Size",
+          "value": "342.64 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Seq Id",
+          "value": "106869659",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Industry",
+          "value": "Construction",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Isin",
+          "value": "INE893I01013",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sm Name",
+          "value": "Vascon Engineers Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Sort Date",
+          "value": "2026-11-24 15:53:40",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Symbol",
+          "value": "VASCONEQ",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Summary",
+          "value": "Vascon Engineers Limited received a Letter of Intent from Kanakia Transparent Developers Pvt. Ltd. for the construction of shell and core works for the Mohan Society Redevelopment project in Borivali, Mumbai. The order value is Rs. 195.00 Crore, excluding taxes. The work period is 24 months on mutually agreed terms. The entity awarding the order is domestic. The nature of the order is BOQ basis. There is no interest from promoters or group companies in the entity that awarded the order. The order does not fall within related party transactions. This disclosure is pursuant to Regulation 30 of SEBI LODR Regulations, 2015.",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchange field · Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/VASCONEQ_24112026155249_24112026LetterofIntent_Kanakia_Sd.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/VASCONEQ_24112026155249_24112026LetterofIntent_Kanakia_Sd.pdf",
+      "source_data": {
+        "an_dt": "24-Nov-2026 15:53:40",
+        "attFilePath": null,
+        "attFileSize": "342.64 KB",
+        "attchmntFile": "https://nsearchives.nseindia.in/corporate/VASCONEQ_24112026155249_24112026LetterofIntent_Kanakia_Sd.pdf",
+        "attchmntText": "Vascon Engineers Limited receives Letter of Intent for Construction of Shell & Core works for T1, T2 & T3 at Mohan Society Redevelopment project, Borivali from Kanakia Transparent Developers Pvt. Ltd",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Awarding of order(s)/contract(s)",
+        "difference": "00:00:00",
+        "dt": "24112026155340",
+        "exchdisstime": "24-Nov-2026 15:53:40",
+        "fileSize": "342.64 KB",
+        "hasXbrl": true,
+        "nasUploadFlag": null,
+        "objUploadFlag": null,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106869659",
+        "smIndustry": "Construction",
+        "sm_isin": "INE893I01013",
+        "sm_name": "Vascon Engineers Limited",
+        "sort_date": "2026-11-24 15:53:40",
+        "symbol": "VASCONEQ",
+        "voiceSummary": "Vascon Engineers Limited received a Letter of Intent from Kanakia Transparent Developers Pvt. Ltd. for the construction of shell and core works for the Mohan Society Redevelopment project in Borivali, Mumbai. The order value is Rs. 195.00 Crore, excluding taxes. The work period is 24 months on mutually agreed terms. The entity awarding the order is domestic. The nature of the order is BOQ basis. There is no interest from promoters or group companies in the entity that awarded the order. The order does not fall within related party transactions. This disclosure is pursuant to Regulation 30 of SEBI LODR Regulations, 2015.",
+        "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/VASCONEQ_24112026155249_24112026LetterofIntent_Kanakia_Sd.mp3"
+      },
+      "filing_text": "Awarding of order(s)/contract(s)\n\nVascon Engineers Limited receives Letter of Intent for Construction of Shell & Core works for T1, T2 & T3 at Mohan Society Redevelopment project, Borivali from Kanakia Transparent Developers Pvt. Ltd\n\nNovember 24, 2026 \n \nTo,  \nNational Stock Exchange of India Limited \nListing Department, \nExchange Plaza, \nBandra (E), Mumbai – 400 051 \nRef Symbol: VASCONEQ \n \n \nTo, \nBSE Limited \nThe Department of Corporate Services \nPhiroze Jeejeebhoy Towers, Dalal Street, \nFort, Mumbai 400 001 \nRef: Scrip Code: 533156 \n \nSubject: Vascon Engineers Limited receives Letter of Intent for Construction of \nShell & Core works for T1, T2 & T3 at Mohan Society Redevelopment \nproject, Borivali from Kanakia Transparent Developers Pvt. Ltd \n \nRef:  Disclosure under Regulation 30 of SEBI (LODR) Regulations, 2015 \n \nDear Sir, \n \nWe are pleased to inform you that Vascon Engineers Limited has received a Letter of \nIntent amounting to Rs. 195.00 Crore (Rupees One Hundred & Ninety Five Crore) \n(excluding taxes) from Kanakia Transparent Developers Pvt. Ltd. \n \nThis contract is for the construction of shell and core works for the Mohan Society \nRedevelopment Project located in Borivali, Mumbai. \n \nThe total work period is 24 months on mutually agreed terms. \n \nYou are requested to kindly take the same on record. \n \nThanking you, \nFor Vascon Engineers Limited \n \n \n \nNeelam Piyush Pipada \nCompany Secretary and Compliance Officer \nM No: A31721 \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \nDisclosure required pursuant to Regulation 30 of the Listing Regulations read with Para \nA of Part A of Schedule III to the Listing Regulations and the SEBI Circular having \nreference no. CIR/CFD/CMD/4/2015 dated September 9, 2015. \nAnnexure-A \nDisclosure Requirement Details \na) Name of the entity awarding the \norder(s)/contract(s); \nKanakia Transparent Developers Pvt. \nLtd \nb) Significant terms and conditions of \norder(s)/contract(s) awarded in \nbrief; \nConstruction of Shell & Core Works for \nKanakia Mohan Society Redevelopment \nProject at Borivali, Mumbai \nc) Whether order(s) / contract(s) have \nbeen awarded by domestic/ \ninternational entity; \nDomestic  \nd) Nature of order(s) / contract(s) BOQ basis \ne) Whether domestic or international Domestic \nf) Time period by which the \norder(s)/contract(s) is to be executed \nThe work has to be completed within 24 \nmonths on the mutual agreed terms  \ng) Broad consideration or size of the \norder(s)/contract(s) \nRs. 195.00/- Crore (Rupees One \nHundred and Ninety Crores only) \n(excluding taxes) \nh) Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded \nthe order(s)/contract(s)? If yes, \nnature of interest and details thereof; \nNot Applicable  \ni) Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the \nsame is done at “arms-length” \nNot Applicable",
+      "source_id": "NSE:106869659"
     }
   ]
 }
