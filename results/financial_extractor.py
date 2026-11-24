@@ -1,5 +1,10 @@
 
-"""Share Sanket - Financial Statement Extractor."""
+"""Share Sanket - Financial Statement Extractor.
+
+Detects standalone and consolidated financial statement pages.
+Extracts candidate lines for manual verification.
+Never publishes unverified financial figures.
+"""
 
 import json
 import re
@@ -11,7 +16,17 @@ from zoneinfo import ZoneInfo
 BASE_DIR = Path(__file__).resolve().parent
 EXTRACTED_DIR = BASE_DIR / "extracted"
 REVIEW_DIR = BASE_DIR / "review"
+
 IST = ZoneInfo("Asia/Kolkata")
+
+STATEMENT_HEADINGS = {
+    "standalone": (
+        "statement of unaudited standalone financial results"
+    ),
+    "consolidated": (
+        "statement of unaudited consolidated financial results"
+    ),
+}
 
 FINANCIAL_LABELS = [
     "Revenue from operations",
@@ -33,7 +48,9 @@ def read_text(symbol):
     path = EXTRACTED_DIR / f"{symbol}.txt"
 
     if not path.exists():
-        raise FileNotFoundError(f"Missing PDF text: {path}")
+        raise FileNotFoundError(
+            f"Extracted PDF text not found: {path}"
+        )
 
     return path.read_text(
         encoding="utf-8",
@@ -42,6 +59,8 @@ def read_text(symbol):
 
 
 def split_pdf_pages(text):
+    """Split text using the page markers from the PDF extractor."""
+
     parts = re.split(
         r"---\s*PAGE\s+(\d+)\s*---",
         text,
@@ -50,68 +69,115 @@ def split_pdf_pages(text):
 
     pages = []
 
-    for i in range(1, len(parts), 2):
+    for index in range(1, len(parts), 2):
         pages.append({
-            "page": int(parts[i]),
-            "text": parts[i + 1].strip()
+            "page": int(parts[index]),
+            "text": parts[index + 1].strip()
         })
 
     if not pages:
         raise ValueError(
-            "No PDF page markers found in extracted text."
+            "PDF page markers were not found. "
+            "Check the output of pdf_extractor.py."
         )
 
     return pages
 
 
-def normalize(text):
+def normalize_text(text):
+    """Normalize common OCR errors without changing source values."""
+
     text = text.lower()
-    text = text.replace("anded", "ended")
+
+    # Common OCR substitutions
     text = text.replace("conso1idated", "consolidated")
-    text = text.replace("unaudited", "unaudited")
+    text = text.replace("consolidat ed", "consolidated")
+    text = text.replace("anded", "ended")
+
     return " ".join(text.split())
 
 
-def find_actual_statement(pages, statement_type):
-    """Find a financial statement page, excluding auditor reports."""
+def has_exact_heading(text, statement_type):
+    """Require the correct complete statement heading."""
 
-    for page in pages:
-        raw = page["text"]
-        clean = normalize(raw)
-
-        has_type = statement_type in clean
-        has_financial_results = "financial results" in clean
-        has_revenue = "revenue from operations" in clean
-        has_particulars = "particulars" in clean
-        has_period = (
-            "quarter" in clean
-            and "half year" in clean
+    if statement_type not in STATEMENT_HEADINGS:
+        raise ValueError(
+            f"Unknown statement type: {statement_type}"
         )
 
+    clean = normalize_text(text)
+
+    if statement_type == "standalone":
+        pattern = (
+            r"\bstatement\s+of\s+unaudited\s+"
+            r"standalone\s+financial\s+results\b"
+        )
+    else:
+        pattern = (
+            r"\bstatement\s+of\s+unaudited\s+"
+            r"consolidated\s+financial\s+results\b"
+        )
+
+    return re.search(pattern, clean) is not None
+
+
+def find_actual_statement(pages, statement_type):
+    """Find the correct financial-results table page."""
+
+    for page in pages:
+        raw_text = page["text"]
+        clean = normalize_text(raw_text)
+
+        correct_heading = has_exact_heading(
+            raw_text,
+            statement_type
+        )
+
+        has_revenue = (
+            "revenue from operations" in clean
+        )
+
+        has_particulars = (
+            "particulars" in clean
+        )
+
+        has_quarter = (
+            "quarter" in clean
+        )
+
+        has_half_year = (
+            "half year" in clean
+        )
+
+        # All conditions are required.
         if (
-            has_type
-            and has_financial_results
+            correct_heading
             and has_revenue
             and has_particulars
-            and has_period
+            and has_quarter
+            and has_half_year
         ):
             return {
                 "found": True,
                 "page": page["page"],
-                "raw_text": raw,
-                "detection_method": "Financial statement table markers"
+                "raw_text": raw_text,
+                "detection_method": (
+                    "Exact statement heading and financial table markers"
+                )
             }
 
     return {
         "found": False,
         "page": None,
         "raw_text": "",
-        "detection_method": "Statement table not identified"
+        "detection_method": (
+            "Correct financial statement heading not identified"
+        )
     }
 
 
 def detect_units(text):
-    clean = normalize(text)
+    clean = normalize_text(text)
 
     if "rupees in millions" in clean:
         return "Indian Rupees in Millions"
@@ -125,10 +191,15 @@ def detect_units(text):
     return "Not identified"
 
 
-def extract_candidate_lines(text):
+def extract_candidate_lines(statement_text):
+    """Preserve original lines; do not guess financial values."""
+
     candidates = []
 
-    for number, line in enumerate(text.splitlines(), start=1):
+    for line_number, line in enumerate(
+        statement_text.splitlines(),
+        start=1
+    ):
         cleaned = " ".join(line.split())
 
         if not cleaned:
@@ -137,7 +208,7 @@ def extract_candidate_lines(text):
         for label in FINANCIAL_LABELS:
             if label.lower() in cleaned.lower():
                 candidates.append({
-                    "line": number,
+                    "line": line_number,
                     "label": label,
                     "raw_text": cleaned,
                     "verified": False
@@ -147,7 +218,7 @@ def extract_candidate_lines(text):
     return candidates
 
 
-def build_statement(pages, statement_type):
+def build_statement_review(pages, statement_type):
     result = find_actual_statement(
         pages,
         statement_type
@@ -161,11 +232,13 @@ def build_statement(pages, statement_type):
             "figures_verified": False
         }
 
+    raw_text = result["raw_text"]
+
     return {
         **result,
-        "financial_units": detect_units(result["raw_text"]),
+        "financial_units": detect_units(raw_text),
         "candidate_lines": extract_candidate_lines(
-            result["raw_text"]
+            raw_text
         ),
         "figures_verified": False
     }
@@ -174,12 +247,12 @@ def build_statement(pages, statement_type):
 def build_report(symbol, text):
     pages = split_pdf_pages(text)
 
-    standalone = build_statement(
+    standalone = build_statement_review(
         pages,
         "standalone"
     )
 
-    consolidated = build_statement(
+    consolidated = build_statement_review(
         pages,
         "consolidated"
     )
@@ -198,7 +271,11 @@ def build_report(symbol, text):
             "consolidated_found": consolidated["found"],
             "standalone_page": standalone["page"],
             "consolidated_page": consolidated["page"],
-            "figures_verified": False
+            "figures_verified": False,
+            "reason": (
+                "Extracted financial figures require "
+                "verification against the original PDF."
+            )
         }
     }
 
@@ -210,6 +287,9 @@ def main():
         else "SFC_TEST"
     )
 
+    if not re.fullmatch(r"[A-Z0-9_-]+", symbol):
+        raise ValueError("Invalid symbol format.")
+
     text = read_text(symbol)
     report = build_report(symbol, text)
 
@@ -218,9 +298,12 @@ def main():
         exist_ok=True
     )
 
-    output = REVIEW_DIR / f"{symbol}_financial_review.json"
+    output_file = (
+        REVIEW_DIR /
+        f"{symbol}_financial_review.json"
+    )
 
-    output.write_text(
+    output_file.write_text(
         json.dumps(
             report,
             indent=2,
@@ -231,18 +314,29 @@ def main():
 
     print("Financial statement review completed.")
     print("Symbol:", symbol)
-    print("Standalone page:", report["validation"]["standalone_page"])
-    print("Consolidated page:", report["validation"]["consolidated_page"])
+
+    print(
+        "Standalone page:",
+        report["validation"]["standalone_page"]
+    )
+
+    print(
+        "Consolidated page:",
+        report["validation"]["consolidated_page"]
+    )
+
     print(
         "Standalone candidates:",
         len(report["statements"]["standalone"]["candidate_lines"])
     )
+
     print(
         "Consolidated candidates:",
         len(report["statements"]["consolidated"]["candidate_lines"])
     )
+
     print("Figures verified: No")
-    print("Output:", output)
+    print("Output:", output_file)
 
 
 if __name__ == "__main__":
