@@ -2,8 +2,15 @@
 """
 Share Sanket - Results Source Adapter
 
-Filters official NSE/BSE board meeting announcements
-that contain financial results.
+Processes official NSE/BSE financial-results announcements.
+
+Supports:
+- Standalone financial results
+- Consolidated financial results
+- Separate financial data for each reporting scope
+- Existing announcement compatibility
+- Duplicate prevention
+- Preservation of previously verified figures
 
 Input:
     results/inbox/*.json
@@ -11,10 +18,11 @@ Input:
 Output:
     results/source_announcements.json
 
-No live scraping or PDF extraction in this version.
+This adapter does not scrape PDFs or invent financial figures.
 """
 
 import json
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
@@ -49,6 +57,27 @@ RESULT_KEYWORDS = [
 
 BOARD_MEETING_SUBJECT = "outcome of board meeting"
 
+FINANCIAL_FIELDS = [
+    "revenue",
+    "net_profit",
+    "eps",
+    "operating_profit",
+    "gross_profit",
+    "ebitda",
+    "total_debt",
+    "cash_flow",
+    "previous_year_revenue",
+    "previous_year_net_profit",
+    "previous_year_eps",
+    "revenue_yoy",
+    "net_profit_yoy",
+    "eps_yoy",
+    "net_margin",
+    "operating_margin",
+]
+
+SCOPES = ("standalone", "consolidated")
+
 
 def now_iso():
     return datetime.now(timezone.utc).isoformat()
@@ -68,7 +97,14 @@ def save_json(path, data):
     temp_path = path.with_suffix(path.suffix + ".tmp")
 
     with temp_path.open("w", encoding="utf-8") as file:
-        json.dump(data, file, indent=2, ensure_ascii=False)
+        json.dump(
+            data,
+            file,
+            indent=2,
+            ensure_ascii=False,
+            allow_nan=False,
+        )
+        file.write("\n")
 
     temp_path.replace(path)
 
@@ -76,10 +112,11 @@ def save_json(path, data):
 def is_official_url(url):
     try:
         parsed = urlparse(str(url).strip())
+        hostname = (parsed.hostname or "").lower()
 
         return (
             parsed.scheme == "https"
-            and parsed.hostname in ALLOWED_DOMAINS
+            and hostname in ALLOWED_DOMAINS
         )
     except (TypeError, ValueError):
         return False
@@ -112,39 +149,79 @@ def valid_date(value):
     return False
 
 
+def normalize_number(value):
+    if value is None or value == "":
+        return None
+
+    try:
+        result = float(
+            str(value).replace(",", "").replace("₹", "").strip()
+        )
+
+        if not math.isfinite(result):
+            return None
+
+        return result
+
+    except (TypeError, ValueError):
+        return None
+
+
 def normalize_financials(financials):
     if not isinstance(financials, dict):
-        return {}
-
-    allowed_fields = [
-        "revenue",
-        "net_profit",
-        "eps",
-        "operating_profit",
-        "gross_profit",
-        "ebitda",
-        "total_debt",
-        "cash_flow",
-        "previous_year_revenue",
-        "previous_year_net_profit",
-        "previous_year_eps",
-    ]
+        financials = {}
 
     normalized = {}
 
-    for field in allowed_fields:
-        value = financials.get(field)
+    for field in FINANCIAL_FIELDS:
+        normalized[field] = normalize_number(
+            financials.get(field)
+        )
 
-        if value is None or value == "":
-            normalized[field] = None
-            continue
+    normalized["profit_turnaround"] = bool(
+        financials.get("profit_turnaround", False)
+    )
 
-        try:
-            normalized[field] = float(value)
-        except (TypeError, ValueError):
-            normalized[field] = None
+    normalized["revenue_growth_available"] = (
+        normalized["revenue_yoy"] is not None
+    )
 
     return normalized
+
+
+def normalize_financial_scopes(item):
+    """
+    Store standalone and consolidated figures separately.
+
+    Preferred input:
+        financials_by_scope:
+            standalone: {...}
+            consolidated: {...}
+
+    Legacy input:
+        financials: {...}
+
+    Legacy figures are not automatically assigned to either scope.
+    """
+
+    supplied = item.get("financials_by_scope", {})
+
+    if not isinstance(supplied, dict):
+        supplied = {}
+
+    output = {}
+
+    for scope in SCOPES:
+        output[scope] = normalize_financials(
+            supplied.get(scope, {})
+        )
+
+    # Preserve legacy financials without guessing their scope.
+    legacy = normalize_financials(
+        item.get("financials", {})
+    )
+
+    return output, legacy
 
 
 def is_results_announcement(item):
@@ -230,10 +307,24 @@ def normalize_announcement(item):
         + str(item.get("details", ""))
     )
 
+    financials_by_scope, legacy_financials = (
+        normalize_financial_scopes(item)
+    )
+
+    expectations = item.get("expectations", {})
+
+    if not isinstance(expectations, dict):
+        expectations = {}
+
+    if not expectations.get("source"):
+        expectations = {}
+
     normalized = {
         "symbol": str(item["symbol"]).strip().upper(),
         "company": str(item["company"]).strip(),
-        "period": str(item.get("period", "Not Specified")).strip(),
+        "period": str(
+            item.get("period", "Not Specified")
+        ).strip(),
         "published_at": str(item["published_at"]).strip(),
         "source": str(item["source"]).strip().upper(),
         "subject": str(item["subject"]).strip(),
@@ -243,24 +334,100 @@ def normalize_announcement(item):
             item.get("attachment_url", "")
         ).strip(),
         "result_scope": classify_result_scope(combined_text),
-        "financials": normalize_financials(
-            item.get("financials", {})
+
+        "financials_by_scope": financials_by_scope,
+
+        # Retain legacy field for older scanner compatibility.
+        "financials": legacy_financials,
+
+        "expectations": expectations,
+        "data_status": item.get(
+            "data_status",
+            "Announcement detected - figures not verified"
         ),
-        "expectations": item.get("expectations", {}),
-        "data_status": "Announcement detected - figures not verified",
+        "financial_units": item.get(
+            "financial_units",
+            "Not specified"
+        ),
     }
 
-    expectations = normalized["expectations"]
-
-    if not isinstance(expectations, dict):
-        expectations = {}
-
-    if not expectations.get("source"):
-        expectations = {}
-
-    normalized["expectations"] = expectations
-
     return normalized
+
+
+def announcement_key(item):
+    return (
+        item.get("symbol"),
+        item.get("period"),
+        item.get("published_at"),
+        item.get("source_url"),
+    )
+
+
+def merge_preserving_verified_data(old, new):
+    """
+    Update announcement metadata without replacing existing
+    non-null financial values with empty values.
+    """
+
+    merged = dict(old)
+
+    for key, value in new.items():
+        if key not in {
+            "financials",
+            "financials_by_scope",
+        }:
+            if value not in (None, ""):
+                merged[key] = value
+
+    old_scopes = old.get("financials_by_scope", {})
+    new_scopes = new.get("financials_by_scope", {})
+
+    if not isinstance(old_scopes, dict):
+        old_scopes = {}
+
+    if not isinstance(new_scopes, dict):
+        new_scopes = {}
+
+    merged_scopes = {}
+
+    for scope in SCOPES:
+        previous = old_scopes.get(scope, {})
+        incoming = new_scopes.get(scope, {})
+
+        if not isinstance(previous, dict):
+            previous = {}
+
+        if not isinstance(incoming, dict):
+            incoming = {}
+
+        combined = dict(previous)
+
+        for field, value in incoming.items():
+            if value is not None:
+                combined[field] = value
+
+        merged_scopes[scope] = combined
+
+    merged["financials_by_scope"] = merged_scopes
+
+    old_legacy = old.get("financials", {})
+    new_legacy = new.get("financials", {})
+
+    if not isinstance(old_legacy, dict):
+        old_legacy = {}
+
+    if not isinstance(new_legacy, dict):
+        new_legacy = {}
+
+    merged_legacy = dict(old_legacy)
+
+    for field, value in new_legacy.items():
+        if value is not None:
+            merged_legacy[field] = value
+
+    merged["financials"] = merged_legacy
+
+    return merged
 
 
 def read_inbox():
@@ -293,7 +460,7 @@ def read_inbox():
                     records.append(result)
                 else:
                     print(
-                        f"SKIPPED: Not a financial results announcement"
+                        "SKIPPED: Not a financial results announcement"
                     )
 
             except ValueError as exc:
@@ -319,15 +486,25 @@ def main():
 
     unique = {}
 
-    for item in previous + announcements:
-        key = (
-            item.get("symbol"),
-            item.get("period"),
-            item.get("published_at"),
-            item.get("source_url"),
-        )
+    for item in previous:
+        if isinstance(item, dict):
+            unique[announcement_key(item)] = item
 
-        unique[key] = item
+    new_count = 0
+    update_count = 0
+
+    for item in announcements:
+        key = announcement_key(item)
+
+        if key in unique:
+            unique[key] = merge_preserving_verified_data(
+                unique[key],
+                item
+            )
+            update_count += 1
+        else:
+            unique[key] = item
+            new_count += 1
 
     output = {
         "updated": now_iso(),
@@ -337,7 +514,8 @@ def main():
     save_json(OUTPUT_FILE, output)
 
     print("SHARE SANKET RESULTS SOURCE ADAPTER")
-    print(f"New matching records: {len(announcements)}")
+    print(f"New matching records: {new_count}")
+    print(f"Existing records updated: {update_count}")
     print(f"Total unique records: {len(unique)}")
     print(f"Output: {OUTPUT_FILE}")
 
