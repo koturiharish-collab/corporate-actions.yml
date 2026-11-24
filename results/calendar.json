@@ -1,4 +1,16 @@
+
 {
-  "updated": "",
-  "calendar": []
+  "updated": "2026-11-24T16:13:46.561543+05:30",
+  "calendar": [
+    {
+      "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+      "symbol": "SFCTECH",
+      "company": "SFC Environmental Technologies Limited",
+      "period": "Q2 FY2026-27",
+      "published_at": "2026-11-23",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+      "status": "Announced"
+    }
+  ]
 }
