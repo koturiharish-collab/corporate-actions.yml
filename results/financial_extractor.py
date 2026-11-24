@@ -1,8 +1,11 @@
 
-"""Share Sanket - Financial Statement Extractor
+"""Share Sanket - Financial Statement Review Extractor.
 
-Extracts standalone and consolidated financial statement sections.
-Unverified OCR figures are retained for review, not auto-published.
+Locates the actual quarterly financial-results pages rather than
+matching the auditors' limited-review report.
+
+OCR figures are preserved as raw text for verification.
+No financial values are automatically published.
 """
 
 import json
@@ -18,15 +21,15 @@ REVIEW_DIR = BASE_DIR / "review"
 
 IST = ZoneInfo("Asia/Kolkata")
 
-STATEMENT_MARKERS = {
-    "standalone": [
-        "Statement of Unaudited Standalone Financial Results",
-        "Statement of Unaudited Standalone",
-    ],
-    "consolidated": [
-        "Statement of Unaudited Consolidated Financial Results",
-        "Statement of Unaudited Consolidated",
-    ],
+STATEMENTS = {
+    "standalone": (
+        "statement of unaudited standalone financial results "
+        "for the quarter and half year ended"
+    ),
+    "consolidated": (
+        "statement of unaudited consolidated financial results "
+        "for the quarter and half year ended"
+    ),
 }
 
 FINANCIAL_LABELS = [
@@ -36,13 +39,12 @@ FINANCIAL_LABELS = [
     "Total expenses",
     "Profit before tax",
     "Profit after tax",
+    "Profit for the period",
     "Owners of the Parent",
-    "Net profit",
     "Basic earnings per share",
     "Diluted earnings per share",
-    "Operating profit before working capital changes",
-    "Net cash from operating activities",
-    "Borrowings",
+    "Finance costs",
+    "Depreciation and amortization",
 ]
 
 
@@ -51,102 +53,167 @@ def read_text(symbol):
 
     if not path.exists():
         raise FileNotFoundError(
-            f"Extracted text not found: {path}"
+            f"PDF text file not found: {path}"
         )
 
-    return path.read_text(encoding="utf-8", errors="replace")
+    return path.read_text(
+        encoding="utf-8",
+        errors="replace"
+    )
 
 
-def find_statement_sections(text):
-    lines = text.splitlines()
-    sections = {}
+def split_pdf_pages(text):
+    """Split extracted text using PDF page markers."""
+    parts = re.split(
+        r"---\s*PAGE\s+(\d+)\s*---",
+        text,
+        flags=re.IGNORECASE
+    )
 
-    for statement_type, markers in STATEMENT_MARKERS.items():
-        start = None
+    pages = []
 
-        for index, line in enumerate(lines):
-            if any(marker.lower() in line.lower() for marker in markers):
-                start = index
-                break
+    for index in range(1, len(parts), 2):
+        page_number = int(parts[index])
+        page_text = parts[index + 1]
 
-        if start is None:
-            sections[statement_type] = {
-                "found": False,
-                "text": "",
+        pages.append({
+            "page": page_number,
+            "text": page_text.strip()
+        })
+
+    if not pages:
+        pages.append({
+            "page": None,
+            "text": text
+        })
+
+    return pages
+
+
+def find_actual_statement(pages, statement_type):
+    """Find the financial-results page, not the auditor report."""
+
+    heading = STATEMENTS[statement_type]
+
+    for page in pages:
+        normalized = " ".join(
+            page["text"].lower().split()
+        )
+
+        if heading in normalized:
+            return {
+                "found": True,
+                "page": page["page"],
+                "raw_text": page["text"],
+                "detection_method": "Exact financial-results heading",
             }
-            continue
 
-        # Capture a limited block for human verification.
-        end = min(start + 45, len(lines))
-
-        sections[statement_type] = {
-            "found": True,
-            "start_line": start + 1,
-            "text": "\n".join(lines[start:end]),
-        }
-
-    return sections
+    return {
+        "found": False,
+        "page": None,
+        "raw_text": "",
+        "detection_method": "Heading not found",
+    }
 
 
-def find_financial_lines(text):
-    found = []
+def extract_candidate_lines(statement_text):
+    """Keep original OCR lines without guessing numeric columns."""
 
-    for line_number, line in enumerate(text.splitlines(), start=1):
+    candidates = []
+
+    for line_number, line in enumerate(
+        statement_text.splitlines(),
+        start=1
+    ):
         cleaned = " ".join(line.split())
+
+        if not cleaned:
+            continue
 
         for label in FINANCIAL_LABELS:
             if label.lower() in cleaned.lower():
-                found.append({
+                candidates.append({
                     "line": line_number,
                     "label": label,
                     "raw_text": cleaned,
+                    "verified": False,
                 })
                 break
-
-    return found
-
-
-def extract_eps_candidates(text):
-    candidates = []
-
-    for line_number, line in enumerate(text.splitlines(), start=1):
-        if "earnings per share" not in line.lower():
-            continue
-
-        # Preserve the original text. Do not guess missing decimal points.
-        candidates.append({
-            "line": line_number,
-            "raw_text": " ".join(line.split()),
-            "verification": "Required",
-        })
 
     return candidates
 
 
+def detect_units(statement_text):
+    normalized = " ".join(statement_text.lower().split())
+
+    if "indian rupees in millions" in normalized:
+        return "Indian Rupees in Millions"
+
+    if "indian rupees in crores" in normalized:
+        return "Indian Rupees in Crores"
+
+    if "indian rupees" in normalized:
+        return "Indian Rupees; denomination needs review"
+
+    return "Not identified"
+
+
+def build_statement_review(pages, statement_type):
+    statement = find_actual_statement(
+        pages,
+        statement_type
+    )
+
+    if not statement["found"]:
+        return {
+            **statement,
+            "financial_units": "Not identified",
+            "candidate_lines": [],
+            "figures_verified": False,
+        }
+
+    raw_text = statement["raw_text"]
+
+    return {
+        **statement,
+        "financial_units": detect_units(raw_text),
+        "candidate_lines": extract_candidate_lines(raw_text),
+        "figures_verified": False,
+    }
+
+
 def build_report(symbol, text):
-    sections = find_statement_sections(text)
+    pages = split_pdf_pages(text)
+
+    standalone = build_statement_review(
+        pages,
+        "standalone"
+    )
+
+    consolidated = build_statement_review(
+        pages,
+        "consolidated"
+    )
 
     return {
         "symbol": symbol,
         "extracted_at": datetime.now(IST).isoformat(),
         "extraction_status": "Review required",
-        "source_type": "PDF text extraction",
+        "source_type": "Official PDF text extraction",
         "automatic_publication": False,
-        "financial_units": "Not yet verified",
-        "statements": sections,
-        "financial_lines": find_financial_lines(text),
-        "eps_candidates": extract_eps_candidates(text),
-        "verified_financials": {
-            "standalone": {},
-            "consolidated": {},
+        "statements": {
+            "standalone": standalone,
+            "consolidated": consolidated,
         },
         "validation": {
-            "standalone_found": sections["standalone"]["found"],
-            "consolidated_found": sections["consolidated"]["found"],
+            "standalone_found": standalone["found"],
+            "consolidated_found": consolidated["found"],
+            "standalone_page": standalone["page"],
+            "consolidated_page": consolidated["page"],
             "figures_verified": False,
             "reason": (
-                "OCR text must be checked against the original "
-                "financial statement before publishing figures."
+                "OCR values and reporting columns require "
+                "verification against the original PDF."
             ),
         },
     }
@@ -156,7 +223,7 @@ def main():
     symbol = (
         sys.argv[1].strip().upper()
         if len(sys.argv) > 1
-        else "SFCTECH"
+        else "SFC_TEST"
     )
 
     try:
@@ -167,23 +234,45 @@ def main():
 
     report = build_report(symbol, text)
 
-    REVIEW_DIR.mkdir(parents=True, exist_ok=True)
-
-    output_file = REVIEW_DIR / f"{symbol}_financial_review.json"
-
-    output_file.write_text(
-        json.dumps(report, indent=2, ensure_ascii=False),
-        encoding="utf-8",
+    REVIEW_DIR.mkdir(
+        parents=True,
+        exist_ok=True
     )
 
-    print("Financial extraction review completed.")
+    output_file = (
+        REVIEW_DIR /
+        f"{symbol}_financial_review.json"
+    )
+
+    output_file.write_text(
+        json.dumps(
+            report,
+            indent=2,
+            ensure_ascii=False
+        ),
+        encoding="utf-8"
+    )
+
+    print("Financial statement review completed.")
     print("Symbol:", symbol)
-    print("Standalone statement:", report["validation"]["standalone_found"])
-    print("Consolidated statement:", report["validation"]["consolidated_found"])
-    print("Financial lines found:", len(report["financial_lines"]))
-    print("EPS candidates found:", len(report["eps_candidates"]))
+    print(
+        "Standalone page:",
+        report["validation"]["standalone_page"]
+    )
+    print(
+        "Consolidated page:",
+        report["validation"]["consolidated_page"]
+    )
+    print(
+        "Standalone candidates:",
+        len(report["statements"]["standalone"]["candidate_lines"])
+    )
+    print(
+        "Consolidated candidates:",
+        len(report["statements"]["consolidated"]["candidate_lines"])
+    )
     print("Figures verified: No")
-    print("Review file:", output_file)
+    print("Output:", output_file)
 
 
 if __name__ == "__main__":
