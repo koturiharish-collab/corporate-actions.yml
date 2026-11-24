@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: share-sanket-results
@@ -45,7 +45,6 @@ jobs:
 
           for filename, key in files.items():
               path = Path("results") / filename
-
               with path.open(encoding="utf-8") as f:
                   data = json.load(f)
 
@@ -114,6 +113,23 @@ jobs:
         run: |
           python results/results_scanner.py
 
+      - name: Publish Results JSON files to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add results/alerts.json
+          git add results/history.json
+          git add results/calendar.json
+
+          if git diff --cached --quiet; then
+            echo "No Results JSON changes to publish."
+          else
+            git commit -m "Publish updated Share Sanket Results data"
+            git push
+            echo "Results JSON files published to repository."
+          fi
+
       - name: Upload Results data
         uses: actions/upload-artifact@v4
         with:
@@ -131,6 +147,6 @@ jobs:
           echo "PDF text extraction completed."
           echo "Financial review generated."
           echo "Results Scanner executed."
-          echo "Results JSON files uploaded."
-          echo "Financial figures still require verification."
-          echo "No financial figures automatically published."
+          echo "Results JSON files committed when changed."
+          echo "GitHub Pages can serve the published JSON files."
+          echo "Financial figures must be verified before publication."
