@@ -2496,6 +2496,8 @@
  "NSE:106869628",
  "NSE:106869629",
  "NSE:106869631",
+ "NSE:106869636",
+ "NSE:106869638",
  "SPLIT|AZADIND|23-Oct-2026|Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
  "SPLIT|BANSALWIRE|16-Oct-2026|Face Value Split (Sub-Division) - From Rs 5/- Per Share To Re 1/- Per Share",
  "SPLIT|BLSE|06-Oct-2026|Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 5/- Per Share",
@@ -2509,6 +2511,10 @@
  "SPLIT|VGL|27-Nov-2026|Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share",
  "initialized",
  "keys",
- "NSE:106869638",
- "NSE:106869636"
+ "NSE:106869646",
+ "NSE:106869645",
+ "NSE:106869644",
+ "NSE:106869643",
+ "NSE:106869640",
+ "NSE:106869639"
 ]
