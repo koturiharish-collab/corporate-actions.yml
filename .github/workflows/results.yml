@@ -62,7 +62,6 @@ jobs:
           python -m py_compile results/pdf_extractor.py
           echo "All Results Python files are valid."
 
-      
       - name: Run Results Source Adapter
         run: |
           python results/source_adapter.py
@@ -77,7 +76,6 @@ jobs:
           name: sfc-results-pdf-text
           path: results/extracted/
           if-no-files-found: error
-
 
       - name: Validate generated announcements
         run: |
@@ -100,10 +98,25 @@ jobs:
           print("Records:", len(data["announcements"]))
           PY
 
+      - name: Run Results Scanner
+        run: |
+          python results/results_scanner.py
+
+      - name: Upload Results data
+        uses: actions/upload-artifact@v4
+        with:
+          name: share-sanket-results-data
+          path: |
+            results/alerts.json
+            results/history.json
+            results/calendar.json
+          if-no-files-found: error
+
       - name: Report validation
         run: |
           echo "Results module validation completed."
-          echo "PDF extraction dependency installed."
-          echo "No live PDF downloaded."
-          echo "No financial data published."
-          echo "No Telegram message sent."
+          echo "Results Source Adapter completed."
+          echo "Results Scanner executed."
+          echo "Results JSON files uploaded."
+          echo "Financial figures still require verification."
+          echo "Telegram notifications are not configured in this workflow."
