@@ -31,6 +31,7 @@ ALLOWED_DOMAINS = {
     "www.nseindia.in",
     "bseindia.com",
     "www.bseindia.com",
+    "nsearchives.nseindia.in",
 }
 
 RESULT_KEYWORDS = [
