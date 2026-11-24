@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -178,6 +179,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
 .star:hover { background: var(--hover); }
 .star svg { fill: none; }
 .star[aria-pressed="true"] { color: var(--star); }
+
 .star[aria-pressed="true"] svg { fill: currentColor; }
 .details { padding: 0 16px 16px 68px; }
 .drow { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--line); }
@@ -358,6 +360,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   }
 
   function loadWatch() { try { var v = JSON.parse(localStorage.getItem(WKEY) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+
   function saveWatch() { try { localStorage.setItem(WKEY, JSON.stringify(watch)); } catch (e) {} }
   function isWatched(s) { return watch.indexOf(s) > -1; }
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
@@ -371,8 +374,27 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     return { sample: !!(d && d.sample), folders: folders, alerts: alerts, fmap: fmap };
   }
 
-  function countFolder(fid) { return data.alerts.filter(function (a) { return a.folder === fid; }).length; }
-  function countSub(fid, sid) { return data.alerts.filter(function (a) { return a.folder === fid && a.subfolder === sid; }).length; }
+  function resultFinancials(a) {
+    var scopes = a && a.financials_by_scope || {};
+    var primary = a && a.primary_scope || 'consolidated';
+    return scopes[primary] || (a && a.financials) || {};
+  }
+  function resultMatchesSubfolder(a, sid) {
+    if (sid === 'quarterly') return true;
+    var f = resultFinancials(a), current = Number(f.net_profit), previous = Number(f.previous_year_net_profit);
+    if (!isFinite(current) || !isFinite(previous)) return false;
+    if (sid === 'profit-up') return current > previous;
+    if (sid === 'profit-down') return current < previous;
+    return false;
+  }
+  function countFolder(fid) {
+    if (fid === 'results') return resultsFeed.length;
+    return data.alerts.filter(function (a) { return a.folder === fid; }).length;
+  }
+  function countSub(fid, sid) {
+    if (fid === 'results') return resultsFeed.filter(function (a) { return resultMatchesSubfolder(a, sid); }).length;
+    return data.alerts.filter(function (a) { return a.folder === fid && a.subfolder === sid; }).length;
+  }
   function watched() { return data.alerts.filter(function (a) { return isWatched(a.symbol); }); }
   function safeId(s) { return String(s).replace(/[^A-Za-z0-9_-]/g, '-'); }
   function fmtPrice(n) { return typeof n === 'number' && isFinite(n) ? '₹' + n.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '—'; }
@@ -519,6 +541,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     var tbody = h('tbody');
     rows.forEach(function (r) { tbody.appendChild(h('tr', null, h('td', null, h('code', { text: r[0] })), h('td', { text: r[1] }), h('td', { text: r[2] }))); });
     var copyBtn = h('button', { type: 'button', class: 'btn', text: 'Copy alert example' });
+
     copyBtn.addEventListener('click', function () { copyText(alertEx, copyBtn); });
     c.appendChild(h('div', { class: 'doc' },
       h('p', { text: 'The app reads one file, alerts.json, from the same place as index.html. Edit that file to add folders and alerts. No code changes are needed.' }),
@@ -556,104 +579,75 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
         resultsFeed = Array.isArray(d.alerts) ? d.alerts : [];
         resultsLoaded = true;
         resultsLoading = false;
-        if (view.type === 'folder' && view.folder === 'results') render();
+        render();
       })
       .catch(function () {
         resultsLoading = false;
       });
   }
 
+  function formatResultMoney(value, units) {
+    if (value === null || value === undefined || value === '' || !isFinite(Number(value))) return 'Not available';
+    var amount = Number(value);
+    if (String(units || '').toLowerCase().indexOf('million') > -1) amount = amount / 10;
+    return '₹' + amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' crore';
+  }
+
   function renderResults(c) {
     loadResultsFeed();
-
     var items = resultsFeed.slice();
+    if (view.sub) items = items.filter(function (a) { return resultMatchesSubfolder(a, view.sub); });
     var q = query.trim().toLowerCase();
-
-    if (q) {
-      items = items.filter(function (a) {
-        return [a.symbol, a.company, a.period, a.rating]
-          .join(' ').toLowerCase().indexOf(q) > -1;
-      });
-    }
-
+    if (q) items = items.filter(function (a) {
+      return [a.symbol, a.company, a.period, a.rating, a.expectations_rating].join(' ').toLowerCase().indexOf(q) > -1;
+    });
     if (!items.length) {
       c.appendChild(h('div', { class: 'empty' },
         h('strong', { text: resultsLoading ? 'Loading results...' : 'No results available' }),
-        resultsLoading ? 'Please wait.' : 'Verified company results will appear here.'
-      ));
+        resultsLoading ? 'Please wait.' : 'Verified company results will appear here.'));
       return;
     }
-
     items.forEach(function (a) {
       var scopes = a.financials_by_scope || {};
       var primary = a.primary_scope || 'consolidated';
       var f = scopes[primary] || a.financials || {};
+      var units = a.financial_units || '';
       var rating = (a.ratings_by_scope || {})[primary] || a.rating || 'Insufficient Data';
-
       var card = h('div', { class: 'doc' });
-
-      card.appendChild(h('span', {
-        class: 'tag f-results',
-        text: String(rating).toUpperCase() + ' RESULTS'
-      }));
-
-      card.appendChild(h('h2', {
-        text: (a.company || a.symbol) + ' · ' + (a.symbol || '')
-      }));
-
-      card.appendChild(h('p', {
-        text: (a.period || '') + ' · ' + primary.toUpperCase() + ' · Published ' + (a.published_at || 'Date unavailable')
-      }));
-
+      card.appendChild(h('span', { class: 'tag f-results', text: String(rating).toUpperCase() + ' RESULTS' }));
+      card.appendChild(h('h2', { text: (a.company || a.symbol) + ' · ' + (a.symbol || '') }));
+      card.appendChild(h('p', { text: (a.period || '') + ' · ' + primary.toUpperCase() + ' · Published ' + (a.published_at || 'Date unavailable') }));
       var metrics = [
-        ['Revenue', f.revenue],
-        ['Previous-year revenue', f.previous_year_revenue],
-        ['Revenue growth', f.revenue_yoy],
-        ['Net profit', f.net_profit],
-        ['Previous-year net profit', f.previous_year_net_profit],
-        ['EPS', f.eps],
-        ['Net profit margin', f.net_margin],
-        ['Operating margin', f.operating_margin],
-        ['EBITDA', f.ebitda]
+        ['Revenue', formatResultMoney(f.revenue, units)],
+        ['Previous-year revenue', formatResultMoney(f.previous_year_revenue, units)],
+        ['Revenue growth', f.revenue_yoy == null ? 'Not available' : Number(f.revenue_yoy).toFixed(2) + '%'],
+        ['Net profit', formatResultMoney(f.net_profit, units)],
+        ['Previous-year net profit', formatResultMoney(f.previous_year_net_profit, units)],
+        ['EPS', f.eps == null ? 'Not available' : '₹' + Number(f.eps).toFixed(2) + ' / share'],
+        ['Net profit margin', f.net_margin == null ? 'Not available' : Number(f.net_margin).toFixed(2) + '%'],
+        ['Operating margin', f.operating_margin == null ? 'Not available' : Number(f.operating_margin).toFixed(2) + '%'],
+        ['EBITDA', formatResultMoney(f.ebitda, units)]
       ];
-
-      var table = h('table');
-      var body = h('tbody');
-
-      metrics.forEach(function (m) {
-        var value = m[1] === null || m[1] === undefined
-          ? 'Not available'
-          : m[1] + (m[0].indexOf('growth') > -1 || m[0].indexOf('margin') > -1 ? '%' : '');
-
-        body.appendChild(h('tr', null,
-          h('td', { text: m[0] }),
-          h('td', { text: value })
-        ));
-      });
-
+      var table = h('table'), body = h('tbody');
+      metrics.forEach(function (m) { body.appendChild(h('tr', null, h('td', { text: m[0] }), h('td', { text: m[1] }))); });
       table.appendChild(body);
       card.appendChild(h('div', { class: 'scroll' }, table));
-
-      card.appendChild(h('p', {
-        text: 'Analyst expectations: ' + (a.expectations_rating || 'Not Available')
-      }));
-
-      if (a.source_url) {
-        card.appendChild(h('a', {
-          class: 'btn',
-          href: a.source_url,
-          target: '_blank',
-          rel: 'noopener noreferrer',
-          text: 'Open official filing'
-        }));
-      }
-
+      card.appendChild(h('p', { text: 'Analyst expectations: ' + (a.expectations_rating || 'Not Available') }));
+      if (a.source_url) card.appendChild(h('a', { class: 'btn', href: a.source_url, target: '_blank', rel: 'noopener noreferrer', text: 'Open official filing' }));
       c.appendChild(card);
     });
   }
   function renderContent() {
     var c = document.getElementById('content'); c.textContent = '';
     var list = view.type === 'format' ? [] : currentAlerts();
+    if (view.type === 'folder' && view.folder === 'results') {
+      list = resultsFeed.slice();
+      if (view.sub) list = list.filter(function (a) { return resultMatchesSubfolder(a, view.sub); });
+      var resultQuery = query.trim().toLowerCase();
+      if (resultQuery) list = list.filter(function (a) {
+        return [a.symbol, a.company, a.period, a.rating, a.expectations_rating].join(' ').toLowerCase().indexOf(resultQuery) > -1;
+      });
+    }
     document.getElementById('heading').textContent = '';
     var hd = document.getElementById('heading');
     hd.appendChild(document.createTextNode(headingText()));
@@ -693,6 +687,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
 
   if (data.folders[0]) openFolders[data.folders[0].id] = true;
   render();
+  loadResultsFeed();
 
   function refreshAlerts() {
     if (!window.ssMemberAuthorized) return;
@@ -714,6 +709,3 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   <script type="module" src="firebase-members.js"></script>
 </body>
 </html>
-
-
-
