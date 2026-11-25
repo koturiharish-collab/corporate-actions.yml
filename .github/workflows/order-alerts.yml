@@ -1,9 +1,10 @@
+
 name: Manual order alert scan for Share Sanket
 
 on:
-  # Run on weekdays every five minutes during the market window (UTC).
+  # Run every day every five minutes during the market window (UTC).
   schedule:
-    - cron: "*/5 3-15 * * 1-5"
+    - cron: "*/5 3-15 * * *"
   workflow_dispatch: {}
 
 permissions:
