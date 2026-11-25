@@ -1,6 +1,6 @@
 {
  "sample": false,
- "updated": "2026-11-25T18:42:44+05:30",
+ "updated": "2026-11-25T18:54:07+05:30",
  "folders": [
   {
    "id": "emas",
@@ -146,6 +146,650 @@
   }
  ],
  "alerts": [
+  {
+   "id": "9571fb5111fadf64363ce041",
+   "parser_version": 7,
+   "time": "2026-11-25T18:54:07+05:30",
+   "folder": "orders",
+   "subfolder": "small",
+   "symbol": "SHAREINDIA",
+   "company": "Share India Securities Limited",
+   "title": "Action(s) taken or orders passed",
+   "price": 173.94,
+   "pe_ratio": 10.048528,
+   "week52_high": 233.35,
+   "week52_low": 115.36,
+   "change_pct": -0.16071564,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Share India Securities Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "SHAREINDIA",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Share India Securities Limited has informed the Exchange about Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs. 1,00,000",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Small (under ₹10 crore)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 18:20:59",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "SHAREINDIA.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/SHAREINDIA.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T18:54:07+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹173.94",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "10.05",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹233.35",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹115.36",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹38,828,199,936.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹3,882.82 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "1.30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹17.31",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹12,582,882,304.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Financial Services",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Capital Markets",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "0.0003%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs. 1,00,000; Rs. 18,000",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "(CIN: L67120GJ1994PLC115132) \nMember: NSE, BSE, MCX, NCDEX & MSEI \n          Depository Participant with CDSL & NSDL \nAMFI Registered Mutual Fund Distributor \nSEBI Registered Research Analyst & Portfolio Manager \nMAY 2025-MAY 2026 \nINDIA \n                            \n                 \n      \n    \nNovember 25, 2026 \n \nTo, \nBSE Limited \nScrip Code: 540725 / 977430 / 977955 /  \n978025 / 978077 / 978384 \nTo, \nNational Stock Exchange of India Limited \nSymbol: SHAREINDIA \n  \nSub: Disclosure under Regulation 30 of the SEBI (Listing Obligations & Disclosure Requirements) \nRegulations, 2015.  \n \nSir/Ma’am,  \n \nPursuant to Regulation 30 of the Securities and Exchange Board of India (Listing Obligations & Disclosure \nRequirements) Regulations, 2015 (“Listing Regulations”) read with Para A of Part A of Schedule III of the \nListing Regulations, it is hereby informed that NSE Clearing Limited has levied a monetary penalty on the \nCompany.  \n \nThe details required as per Schedule III of the Listing Regulations are provided in the below Annexure. \n \nThe aforesaid penalty has been levied in the normal and ordinary course of stock broking operations, and it \ndoes not have any material impact on the financials, operations, or other business activities of the Company. \n  \nThe invoice imposing the aforesaid penalty was made available on the portal of National Stock Exchange of \nIndia Limited on November 23, 2026, at approximately 06:35 p.m. November 24, 2026, being the day \nimmediately following the date of receipt of the aforesaid intimation, was a holiday on account of Guru \nNanak Jayanti (Gurpurab). Accordingly, the present disclosure is being made on November 25, 2026, being \nthe immediately succeeding working day. \n \nWe further wish to inform you that the Company is committed to upholding the highest compliance standards \nand shall take necessary steps to address the said issue. \n \nYou are requested to kindly take the above information on your records. \n \nThanking you, \n \nYours faithfully, \nFor Share India Securities Limited  \n \n \n \n \nVikas Aggarwal \nCompany Secretary & Compliance Officer \nM. No. F5512 \n \n \n \n \n \n \n \n \n \n\nAnnexure \n \nDetails as required under Schedule III of the Listing Regulations \n \nParticulars Details of Penalty \nName of the Authority NSE Clearing Limited (“NCL”) \nNature and details of the action(s) taken, initiated \nor order(s) passed. \nImposition of penalty by NCL of Rs. 1,00,000/- \n(Exclusive of GST of Rs. 18,000/-) on the \nCompany. \nDate of receipt of direction or order, including any \nad-interim or interim orders, or any other \ncommunication from the authority. \nThe invoice imposing the penalty was made \navailable on the portal of National Stock Exchange \nof India Limited on November 23, 2026, \napproximately at 06:35 p.m. November 24, 2026, \nbeing the day immediately following the date of \nreceipt of the aforesaid intimation, was a holiday \non account of Guru Nanak Jayanti (Gurpurab). \nAccordingly, the present disclosure is being made \non November 25, 2026, being the immediately \nsucceeding working day. \n \nDetails of the violation(s)/contravention(s) \ncommitted or alleged to be committed. \nThe penalty has been levied in the ordinary course \nof the Company's stock broking operations \ntowards violation of Market Wide Position Limit \n(MWPL). \nImpact on financial, operation or other activities of \nthe listed entity, quantifiable in monetary terms to \nthe extent possible. \nThere is no impact on the financials, operations, or \nother activities of the Company.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 18:20:59",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "406.02 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/SISL_25112026182045_Reg30Penalty_25112026signed.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Share India Securities Limited has informed the Exchange about Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:02",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026182059",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 18:21:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "406.02 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870749",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE932X01018",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Share India Securities Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 18:20:59",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "SHAREINDIA",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Share India Securities Limited disclosed that NSE Clearing Limited levied a monetary penalty of Rs. 1,00,000 plus GST of Rs. 18,000 for violation of Market Wide Position Limit. The penalty invoice was available on the NSE portal on November 23, 2026. The company stated the penalty is in the ordinary course of stock broking operations and has no material impact on its financials, operations, or business activities. The disclosure was made on November 25, 2026, following a holiday on November 24, 2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/SISL_25112026182045_Reg30Penalty_25112026signed.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/SISL_25112026182045_Reg30Penalty_25112026signed.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 18:20:59",
+    "attFilePath": null,
+    "attFileSize": "406.02 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/SISL_25112026182045_Reg30Penalty_25112026signed.pdf",
+    "attchmntText": "Share India Securities Limited has informed the Exchange about Action(s) taken or orders passed",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Action(s) taken or orders passed",
+    "difference": "00:00:02",
+    "dt": "25112026182059",
+    "exchdisstime": "25-Nov-2026 18:21:01",
+    "fileSize": "406.02 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870749",
+    "smIndustry": null,
+    "sm_isin": "INE932X01018",
+    "sm_name": "Share India Securities Limited",
+    "sort_date": "2026-11-25 18:20:59",
+    "symbol": "SHAREINDIA",
+    "voiceSummary": "Share India Securities Limited disclosed that NSE Clearing Limited levied a monetary penalty of Rs. 1,00,000 plus GST of Rs. 18,000 for violation of Market Wide Position Limit. The penalty invoice was available on the NSE portal on November 23, 2026. The company stated the penalty is in the ordinary course of stock broking operations and has no material impact on its financials, operations, or business activities. The disclosure was made on November 25, 2026, following a holiday on November 24, 2026.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/SISL_25112026182045_Reg30Penalty_25112026signed.mp3"
+   },
+   "filing_text": "Action(s) taken or orders passed\n\nShare India Securities Limited has informed the Exchange about Action(s) taken or orders passed\n\n(CIN: L67120GJ1994PLC115132) \nMember: NSE, BSE, MCX, NCDEX & MSEI \n          Depository Participant with CDSL & NSDL \nAMFI Registered Mutual Fund Distributor \nSEBI Registered Research Analyst & Portfolio Manager \nMAY 2025-MAY 2026 \nINDIA \n                            \n                 \n      \n    \nNovember 25, 2026 \n \nTo, \nBSE Limited \nScrip Code: 540725 / 977430 / 977955 /  \n978025 / 978077 / 978384 \nTo, \nNational Stock Exchange of India Limited \nSymbol: SHAREINDIA \n  \nSub: Disclosure under Regulation 30 of the SEBI (Listing Obligations & Disclosure Requirements) \nRegulations, 2015.  \n \nSir/Ma’am,  \n \nPursuant to Regulation 30 of the Securities and Exchange Board of India (Listing Obligations & Disclosure \nRequirements) Regulations, 2015 (“Listing Regulations”) read with Para A of Part A of Schedule III of the \nListing Regulations, it is hereby informed that NSE Clearing Limited has levied a monetary penalty on the \nCompany.  \n \nThe details required as per Schedule III of the Listing Regulations are provided in the below Annexure. \n \nThe aforesaid penalty has been levied in the normal and ordinary course of stock broking operations, and it \ndoes not have any material impact on the financials, operations, or other business activities of the Company. \n  \nThe invoice imposing the aforesaid penalty was made available on the portal of National Stock Exchange of \nIndia Limited on November 23, 2026, at approximately 06:35 p.m. November 24, 2026, being the day \nimmediately following the date of receipt of the aforesaid intimation, was a holiday on account of Guru \nNanak Jayanti (Gurpurab). Accordingly, the present disclosure is being made on November 25, 2026, being \nthe immediately succeeding working day. \n \nWe further wish to inform you that the Company is committed to upholding the highest compliance standards \nand shall take necessary steps to address the said issue. \n \nYou are requested to kindly take the above information on your records. \n \nThanking you, \n \nYours faithfully, \nFor Share India Securities Limited  \n \n \n \n \nVikas Aggarwal \nCompany Secretary & Compliance Officer \nM. No. F5512 \n \n \n \n \n \n \n \n \n \n\nAnnexure \n \nDetails as required under Schedule III of the Listing Regulations \n \nParticulars Details of Penalty \nName of the Authority NSE Clearing Limited (“NCL”) \nNature and details of the action(s) taken, initiated \nor order(s) passed. \nImposition of penalty by NCL of Rs. 1,00,000/- \n(Exclusive of GST of Rs. 18,000/-) on the \nCompany. \nDate of receipt of direction or order, including any \nad-interim or interim orders, or any other \ncommunication from the authority. \nThe invoice imposing the penalty was made \navailable on the portal of National Stock Exchange \nof India Limited on November 23, 2026, \napproximately at 06:35 p.m. November 24, 2026, \nbeing the day immediately following the date of \nreceipt of the aforesaid intimation, was a holiday \non account of Guru Nanak Jayanti (Gurpurab). \nAccordingly, the present disclosure is being made \non November 25, 2026, being the immediately \nsucceeding working day. \n \nDetails of the violation(s)/contravention(s) \ncommitted or alleged to be committed. \nThe penalty has been levied in the ordinary course \nof the Company's stock broking operations \ntowards violation of Market Wide Position Limit \n(MWPL). \nImpact on financial, operation or other activities of \nthe listed entity, quantifiable in monetary terms to \nthe extent possible. \nThere is no impact on the financials, operations, or \nother activities of the Company.",
+   "source_id": "NSE:106870749"
+  },
+  {
+   "id": "8bd1be65630877776efe157a",
+   "parser_version": 7,
+   "time": "2026-11-25T18:54:06+05:30",
+   "folder": "orders",
+   "subfolder": "big",
+   "symbol": "DIACABS",
+   "company": "Diamond Power Infrastructure Limited",
+   "title": "Bagging/Receiving of orders/contracts",
+   "price": 347.9,
+   "pe_ratio": 68.3497,
+   "week52_high": 404.0,
+   "week52_low": 115.57,
+   "change_pct": -4.4362025,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Diamond Power Infrastructure Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "DIACABS",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Diamond Power Infrastructure Limited has informed the Exchange about Receiving orders of Adani Energy Solutions Limited (AESL)",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs. 1,196 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Big (₹100 crore or more)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 18:36:39",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 5 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "DIACABS.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/DIACABS.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T18:54:06+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹347.90",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "68.35",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹404.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹115.57",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹208,068,919,296.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹20,806.89 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "26.27",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹5.09",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹223,330,910,208.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Industrials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Specialty Industrial Machinery",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "5.7481%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs. 488.18 crore; Rs. 488.18 crore; Rs. 413.71 crore; Rs. 488 crore; Rs. 488.18 crore; Rs. 413.71 crore; Rs. 488.18 crore; Rs. 413.71 crore; Rs. 707.80 crore; Rs. 1,196 crore; Rs. 488.18 crore; Rs. 413.71 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nNovember 25, 2026 \nTo, \nThe Manager – Listing Department \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, Mumbai – 400 001 \nScrip Code: 522163 \nTo, \nThe Manager – Listing Department \nNational Stock Exchange of India Ltd. \nExchange Plaza, C-1, Block G, BKC, \nBandra (East), Mumbai – 400 051 \nSymbol: DIACABS \n \nSub.: Receipt of orders aggregating Rs. 488.18 crore for AL-59 conductors for the ±800 kV HVDC Bhadla–\nFatehpur transmission project - Intimation under Regulation 30 of the SEBI (Listing Obligations and \nDisclosure Requirements) Regulations, 2015 \nDear Sir/Madam, \nPursuant to Regulation 30 read with Para B of Part A of Schedule III of the SEBI (Listing Obligations and \nDisclosure Requirements) Regulations, 2015, we inform you that Diamond Power Infrastructure Limited \n(\"the Company\") has received two Purchase Orders from Adani Energy Solutions Limited on November \n25, 2026, in the ordinary course of business, for supply of 6,659.66 km of AL-59 conductors (5,692.66 km \nAL-59 Lapwing and 967 km AL-59 Zebra). The conductors are for the Uttar Pradesh and Madhya Pradesh \nportions of a ±800 kV HVDC Bhadla–Fatehpur transmission project. The aggregate value of the orders is \nRs. 488.18 crore including GST (Rs. 413.71 crore excluding GST). These orders further strengthen the \nCompany's presence in the HVDC transmission segment. \nThe details as required under Regulation 30 read with SEBI Master Circular No. \nSEBI/HO/CFD/PoD2/CIR/P/0155 dated 11 November 2024 are given in Annexure B. The press release \nissued by the Company in this regard is enclosed as Annexure A. \nYou are requested to take the above on record.  \nThanking you, \nYours faithfully, \nFor Diamond Power Infrastructure Limited \n \nJayesh Patel \nCompany Secretary \nICSI M. No.: A14898 \n \nEncl.: Annexure A – Press Release  \nAnnexure B – Disclosure under Regulation 30 \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \n \nAnnexure A \nPRESS RELEASE \nDiamond Power bags further conductor orders of Rs. 488 crore for a ±800 kV Bhadla–\nFatehpur HVDC line \nTwo orders from Adani Energy Solutions for over 6,600 km of AL-59 conductors for one of India’s largest \ngreen energy corridors \n• Aggregate purchase order value Rs. 488.18 crore including GST (Rs. 413.71 crore excluding GST) \n• 6,660 km of AL-59 Lapwing and AL-59 Zebra conductors for the Uttar Pradesh and Madhya Pradesh \nportions of an ±800 kV HVDC transmission line \n• Further strengthens Diamond Power’s position in the HVDC transmission business \nAhmedabad, 25 November 2026: Diamond Power Infrastructure Limited (“Diamond Power” / “DICABS”) \n(BSE: 522163 | NSE: DIACABS), India’s fastest growing cables and conductors company, today announced \nthat it has received two purchase orders from Adani Energy Solutions Limited (AESL) for supply of AL-59 \nconductors for the Uttar Pradesh and Madhya Pradesh portions of the ±800 kV HVDC Bhadla–Fatehpur \ntransmission project. \nThe orders together cover 5,693 km of AL-59 Lapwing conductor and 967 km of AL-59 Zebra conductor, \naggregating 6,660 km, on delivered-at-site basis. The aggregate purchase order value is Rs. 488.18 crore \nincluding GST (basic value Rs. 413.71 crore excluding GST). Deliveries will be made month-wise in line \nwith the project schedule and are to be completed by 31 December 2027. \nGrowing presence in HVDC \nThese orders follow Diamond Power’s earlier order of Rs. 707.80 crore for the same project, taking the \nCompany’s total orders for the Bhadla–Fatehpur HVDC line to about Rs. 1,196 crore including GST, and \nfurther strengthen its position in the HVDC business. HVDC is the technology used to move very large \nblocks of power over long distances with low losses, and ±800 kV is the highest HVDC voltage level in \noperation in India. Conductors for such lines are large-diameter, high-capacity products made to \ndemanding quality and surface-finish requirements, and are supplied by a limited set of qualified \nmanufacturers. \nAbout the project \nThe Bhadla–Fatehpur HVDC link is being developed by Adani Energy Solutions as a ±800 kV, 6,000 MW \ncorridor of about 950 km connecting Bhadla in Rajasthan with Fatehpur in Uttar Pradesh, to evacuate \nrenewable energy from Rajasthan to demand centres in northern India. \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nManagement comment \nMr. Kavish Shah, Vice President – Corporate Strategy, Diamond Power Infrastructure Limited, said: \nThese repeat orders for the Bhadla–Fatehpur HVDC line reflect the continued confidence Adani Energy \nSolutions has placed in Diamond Power. Conductors for a ±800 kV HVDC line must meet some of the most \ndemanding specifications in the industry, and being entrusted with them strengthens our position in this \nspecialised segment. With integrated aluminium rod mills, expanded conductor capacity and in-house \ntesting facilities, we are well placed to execute on schedule and to participate in the HVDC and green \nenergy corridor projects being planned across the country\" \nDiamond Power’s conductor capability \nDiamond Power is amongst the largest conductor manufacturers in India, with integrated aluminium rod \nmills and a conductor range covering ACSR, AL-59, AAAC and HTLS conductors. The Company’s plant at \nVadodara is supported by NABL-accredited in-house laboratories with high-voltage test facilities rated up \nto 765 kV. \nAbout Diamond Power Infrastructure Ltd \nDiamond Power Infrastructure Limited (DICABS) is an integrated manufacturer of power transmission \nequipment, offering LV, MV, HV and EHV power cables, control and instrumentation cables, fire-resistant \nand flame-retardant cables, solar DC and EV charging cables, and conductors, serving sectors including \npower, infrastructure, oil & gas, renewables, real estate and data centers. \n \n \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nAnnexure B \nDisclosure of details under Regulation 30 of the Listing Regulations read with the applicable SEBI \nCircular – Award / Receipt of Order \nSr. Particulars Details \n1 Name of the entity awarding the \norder \nAdani Energy Solutions Limited (AESL) \n2 Significant terms and conditions \nof the order awarded, in brief \nPurchase Order, for design, engineering, \nmanufacture, testing, packing and supply on DAP \n(Delivered at Place) basis of AL-59 conductors for a \n±800 kV HVDC Bhadla–Fatehpur transmission \nproject. \nQuantity: AL-59 Lapwing conductor 2,833.488 km \nand AL-59 Zebra conductor 967 km; – AL-59 \nLapwing conductor 2,859.175 km; total 6,659.663 \nkm (AL-59 Lapwing 5,692.663 km and AL-59 Zebra \n967 km). \nPerformance security by way of corporate \nguarantee; defect liability period of 18 months, \nlot-wise. \n3 Whether the order has been \nawarded by a domestic or \ninternational entity \nDomestic entity \n4 Nature of the order Supply of AL-59 overhead transmission line \nconductors for a ±800 kV HVDC (High Voltage \nDirect Current) transmission line \n5 Time period by which the order is \nto be executed \nDeliveries month-wise as per project requirement, \nto be completed on or before 31 December 2027 \n6 Broad consideration or size of \nthe order \nAggregate Purchase Order value: Rs. 488.18 crore \nincluding GST at 18%; basic value Rs. 413.71 crore \nexcluding GST (including packing, forwarding, \nfreight and transit insurance).  \n \n7 Whether the promoter / \npromoter group / group \ncompanies have any interest in \nNo \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nSr. Particulars Details \nthe entity that awarded the \norder; if yes, nature of interest \n8 Whether the order falls within \nrelated party transactions; if yes, \nwhether at arm’s length \nNo. The orders are not related party transactions.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 18:36:39",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "361.97 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/DIACABS_25112026183441_FinalIntimation25Nov2026.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Diamond Power Infrastructure Limited has informed the Exchange about Receiving orders of Adani Energy Solutions Limited (AESL)",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026183639",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 18:36:40",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "361.97 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870777",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE989C01020",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Diamond Power Infrastructure Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 18:36:39",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "DIACABS",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Diamond Power Infrastructure Limited received two purchase orders from Adani Energy Solutions Limited on November 25, 2026. The orders are for the supply of 6,659.66 km of AL-59 conductors for the Uttar Pradesh and Madhya Pradesh portions of the ±800 kV HVDC Bhadla–Fatehpur transmission project. The aggregate value is Rs. 488.18 crore including GST, or Rs. 413.71 crore excluding GST. Deliveries will be made month-wise and must be completed by 31 December 2027. This follows an earlier order of Rs. 707.80 crore for the same project, bringing the total orders for the Bhadla–Fatehpur HVDC line to approximately Rs. 1,196 crore including GST. The entity awarding the order is a domestic entity. The orders are not related party transactions.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/DIACABS_25112026183441_FinalIntimation25Nov2026.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/DIACABS_25112026183441_FinalIntimation25Nov2026.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 18:36:39",
+    "attFilePath": null,
+    "attFileSize": "361.97 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/DIACABS_25112026183441_FinalIntimation25Nov2026.pdf",
+    "attchmntText": "Diamond Power Infrastructure Limited has informed the Exchange about Receiving orders of Adani Energy Solutions Limited (AESL)",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Bagging/Receiving of orders/contracts",
+    "difference": "00:00:01",
+    "dt": "25112026183639",
+    "exchdisstime": "25-Nov-2026 18:36:40",
+    "fileSize": "361.97 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870777",
+    "smIndustry": null,
+    "sm_isin": "INE989C01020",
+    "sm_name": "Diamond Power Infrastructure Limited",
+    "sort_date": "2026-11-25 18:36:39",
+    "symbol": "DIACABS",
+    "voiceSummary": "Diamond Power Infrastructure Limited received two purchase orders from Adani Energy Solutions Limited on November 25, 2026. The orders are for the supply of 6,659.66 km of AL-59 conductors for the Uttar Pradesh and Madhya Pradesh portions of the ±800 kV HVDC Bhadla–Fatehpur transmission project. The aggregate value is Rs. 488.18 crore including GST, or Rs. 413.71 crore excluding GST. Deliveries will be made month-wise and must be completed by 31 December 2027. This follows an earlier order of Rs. 707.80 crore for the same project, bringing the total orders for the Bhadla–Fatehpur HVDC line to approximately Rs. 1,196 crore including GST. The entity awarding the order is a domestic entity. The orders are not related party transactions.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/DIACABS_25112026183441_FinalIntimation25Nov2026.mp3"
+   },
+   "filing_text": "Bagging/Receiving of orders/contracts\n\nDiamond Power Infrastructure Limited has informed the Exchange about Receiving orders of Adani Energy Solutions Limited (AESL)\n\nDIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nNovember 25, 2026 \nTo, \nThe Manager – Listing Department \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, Mumbai – 400 001 \nScrip Code: 522163 \nTo, \nThe Manager – Listing Department \nNational Stock Exchange of India Ltd. \nExchange Plaza, C-1, Block G, BKC, \nBandra (East), Mumbai – 400 051 \nSymbol: DIACABS \n \nSub.: Receipt of orders aggregating Rs. 488.18 crore for AL-59 conductors for the ±800 kV HVDC Bhadla–\nFatehpur transmission project - Intimation under Regulation 30 of the SEBI (Listing Obligations and \nDisclosure Requirements) Regulations, 2015 \nDear Sir/Madam, \nPursuant to Regulation 30 read with Para B of Part A of Schedule III of the SEBI (Listing Obligations and \nDisclosure Requirements) Regulations, 2015, we inform you that Diamond Power Infrastructure Limited \n(\"the Company\") has received two Purchase Orders from Adani Energy Solutions Limited on November \n25, 2026, in the ordinary course of business, for supply of 6,659.66 km of AL-59 conductors (5,692.66 km \nAL-59 Lapwing and 967 km AL-59 Zebra). The conductors are for the Uttar Pradesh and Madhya Pradesh \nportions of a ±800 kV HVDC Bhadla–Fatehpur transmission project. The aggregate value of the orders is \nRs. 488.18 crore including GST (Rs. 413.71 crore excluding GST). These orders further strengthen the \nCompany's presence in the HVDC transmission segment. \nThe details as required under Regulation 30 read with SEBI Master Circular No. \nSEBI/HO/CFD/PoD2/CIR/P/0155 dated 11 November 2024 are given in Annexure B. The press release \nissued by the Company in this regard is enclosed as Annexure A. \nYou are requested to take the above on record.  \nThanking you, \nYours faithfully, \nFor Diamond Power Infrastructure Limited \n \nJayesh Patel \nCompany Secretary \nICSI M. No.: A14898 \n \nEncl.: Annexure A – Press Release  \nAnnexure B – Disclosure under Regulation 30 \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \n \nAnnexure A \nPRESS RELEASE \nDiamond Power bags further conductor orders of Rs. 488 crore for a ±800 kV Bhadla–\nFatehpur HVDC line \nTwo orders from Adani Energy Solutions for over 6,600 km of AL-59 conductors for one of India’s largest \ngreen energy corridors \n• Aggregate purchase order value Rs. 488.18 crore including GST (Rs. 413.71 crore excluding GST) \n• 6,660 km of AL-59 Lapwing and AL-59 Zebra conductors for the Uttar Pradesh and Madhya Pradesh \nportions of an ±800 kV HVDC transmission line \n• Further strengthens Diamond Power’s position in the HVDC transmission business \nAhmedabad, 25 November 2026: Diamond Power Infrastructure Limited (“Diamond Power” / “DICABS”) \n(BSE: 522163 | NSE: DIACABS), India’s fastest growing cables and conductors company, today announced \nthat it has received two purchase orders from Adani Energy Solutions Limited (AESL) for supply of AL-59 \nconductors for the Uttar Pradesh and Madhya Pradesh portions of the ±800 kV HVDC Bhadla–Fatehpur \ntransmission project. \nThe orders together cover 5,693 km of AL-59 Lapwing conductor and 967 km of AL-59 Zebra conductor, \naggregating 6,660 km, on delivered-at-site basis. The aggregate purchase order value is Rs. 488.18 crore \nincluding GST (basic value Rs. 413.71 crore excluding GST). Deliveries will be made month-wise in line \nwith the project schedule and are to be completed by 31 December 2027. \nGrowing presence in HVDC \nThese orders follow Diamond Power’s earlier order of Rs. 707.80 crore for the same project, taking the \nCompany’s total orders for the Bhadla–Fatehpur HVDC line to about Rs. 1,196 crore including GST, and \nfurther strengthen its position in the HVDC business. HVDC is the technology used to move very large \nblocks of power over long distances with low losses, and ±800 kV is the highest HVDC voltage level in \noperation in India. Conductors for such lines are large-diameter, high-capacity products made to \ndemanding quality and surface-finish requirements, and are supplied by a limited set of qualified \nmanufacturers. \nAbout the project \nThe Bhadla–Fatehpur HVDC link is being developed by Adani Energy Solutions as a ±800 kV, 6,000 MW \ncorridor of about 950 km connecting Bhadla in Rajasthan with Fatehpur in Uttar Pradesh, to evacuate \nrenewable energy from Rajasthan to demand centres in northern India. \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nManagement comment \nMr. Kavish Shah, Vice President – Corporate Strategy, Diamond Power Infrastructure Limited, said: \nThese repeat orders for the Bhadla–Fatehpur HVDC line reflect the continued confidence Adani Energy \nSolutions has placed in Diamond Power. Conductors for a ±800 kV HVDC line must meet some of the most \ndemanding specifications in the industry, and being entrusted with them strengthens our position in this \nspecialised segment. With integrated aluminium rod mills, expanded conductor capacity and in-house \ntesting facilities, we are well placed to execute on schedule and to participate in the HVDC and green \nenergy corridor projects being planned across the country\" \nDiamond Power’s conductor capability \nDiamond Power is amongst the largest conductor manufacturers in India, with integrated aluminium rod \nmills and a conductor range covering ACSR, AL-59, AAAC and HTLS conductors. The Company’s plant at \nVadodara is supported by NABL-accredited in-house laboratories with high-voltage test facilities rated up \nto 765 kV. \nAbout Diamond Power Infrastructure Ltd \nDiamond Power Infrastructure Limited (DICABS) is an integrated manufacturer of power transmission \nequipment, offering LV, MV, HV and EHV power cables, control and instrumentation cables, fire-resistant \nand flame-retardant cables, solar DC and EV charging cables, and conductors, serving sectors including \npower, infrastructure, oil & gas, renewables, real estate and data centers. \n \n \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nAnnexure B \nDisclosure of details under Regulation 30 of the Listing Regulations read with the applicable SEBI \nCircular – Award / Receipt of Order \nSr. Particulars Details \n1 Name of the entity awarding the \norder \nAdani Energy Solutions Limited (AESL) \n2 Significant terms and conditions \nof the order awarded, in brief \nPurchase Order, for design, engineering, \nmanufacture, testing, packing and supply on DAP \n(Delivered at Place) basis of AL-59 conductors for a \n±800 kV HVDC Bhadla–Fatehpur transmission \nproject. \nQuantity: AL-59 Lapwing conductor 2,833.488 km \nand AL-59 Zebra conductor 967 km; – AL-59 \nLapwing conductor 2,859.175 km; total 6,659.663 \nkm (AL-59 Lapwing 5,692.663 km and AL-59 Zebra \n967 km). \nPerformance security by way of corporate \nguarantee; defect liability period of 18 months, \nlot-wise. \n3 Whether the order has been \nawarded by a domestic or \ninternational entity \nDomestic entity \n4 Nature of the order Supply of AL-59 overhead transmission line \nconductors for a ±800 kV HVDC (High Voltage \nDirect Current) transmission line \n5 Time period by which the order is \nto be executed \nDeliveries month-wise as per project requirement, \nto be completed on or before 31 December 2027 \n6 Broad consideration or size of \nthe order \nAggregate Purchase Order value: Rs. 488.18 crore \nincluding GST at 18%; basic value Rs. 413.71 crore \nexcluding GST (including packing, forwarding, \nfreight and transit insurance).  \n \n7 Whether the promoter / \npromoter group / group \ncompanies have any interest in \nNo \n\n           DIAMOND POWER INFRASTRUCTURE LIMITED \n \n   Regd. Office: Westgate (True Value) D Wing,  \n17th Floor, Office No 1703 to 1707,  \nNr. YMCA Club, SG Highway,  \nMakarba, Ahmedabad, Gujarat – 380051 \nCIN: L31300GJ1992PLC018198 \nEmail: cs@dicabs.com  \nWebsite: www.dicabs.com    \nTel No.- 02667-251354/251516 \nFax No.-02267-251202 \n \n \n \n \nSr. Particulars Details \nthe entity that awarded the \norder; if yes, nature of interest \n8 Whether the order falls within \nrelated party transactions; if yes, \nwhether at arm’s length \nNo. The orders are not related party transactions.",
+   "source_id": "NSE:106870777"
+  },
   {
    "id": "ema-golden-cdsl-2026-11-23",
    "time": "2026-11-24T07:57:56.113866+05:30",
