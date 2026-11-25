@@ -1,4 +1,3 @@
-
 """
 Share Sanket - Results Scanner
 
@@ -9,7 +8,8 @@ Features:
 - Generates separate ratings for each reporting scope.
 - Uses consolidated results as the default headline scope.
 - Maintains alerts, history and results calendar.
-- Sends Telegram notifications when configured.
+- Sends Telegram notifications when configured and when the
+  category is switched on in preferences.json.
 - Preserves existing records and notification status.
 - Does not invent analyst estimates or financial figures.
 """
@@ -23,6 +23,8 @@ from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 import requests
+
+from categories import category_enabled
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -38,6 +40,8 @@ BOT_TOKEN = os.getenv("RESULTS_TELEGRAM_BOT_TOKEN", "")
 CHAT_ID = os.getenv("RESULTS_TELEGRAM_CHAT_ID", "")
 
 SCOPES = ("standalone", "consolidated")
+
+RESULTS_CATEGORY = "results"
 
 
 def now_ist():
@@ -552,6 +556,7 @@ def main():
 
         item = dict(original)
         item["id"] = stable_id(item)
+        item["category"] = RESULTS_CATEGORY
 
         previous_record = old_alerts.get(item["id"], {})
         was_known = bool(previous_record)
@@ -635,11 +640,17 @@ def main():
     })
 
     # Retry notifications that have not been confirmed.
+    # Alerts in a category that is switched off are saved but not sent.
     for item in final_alerts:
-        if not item.get("telegram_notified", False):
-            if send_telegram(item):
-                item["telegram_notified"] = True
-                item["telegram_notified_at"] = now_ist()
+        if item.get("telegram_notified", False):
+            continue
+
+        if not category_enabled(item.get("category", RESULTS_CATEGORY)):
+            continue
+
+        if send_telegram(item):
+            item["telegram_notified"] = True
+            item["telegram_notified_at"] = now_ist()
 
     save_json(ALERTS_FILE, {
         "updated": now_ist(),
