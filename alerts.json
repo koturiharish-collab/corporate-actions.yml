@@ -1,6 +1,6 @@
 {
  "sample": false,
- "updated": "2026-11-25T22:07:08+05:30",
+ "updated": "2026-11-26T05:18:28+05:30",
  "folders": [
   {
    "id": "emas",
@@ -146,6 +146,328 @@
   }
  ],
  "alerts": [
+  {
+   "id": "4da89f2c0964d4a925633b23",
+   "parser_version": 7,
+   "time": "2026-11-26T05:18:28+05:30",
+   "folder": "orders",
+   "subfolder": "small",
+   "symbol": "KFINTECH",
+   "company": "Kfin Technologies Limited",
+   "title": "Action(s) taken or orders passed",
+   "price": 934.0,
+   "pe_ratio": 46.49079,
+   "week52_high": 1115.8,
+   "week52_low": 784.0,
+   "change_pct": 0.45711213,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Kfin Technologies Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "KFINTECH",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "KFin Technologies Limited has informed the Exchange about Intimation of Disclosure under sub-para 20 of Para A of Part A of Schedule III of Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs. 10,00,000",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Small (under ₹10 crore)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 23:00:53",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 3 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "KFINTECH.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/KFINTECH.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-26T05:18:28+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹934.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "46.49",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹1,115.80",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹784.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹161,497,235,456.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹16,149.72 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": "33.46",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "9.95",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹20.09",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹157,531,258,880.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Technology",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Software - Application",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "0.0006%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs. 10,00,000; Rs. 10,00,000; Rs. \n10,00,000; Rs. 10,00,000",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "November 25, 2026 CS&G/STX/DQ2026/17 \n \n1) National Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex, Bandra (E), \nMumbai – 400 051 \nScrip Symbol: KFINTECH \n2) BSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai – 400 001 \nScrip Code: 543720 \n \nSub. : Disclosure under sub-para 20 of Para A of Part A of Schedule III of Regulation 30 of the \nSecurities and Exchange Board of India (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 (“LODR Regulations”) \nDear Sir / Madam, \nPursuant to Regulation 30 of the LODR Regulations, this is to inform that the Company has received an \nadjudication order from Securities and Exchange Board of India (“SEBI”) vide its email dated November \n25, 2026, in the matter of Vanita Krishnakant Gandhi, imposing a monetary penalty of Rs. 10,00,000/- \n(Rupees Ten Lakh only) on the Company under Section 15HB of the SEBI Act, 1992. \nThe details as required under sub-para 20 of Para A of Part A of Schedule III of the LODR Regulations is \ngiven below: \nSr. No. Particulars Details \n01 Name of the Authority Securities and Exchange Board of India (“SEBI”) \n02 Nature and details of the action(s) taken \nor order(s) passed \nSEBI has passed an adjudication order in the \nmatter of Vanita Krishnakant Gandhi imposing a \nmonetary penalty of Rs. 10,00,000/- on the \nCompany under Section 15HB of the SEBI Act, \n1992. \n03 Date of receipt of direction or order, \nincluding any ad-interim or interim \norders, or any other communication \nfrom the authority  \nNovember 25, 2026 \n04 Details of the violation(s) / \ncontravention(s) committed or alleged \nto be committed \nThe matter relates to a transmission-cum-\ndematerialisation request concerning certain \nshares of Balkrishna Industries Limited, \nprocessed by the Company in its capacity as a \nRegistrar to an Issue and Share Transfer Agent \n(“RTA”). \n05 Impact on financial, operation or other \nactivities of the listed entity, \nquantifiable in monetary terms to the \nextent possible \nThe financial impact arising from the aforesaid \nmatter had already been duly accounted for in the \nfinancial statements of the Company for the \nFinancial Year 2025-26 and hence there will be \nno further financial impact during the Financial \nYear 2026-27 or later.  \n\n \n \nIn accordance with Regulation 30(13) of the LODR Regulations read with SEBI’s Circular No. \nSEBI/HO/CFD/CFD-PoD-2/P/CIR/2025/25 dated February 25, 2025, the summary of key elements of the \nsaid communication is enclosed herewith in the prescribed Form A. \nFurther, in respect of the captioned matter, I the undersigned, state and declare that the information and \ndetails provided in Form A, in compliance with Regulation 30(13) of the LODR Regulations, is true, correct \nand complete to the best of my knowledge and belief. \nDetails as per BSE’s Circular No. 20230714-34 dated July 14, 2023, and NSE’s Circular No. \nNSE/CML/2023/57 dated July 14, 2023, are as under: \nDate of occurrence of event / information November 25, 2026  \nTime of occurrence of event / information At around 04:54 p.m. \nThis is for your information and records. \nThanking you, \nYours faithfully, \nFor KFin Technologies Limited \n \n \n \nAlpana Kundu \nCompany Secretary and Compliance Officer \nICSI Membership No.: F10191 \nEncl.: a/a \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\nForm A \nDisclosure by KFin Technologies Limited regarding receipt of communication from regulatory, \nstatutory, enforcement or judicial authority under the Securities and Exchange Board of India \n(Listing Obligations and Disclosure Requirements) Regulations, 2015 \n[Regulation 30(13) – Disclosure of communication from regulatory, statutory, enforcement or judicial \nauthority] \nSr. \nNo. \nParticulars Details \n1. Name of the listed Company KFin Technologies Limited (“Company”) \n2. Type of communication received The Company has received an official email \ncommunication from Securities and Exchange \nBoard of India (“SEBI”) enclosing the \nAdjudication Order passed by SEBI in the \ncaptioned matter. \n3. Date of receipt of communication November 25, 2026 \n4. Authority from whom communication \nreceived \nSEBI \n5. Brief summary of the material contents of the \ncommunication received, including reasons \nfor receipt of the communication \nSEBI has passed an adjudication order in the matter \nof Vanita Krishnakant Gandhi in connection with a \ntransmission-cum-dematerialisation request \nprocessed by the Company in its capacity as an \nRTA and has imposed a monetary penalty of Rs. \n10,00,000/- under Section 15HB of the SEBI Act, \n1992.  \n6. Period for which communication would be \napplicable, if stated \nNot applicable \n7. Expected financial implications on the listed \nCompany, if any \nThe financial impact arising from the aforesaid \nmatter had already been duly accounted for in the \nfinancial statements of the Company for the \nFinancial Year 2025-26 and hence there will be no \nfurther financial impact during the Financial Year \n2026-27 or later. \n8. Details of any aberrations / non-compliances \nidentified by the authority in the \ncommunication \nThe matter relates to a transmission-cum-\ndematerialisation request concerning certain shares \nof Balkrishna Industries Limited, processed by the \nCompany in its capacity as an RTA. \n9. Details of any penalty or restriction or \nsanction imposed pursuant to the \ncommunication \nMonetary penalty of Rs. 10,00,000/- under Section \n15HB of the SEBI Act, 1992. \n10. Action(s) taken by listed Company with \nrespect to the communication \nThe Company is evaluating the adjudication order \nand considering appropriate legal remedies \navailable under law. \n11. Any other relevant information None",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 23:00:53",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "289.04 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/KFINTECHNSE_25112026230044_Intimation.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "KFin Technologies Limited has informed the Exchange about Intimation of Disclosure under sub-para 20 of Para A of Part A of Schedule III of Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026230053",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 23:00:54",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "289.04 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106871037",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE138Y01010",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Kfin Technologies Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 23:00:53",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "KFINTECH",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "KFin Technologies Limited received an adjudication order from SEBI on November 25, 2026. The order imposes a monetary penalty of Rs. 10,00,000 on the Company under Section 15HB of the SEBI Act, 1992. The penalty relates to a transmission-cum-dematerialisation request for shares of Balkrishna Industries Limited, processed by the Company as a Registrar to an Issue and Share Transfer Agent. The financial impact was already accounted for in the financial statements for the Financial Year 2025-26. There will be no further financial impact during the Financial Year 2026-27 or later. The Company is evaluating the order and considering appropriate legal remedies.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/KFINTECHNSE_25112026230044_Intimation.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/KFINTECHNSE_25112026230044_Intimation.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 23:00:53",
+    "attFilePath": null,
+    "attFileSize": "289.04 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/KFINTECHNSE_25112026230044_Intimation.pdf",
+    "attchmntText": "KFin Technologies Limited has informed the Exchange about Intimation of Disclosure under sub-para 20 of Para A of Part A of Schedule III of Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Action(s) taken or orders passed",
+    "difference": "00:00:01",
+    "dt": "25112026230053",
+    "exchdisstime": "25-Nov-2026 23:00:54",
+    "fileSize": "289.04 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106871037",
+    "smIndustry": null,
+    "sm_isin": "INE138Y01010",
+    "sm_name": "Kfin Technologies Limited",
+    "sort_date": "2026-11-25 23:00:53",
+    "symbol": "KFINTECH",
+    "voiceSummary": "KFin Technologies Limited received an adjudication order from SEBI on November 25, 2026. The order imposes a monetary penalty of Rs. 10,00,000 on the Company under Section 15HB of the SEBI Act, 1992. The penalty relates to a transmission-cum-dematerialisation request for shares of Balkrishna Industries Limited, processed by the Company as a Registrar to an Issue and Share Transfer Agent. The financial impact was already accounted for in the financial statements for the Financial Year 2025-26. There will be no further financial impact during the Financial Year 2026-27 or later. The Company is evaluating the order and considering appropriate legal remedies.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/KFINTECHNSE_25112026230044_Intimation.mp3"
+   },
+   "filing_text": "Action(s) taken or orders passed\n\nKFin Technologies Limited has informed the Exchange about Intimation of Disclosure under sub-para 20 of Para A of Part A of Schedule III of Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015.\n\nNovember 25, 2026 CS&G/STX/DQ2026/17 \n \n1) National Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex, Bandra (E), \nMumbai – 400 051 \nScrip Symbol: KFINTECH \n2) BSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai – 400 001 \nScrip Code: 543720 \n \nSub. : Disclosure under sub-para 20 of Para A of Part A of Schedule III of Regulation 30 of the \nSecurities and Exchange Board of India (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 (“LODR Regulations”) \nDear Sir / Madam, \nPursuant to Regulation 30 of the LODR Regulations, this is to inform that the Company has received an \nadjudication order from Securities and Exchange Board of India (“SEBI”) vide its email dated November \n25, 2026, in the matter of Vanita Krishnakant Gandhi, imposing a monetary penalty of Rs. 10,00,000/- \n(Rupees Ten Lakh only) on the Company under Section 15HB of the SEBI Act, 1992. \nThe details as required under sub-para 20 of Para A of Part A of Schedule III of the LODR Regulations is \ngiven below: \nSr. No. Particulars Details \n01 Name of the Authority Securities and Exchange Board of India (“SEBI”) \n02 Nature and details of the action(s) taken \nor order(s) passed \nSEBI has passed an adjudication order in the \nmatter of Vanita Krishnakant Gandhi imposing a \nmonetary penalty of Rs. 10,00,000/- on the \nCompany under Section 15HB of the SEBI Act, \n1992. \n03 Date of receipt of direction or order, \nincluding any ad-interim or interim \norders, or any other communication \nfrom the authority  \nNovember 25, 2026 \n04 Details of the violation(s) / \ncontravention(s) committed or alleged \nto be committed \nThe matter relates to a transmission-cum-\ndematerialisation request concerning certain \nshares of Balkrishna Industries Limited, \nprocessed by the Company in its capacity as a \nRegistrar to an Issue and Share Transfer Agent \n(“RTA”). \n05 Impact on financial, operation or other \nactivities of the listed entity, \nquantifiable in monetary terms to the \nextent possible \nThe financial impact arising from the aforesaid \nmatter had already been duly accounted for in the \nfinancial statements of the Company for the \nFinancial Year 2025-26 and hence there will be \nno further financial impact during the Financial \nYear 2026-27 or later.  \n\n \n \nIn accordance with Regulation 30(13) of the LODR Regulations read with SEBI’s Circular No. \nSEBI/HO/CFD/CFD-PoD-2/P/CIR/2025/25 dated February 25, 2025, the summary of key elements of the \nsaid communication is enclosed herewith in the prescribed Form A. \nFurther, in respect of the captioned matter, I the undersigned, state and declare that the information and \ndetails provided in Form A, in compliance with Regulation 30(13) of the LODR Regulations, is true, correct \nand complete to the best of my knowledge and belief. \nDetails as per BSE’s Circular No. 20230714-34 dated July 14, 2023, and NSE’s Circular No. \nNSE/CML/2023/57 dated July 14, 2023, are as under: \nDate of occurrence of event / information November 25, 2026  \nTime of occurrence of event / information At around 04:54 p.m. \nThis is for your information and records. \nThanking you, \nYours faithfully, \nFor KFin Technologies Limited \n \n \n \nAlpana Kundu \nCompany Secretary and Compliance Officer \nICSI Membership No.: F10191 \nEncl.: a/a \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\nForm A \nDisclosure by KFin Technologies Limited regarding receipt of communication from regulatory, \nstatutory, enforcement or judicial authority under the Securities and Exchange Board of India \n(Listing Obligations and Disclosure Requirements) Regulations, 2015 \n[Regulation 30(13) – Disclosure of communication from regulatory, statutory, enforcement or judicial \nauthority] \nSr. \nNo. \nParticulars Details \n1. Name of the listed Company KFin Technologies Limited (“Company”) \n2. Type of communication received The Company has received an official email \ncommunication from Securities and Exchange \nBoard of India (“SEBI”) enclosing the \nAdjudication Order passed by SEBI in the \ncaptioned matter. \n3. Date of receipt of communication November 25, 2026 \n4. Authority from whom communication \nreceived \nSEBI \n5. Brief summary of the material contents of the \ncommunication received, including reasons \nfor receipt of the communication \nSEBI has passed an adjudication order in the matter \nof Vanita Krishnakant Gandhi in connection with a \ntransmission-cum-dematerialisation request \nprocessed by the Company in its capacity as an \nRTA and has imposed a monetary penalty of Rs. \n10,00,000/- under Section 15HB of the SEBI Act, \n1992.  \n6. Period for which communication would be \napplicable, if stated \nNot applicable \n7. Expected financial implications on the listed \nCompany, if any \nThe financial impact arising from the aforesaid \nmatter had already been duly accounted for in the \nfinancial statements of the Company for the \nFinancial Year 2025-26 and hence there will be no \nfurther financial impact during the Financial Year \n2026-27 or later. \n8. Details of any aberrations / non-compliances \nidentified by the authority in the \ncommunication \nThe matter relates to a transmission-cum-\ndematerialisation request concerning certain shares \nof Balkrishna Industries Limited, processed by the \nCompany in its capacity as an RTA. \n9. Details of any penalty or restriction or \nsanction imposed pursuant to the \ncommunication \nMonetary penalty of Rs. 10,00,000/- under Section \n15HB of the SEBI Act, 1992. \n10. Action(s) taken by listed Company with \nrespect to the communication \nThe Company is evaluating the adjudication order \nand considering appropriate legal remedies \navailable under law. \n11. Any other relevant information None",
+   "source_id": "NSE:106871037"
+  },
   {
    "id": "aaa383cf5010948656ba9c89",
    "parser_version": 7,
