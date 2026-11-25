@@ -70,3 +70,11 @@ jobs:
       - name: Publish Share Sanket site
         if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
+
+      - name: Send Telegram alerts after Share Sanket is live
+        if: steps.save.outputs.site_changed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: >-
+          python -c "import json; from pathlib import Path; from order_alerts import send_telegram; outbox = Path('telegram-outbox.json'); [send_telegram(json.loads(item)) for item in outbox.read_text(encoding='utf-8').split('__SS_TELEGRAM_ALERT__') if item.strip()] if outbox.exists() else None"
