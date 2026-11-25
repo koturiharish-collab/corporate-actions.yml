@@ -1,8 +1,9 @@
 name: Manual order alert scan for Share Sanket
 
 on:
-  # Automatic five-minute scans run in corporate-actions.yml alongside corporate actions.
-  # Keep this manual fallback for on-demand refreshes.
+  # Run on weekdays every five minutes during the market window (UTC).
+  schedule:
+    - cron: "*/5 3-15 * * 1-5"
   workflow_dispatch: {}
 
 permissions:
