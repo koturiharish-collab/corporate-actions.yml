@@ -49,29 +49,37 @@ HEADERS = {
 
 
 # ---------------------------------------------------------
-# ORDER FILTER - UPDATED
+# ORDER FILTER
 # ---------------------------------------------------------
 
 INCLUDE = re.compile(
     r"\b("
+    # Exchange category: Action(s) initiated or orders passed
+    r"actions?\s*(?:\(s\))?\s+(?:initiated|taken)"
+    r"\s+(?:or\s+)?orders?\s+passed|"
+    r"orders?\s*(?:\(s\))?\s+passed|"
+
+    # Order and contract awards
     r"bagging\s*/?\s*receiving|"
+    r"(?:receiving|receipt|award(?:ing)?|bagging)\s+of\s+"
+    r"(?:an?\s+)?(?:new\s+)?(?:orders?|contracts?)"
+    r"(?:\s*\(s\))?|"
 
-    r"(receiving|receipt|award(?:ing)?|bagging)\s+of\s+"
-    r"(?:an?\s+)?(?:new\s+)?"
-    r"(?:orders?|contracts?)(?:\s*\(s\))?|"
+    r"orders?\s+(?:win|won|received|inflow|booked)|"
 
-    r"orders?\s+(win|won|received|inflow|book)|"
+    # Orders secured or received
+    r"(?:bagged|bags|secured|secures|wins?|won|"
+    r"received|receives|awarded|grabs?|clinched|clinch)"
+    r"[^.]{0,100}\b(?:orders?|contracts?|projects?|tenders?|work)|"
 
-    r"(bagg(ed|s)|secur(ed|es)|win(s)?|won|"
-    r"receiv(ed|es)|awarded|grabs?|clinch(ed|es)?)"
-    r"[^.]{0,80}\b(order|contract|project|tender|work)|"
-
-    r"letter\s+of\s+(award|intent|acceptance)|"
+    # Letters and purchase orders
+    r"letter\s+of\s+(?:award|intent|acceptance)|"
     r"\bLoA\b|\bLoI\b|"
     r"work\s+order|purchase\s+order|new\s+order|"
 
-    r"(order|contract)\s+(worth|valued|of\s+rs|of\s+inr|for)|"
-    r"empanel(l)?ment"
+    # Order value and empanelment
+    r"(?:order|contract)\s+(?:worth|valued|of\s+rs|of\s+inr|for)|"
+    r"empanel(?:ment|led|s)?"
     r")",
     re.I,
 )
@@ -80,7 +88,8 @@ EXCLUDE = re.compile(
     r"(newspaper\s+publication|trading\s+window|"
     r"loss\s+of\s+share\s+certificate|"
     r"duplicate\s+share|analyst\s*/?\s*investor\s+meet|"
-    r"credit\s+rating|cancel(led|lation)\s+of\s+(the\s+)?order)",
+    r"credit\s+rating|cancel(?:led|lation)\s+of\s+"
+    r"(?:the\s+)?order)",
     re.I,
 )
 
@@ -95,6 +104,33 @@ MONEY = re.compile(
 def log(*args):
     stamp = datetime.now(IST).strftime("%Y-%m-%d %H:%M:%S")
     print(stamp, *args, file=sys.stderr, flush=True)
+
+
+# ---------------------------------------------------------
+# ORDER CLASSIFICATION AND DIAGNOSTICS
+# ---------------------------------------------------------
+
+def filing_text(item):
+    return " ".join(
+        str(item.get(key) or "")
+        for key in ("title", "text", "category")
+    )
+
+
+def order_filter_reason(item):
+    text = filing_text(item)
+
+    if EXCLUDE.search(text):
+        return "excluded"
+
+    if INCLUDE.search(text):
+        return "order"
+
+    return "not_matched"
+
+
+def is_order_filing(item):
+    return order_filter_reason(item) == "order"
 
 
 # ---------------------------------------------------------
@@ -130,10 +166,7 @@ def fetch_bse(start, end):
 
         try:
             response = requests.get(
-                url,
-                params=params,
-                headers=headers,
-                timeout=30,
+                url, params=params, headers=headers, timeout=30
             )
             response.raise_for_status()
             payload = response.json()
@@ -141,8 +174,7 @@ def fetch_bse(start, end):
         except requests.HTTPError as exc:
             status = (
                 exc.response.status_code
-                if exc.response is not None
-                else "unknown"
+                if exc.response is not None else "unknown"
             )
             log(f"BSE HTTP error {status}: {exc}")
             raise
@@ -174,8 +206,7 @@ def fetch_bse(start, end):
                 "text": row.get("NEWSSUB") or "",
                 "category": (
                     row.get("SUBCATNAME")
-                    or row.get("CATEGORYNAME")
-                    or ""
+                    or row.get("CATEGORYNAME") or ""
                 ),
                 "time": row.get("NEWS_DT") or "",
                 "link": link,
@@ -273,9 +304,7 @@ def parse_money(text):
             unit_factor, unit_name = 1_000_000_000.0, "billion"
 
         per_share = re.search(
-            r"per\s+(share|unit|piece)|\beach\b",
-            context,
-            re.I,
+            r"per\s+(share|unit|piece)|\beach\b", context, re.I
         )
 
         relevant = re.search(
@@ -328,9 +357,7 @@ def find_client(text):
             value = re.sub(r"\s+", " ", match.group(1)).strip(" ,.;")
 
             if value and value.lower() not in {
-                "the exchange",
-                "the company",
-                "its customer",
+                "the exchange", "the company", "its customer"
             }:
                 matches.append(value)
 
@@ -383,15 +410,6 @@ def undisclosed_order_value(text):
         re.sub(r"\s+", " ", match.group(0)).strip(" ,.;")
         if match else None
     )
-
-
-def is_order_filing(item):
-    text = " ".join(
-        str(item.get(k) or "")
-        for k in ("title", "text", "category")
-    )
-
-    return bool(INCLUDE.search(text)) and not EXCLUDE.search(text)
 
 
 # ---------------------------------------------------------
@@ -457,21 +475,12 @@ def yahoo_market_data(item, cache):
         info = yf.Ticker(ticker_symbol).info or {}
 
         for key in (
-            "regularMarketPrice",
-            "currentPrice",
-            "marketCap",
-            "trailingPE",
-            "forwardPE",
-            "priceToBook",
-            "enterpriseValue",
-            "trailingEps",
-            "fiftyTwoWeekHigh",
-            "fiftyTwoWeekLow",
-            "regularMarketChangePercent",
-            "currency",
-            "sector",
-            "industry",
-            "regularMarketTime",
+            "regularMarketPrice", "currentPrice", "marketCap",
+            "trailingPE", "forwardPE", "priceToBook",
+            "enterpriseValue", "trailingEps",
+            "fiftyTwoWeekHigh", "fiftyTwoWeekLow",
+            "regularMarketChangePercent", "currency",
+            "sector", "industry", "regularMarketTime",
         ):
             if info.get(key) is not None:
                 result[key] = info.get(key)
@@ -484,7 +493,6 @@ def yahoo_market_data(item, cache):
         )
 
     cache[ticker_symbol] = result
-
     return result, ticker_symbol
 
 
@@ -495,11 +503,7 @@ def yahoo_market_data(item, cache):
 def extract_pdf(item):
     link = item.get("link") or ""
 
-    host = re.sub(
-        r"^https?://",
-        "",
-        link,
-    ).split("/", 1)[0].lower()
+    host = re.sub(r"^https?://", "", link).split("/", 1)[0].lower()
 
     if not link.startswith("https://") or not host.endswith(
         ("nseindia.com", "nseindia.in", "bseindia.com", "bseindia.in")
@@ -508,10 +512,7 @@ def extract_pdf(item):
 
     try:
         response = requests.get(
-            link,
-            headers=HEADERS,
-            timeout=25,
-            stream=True,
+            link, headers=HEADERS, timeout=25, stream=True
         )
 
         response.raise_for_status()
@@ -524,12 +525,7 @@ def extract_pdf(item):
             return "", "Filing link retained; PDF text extraction library unavailable."
 
         reader = PdfReader(BytesIO(content))
-
-        pages = [
-            page.extract_text() or ""
-            for page in reader.pages
-        ]
-
+        pages = [page.extract_text() or "" for page in reader.pages]
         text = "\n\n".join(pages).strip()
 
         if text:
@@ -574,19 +570,12 @@ def raw_details(source_data, exchange):
     details = []
 
     for key, value in (source_data or {}).items():
-        label = re.sub(
-            r"([a-z0-9])([A-Z])",
-            r"\1 \2",
-            str(key),
-        )
-
+        label = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", str(key))
         label = re.sub(r"[_\-]+", " ", label).strip().title()
 
         if isinstance(value, (dict, list)):
             value = json.dumps(
-                value,
-                ensure_ascii=False,
-                sort_keys=True,
+                value, ensure_ascii=False, sort_keys=True
             )
 
         if value == "":
@@ -621,24 +610,18 @@ def order_alert(item, market_cache):
     pdf_text, pdf_status = extract_pdf(item)
 
     full_text = "\n\n".join(
-        part
-        for part in (
-            item.get("title"),
-            item.get("text"),
-            pdf_text,
-        )
-        if part
+        part for part in (
+            item.get("title"), item.get("text"), pdf_text
+        ) if part
     )
 
     amounts, order_amount = parse_money(full_text)
-
     market, yahoo_ticker = yahoo_market_data(item, market_cache)
 
     currency = str(market.get("currency") or "").upper()
 
     price = clean_number(
-        market.get("regularMarketPrice")
-        or market.get("currentPrice")
+        market.get("regularMarketPrice") or market.get("currentPrice")
     )
 
     market_cap = clean_number(market.get("marketCap"))
@@ -661,7 +644,6 @@ def order_alert(item, market_cache):
     )
 
     pe = pe_value(market, price)
-
     week52_high = clean_number(market.get("fiftyTwoWeekHigh"))
     week52_low = clean_number(market.get("fiftyTwoWeekLow"))
 
@@ -671,8 +653,7 @@ def order_alert(item, market_cache):
         size_band, subfolder = "Big (₹100 crore or more)", "big"
     elif order_cr >= 10:
         size_band, subfolder = (
-            "Medium (₹10 crore to under ₹100 crore)",
-            "medium",
+            "Medium (₹10 crore to under ₹100 crore)", "medium"
         )
     else:
         size_band, subfolder = "Small (under ₹10 crore)", "small"
@@ -684,34 +665,28 @@ def order_alert(item, market_cache):
         {"label": "Company", "value": item.get("company"), "source": exch},
         {
             "label": "Exchange symbol / code",
-            "value": item.get("symbol"),
-            "source": exch,
+            "value": item.get("symbol"), "source": exch,
         },
         {
             "label": "Announcement category",
-            "value": item.get("category"),
-            "source": exch,
+            "value": item.get("category"), "source": exch,
         },
         {
             "label": "Filing title",
-            "value": item.get("title"),
-            "source": exch,
+            "value": item.get("title"), "source": exch,
         },
         {
             "label": "Order / project description",
-            "value": item.get("text"),
-            "source": exch,
+            "value": item.get("text"), "source": exch,
         },
         {
             "label": "Client / counterparty",
-            "value": find_client(full_text),
-            "source": exch,
+            "value": find_client(full_text), "source": exch,
         },
         {
             "label": "Reported order value",
             "value": (
-                order_amount["text"]
-                if order_amount
+                order_amount["text"] if order_amount
                 else undisclosed_order_value(full_text)
             ),
             "source": exch,
@@ -723,23 +698,19 @@ def order_alert(item, market_cache):
         },
         {
             "label": "Execution / delivery period",
-            "value": find_execution(full_text),
-            "source": exch,
+            "value": find_execution(full_text), "source": exch,
         },
         {
             "label": "Filing date and time",
-            "value": item.get("time"),
-            "source": exch,
+            "value": item.get("time"), "source": exch,
         },
         {
             "label": "PDF text extraction",
-            "value": pdf_status,
-            "source": exch,
+            "value": pdf_status, "source": exch,
         },
         {
             "label": "Yahoo Finance symbol",
-            "value": yahoo_ticker,
-            "source": "Yahoo Finance",
+            "value": yahoo_ticker, "source": "Yahoo Finance",
         },
         {
             "label": "Yahoo Finance company page",
@@ -756,28 +727,23 @@ def order_alert(item, market_cache):
         },
         {
             "label": "Price at snapshot",
-            "value": format_inr(price),
-            "source": "Yahoo Finance",
+            "value": format_inr(price), "source": "Yahoo Finance",
         },
         {
             "label": "Current P/E (trailing)",
-            "value": fmt_ratio(pe),
-            "source": "Yahoo Finance",
+            "value": fmt_ratio(pe), "source": "Yahoo Finance",
         },
         {
             "label": "52-week high",
-            "value": format_inr(week52_high),
-            "source": "Yahoo Finance",
+            "value": format_inr(week52_high), "source": "Yahoo Finance",
         },
         {
             "label": "52-week low",
-            "value": format_inr(week52_low),
-            "source": "Yahoo Finance",
+            "value": format_inr(week52_low), "source": "Yahoo Finance",
         },
         {
             "label": "Market capitalization",
-            "value": format_inr(market_cap),
-            "source": "Yahoo Finance",
+            "value": format_inr(market_cap), "source": "Yahoo Finance",
         },
         {
             "label": "Market capitalization (INR crore)",
@@ -809,13 +775,11 @@ def order_alert(item, market_cache):
         },
         {
             "label": "Sector",
-            "value": market.get("sector"),
-            "source": "Yahoo Finance",
+            "value": market.get("sector"), "source": "Yahoo Finance",
         },
         {
             "label": "Industry",
-            "value": market.get("industry"),
-            "source": "Yahoo Finance",
+            "value": market.get("industry"), "source": "Yahoo Finance",
         },
         {
             "label": "Order value / market cap",
@@ -835,30 +799,27 @@ def order_alert(item, market_cache):
         },
         {
             "label": "Complete extracted filing text",
-            "value": pdf_text or None,
-            "source": exch,
+            "value": pdf_text or None, "source": exch,
         },
     ]
 
     details.extend(raw_details(item.get("source_data"), exch))
 
     raw_id = str(item.get("id") or "")
-
     change = clean_number(market.get("regularMarketChangePercent"))
 
     return {
         "id": hashlib.sha256(
             raw_id.encode("utf-8")
         ).hexdigest()[:24],
-        "parser_version": 6,
+        "parser_version": 7,
         "time": datetime.now(IST).isoformat(timespec="seconds"),
         "folder": "orders",
         "subfolder": subfolder,
         "symbol": str(item.get("symbol") or ""),
         "company": item.get("company") or "",
         "title": (
-            item.get("title")
-            or item.get("category")
+            item.get("title") or item.get("category")
             or "Order win announcement"
         ),
         "price": price,
@@ -880,24 +841,17 @@ def order_alert(item, market_cache):
 
 def load_seen():
     try:
-        value = json.loads(
-            SEEN_FILE.read_text(encoding="utf-8")
-        )
-
+        value = json.loads(SEEN_FILE.read_text(encoding="utf-8"))
         return value if isinstance(value, list) else []
-
     except (FileNotFoundError, json.JSONDecodeError, OSError):
         return []
 
 
 def save_seen(values):
     unique = list(dict.fromkeys(values))
-
     SEEN_FILE.write_text(
         json.dumps(
-            unique[-MAX_SEEN:],
-            ensure_ascii=False,
-            indent=1,
+            unique[-MAX_SEEN:], ensure_ascii=False, indent=1
         ) + "\n",
         encoding="utf-8",
     )
@@ -905,12 +859,8 @@ def save_seen(values):
 
 def load_alerts():
     try:
-        value = json.loads(
-            ALERT_FILE.read_text(encoding="utf-8")
-        )
-
+        value = json.loads(ALERT_FILE.read_text(encoding="utf-8"))
         return value if isinstance(value, list) else []
-
     except (FileNotFoundError, json.JSONDecodeError, OSError):
         return []
 
@@ -918,9 +868,7 @@ def load_alerts():
 def save_alerts(values):
     ALERT_FILE.write_text(
         json.dumps(
-            values[:MAX_ALERTS],
-            ensure_ascii=False,
-            indent=1,
+            values[:MAX_ALERTS], ensure_ascii=False, indent=1
         ) + "\n",
         encoding="utf-8",
     )
@@ -962,9 +910,7 @@ def send_telegram(alert):
             "Order size band",
         ):
             if detail["value"]:
-                lines.append(
-                    f"{detail['label']}: {detail['value']}"
-                )
+                lines.append(f"{detail['label']}: {detail['value']}")
 
     if alert["link"]:
         lines.append(alert["link"])
@@ -981,7 +927,6 @@ def send_telegram(alert):
             },
             timeout=15,
         )
-
         response.raise_for_status()
 
     except Exception as exc:
@@ -989,7 +934,7 @@ def send_telegram(alert):
 
 
 # ---------------------------------------------------------
-# MAIN SCANNER - UPDATED
+# MAIN SCANNER
 # ---------------------------------------------------------
 
 def run():
@@ -1004,7 +949,6 @@ def run():
     alerts = load_alerts()
     market_cache = {}
 
-    # Protect alerts already present in alerts.json.
     existing_alert_ids = {
         str(alert.get("source_id"))
         for alert in alerts
@@ -1019,21 +963,20 @@ def run():
     ):
         try:
             rows = fetcher(start, today)
-
             log(name, len(rows), "announcements")
-
             fetched.extend(rows)
 
         except Exception as exc:
-            log(
-                name,
-                "fetch failed, will retry next run:",
-                repr(exc),
-            )
+            # A BSE failure must not stop the NSE results.
+            log(name, "fetch failed, will retry next run:", repr(exc))
 
     new_alerts = 0
     skipped = 0
     duplicate_count = 0
+    matched_orders = 0
+    rejected_count = 0
+    excluded_count = 0
+    rejected_samples = []
 
     for item in fetched:
         raw_id = str(item.get("id") or "")
@@ -1041,33 +984,43 @@ def run():
         if not raw_id:
             continue
 
-        # Already published: never insert it again.
         if raw_id in existing_alert_ids:
             duplicate_count += 1
             continue
 
-        is_order = is_order_filing(item)
+        reason = order_filter_reason(item)
 
-        # Non-order announcements already processed can be skipped.
-        # Order announcements are rechecked even if previously seen.
-        if raw_id in seen and not is_order:
+        if reason == "excluded":
+            excluded_count += 1
             continue
 
-        if not is_order:
+        if reason != "order":
+            rejected_count += 1
+
+            if len(rejected_samples) < 30:
+                rejected_samples.append({
+                    "exchange": item.get("exchange"),
+                    "company": item.get("company"),
+                    "title": item.get("title"),
+                    "category": item.get("category"),
+                })
+
+            # Already processed non-orders remain skipped.
+            if raw_id in seen:
+                continue
+
             seen.add(raw_id)
             seen_list.append(raw_id)
             skipped += 1
             continue
 
+        matched_orders += 1
+
         try:
             alert = order_alert(item, market_cache)
 
         except Exception as exc:
-            log(
-                "alert build failed, will retry:",
-                raw_id,
-                repr(exc),
-            )
+            log("alert build failed, will retry:", raw_id, repr(exc))
             continue
 
         alerts.insert(0, alert)
@@ -1077,22 +1030,30 @@ def run():
         existing_alert_ids.add(raw_id)
 
         new_alerts += 1
-
         send_telegram(alert)
 
         log(
             "new order alert:",
             alert["symbol"] or alert["company"],
-            alert["title"][:80],
+            alert["title"][:100],
         )
 
     save_seen(seen_list)
     save_alerts(alerts)
 
     log("total announcements:", len(fetched))
+    log("order filter matches:", matched_orders)
     log("new alerts:", new_alerts)
     log("duplicates:", duplicate_count)
     log("non-order announcements skipped:", skipped)
+    log("excluded announcements:", excluded_count)
+    log("unmatched announcements:", rejected_count)
+
+    log("unmatched announcement samples:")
+
+    for sample in rejected_samples:
+        log(json.dumps(sample, ensure_ascii=False))
+
     log(f"done: {new_alerts} new alert(s)")
 
 
@@ -1108,9 +1069,16 @@ def test_order_filter():
         ("Receipt of order", True),
         ("Letter of Award", True),
         ("New work order received", True),
+        ("Action(s) initiated or orders passed", True),
+        ("Actions initiated or orders passed", True),
+        ("Orders passed", True),
+        ("Order(s) passed", True),
+        ("Purchase order received", True),
+        ("Company secured a new contract", True),
         ("Trading window closure", False),
         ("Credit rating update", False),
         ("Cancellation of the order", False),
+        ("Newspaper publication", False),
     ]
 
     for title, expected in test_cases:
@@ -1121,8 +1089,7 @@ def test_order_filter():
         })
 
         assert actual == expected, (
-            f"FAILED: {title!r}: "
-            f"expected {expected}, got {actual}"
+            f"FAILED: {title!r}: expected {expected}, got {actual}"
         )
 
     log("All order filter tests passed.")
