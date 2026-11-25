@@ -1014,7 +1014,7 @@ def send_telegram(alert):
 
 
 # ---------------------------------------------------------
-# MAIN SCANNER
+def queue_telegram(alert): Path("telegram-outbox.json").open("a", encoding="utf-8").write(json.dumps(alert, ensure_ascii=False) + "__SS_TELEGRAM_ALERT__"); # MAIN SCANNER
 # ---------------------------------------------------------
 
 def run():
@@ -1110,7 +1110,7 @@ def run():
         existing_alert_ids.add(raw_id)
 
         new_alerts += 1
-        send_telegram(alert)
+        queue_telegram(alert)
 
         log(
             "new order alert:",
