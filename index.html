@@ -702,7 +702,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   window.ssMemberStart = function () { window.ssMemberAuthorized = true; refreshAlerts(); };
   window.ssMemberStop = function () { window.ssMemberAuthorized = false; };
   // Keep the hosted app current on desktop and mobile without a manual reload.
-  window.setInterval(refreshAlerts, 60000);
+  window.setInterval(refreshAlerts, 5000);
 })();
 </script>
 
