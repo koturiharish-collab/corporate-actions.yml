@@ -857,19 +857,99 @@ def save_seen(values):
     )
 
 
+ALERT_DOCUMENT = None
+
+DEFAULT_FOLDERS = [
+    {"id": "emas", "name": "EMAs", "subfolders": [
+        {"id": "ema21", "name": "21 EMA"},
+        {"id": "ema50", "name": "50 EMA"},
+        {"id": "ema200", "name": "200 EMA"},
+        {"id": "golden", "name": "Golden Cross"},
+        {"id": "death", "name": "Death Cross"},
+    ]},
+    {"id": "orders", "name": "Orders", "subfolders": [
+        {"id": "big", "name": "Big orders"},
+        {"id": "medium", "name": "Medium orders"},
+        {"id": "small", "name": "Small orders"},
+    ]},
+    {"id": "corporate-actions", "name": "Corporate Actions", "subfolders": [
+        {"id": "buyback", "name": "Buybacks"},
+        {"id": "split", "name": "Stock splits"},
+        {"id": "bonus", "name": "Bonus issues"},
+        {"id": "dividend", "name": "Dividends"},
+        {"id": "rights", "name": "Rights issues"},
+        {"id": "merger", "name": "Mergers"},
+        {"id": "demerger", "name": "Demergers"},
+        {"id": "other", "name": "Other corporate actions"},
+    ]},
+    {"id": "results", "name": "Results", "subfolders": [
+        {"id": "quarterly", "name": "Quarterly results"},
+        {"id": "profit-up", "name": "Profit up"},
+        {"id": "profit-down", "name": "Profit down"},
+    ]},
+    {"id": "promoter", "name": "Promoter activity", "subfolders": [
+        {"id": "buying", "name": "Promoter buying"},
+        {"id": "selling", "name": "Promoter selling"},
+        {"id": "bulk", "name": "Bulk deals"},
+        {"id": "block", "name": "Block deals"},
+    ]},
+    {"id": "volume", "name": "Volume", "subfolders": [
+        {"id": "high", "name": "High volume"},
+    ]},
+    {"id": "news", "name": "News", "subfolders": [
+        {"id": "company", "name": "By company"},
+    ]},
+]
+
+
 def load_alerts():
+    """Load the app feed and fail closed on malformed data."""
+    global ALERT_DOCUMENT
+
     try:
         value = json.loads(ALERT_FILE.read_text(encoding="utf-8"))
-        return value if isinstance(value, list) else []
-    except (FileNotFoundError, json.JSONDecodeError, OSError):
-        return []
+    except FileNotFoundError:
+        raise FileNotFoundError(
+            "alerts.json is missing; refusing to replace alert history."
+        )
+    except (json.JSONDecodeError, OSError) as exc:
+        raise ValueError(
+            f"Cannot read alerts.json; refusing to replace alert history: {exc}"
+        ) from exc
+
+    if isinstance(value, list):
+        ALERT_DOCUMENT = {
+            "sample": False,
+            "folders": DEFAULT_FOLDERS,
+            "alerts": value,
+        }
+        log("Migrating legacy alerts.json list; preserving", len(value), "alerts")
+        return value
+
+    if not isinstance(value, dict) or not isinstance(value.get("alerts"), list):
+        raise ValueError(
+            "alerts.json must be a list or an object containing an alerts list; "
+            "refusing to replace invalid alert history."
+        )
+
+    if not isinstance(value.get("folders"), list):
+        value["folders"] = DEFAULT_FOLDERS
+
+    ALERT_DOCUMENT = value
+    return value["alerts"]
 
 
 def save_alerts(values):
+    """Save alerts inside the app's feed object, retaining folders/history."""
+    global ALERT_DOCUMENT
+
+    if not isinstance(ALERT_DOCUMENT, dict):
+        raise RuntimeError("alerts.json was not loaded; refusing to overwrite it.")
+
+    ALERT_DOCUMENT["alerts"] = values[:MAX_ALERTS]
+    ALERT_DOCUMENT["updated"] = datetime.now(IST).isoformat(timespec="seconds")
     ALERT_FILE.write_text(
-        json.dumps(
-            values[:MAX_ALERTS], ensure_ascii=False, indent=1
-        ) + "\n",
+        json.dumps(ALERT_DOCUMENT, ensure_ascii=False, indent=1) + "\n",
         encoding="utf-8",
     )
 
