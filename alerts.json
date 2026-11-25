@@ -1,6 +1,6 @@
 {
  "sample": false,
- "updated": "2026-11-25T21:01:58+05:30",
+ "updated": "2026-11-25T22:07:08+05:30",
  "folders": [
   {
    "id": "emas",
@@ -146,6 +146,328 @@
   }
  ],
  "alerts": [
+  {
+   "id": "aaa383cf5010948656ba9c89",
+   "parser_version": 7,
+   "time": "2026-11-25T22:07:08+05:30",
+   "folder": "orders",
+   "subfolder": "small",
+   "symbol": "OMFREIGHT",
+   "company": "Om Freight Forwarders Limited",
+   "title": "Action(s) taken or orders passed",
+   "price": 114.45,
+   "pe_ratio": 19.138796,
+   "week52_high": 127.99,
+   "week52_low": 58.95,
+   "change_pct": 4.999997,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Om Freight Forwarders Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "OMFREIGHT",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Om Freight Forwarders Limited has informed the Exchange about Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "₹4.99 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Small (under ₹10 crore)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 21:02:24",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 3 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "OMFREIGHT.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/OMFREIGHT.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T22:07:08+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹114.45",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "19.14",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹127.99",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹58.95",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹3,854,153,984.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹385.42 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "1.72",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹5.98",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹4,050,020,096.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Industrials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Integrated Freight & Logistics",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "1.2947%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "₹4.99 crore; ₹2.51 crore; ₹1.60 crore; ₹0.88 crore; ₹2.51 \ncrore; ₹1.60 crore; ₹0.88 crore; ₹0.88 crore; ₹2.51 crore; ₹1.60 \ncrore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "Date: 25th November, 2026 \nTo, \nNational Stock Exchange of India Limited,  BSE Limited \nExchange Plaza, C-1, Block G Phiroze Jeejeebhoy Towers  \nBandra Kurla Complex Bandra (E) Dalal Street, Mumbai – 400 001 \nMumbai – 400 051  \nRef. NSE Symbol: OMFREIGHT Ref. BSE Scrip Code: 544564 \n \nDear Sir / Madam, \nSubject: Intimation under Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) Regulations, \n2015 – Conclusion of search proceedings by the Maharashtra GST Department \nPursuant to Regulation 30 read with Para A of Part A of Schedule III of the SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 (“SEBI LODR Regulations”), and further to our earlier intimation dated 18th \nNovember, 2026, we hereby inform you that the search proceedings initiated by the Maharashtra Goods and \nServices Tax Department (“Department”) on 18th November, 2026 at the Corporate Office of the Company have \nbeen concluded on 24th November, 2026 at 11:35 P.M. \nThe Company has extended its full cooperation to the concerned authorities and provide all necessary information \nand assistance as required. \nThe details of the above as required under Clause 19 of Para A of Part A of Schedule III of the SEBI LODR Regulations \nread with SEBI Master Circular No. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated 30th January, 2026 are \nenclosed as Annexure A. \nKindly take the above information on record. \nThanking you, \nYours faithfully, \nFor OM FREIGHT FORWARDERS LIMITED \n \n \n \nManisha Saluja \nCompany Secretary & Compliance Officer  \nACS-77481 \n \n\n\nANNEXURE – A \nThe detailed information as required under Regulation 30 of SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 read with SEBI Master Circular No. HO/49/14/14(7)2025-CFD-\nPOD2/I/3762/2026 dated 30th January, 2026: \nSr. No. Particulars Description \n1. Name of the authority Assistant Commissioner of State Tax, Maharashtra State, \nMumbai. \n2. Nature and details of the \naction(s) taken, initiated or \norder(s) passed \nSearch proceedings were initiated at the Corporate Office \nof the Company on November 18, 2026, under Section 67 \nof the Maharashtra Goods and Services Tax Act, 2017, and \nwere concluded on November 24, 2026 at 11:35 P.M. \n3. Date of receipt of direction \nor order, including any ad-\ninterim or interim orders, or \nany other communication \nfrom the authority \nThe authorisation (Form GST INS-01) for conducting the \nsearch proceedings was produced before the Company's \nofficials by the Maharashtra State GST officials on \nNovember 18, 2026. The proceedings were concluded on \nNovember 24, 2026 at 11:35 P.M. \n4. Details of the \nviolation(s)/contravention(s) \ncommitted or alleged to be \ncommitted \nUpon conclusion of the proceedings, the Department has, \non the basis of its observations, quantified an aggregate \namount of ₹ approx. ₹4.99 crore, including interest, \ncomprising ₹2.51 crore, towards GST payable under the \nReverse Charge Mechanism (“RCM”) on import of services \nand legal services, ₹1.60 crore, towards reversal of Input \nTax Credit (“ITC”) relating to IPO expenses, including \napplicable interest, and ₹0.88 crore  towards interest on \nRCM, reversal of ineligible / blocked ITC and other tax \nadjustments. \nThe Company shall discharge the RCM liability of ₹2.51 \ncrore, and is eligible to avail the corresponding ITC, subject \nto the conditions prescribed under Section 16 of the Act. \nThe Company disagrees with the proposed reversal of ITC \namounting to ₹1.60 crore, (including interest) relating to \nIPO expenses and has made written submissions to the \nDepartment setting out the basis of its position. \nThe amount of ₹0.88 crore towards interest on RCM, \nreversal of ineligible / blocked ITC and other tax \nadjustments represents the net financial cost to the \nCompany arising from the proceedings. \n5. Impact on financial, \noperation or other activities \nof the listed entity, \nThe net financial cost to the Company arising from the \nproceedings is approximately ₹0.88 crore The RCM liability \nof ₹2.51 crore, is eligible for corresponding ITC and is, \n\nSr. No. Particulars Description \nquantifiable in monetary \nterms to the extent possible \naccordingly, not expected to impact the profitability of the \nCompany, while the proposed reversal of ITC of ₹₹1.60 \ncrore, relating to IPO expenses is not agreed to by the \nCompany, which has made written submissions in this \nregard. \nApart from the above, there is no material or significant \nimpact on the financials, business operations or any other \nactivities of the Company due to the aforesaid search \nproceedings.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 21:02:24",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "724.96 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/OMFRIEGHT_25112026210209_Disclosure_final-Signed_s.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Om Freight Forwarders Limited has informed the Exchange about Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026210224",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 21:02:25",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "724.96 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870911",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE1BZC01019",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Om Freight Forwarders Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 21:02:24",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "OMFREIGHT",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "OM Freight Forwarders Limited intimates that search proceedings by the Maharashtra GST Department at its Corporate Office, initiated on 18th November 2026, concluded on 24th November 2026 at 11:35 P.M. The Department quantified an aggregate amount of approximately Rs. 4.99 crore, including interest. This comprises Rs. 2.51 crore for GST payable under the Reverse Charge Mechanism on import of services and legal services, Rs. 1.60 crore for reversal of Input Tax Credit relating to IPO expenses, and Rs. 0.88 crore for interest and other adjustments. The Company states it will discharge the Rs. 2.51 crore RCM liability and is eligible for corresponding Input Tax Credit. It disagrees with the proposed Rs. 1.60 crore reversal of Input Tax Credit and has submitted written objections. The net financial cost is approximately Rs. 0.88 crore. The Company reports no material impact on financials or operations beyond these amounts.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/OMFRIEGHT_25112026210209_Disclosure_final-Signed_s.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/OMFRIEGHT_25112026210209_Disclosure_final-Signed_s.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 21:02:24",
+    "attFilePath": null,
+    "attFileSize": "724.96 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/OMFRIEGHT_25112026210209_Disclosure_final-Signed_s.pdf",
+    "attchmntText": "Om Freight Forwarders Limited has informed the Exchange about Action(s) taken or orders passed",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Action(s) taken or orders passed",
+    "difference": "00:00:01",
+    "dt": "25112026210224",
+    "exchdisstime": "25-Nov-2026 21:02:25",
+    "fileSize": "724.96 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870911",
+    "smIndustry": null,
+    "sm_isin": "INE1BZC01019",
+    "sm_name": "Om Freight Forwarders Limited",
+    "sort_date": "2026-11-25 21:02:24",
+    "symbol": "OMFREIGHT",
+    "voiceSummary": "OM Freight Forwarders Limited intimates that search proceedings by the Maharashtra GST Department at its Corporate Office, initiated on 18th November 2026, concluded on 24th November 2026 at 11:35 P.M. The Department quantified an aggregate amount of approximately Rs. 4.99 crore, including interest. This comprises Rs. 2.51 crore for GST payable under the Reverse Charge Mechanism on import of services and legal services, Rs. 1.60 crore for reversal of Input Tax Credit relating to IPO expenses, and Rs. 0.88 crore for interest and other adjustments. The Company states it will discharge the Rs. 2.51 crore RCM liability and is eligible for corresponding Input Tax Credit. It disagrees with the proposed Rs. 1.60 crore reversal of Input Tax Credit and has submitted written objections. The net financial cost is approximately Rs. 0.88 crore. The Company reports no material impact on financials or operations beyond these amounts.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/OMFRIEGHT_25112026210209_Disclosure_final-Signed_s.mp3"
+   },
+   "filing_text": "Action(s) taken or orders passed\n\nOm Freight Forwarders Limited has informed the Exchange about Action(s) taken or orders passed\n\nDate: 25th November, 2026 \nTo, \nNational Stock Exchange of India Limited,  BSE Limited \nExchange Plaza, C-1, Block G Phiroze Jeejeebhoy Towers  \nBandra Kurla Complex Bandra (E) Dalal Street, Mumbai – 400 001 \nMumbai – 400 051  \nRef. NSE Symbol: OMFREIGHT Ref. BSE Scrip Code: 544564 \n \nDear Sir / Madam, \nSubject: Intimation under Regulation 30 of SEBI (Listing Obligations and Disclosure Requirements) Regulations, \n2015 – Conclusion of search proceedings by the Maharashtra GST Department \nPursuant to Regulation 30 read with Para A of Part A of Schedule III of the SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 (“SEBI LODR Regulations”), and further to our earlier intimation dated 18th \nNovember, 2026, we hereby inform you that the search proceedings initiated by the Maharashtra Goods and \nServices Tax Department (“Department”) on 18th November, 2026 at the Corporate Office of the Company have \nbeen concluded on 24th November, 2026 at 11:35 P.M. \nThe Company has extended its full cooperation to the concerned authorities and provide all necessary information \nand assistance as required. \nThe details of the above as required under Clause 19 of Para A of Part A of Schedule III of the SEBI LODR Regulations \nread with SEBI Master Circular No. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated 30th January, 2026 are \nenclosed as Annexure A. \nKindly take the above information on record. \nThanking you, \nYours faithfully, \nFor OM FREIGHT FORWARDERS LIMITED \n \n \n \nManisha Saluja \nCompany Secretary & Compliance Officer  \nACS-77481 \n \n\n\nANNEXURE – A \nThe detailed information as required under Regulation 30 of SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 read with SEBI Master Circular No. HO/49/14/14(7)2025-CFD-\nPOD2/I/3762/2026 dated 30th January, 2026: \nSr. No. Particulars Description \n1. Name of the authority Assistant Commissioner of State Tax, Maharashtra State, \nMumbai. \n2. Nature and details of the \naction(s) taken, initiated or \norder(s) passed \nSearch proceedings were initiated at the Corporate Office \nof the Company on November 18, 2026, under Section 67 \nof the Maharashtra Goods and Services Tax Act, 2017, and \nwere concluded on November 24, 2026 at 11:35 P.M. \n3. Date of receipt of direction \nor order, including any ad-\ninterim or interim orders, or \nany other communication \nfrom the authority \nThe authorisation (Form GST INS-01) for conducting the \nsearch proceedings was produced before the Company's \nofficials by the Maharashtra State GST officials on \nNovember 18, 2026. The proceedings were concluded on \nNovember 24, 2026 at 11:35 P.M. \n4. Details of the \nviolation(s)/contravention(s) \ncommitted or alleged to be \ncommitted \nUpon conclusion of the proceedings, the Department has, \non the basis of its observations, quantified an aggregate \namount of ₹ approx. ₹4.99 crore, including interest, \ncomprising ₹2.51 crore, towards GST payable under the \nReverse Charge Mechanism (“RCM”) on import of services \nand legal services, ₹1.60 crore, towards reversal of Input \nTax Credit (“ITC”) relating to IPO expenses, including \napplicable interest, and ₹0.88 crore  towards interest on \nRCM, reversal of ineligible / blocked ITC and other tax \nadjustments. \nThe Company shall discharge the RCM liability of ₹2.51 \ncrore, and is eligible to avail the corresponding ITC, subject \nto the conditions prescribed under Section 16 of the Act. \nThe Company disagrees with the proposed reversal of ITC \namounting to ₹1.60 crore, (including interest) relating to \nIPO expenses and has made written submissions to the \nDepartment setting out the basis of its position. \nThe amount of ₹0.88 crore towards interest on RCM, \nreversal of ineligible / blocked ITC and other tax \nadjustments represents the net financial cost to the \nCompany arising from the proceedings. \n5. Impact on financial, \noperation or other activities \nof the listed entity, \nThe net financial cost to the Company arising from the \nproceedings is approximately ₹0.88 crore The RCM liability \nof ₹2.51 crore, is eligible for corresponding ITC and is, \n\nSr. No. Particulars Description \nquantifiable in monetary \nterms to the extent possible \naccordingly, not expected to impact the profitability of the \nCompany, while the proposed reversal of ITC of ₹₹1.60 \ncrore, relating to IPO expenses is not agreed to by the \nCompany, which has made written submissions in this \nregard. \nApart from the above, there is no material or significant \nimpact on the financials, business operations or any other \nactivities of the Company due to the aforesaid search \nproceedings.",
+   "source_id": "NSE:106870911"
+  },
   {
    "id": "75f19bb69587f4fb56d47144",
    "parser_version": 7,
