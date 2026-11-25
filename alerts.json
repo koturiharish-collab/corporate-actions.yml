@@ -1,6 +1,6 @@
 {
  "sample": false,
- "updated": "2026-11-25T19:03:11+05:30",
+ "updated": "2026-11-25T20:34:54+05:30",
  "folders": [
   {
    "id": "emas",
@@ -146,6 +146,1294 @@
   }
  ],
  "alerts": [
+  {
+   "id": "e618bb26a8de20a6120eea09",
+   "parser_version": 7,
+   "time": "2026-11-25T20:34:53+05:30",
+   "folder": "orders",
+   "subfolder": null,
+   "symbol": "CMPDI",
+   "company": "Central Mine Planning & Design Institute Limited",
+   "title": "Action(s) taken or orders passed",
+   "price": 181.16,
+   "pe_ratio": 19.25186,
+   "week52_high": 283.69,
+   "week52_low": 150.16,
+   "change_pct": -1.5167128,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Central Mine Planning & Design Institute Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "CMPDI",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Central Mine Planning & Design Institute Limited has informed the Exchange about  orders passed by the open court of the Hon'ble Customs, Excise and Service Tax Appellate Tribunal (CESTAT), Kolkata to set aside the Service Tax demand of &#8377;30.08 crore, along with interest and penalty.",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": null,
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 19:24:37",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "CMPDI.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/CMPDI.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T20:34:53+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹181.16",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "19.25",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹283.69",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹150.16",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "5.29",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹9.41",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹115,382,050,816.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Basic Materials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Other Industrial Metals & Mining",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": null,
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "₹30.08 crore; ₹30.08 crore; ₹30.08 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "CORPORATE IDENTITY NUMBER - L14292JH1975GOI001223 \nAn I SO 900 1: 2015  & ISO 3 7001 : 2016  Certified  Co mpa ny \nफोन नɾर/Phone No. : 0651- 2230169  \nई-मेल/E-mail: cosecretary.cmpdi@coalindia.in  \nवेब साईट/Website: www.cmpdi.co.in \n \nRef. No. CMPDI/CS/BSE/NSE/2026-27/62                          Dated: 25-11-2026 \n \nTo, \nListing Department, \nBombay Stock Exchange Limited, \n14th Floor, P.J. Towers, Dalal Street, \nMumbai – 400 001 \nScrip Code 544739 \n \nTo, \nListing Department, \nNational Stock Exchange of India Limited, \nExchange Plaza, Bandra Kurla Complex, \nBandra (E), Mumbai – 400 051. \nRef: ISIN – INE05HV01027 \n \n \nSubject: Disclosure under Regulation 30 of SEBI (Listing Obligations and \nDisclosure Requirements) Regulations, 2015 read with Para A of Part A of \nSchedule III. \n \nDear Sir / Madam, \n \nThis is in reference to Demand Order Order-in-Original No. 07/S.Tax/Pr. Commr./2022 \ndated 30.03.2022 passed by the Principal Commissioner, Central Goods & Service Tax, \n& C.X., Central Revenue Building, 5A, Main Road, Ranchi – 834 001, as disclosed in \nRHP under contingent liability of Goods & Service Tax. \n \nWe further hereby inform you that the Order pronounced in the open court of the Hon'ble \nCustoms, Excise and Service Tax Appellate Tribunal (CESTAT), Kolkata on 18.11.2026 \nin favor of company and copy of final order communicated thereafter.  \n \nThe requisite disclosure, pursuant to Regulation 30 read with Para A of Part A of \nSchedule III of the SEBI Listing Regulations and in terms of SEBI Master Circular \nSEBI/HO/CFD/PoD2/CIR/P/0155 dated November 11, 2024 (‘Master Circular’) and \nIndustry Standards on Regulation 30 of the SEBI Listing Regulations is enclosed \nherewith as “Annexure A”. \n \nThe disclosure is being made as a matter of abundant caution and transparency. \n \nWe request you to kindly take the above information on record. \n \nYours faithfully, \n \n \n \n \n(अिभषेक मुंधड़ा /Abhishek Mundhra) \nCompany Secretary/ कं पनी सिचव \n& Compliance Officer/ अनुपालन अिधकारी \n \n                                                            \n \n\n   \n \n \nCORPORATE IDENTITY NUMBER - L14292JH1975GOI001223 \nAn I SO 900 1: 2015  & ISO 3 7001 : 2016  Certified  Co mpa ny \nफोन नɾर/Phone No. : 0651- 2230169  \nई-मेल/E-mail: cosecretary.cmpdi@coalindia.in  \nवेब साईट/Website: www.cmpdi.co.in \n \n \n                                                          ANNEXURE – A \n \nDisclosure pursuant to Regulation 30 of SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 read with Para A of Part A of Schedule III  \n \n \nSl \nNo. \nParticulars                     Details \n1 Name of the Authority Hon'ble Customs, Excise and Service Tax \nAppellate Tribunal (CESTAT), Kolkata. \n2 Nature and details of Action(s) \ntaken \nor order(s) passed \nThe Hon'ble CESTAT has allowed the appeal \nfiled by CMPDIL and set aside the entire demand \nof Service Tax amounting to ₹30.08 crore, along \nwith applicable interest and penalty, thereby \ndeciding the matter in favour of the Company. \n3 Date of receipt of direction or \norder, \nincluding any ad-interim or interim \norders, or any other communication \nfrom the authority \nOrder copy received on 24.11.2026. \n4 Details of the \nviolations/Contraventions \ncommitted \nor alleged to be committed \nThe proceedings related to alleged non-\npayment/short payment of Service Tax, pursuant \nto which a demand of ₹30.08 crore, along with \ninterest and penalty, had been raised against the \nCompany. The allegations were contested by the \nCompany before the Hon'ble Tribunal. \n5 Impact on Financial Operations or \nother activities of the Listed Entity, \nquantifiable in monetary terms to \nthe \nextent possible \nThe entire Service Tax demand of ₹30.08 crore, \nalong with interest and penalty, has been set aside \nby the Hon'ble Tribunal. Accordingly, there is no \nliability towards the said demand pursuant to the \nTribunal's decision.  \n \nFor Central Mine Planning & Design Institute Limited \n \n \n \n \n(अिभषेक मुंधड़ा /Abhishek Mundhra) \nCompany Secretary/ कं पनी सिचव \n& Compliance Officer/ अनुपालन अिधकारी",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 19:24:37",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "1.16 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/CMPDI_25112026192331_Letter_to_Stock_exchange_for_Service_Tax_demand_set_aside_Signed.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Central Mine Planning & Design Institute Limited has informed the Exchange about  orders passed by the open court of the Hon'ble Customs, Excise and Service Tax Appellate Tribunal (CESTAT), Kolkata to set aside the Service Tax demand of &#8377;30.08 crore, along with interest and penalty.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026192437",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 19:24:38",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "1.16 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870845",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE05HV01027",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Central Mine Planning & Design Institute Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 19:24:37",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "CMPDI",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Central Mine Planning and Design Institute Limited disclosed that the Customs, Excise and Service Tax Appellate Tribunal, Kolkata, ruled in its favor on 18.11.2026. The Tribunal set aside the entire Service Tax demand of Rs. 30.08 crore, along with applicable interest and penalty. This demand originated from an Order-in-Original dated 30.03.2022 by the Principal Commissioner, Central Goods and Service Tax, Ranchi, regarding alleged non-payment or short payment of Service Tax. The company received the order copy on 24.11.2026. Consequently, there is no liability towards the said demand. The disclosure was made under Regulation 30 of SEBI Listing Regulations.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/CMPDI_25112026192331_Letter_to_Stock_exchange_for_Service_Tax_demand_set_aside_Signed.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/CMPDI_25112026192331_Letter_to_Stock_exchange_for_Service_Tax_demand_set_aside_Signed.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 19:24:37",
+    "attFilePath": null,
+    "attFileSize": "1.16 MB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/CMPDI_25112026192331_Letter_to_Stock_exchange_for_Service_Tax_demand_set_aside_Signed.pdf",
+    "attchmntText": "Central Mine Planning & Design Institute Limited has informed the Exchange about  orders passed by the open court of the Hon'ble Customs, Excise and Service Tax Appellate Tribunal (CESTAT), Kolkata to set aside the Service Tax demand of &#8377;30.08 crore, along with interest and penalty.",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Action(s) taken or orders passed",
+    "difference": "00:00:01",
+    "dt": "25112026192437",
+    "exchdisstime": "25-Nov-2026 19:24:38",
+    "fileSize": "1.16 MB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870845",
+    "smIndustry": null,
+    "sm_isin": "INE05HV01027",
+    "sm_name": "Central Mine Planning & Design Institute Limited",
+    "sort_date": "2026-11-25 19:24:37",
+    "symbol": "CMPDI",
+    "voiceSummary": "Central Mine Planning and Design Institute Limited disclosed that the Customs, Excise and Service Tax Appellate Tribunal, Kolkata, ruled in its favor on 18.11.2026. The Tribunal set aside the entire Service Tax demand of Rs. 30.08 crore, along with applicable interest and penalty. This demand originated from an Order-in-Original dated 30.03.2022 by the Principal Commissioner, Central Goods and Service Tax, Ranchi, regarding alleged non-payment or short payment of Service Tax. The company received the order copy on 24.11.2026. Consequently, there is no liability towards the said demand. The disclosure was made under Regulation 30 of SEBI Listing Regulations.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/CMPDI_25112026192331_Letter_to_Stock_exchange_for_Service_Tax_demand_set_aside_Signed.mp3"
+   },
+   "filing_text": "Action(s) taken or orders passed\n\nCentral Mine Planning & Design Institute Limited has informed the Exchange about  orders passed by the open court of the Hon'ble Customs, Excise and Service Tax Appellate Tribunal (CESTAT), Kolkata to set aside the Service Tax demand of &#8377;30.08 crore, along with interest and penalty.\n\nCORPORATE IDENTITY NUMBER - L14292JH1975GOI001223 \nAn I SO 900 1: 2015  & ISO 3 7001 : 2016  Certified  Co mpa ny \nफोन नɾर/Phone No. : 0651- 2230169  \nई-मेल/E-mail: cosecretary.cmpdi@coalindia.in  \nवेब साईट/Website: www.cmpdi.co.in \n \nRef. No. CMPDI/CS/BSE/NSE/2026-27/62                          Dated: 25-11-2026 \n \nTo, \nListing Department, \nBombay Stock Exchange Limited, \n14th Floor, P.J. Towers, Dalal Street, \nMumbai – 400 001 \nScrip Code 544739 \n \nTo, \nListing Department, \nNational Stock Exchange of India Limited, \nExchange Plaza, Bandra Kurla Complex, \nBandra (E), Mumbai – 400 051. \nRef: ISIN – INE05HV01027 \n \n \nSubject: Disclosure under Regulation 30 of SEBI (Listing Obligations and \nDisclosure Requirements) Regulations, 2015 read with Para A of Part A of \nSchedule III. \n \nDear Sir / Madam, \n \nThis is in reference to Demand Order Order-in-Original No. 07/S.Tax/Pr. Commr./2022 \ndated 30.03.2022 passed by the Principal Commissioner, Central Goods & Service Tax, \n& C.X., Central Revenue Building, 5A, Main Road, Ranchi – 834 001, as disclosed in \nRHP under contingent liability of Goods & Service Tax. \n \nWe further hereby inform you that the Order pronounced in the open court of the Hon'ble \nCustoms, Excise and Service Tax Appellate Tribunal (CESTAT), Kolkata on 18.11.2026 \nin favor of company and copy of final order communicated thereafter.  \n \nThe requisite disclosure, pursuant to Regulation 30 read with Para A of Part A of \nSchedule III of the SEBI Listing Regulations and in terms of SEBI Master Circular \nSEBI/HO/CFD/PoD2/CIR/P/0155 dated November 11, 2024 (‘Master Circular’) and \nIndustry Standards on Regulation 30 of the SEBI Listing Regulations is enclosed \nherewith as “Annexure A”. \n \nThe disclosure is being made as a matter of abundant caution and transparency. \n \nWe request you to kindly take the above information on record. \n \nYours faithfully, \n \n \n \n \n(अिभषेक मुंधड़ा /Abhishek Mundhra) \nCompany Secretary/ कं पनी सिचव \n& Compliance Officer/ अनुपालन अिधकारी \n \n                                                            \n \n\n   \n \n \nCORPORATE IDENTITY NUMBER - L14292JH1975GOI001223 \nAn I SO 900 1: 2015  & ISO 3 7001 : 2016  Certified  Co mpa ny \nफोन नɾर/Phone No. : 0651- 2230169  \nई-मेल/E-mail: cosecretary.cmpdi@coalindia.in  \nवेब साईट/Website: www.cmpdi.co.in \n \n \n                                                          ANNEXURE – A \n \nDisclosure pursuant to Regulation 30 of SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 read with Para A of Part A of Schedule III  \n \n \nSl \nNo. \nParticulars                     Details \n1 Name of the Authority Hon'ble Customs, Excise and Service Tax \nAppellate Tribunal (CESTAT), Kolkata. \n2 Nature and details of Action(s) \ntaken \nor order(s) passed \nThe Hon'ble CESTAT has allowed the appeal \nfiled by CMPDIL and set aside the entire demand \nof Service Tax amounting to ₹30.08 crore, along \nwith applicable interest and penalty, thereby \ndeciding the matter in favour of the Company. \n3 Date of receipt of direction or \norder, \nincluding any ad-interim or interim \norders, or any other communication \nfrom the authority \nOrder copy received on 24.11.2026. \n4 Details of the \nviolations/Contraventions \ncommitted \nor alleged to be committed \nThe proceedings related to alleged non-\npayment/short payment of Service Tax, pursuant \nto which a demand of ₹30.08 crore, along with \ninterest and penalty, had been raised against the \nCompany. The allegations were contested by the \nCompany before the Hon'ble Tribunal. \n5 Impact on Financial Operations or \nother activities of the Listed Entity, \nquantifiable in monetary terms to \nthe \nextent possible \nThe entire Service Tax demand of ₹30.08 crore, \nalong with interest and penalty, has been set aside \nby the Hon'ble Tribunal. Accordingly, there is no \nliability towards the said demand pursuant to the \nTribunal's decision.  \n \nFor Central Mine Planning & Design Institute Limited \n \n \n \n \n(अिभषेक मुंधड़ा /Abhishek Mundhra) \nCompany Secretary/ कं पनी सिचव \n& Compliance Officer/ अनुपालन अिधकारी",
+   "source_id": "NSE:106870845"
+  },
+  {
+   "id": "6aa60446c19f06252d892329",
+   "parser_version": 7,
+   "time": "2026-11-25T20:34:53+05:30",
+   "folder": "orders",
+   "subfolder": "big",
+   "symbol": "ATLANTAELE",
+   "company": "Atlanta Electricals Limited",
+   "title": "Bagging/Receiving of orders/contracts",
+   "price": 1388.3,
+   "pe_ratio": 29.086529,
+   "week52_high": 2152.6,
+   "week52_low": 707.6,
+   "change_pct": -3.2610915,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Atlanta Electricals Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "ATLANTAELE",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Atlanta Electricals Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs 523.21 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Big (₹100 crore or more)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 19:30:45",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "ATLANTAELE.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/ATLANTAELE.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T20:34:53+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹1,388.30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "29.09",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹2,152.60",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹707.60",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹106,755,588,096.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹10,675.56 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": "26.98",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "10.59",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹47.73",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹110,033,133,568.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Industrials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Electrical Equipment & Parts",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "4.9010%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs 523.21 crore; Rs. 523.21 Crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "ATANTA ELECTRICALS LIMITED \n(Formerly known as ATLANTA ELECTRICALS PVT. LTD.)\nCIN : L31110GJ1988PLC011648 \nCorporate Office \nPlot No. 1503/4, GIDC Estate,\nVithal Udyognagar, Anand – 388121 \nGujarat, India \nwww.aetrafo.com \n02692 235023 \nsales@aetrafo.com\n  25th November, 2026  \n \nTo, \nListing Department  \nBSE Limited  \nPhiroze Jeejeebhoy Towers, Dalal Street  \nMumbai – 400001 \nScrip Code: 544527 \nTo, \nListing Department  \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, Bandra Kurla \nComplex, Bandra (E), Mumbai – 400051 \nSymbol: ATLANTAELE \n \nDear Sir/Madam, \n \nSubject: Intimation of Receipt of Letter of Intent from Transmission Corporation of \nAndhra Pradesh Limited (APTRANSCO) for an order worth Rs 523.21 crore \nRef: Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 \nDear Sir/Madam, \n \nPursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015, we wish to inform that Atlanta Electricals Limited (“the Company”) has \nreceived a Letter of Intent from Transmission Corporation of Andhra Pradesh Limited \n(APTRANSCO) for the design, manufacture, testing and supply of 95 Nos. of 5O MVA, 132/33 \nKV Power Transformers, against Tender Specification No. PMM23-e68-2026 as per the \nfollowing details: \nParticulars Details \nName of the entity awarding the \norder(s)/contract(s) \nTransmission Corporation of Andhra \nPradesh Limited \nSignificant terms and conditions of \norder(s)/contract(s) awarded in brief \nThe order involves supply of 95 Nos. of 50 \nMVA, 132/33kV Power Transformers and \nother details are as mentioned in Letter of \nIntent \nWhether order(s) / contract(s) have been \nawarded by domestic/ international entity \nDomestic Entity \nNature of order(s) / contract(s); Manufacturing and supply of 95 Nos. of 5O \nMVA, 132/33 KV Power Transformers \nTime period by which the \norder(s)/contract(s) is to be executed; \nOrder shall be executed in 2 Lot comprising \nLot-1: 50 Nos, to supply 4 Nos. \nTransformers within Eight (8) Months from \nthe date of Letter of Intent and balance \nquantity @ 4 Nos. per Month thereafter. \nLot-2: 45 Nos, to supply 4 Nos. \nTransformers within Eight (8) Months from \nthe date of Letter of Intent and balance \nquantity @ 4 Nos. per Month thereafter. \n \nBroad consideration or size of the order(s) / \ncontract(s); \nRs. 523.21 Crore (Net of GST) \n\n \n \nATANTA ELECTRICALS LIMITED \n(Formerly known as ATLANTA ELECTRICALS PVT. LTD.)\nCIN : L31110GJ1988PLC011648 \nCorporate Office \nPlot No. 1503/4, GIDC Estate,\nVithal Udyognagar, Anand – 388121 \nGujarat, India \nwww.aetrafo.com \n02692 235023 \nsales@aetrafo.com\nWhether the promoter/ promoter group / \ngroup companies have any interest in the \nentity that awarded the \norder(s)/contract(s)? If yes, nature of \ninterest and details thereof; \nNo \nWhether the order(s)/contract(s) would fall \nwithin related party transactions? If yes, \nwhether the same is done at “arm’ s length” \nNo \n \n \nThe Company is pleased to receive this order from APTRANSCO and will execute the same \nin accordance with the technical specifications, commercial terms and delivery schedule \nstipulated under the tender. \n \nWe request you to take the above on record and disseminate the information. \n \nThanking you, \n \nYours faithfully, \nFor Atlanta Electricals Limited \n \nTejal S. Panchal \nCompany Secretary & Compliance Officer",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 19:30:45",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "544.45 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/ATLANTAIPO123_25112026193018_Intimation_order_Win_25112026.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Atlanta Electricals Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026193045",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 19:30:46",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "544.45 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870852",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE0Z4F01028",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Atlanta Electricals Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 19:30:45",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "ATLANTAELE",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Atlanta Electricals Limited received a Letter of Intent from Transmission Corporation of Andhra Pradesh Limited for an order worth Rs 523.21 crore net of GST. The contract involves the design, manufacture, testing, and supply of 95 units of 50 MVA, 132/33 KV Power Transformers under Tender Specification No. PMM23-e68-2026. The order is split into two lots. Lot 1 comprises 50 units, with four transformers to be supplied within eight months from the Letter of Intent date, followed by four units per month. Lot 2 comprises 45 units, with four transformers to be supplied within eight months from the Letter of Intent date, followed by four units per month. The entity awarding the order is a domestic entity. There is no interest held by promoters or group companies in the awarding entity, and the transaction does not fall within related party transactions.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/ATLANTAIPO123_25112026193018_Intimation_order_Win_25112026.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/ATLANTAIPO123_25112026193018_Intimation_order_Win_25112026.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 19:30:45",
+    "attFilePath": null,
+    "attFileSize": "544.45 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/ATLANTAIPO123_25112026193018_Intimation_order_Win_25112026.pdf",
+    "attchmntText": "Atlanta Electricals Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Bagging/Receiving of orders/contracts",
+    "difference": "00:00:01",
+    "dt": "25112026193045",
+    "exchdisstime": "25-Nov-2026 19:30:46",
+    "fileSize": "544.45 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870852",
+    "smIndustry": null,
+    "sm_isin": "INE0Z4F01028",
+    "sm_name": "Atlanta Electricals Limited",
+    "sort_date": "2026-11-25 19:30:45",
+    "symbol": "ATLANTAELE",
+    "voiceSummary": "Atlanta Electricals Limited received a Letter of Intent from Transmission Corporation of Andhra Pradesh Limited for an order worth Rs 523.21 crore net of GST. The contract involves the design, manufacture, testing, and supply of 95 units of 50 MVA, 132/33 KV Power Transformers under Tender Specification No. PMM23-e68-2026. The order is split into two lots. Lot 1 comprises 50 units, with four transformers to be supplied within eight months from the Letter of Intent date, followed by four units per month. Lot 2 comprises 45 units, with four transformers to be supplied within eight months from the Letter of Intent date, followed by four units per month. The entity awarding the order is a domestic entity. There is no interest held by promoters or group companies in the awarding entity, and the transaction does not fall within related party transactions.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/ATLANTAIPO123_25112026193018_Intimation_order_Win_25112026.mp3"
+   },
+   "filing_text": "Bagging/Receiving of orders/contracts\n\nAtlanta Electricals Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\nATANTA ELECTRICALS LIMITED \n(Formerly known as ATLANTA ELECTRICALS PVT. LTD.)\nCIN : L31110GJ1988PLC011648 \nCorporate Office \nPlot No. 1503/4, GIDC Estate,\nVithal Udyognagar, Anand – 388121 \nGujarat, India \nwww.aetrafo.com \n02692 235023 \nsales@aetrafo.com\n  25th November, 2026  \n \nTo, \nListing Department  \nBSE Limited  \nPhiroze Jeejeebhoy Towers, Dalal Street  \nMumbai – 400001 \nScrip Code: 544527 \nTo, \nListing Department  \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, Bandra Kurla \nComplex, Bandra (E), Mumbai – 400051 \nSymbol: ATLANTAELE \n \nDear Sir/Madam, \n \nSubject: Intimation of Receipt of Letter of Intent from Transmission Corporation of \nAndhra Pradesh Limited (APTRANSCO) for an order worth Rs 523.21 crore \nRef: Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015 \nDear Sir/Madam, \n \nPursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015, we wish to inform that Atlanta Electricals Limited (“the Company”) has \nreceived a Letter of Intent from Transmission Corporation of Andhra Pradesh Limited \n(APTRANSCO) for the design, manufacture, testing and supply of 95 Nos. of 5O MVA, 132/33 \nKV Power Transformers, against Tender Specification No. PMM23-e68-2026 as per the \nfollowing details: \nParticulars Details \nName of the entity awarding the \norder(s)/contract(s) \nTransmission Corporation of Andhra \nPradesh Limited \nSignificant terms and conditions of \norder(s)/contract(s) awarded in brief \nThe order involves supply of 95 Nos. of 50 \nMVA, 132/33kV Power Transformers and \nother details are as mentioned in Letter of \nIntent \nWhether order(s) / contract(s) have been \nawarded by domestic/ international entity \nDomestic Entity \nNature of order(s) / contract(s); Manufacturing and supply of 95 Nos. of 5O \nMVA, 132/33 KV Power Transformers \nTime period by which the \norder(s)/contract(s) is to be executed; \nOrder shall be executed in 2 Lot comprising \nLot-1: 50 Nos, to supply 4 Nos. \nTransformers within Eight (8) Months from \nthe date of Letter of Intent and balance \nquantity @ 4 Nos. per Month thereafter. \nLot-2: 45 Nos, to supply 4 Nos. \nTransformers within Eight (8) Months from \nthe date of Letter of Intent and balance \nquantity @ 4 Nos. per Month thereafter. \n \nBroad consideration or size of the order(s) / \ncontract(s); \nRs. 523.21 Crore (Net of GST) \n\n \n \nATANTA ELECTRICALS LIMITED \n(Formerly known as ATLANTA ELECTRICALS PVT. LTD.)\nCIN : L31110GJ1988PLC011648 \nCorporate Office \nPlot No. 1503/4, GIDC Estate,\nVithal Udyognagar, Anand – 388121 \nGujarat, India \nwww.aetrafo.com \n02692 235023 \nsales@aetrafo.com\nWhether the promoter/ promoter group / \ngroup companies have any interest in the \nentity that awarded the \norder(s)/contract(s)? If yes, nature of \ninterest and details thereof; \nNo \nWhether the order(s)/contract(s) would fall \nwithin related party transactions? If yes, \nwhether the same is done at “arm’ s length” \nNo \n \n \nThe Company is pleased to receive this order from APTRANSCO and will execute the same \nin accordance with the technical specifications, commercial terms and delivery schedule \nstipulated under the tender. \n \nWe request you to take the above on record and disseminate the information. \n \nThanking you, \n \nYours faithfully, \nFor Atlanta Electricals Limited \n \nTejal S. Panchal \nCompany Secretary & Compliance Officer",
+   "source_id": "NSE:106870852"
+  },
+  {
+   "id": "667a5a30aba29e17339f2a9b",
+   "parser_version": 7,
+   "time": "2026-11-25T20:34:52+05:30",
+   "folder": "orders",
+   "subfolder": "big",
+   "symbol": "ATLANTAELE",
+   "company": "Atlanta Electricals Limited",
+   "title": "Press Release",
+   "price": 1388.3,
+   "pe_ratio": 29.086529,
+   "week52_high": 2152.6,
+   "week52_low": 707.6,
+   "change_pct": -3.2610915,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Atlanta Electricals Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "ATLANTAELE",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Press Release",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Press Release",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Atlanta Electricals Limited has informed the Exchange regarding a press release dated November 25, 2026, titled \"Press release on receipt of Order aggregating to Rs. 523.21 Crore\".",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": "Transmission Corporation of Andhra Pradesh Limited (APTRANSCO)",
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs. 523.21 Crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Big (₹100 crore or more)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": "30 years",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 19:42:02",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 3 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "ATLANTAELE.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/ATLANTAELE.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T20:34:52+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹1,388.30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "29.09",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹2,152.60",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹707.60",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹106,755,588,096.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹10,675.56 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": "26.98",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "10.59",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹47.73",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹110,033,133,568.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Industrials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Electrical Equipment & Parts",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "4.9010%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs. 523.21 Crore; ₹ 523.21 crores; ₹ 523.21 crores; Rs 523.21 crore; Rs 523.21 \ncrore; Rs 523.21 crore; Rs 270 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "ATANTA ELECTRICALS LIMITED \n(Formerly known as ATLANTA ELECTRICALS PVT. LTD.)\nCIN : L31110GJ1988PLC011648 \nCorporate Office \nPlot No. 1503/4, GIDC Estate,\nVithal Udyognagar, Anand – 388121 \nGujarat, India \nwww.aetrafo.com \n02692 235023 \nsales@aetrafo.com\n  25th November, 2026  \n \nTo, \nListing Department  \nBSE Limited  \nPhiroze Jeejeebhoy Towers, Dalal Street  \nMumbai – 400001 \nScrip Code: 544527 \nTo, \nListing Department  \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, Bandra Kurla \nComplex, Bandra (E), Mumbai – 400051 \nSymbol: ATLANTAELE \n \nDear Sir/Madam, \n \nSubject: Press Release on Receipt of Orders from Transmission Corporation of Andhra \nPradesh Limited (APTRANSCO) aggregating to ₹ 523.21 crores  \n \nRef: Regulation 30 SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 \n \nDear Sir/Madam, \n \nPursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015, we wish to inform that Atlanta Electricals Limited (“the Company”) has \nreceived order from Transmission Corporation of Andhra Pradesh Limited (APTRANSCO) \nworth ₹ 523.21 crores (Net of GST). The orders comprise the supply of 95 units of 50 MVA \n132/33 KV Power Transformers. \n \nPlease find enclosed a Press Release proposed to be issued in this regard. We request you \nto take the above on record and disseminate the information. \n \nThanking you, \n \nYours faithfully, \nFor Atlanta Electricals Limited \n \nTejal S. Panchal \nCompany Secretary & Compliance Officer \n \nEnclosure: \n1. Press Release \n \n \n \nTEJALBEN \nSAUNAKKUM\nAR PANCHAL\nDigitally signed by \nTEJALBEN \nSAUNAKKUMAR \nPANCHAL \nDate: 2026.11.25 \n18:37:52 +05'30'\n\n \nMEDIA RELEASE \nAtlanta Electricals strengthens order book with Rs 523.21 crore \nAPTRANSCO contract for 4,750 MVA transformer capacity \nCompany wins order for supply of 95 units of 50 MVA, 132/33 kV Power Transformers \nAnand (Gujarat), November 25, 2026: Atlanta Electricals Limited (NSE, BSE: ATLANTAELE), a \nleading manufacturer of power transformers, has secured an order worth approximately Rs 523.21 \ncrore from Transmission Corporation of Andhra Pradesh Limited (APTRANSCO) for the design, \nmanufacture, testing and supply of power transformers. \n \nAs per the Letter of Intent received from APTRANSCO, the order comprises the supply of 95 units of \n50 MVA, 132/33 kV Power Transformers, aggregating 4,750 MVA of transformation capacity, \nincluding 50 units under Lot-1 and 45 units under Lot-2, with an aggregate contract value of \napproximately Rs 523.21 crore, net of GST. \n \nThis order builds on Atlanta Electricals' existing engagement with APTRANSCO, following the \nCompany's earlier order for the supply of transformers aggregating 3,120 MVA, valued at \napproximately Rs 270 crore, further strengthening its relationship with one of India's leading state \ntransmission utilities. \n \n\"India's power sector continues to witness sustained investments in transmission infrastructure, \ndriven by rising electricity demand.  Utilities across the country are strengthening their \ntransmission networks to ensure reliable and efficient power evacuation, creating significant \nopportunities for technologically advanced transformer solutions. This order from APTRANSCO \nreflects our longstanding partnership and reinforces Atlanta Electricals' commitment to supporting \nthe development of resilient and future-ready transmission networks. We remain focused on \ndelivering high-quality products and execution excellence as utilities undertake capacity expansion \nand network strengthening projects across the country,\" said Mr. Niral Patel, Chairman and \nManaging Director, Atlanta Electricals Limited. \n \nThe order has been awarded under Tender Specification No. PMM23-E-68/2026 and covers the \ndesign, manufacture, testing and supply of the transformers on a free-at-destination basis, \nincluding unloading, in accordance with the technical specifications and commercial terms \nstipulated by APTRANSCO. Deliveries are scheduled to commence within eight months from the \ndate of the Letter of Intent, with subsequent supplies to be executed in a phased manner. \n \nThis order further strengthens Atlanta Electricals' presence in the domestic power transmission \nsegment and reinforces its capability to execute large-scale transformer projects for leading \ntransmission utilities. The addition of this order provides strong revenue visibility and reflecting the \ngrowing demand for transmission infrastructure investments across India. \n \nAbout Atlanta Electricals Limited \n \nAtlanta Electricals Limited manufactures and supplies a wide range of power transformers starting \nfrom 5 MVA/11 kV up to 500 MVA/765 kV, as well as auto transformers, inverter duty transformers, \nfurnace transformers, generator transformers and special duty transformers in India, across its \nmanufacturing facilities in Gujarat and Karnataka. \n \nWith over 30 years of experience and as of September 30, 2026, the Company has supplied 5,048 \ntransformers aggregating 1,25,500 MVA across the country. Atlanta Electricals serves utilities, \n\n \nindustrial customers and infrastructure projects with technologically advanced transformer \nsolutions that support India's growing power transmission and distribution network. \n \nFor more information, please visit www.aetrafo.com  \n \nFor Media queries:  \nsiddharth.kumar@adfactorspr.com | +91 9902929187",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 19:42:02",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "659.98 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/ATLANTAIPO123_25112026194141_Intimation_Press_release_order_Win_final.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Atlanta Electricals Limited has informed the Exchange regarding a press release dated November 25, 2026, titled \"Press release on receipt of Order aggregating to Rs. 523.21 Crore\".",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Press Release",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:02",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026194202",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 19:42:04",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "659.98 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870866",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE0Z4F01028",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Atlanta Electricals Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 19:42:02",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "ATLANTAELE",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Atlanta Electricals Limited received orders from Transmission Corporation of Andhra Pradesh Limited aggregating to Rs 523.21 crores net of GST. The order comprises the supply of 95 units of 50 MVA 132/33 KV Power Transformers. This includes 50 units under Lot-1 and 45 units under Lot-2, totaling 4,750 MVA of transformation capacity. The contract was awarded under Tender Specification No. PMM23-E-68/2026. Deliveries are scheduled to commence within eight months from the date of the Letter of Intent. Subsequent supplies will be executed in a phased manner. The company stated this strengthens its relationship with APTRANSCO. The announcement was made on 25th November 2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/ATLANTAIPO123_25112026194141_Intimation_Press_release_order_Win_final.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/ATLANTAIPO123_25112026194141_Intimation_Press_release_order_Win_final.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 19:42:02",
+    "attFilePath": null,
+    "attFileSize": "659.98 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/ATLANTAIPO123_25112026194141_Intimation_Press_release_order_Win_final.pdf",
+    "attchmntText": "Atlanta Electricals Limited has informed the Exchange regarding a press release dated November 25, 2026, titled \"Press release on receipt of Order aggregating to Rs. 523.21 Crore\".",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Press Release",
+    "difference": "00:00:02",
+    "dt": "25112026194202",
+    "exchdisstime": "25-Nov-2026 19:42:04",
+    "fileSize": "659.98 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870866",
+    "smIndustry": null,
+    "sm_isin": "INE0Z4F01028",
+    "sm_name": "Atlanta Electricals Limited",
+    "sort_date": "2026-11-25 19:42:02",
+    "symbol": "ATLANTAELE",
+    "voiceSummary": "Atlanta Electricals Limited received orders from Transmission Corporation of Andhra Pradesh Limited aggregating to Rs 523.21 crores net of GST. The order comprises the supply of 95 units of 50 MVA 132/33 KV Power Transformers. This includes 50 units under Lot-1 and 45 units under Lot-2, totaling 4,750 MVA of transformation capacity. The contract was awarded under Tender Specification No. PMM23-E-68/2026. Deliveries are scheduled to commence within eight months from the date of the Letter of Intent. Subsequent supplies will be executed in a phased manner. The company stated this strengthens its relationship with APTRANSCO. The announcement was made on 25th November 2026.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/ATLANTAIPO123_25112026194141_Intimation_Press_release_order_Win_final.mp3"
+   },
+   "filing_text": "Press Release\n\nAtlanta Electricals Limited has informed the Exchange regarding a press release dated November 25, 2026, titled \"Press release on receipt of Order aggregating to Rs. 523.21 Crore\".\n\nATANTA ELECTRICALS LIMITED \n(Formerly known as ATLANTA ELECTRICALS PVT. LTD.)\nCIN : L31110GJ1988PLC011648 \nCorporate Office \nPlot No. 1503/4, GIDC Estate,\nVithal Udyognagar, Anand – 388121 \nGujarat, India \nwww.aetrafo.com \n02692 235023 \nsales@aetrafo.com\n  25th November, 2026  \n \nTo, \nListing Department  \nBSE Limited  \nPhiroze Jeejeebhoy Towers, Dalal Street  \nMumbai – 400001 \nScrip Code: 544527 \nTo, \nListing Department  \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, Bandra Kurla \nComplex, Bandra (E), Mumbai – 400051 \nSymbol: ATLANTAELE \n \nDear Sir/Madam, \n \nSubject: Press Release on Receipt of Orders from Transmission Corporation of Andhra \nPradesh Limited (APTRANSCO) aggregating to ₹ 523.21 crores  \n \nRef: Regulation 30 SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 \n \nDear Sir/Madam, \n \nPursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015, we wish to inform that Atlanta Electricals Limited (“the Company”) has \nreceived order from Transmission Corporation of Andhra Pradesh Limited (APTRANSCO) \nworth ₹ 523.21 crores (Net of GST). The orders comprise the supply of 95 units of 50 MVA \n132/33 KV Power Transformers. \n \nPlease find enclosed a Press Release proposed to be issued in this regard. We request you \nto take the above on record and disseminate the information. \n \nThanking you, \n \nYours faithfully, \nFor Atlanta Electricals Limited \n \nTejal S. Panchal \nCompany Secretary & Compliance Officer \n \nEnclosure: \n1. Press Release \n \n \n \nTEJALBEN \nSAUNAKKUM\nAR PANCHAL\nDigitally signed by \nTEJALBEN \nSAUNAKKUMAR \nPANCHAL \nDate: 2026.11.25 \n18:37:52 +05'30'\n\n \nMEDIA RELEASE \nAtlanta Electricals strengthens order book with Rs 523.21 crore \nAPTRANSCO contract for 4,750 MVA transformer capacity \nCompany wins order for supply of 95 units of 50 MVA, 132/33 kV Power Transformers \nAnand (Gujarat), November 25, 2026: Atlanta Electricals Limited (NSE, BSE: ATLANTAELE), a \nleading manufacturer of power transformers, has secured an order worth approximately Rs 523.21 \ncrore from Transmission Corporation of Andhra Pradesh Limited (APTRANSCO) for the design, \nmanufacture, testing and supply of power transformers. \n \nAs per the Letter of Intent received from APTRANSCO, the order comprises the supply of 95 units of \n50 MVA, 132/33 kV Power Transformers, aggregating 4,750 MVA of transformation capacity, \nincluding 50 units under Lot-1 and 45 units under Lot-2, with an aggregate contract value of \napproximately Rs 523.21 crore, net of GST. \n \nThis order builds on Atlanta Electricals' existing engagement with APTRANSCO, following the \nCompany's earlier order for the supply of transformers aggregating 3,120 MVA, valued at \napproximately Rs 270 crore, further strengthening its relationship with one of India's leading state \ntransmission utilities. \n \n\"India's power sector continues to witness sustained investments in transmission infrastructure, \ndriven by rising electricity demand.  Utilities across the country are strengthening their \ntransmission networks to ensure reliable and efficient power evacuation, creating significant \nopportunities for technologically advanced transformer solutions. This order from APTRANSCO \nreflects our longstanding partnership and reinforces Atlanta Electricals' commitment to supporting \nthe development of resilient and future-ready transmission networks. We remain focused on \ndelivering high-quality products and execution excellence as utilities undertake capacity expansion \nand network strengthening projects across the country,\" said Mr. Niral Patel, Chairman and \nManaging Director, Atlanta Electricals Limited. \n \nThe order has been awarded under Tender Specification No. PMM23-E-68/2026 and covers the \ndesign, manufacture, testing and supply of the transformers on a free-at-destination basis, \nincluding unloading, in accordance with the technical specifications and commercial terms \nstipulated by APTRANSCO. Deliveries are scheduled to commence within eight months from the \ndate of the Letter of Intent, with subsequent supplies to be executed in a phased manner. \n \nThis order further strengthens Atlanta Electricals' presence in the domestic power transmission \nsegment and reinforces its capability to execute large-scale transformer projects for leading \ntransmission utilities. The addition of this order provides strong revenue visibility and reflecting the \ngrowing demand for transmission infrastructure investments across India. \n \nAbout Atlanta Electricals Limited \n \nAtlanta Electricals Limited manufactures and supplies a wide range of power transformers starting \nfrom 5 MVA/11 kV up to 500 MVA/765 kV, as well as auto transformers, inverter duty transformers, \nfurnace transformers, generator transformers and special duty transformers in India, across its \nmanufacturing facilities in Gujarat and Karnataka. \n \nWith over 30 years of experience and as of September 30, 2026, the Company has supplied 5,048 \ntransformers aggregating 1,25,500 MVA across the country. Atlanta Electricals serves utilities, \n\n \nindustrial customers and infrastructure projects with technologically advanced transformer \nsolutions that support India's growing power transmission and distribution network. \n \nFor more information, please visit www.aetrafo.com  \n \nFor Media queries:  \nsiddharth.kumar@adfactorspr.com | +91 9902929187",
+   "source_id": "NSE:106870866"
+  },
+  {
+   "id": "18708d1bfe51c6e765e4d58a",
+   "parser_version": 7,
+   "time": "2026-11-25T20:34:51+05:30",
+   "folder": "orders",
+   "subfolder": "big",
+   "symbol": "JNPR",
+   "company": "Juniper Green Energy Limited",
+   "title": "Bagging/Receiving of orders/contracts",
+   "price": 243.03,
+   "pe_ratio": 128.5873,
+   "week52_high": 284.5,
+   "week52_low": 223.2,
+   "change_pct": -0.98594344,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Juniper Green Energy Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "JNPR",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Juniper Green Energy Limited has informed the Exchange about execution of Power Purchase Agreement with NTPC Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "INR 155 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Big (₹100 crore or more)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 19:52:45",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "JNPR.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/JNPR.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T20:34:51+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹243.03",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "128.59",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹284.50",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹223.20",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹138,283,696,128.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹13,828.37 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": "18.26",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "2.50",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹1.89",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹258,727,723,008.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Utilities",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Utilities - Renewable",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "1.1209%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "INR 155 crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "Juniper Green Energy Limited \n(Formerly known as Juniper Green Energy Private Limited) \nRegistered office: 1103A & 1103B, 11th Floor, Hemkunt Chamber, 89, Nehru Place, New Delhi- 110019 \nCorporate office: 3rd and 4th Floor, Building 4, Candor TechSpace, Sector 48, Gurugram – 122001, Haryana \nCIN: L40100DL2011PLC228318 Email: cs@junipergreenenergy.com; website: www.junipergreenenergy.com/ Tel +91-124 4739600, Fax +91-124 4739666 \n \n \nNovember 25, 2026 \n \nTo, \nNational Stock Exchange of India Limited \nExchange Plaza, C-1 Block G,  \nBandra-Kurla Complex Bandra (East),  \nMumbai – 400 051 \n \nSymbol: JNPR \n  To, \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai - 400 001 \n \nScrip Code: 544853 \n \nSub: Intimation under Regulation 30 of the Securities and Exchange Board of India (Listing \nObligations and Disclosure Requirements) Regulations, 2015 - Execution of Power Purchase \nAgreement \n \nDear Sir/ Madam, \n \nThis is to inform you that, Juniper Green Gem Private Limited, a wholly owned subsidiary of Juniper \nGreen Energy Limited has executed a Power Purchase Agreement with NTPC Limited, to undertake \nand develop 150 MW capacity Wind Solar Hybrid Power Project. \n \nThe details pertaining to SEBI Master Circular No. HO/ 49/ 14/ 14(7)2025-CFD-POD2/ I/ 3762/ 2026 \ndated January 30, 2026, are provided below: \n \nSr. No. Particulars Description \na.  Name of the entity awarding the \norder(s)/contract(s) \nNTPC Limited \nb.  Significant terms and conditions \nof order(s)/ contract(s) awarded in \nbrief \nJuniper Green Gem Private Limited, a wholly owned \nsubsidiary of Juniper Green Energy Limited has \nexecuted a Power Purchase Agreement with NTPC \nLimited, to undertake and develop 150 MW capacity \nWind Solar Hybrid Power Project \nc.  Whether order(s) / contract(s) \nhave been awarded by domestic/ \ninternational entity  \nDomestic Entity \n \nd.  Nature of order(s) / contract(s)  \n \nPower Purchase Agreement  \n \ne.  Whether domestic or international  \n \nDomestic  \n \nf.  Time period by which the \norder(s)/contract(s) is to be \nexecuted  \n \nScheduled Commencement of Supply Date (SCSD): \nJune 30, 2028 \n \nPPA Term: 25 years term from SCSD \ng.  Broad consideration or size of the \norder(s)/contract(s)  \n \nExpected Annual Revenue:  ~INR 155 crore \nh.  Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded \nthe order(s)/contract(s)? If yes, \nnature of interest and details \nthereof  \n \nNo \n\n \n \n \n \n \nJuniper Green Energy Limited \n(Formerly known as Juniper Green Energy Private Limited) \nRegistered office: 1103A & 1103B, 11th Floor, Hemkunt Chamber, 89, Nehru Place, New Delhi- 110019 \nCorporate office: 3rd and 4th Floor, Building 4, Candor TechSpace, Sector 48, Gurugram – 122001, Haryana \nCIN: L40100DL2011PLC228318 Email: cs@junipergreenenergy.com; website: www.junipergreenenergy.com/ Tel +91-124 4739600, Fax +91-124 4739666 \n \n \ni.  Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the \nsame is done at “arm’s length”  \n \nNo \n \nThe aforesaid information shall also be available on the website of the Company. \n \nWe request you to kindly take the same on record. \n \nThanking You, \n \nFor Juniper Green Energy Limited \n \n \n \nPrashant Pandia  \nCompany Secretary and Compliance Officer \nFCS 12077",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 19:52:45",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "250.75 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/JGEL2025_25112026195223_2026_11_25_Regulation_30_JGEL_NTPC_PPA_GEM.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Juniper Green Energy Limited has informed the Exchange about execution of Power Purchase Agreement with NTPC Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026195245",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 19:52:46",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "250.75 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870873",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE05C901015",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Juniper Green Energy Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 19:52:45",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "JNPR",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Juniper Green Energy Limited’s wholly owned subsidiary, Juniper Green Gem Private Limited, has executed a Power Purchase Agreement with NTPC Limited. The agreement covers the development of a 150 MW capacity Wind Solar Hybrid Power Project. The contract is with a domestic entity. The Scheduled Commencement of Supply Date is June 30, 2028. The Power Purchase Agreement term is 25 years from the Scheduled Commencement of Supply Date. The expected annual revenue is approximately INR 155 crore. There is no interest held by promoters or group companies in NTPC Limited. The transaction does not fall within related party transactions.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/JGEL2025_25112026195223_2026_11_25_Regulation_30_JGEL_NTPC_PPA_GEM.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/JGEL2025_25112026195223_2026_11_25_Regulation_30_JGEL_NTPC_PPA_GEM.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 19:52:45",
+    "attFilePath": null,
+    "attFileSize": "250.75 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/JGEL2025_25112026195223_2026_11_25_Regulation_30_JGEL_NTPC_PPA_GEM.pdf",
+    "attchmntText": "Juniper Green Energy Limited has informed the Exchange about execution of Power Purchase Agreement with NTPC Limited",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Bagging/Receiving of orders/contracts",
+    "difference": "00:00:01",
+    "dt": "25112026195245",
+    "exchdisstime": "25-Nov-2026 19:52:46",
+    "fileSize": "250.75 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870873",
+    "smIndustry": null,
+    "sm_isin": "INE05C901015",
+    "sm_name": "Juniper Green Energy Limited",
+    "sort_date": "2026-11-25 19:52:45",
+    "symbol": "JNPR",
+    "voiceSummary": "Juniper Green Energy Limited’s wholly owned subsidiary, Juniper Green Gem Private Limited, has executed a Power Purchase Agreement with NTPC Limited. The agreement covers the development of a 150 MW capacity Wind Solar Hybrid Power Project. The contract is with a domestic entity. The Scheduled Commencement of Supply Date is June 30, 2028. The Power Purchase Agreement term is 25 years from the Scheduled Commencement of Supply Date. The expected annual revenue is approximately INR 155 crore. There is no interest held by promoters or group companies in NTPC Limited. The transaction does not fall within related party transactions.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/JGEL2025_25112026195223_2026_11_25_Regulation_30_JGEL_NTPC_PPA_GEM.mp3"
+   },
+   "filing_text": "Bagging/Receiving of orders/contracts\n\nJuniper Green Energy Limited has informed the Exchange about execution of Power Purchase Agreement with NTPC Limited\n\nJuniper Green Energy Limited \n(Formerly known as Juniper Green Energy Private Limited) \nRegistered office: 1103A & 1103B, 11th Floor, Hemkunt Chamber, 89, Nehru Place, New Delhi- 110019 \nCorporate office: 3rd and 4th Floor, Building 4, Candor TechSpace, Sector 48, Gurugram – 122001, Haryana \nCIN: L40100DL2011PLC228318 Email: cs@junipergreenenergy.com; website: www.junipergreenenergy.com/ Tel +91-124 4739600, Fax +91-124 4739666 \n \n \nNovember 25, 2026 \n \nTo, \nNational Stock Exchange of India Limited \nExchange Plaza, C-1 Block G,  \nBandra-Kurla Complex Bandra (East),  \nMumbai – 400 051 \n \nSymbol: JNPR \n  To, \nBSE Limited \nPhiroze Jeejeebhoy Towers, \nDalal Street, \nMumbai - 400 001 \n \nScrip Code: 544853 \n \nSub: Intimation under Regulation 30 of the Securities and Exchange Board of India (Listing \nObligations and Disclosure Requirements) Regulations, 2015 - Execution of Power Purchase \nAgreement \n \nDear Sir/ Madam, \n \nThis is to inform you that, Juniper Green Gem Private Limited, a wholly owned subsidiary of Juniper \nGreen Energy Limited has executed a Power Purchase Agreement with NTPC Limited, to undertake \nand develop 150 MW capacity Wind Solar Hybrid Power Project. \n \nThe details pertaining to SEBI Master Circular No. HO/ 49/ 14/ 14(7)2025-CFD-POD2/ I/ 3762/ 2026 \ndated January 30, 2026, are provided below: \n \nSr. No. Particulars Description \na.  Name of the entity awarding the \norder(s)/contract(s) \nNTPC Limited \nb.  Significant terms and conditions \nof order(s)/ contract(s) awarded in \nbrief \nJuniper Green Gem Private Limited, a wholly owned \nsubsidiary of Juniper Green Energy Limited has \nexecuted a Power Purchase Agreement with NTPC \nLimited, to undertake and develop 150 MW capacity \nWind Solar Hybrid Power Project \nc.  Whether order(s) / contract(s) \nhave been awarded by domestic/ \ninternational entity  \nDomestic Entity \n \nd.  Nature of order(s) / contract(s)  \n \nPower Purchase Agreement  \n \ne.  Whether domestic or international  \n \nDomestic  \n \nf.  Time period by which the \norder(s)/contract(s) is to be \nexecuted  \n \nScheduled Commencement of Supply Date (SCSD): \nJune 30, 2028 \n \nPPA Term: 25 years term from SCSD \ng.  Broad consideration or size of the \norder(s)/contract(s)  \n \nExpected Annual Revenue:  ~INR 155 crore \nh.  Whether the promoter/ promoter \ngroup / group companies have any \ninterest in the entity that awarded \nthe order(s)/contract(s)? If yes, \nnature of interest and details \nthereof  \n \nNo \n\n \n \n \n \n \nJuniper Green Energy Limited \n(Formerly known as Juniper Green Energy Private Limited) \nRegistered office: 1103A & 1103B, 11th Floor, Hemkunt Chamber, 89, Nehru Place, New Delhi- 110019 \nCorporate office: 3rd and 4th Floor, Building 4, Candor TechSpace, Sector 48, Gurugram – 122001, Haryana \nCIN: L40100DL2011PLC228318 Email: cs@junipergreenenergy.com; website: www.junipergreenenergy.com/ Tel +91-124 4739600, Fax +91-124 4739666 \n \n \ni.  Whether the order(s)/contract(s) \nwould fall within related party \ntransactions? If yes, whether the \nsame is done at “arm’s length”  \n \nNo \n \nThe aforesaid information shall also be available on the website of the Company. \n \nWe request you to kindly take the same on record. \n \nThanking You, \n \nFor Juniper Green Energy Limited \n \n \n \nPrashant Pandia  \nCompany Secretary and Compliance Officer \nFCS 12077",
+   "source_id": "NSE:106870873"
+  },
   {
    "id": "9571fb5111fadf64363ce041",
    "parser_version": 7,
