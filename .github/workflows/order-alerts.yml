@@ -61,7 +61,11 @@ jobs:
         with:
           path: .
 
+      # GitHub's artifact listing can lag after upload; allow it to propagate before deploy-pages reads it.
+      - name: Wait for Pages artifact indexing
+        if: steps.save.outputs.site_changed == 'true'
+        run: sleep 15
+
       - name: Publish Share Sanket site
         if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
-
