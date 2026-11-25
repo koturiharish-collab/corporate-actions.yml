@@ -1,6 +1,6 @@
 {
  "sample": false,
- "updated": "2026-11-25T20:34:54+05:30",
+ "updated": "2026-11-25T21:01:58+05:30",
  "folders": [
   {
    "id": "emas",
@@ -146,6 +146,328 @@
   }
  ],
  "alerts": [
+  {
+   "id": "75f19bb69587f4fb56d47144",
+   "parser_version": 7,
+   "time": "2026-11-25T21:01:58+05:30",
+   "folder": "orders",
+   "subfolder": "small",
+   "symbol": "PVSL",
+   "company": "Popular Vehicles and Services Limited",
+   "title": "Action(s) taken or orders passed",
+   "price": 88.37,
+   "pe_ratio": null,
+   "week52_high": 137.7,
+   "week52_low": 82.41,
+   "change_pct": -0.34956872,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Popular Vehicles and Services Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "PVSL",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Popular Vehicles and Services Limited has informed the Exchange about Action(s) taken or orders passed by the State Tax Officer, Goods and Services Tax Act, 2017 confirming a demand of Rs. 81.25 lakh including a penalty of Rs. 28.61 lakh.",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs. 81.25 lakh",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Small (under ₹10 crore)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "25-Nov-2026 20:35:31",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 4 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "PVSL.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/PVSL.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-25T21:01:58+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹88.37",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹137.70",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹82.41",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹6,291,785,216.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹629.18 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "1.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹-0.11",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹22,499,381,248.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Consumer Cyclical",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Auto & Truck Dealerships",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "0.1291%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs. 81.25 lakh; Rs. 28.61 lakh; Rs. 81.25 lakh; Rs. 28.61 lakh; Rs. 24.03 \nlakh; Rs. 28.61 lakh; Rs. 81.25 lakh; Rs. 81,25,524; Rs. 28.61 lakh; Rs. 24.03 lakh; Rs. 28.61 lakh",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "www.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \n \n \n \n \n \n Ref No: PVSL/SEC/93/2026-27 \n \n Date: 25th November, 2026 \n \nTo, \nBSE Limited (“BSE”), \nCorporate Relationship Department,  \n2nd Floor, New Trading Ring, \nP.J. Towers, Dalal Street,  \nMumbai – 400 001. \n \nScrip Code: 544144 \nISIN: INE772T01024 \nTo, \nNational Stock Exchange of India Limited \n(“NSE”), \nExchange Plaza, Plot No. C-1, Block G, \nBandra Kurla Complex, Bandra (East),  \nMumbai – 400 051.  \n \nNSE Code: PVSL \nISIN: INE772T01024 \n \nDear Sir/Madam, \n \nSub: Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 – Order received under Section 74 of the GST law \n \nPursuant to Regulation 30 read with sub-para 20 of Para A of Part A of Schedule III of the SEBI \n(Listing Obligations and Disclosure Requirements) Regulations, 2015, we wish to inform you that \nthe Company has received an order passed by the State Tax Officer, Taxpayer Services Circle, \nPalarivattom, Ernakulam, under Section 74(9) of the Central Goods and Services Tax Act, 2017 / \nread with Section 20 of the Integrated Goods and Services Tax Act, 2017, for FY 2021-22, \nconfirming a demand of Rs. 81.25 lakh (comprising IGST of Rs. 28.61 lakh, interest of Rs. 24.03 \nlakh and penalty of Rs. 28.61 lakh).  \n \n \n\n              \n                                                                                                                             \nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \n \n \n \n \n \n \nThe details as required under SEBI Master Circular No. SEBI/HO/49/14/14(7)2025-CFD-\nPOD2/I/3762/2026 dated January 30, 2026 are enclosed as Annexure A. \n \nThanking you, \n \nYours faithfully, \n \nFor Popular Vehicles and Services Limited \n \n \n \n \nVarun T.V. \nCompany Secretary & Compliance Officer  \nMembership No: A22044 \nPlace: Kochi \n \n \n \n \n \n \n \n \n \n \n\n              \n                                                                                                                             \nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \n \n \n \n \nAnnexure A. \n \n  \n(Disclosure under Regulation 30 read with Clause 20 of Para A of Part A of Schedule III \nof SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015) and SEBI \nMaster Circular No. SEBI/HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January \n30, 2026 \n \nAction taken / order passed by the State Tax Officer, Taxpayer Services \nCircle, Palarivattom against the listed entity \n \nSl. \nNo. \nParticulars Description \n1. Name of the authority State Tax Officer, Taxpayer Services Circle, \nPalarivattom, Ernakulam, State Goods and Services Tax \nDepartment, Kerala \n2. Nature and details of the action(s)\ntaken or order(s) passed \nOrder passed under Section 74(9) of the CGST Act, \n2017 read with Section 20 of the IGST Act, 2017 and \nRule 142(5) of the CGST Rules, 2017, with summary \nof the order in Form GST DRC-07, for FY 2021-22, \npursuant to the GST audit and the show cause notice \ndated 10/03/2026.  \n \n3. Date of receipt of direction or order,\nincluding any ad-interim or interim\norders, or any other communication \nfrom the authority \n25th November, 2026 at 10:39 AM \n4. Details of the violation(s) / \ncontravention(s) committed or alleged \nto be committed  \nAlleged irregular availment of input tax credit (IGST) \non IPO expenses. \n5. Impact on financial, operation or other \nactivities of the listed entity, \nquantifiable in monetary terms to the \nTotal demand: Rs. 81.25 lakh (Rs. 81,25,524), \ncomprising: \nTax (IGST): Rs. 28.61 lakh \n\n              \n                                                                                                                             \nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \nextent possible Interest: Rs. 24.03 lakh  \nPenalty: Rs. 28.61 lakh \nThe Company will file an appeal against the order \nbefore the Appellate Authority within the prescribed \ntimelines.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "25-Nov-2026 20:35:31",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "412.81 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/9072530155_25112026203329_GST_Intimation_SD.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Popular Vehicles and Services Limited has informed the Exchange about Action(s) taken or orders passed by the State Tax Officer, Goods and Services Tax Act, 2017 confirming a demand of Rs. 81.25 lakh including a penalty of Rs. 28.61 lakh.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Action(s) taken or orders passed",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "25112026203531",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "25-Nov-2026 20:35:32",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "412.81 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106870898",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE772T01024",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Popular Vehicles and Services Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-25 20:35:31",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "PVSL",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Popular Vehicles and Services Limited received an order from the State Tax Officer, Ernakulam, on 25th November, 2026, under Section 74 of the GST law for the financial year 2021-22. The order confirms a total demand of Rs. 81.25 lakh, comprising IGST of Rs. 28.61 lakh, interest of Rs. 24.03 lakh, and penalty of Rs. 28.61 lakh. The alleged violation involves the irregular availment of input tax credit on IPO expenses. The company intends to file an appeal against this order before the Appellate Authority within the prescribed timelines.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/9072530155_25112026203329_GST_Intimation_SD.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/9072530155_25112026203329_GST_Intimation_SD.pdf",
+   "source_data": {
+    "an_dt": "25-Nov-2026 20:35:31",
+    "attFilePath": null,
+    "attFileSize": "412.81 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/9072530155_25112026203329_GST_Intimation_SD.pdf",
+    "attchmntText": "Popular Vehicles and Services Limited has informed the Exchange about Action(s) taken or orders passed by the State Tax Officer, Goods and Services Tax Act, 2017 confirming a demand of Rs. 81.25 lakh including a penalty of Rs. 28.61 lakh.",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Action(s) taken or orders passed",
+    "difference": "00:00:01",
+    "dt": "25112026203531",
+    "exchdisstime": "25-Nov-2026 20:35:32",
+    "fileSize": "412.81 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106870898",
+    "smIndustry": null,
+    "sm_isin": "INE772T01024",
+    "sm_name": "Popular Vehicles and Services Limited",
+    "sort_date": "2026-11-25 20:35:31",
+    "symbol": "PVSL",
+    "voiceSummary": "Popular Vehicles and Services Limited received an order from the State Tax Officer, Ernakulam, on 25th November, 2026, under Section 74 of the GST law for the financial year 2021-22. The order confirms a total demand of Rs. 81.25 lakh, comprising IGST of Rs. 28.61 lakh, interest of Rs. 24.03 lakh, and penalty of Rs. 28.61 lakh. The alleged violation involves the irregular availment of input tax credit on IPO expenses. The company intends to file an appeal against this order before the Appellate Authority within the prescribed timelines.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/9072530155_25112026203329_GST_Intimation_SD.mp3"
+   },
+   "filing_text": "Action(s) taken or orders passed\n\nPopular Vehicles and Services Limited has informed the Exchange about Action(s) taken or orders passed by the State Tax Officer, Goods and Services Tax Act, 2017 confirming a demand of Rs. 81.25 lakh including a penalty of Rs. 28.61 lakh.\n\nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \n \n \n \n \n \n Ref No: PVSL/SEC/93/2026-27 \n \n Date: 25th November, 2026 \n \nTo, \nBSE Limited (“BSE”), \nCorporate Relationship Department,  \n2nd Floor, New Trading Ring, \nP.J. Towers, Dalal Street,  \nMumbai – 400 001. \n \nScrip Code: 544144 \nISIN: INE772T01024 \nTo, \nNational Stock Exchange of India Limited \n(“NSE”), \nExchange Plaza, Plot No. C-1, Block G, \nBandra Kurla Complex, Bandra (East),  \nMumbai – 400 051.  \n \nNSE Code: PVSL \nISIN: INE772T01024 \n \nDear Sir/Madam, \n \nSub: Disclosure under Regulation 30 of the SEBI (Listing Obligations and Disclosure \nRequirements) Regulations, 2015 – Order received under Section 74 of the GST law \n \nPursuant to Regulation 30 read with sub-para 20 of Para A of Part A of Schedule III of the SEBI \n(Listing Obligations and Disclosure Requirements) Regulations, 2015, we wish to inform you that \nthe Company has received an order passed by the State Tax Officer, Taxpayer Services Circle, \nPalarivattom, Ernakulam, under Section 74(9) of the Central Goods and Services Tax Act, 2017 / \nread with Section 20 of the Integrated Goods and Services Tax Act, 2017, for FY 2021-22, \nconfirming a demand of Rs. 81.25 lakh (comprising IGST of Rs. 28.61 lakh, interest of Rs. 24.03 \nlakh and penalty of Rs. 28.61 lakh).  \n \n \n\n              \n                                                                                                                             \nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \n \n \n \n \n \n \nThe details as required under SEBI Master Circular No. SEBI/HO/49/14/14(7)2025-CFD-\nPOD2/I/3762/2026 dated January 30, 2026 are enclosed as Annexure A. \n \nThanking you, \n \nYours faithfully, \n \nFor Popular Vehicles and Services Limited \n \n \n \n \nVarun T.V. \nCompany Secretary & Compliance Officer  \nMembership No: A22044 \nPlace: Kochi \n \n \n \n \n \n \n \n \n \n \n\n              \n                                                                                                                             \nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \n \n \n \n \nAnnexure A. \n \n  \n(Disclosure under Regulation 30 read with Clause 20 of Para A of Part A of Schedule III \nof SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015) and SEBI \nMaster Circular No. SEBI/HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January \n30, 2026 \n \nAction taken / order passed by the State Tax Officer, Taxpayer Services \nCircle, Palarivattom against the listed entity \n \nSl. \nNo. \nParticulars Description \n1. Name of the authority State Tax Officer, Taxpayer Services Circle, \nPalarivattom, Ernakulam, State Goods and Services Tax \nDepartment, Kerala \n2. Nature and details of the action(s)\ntaken or order(s) passed \nOrder passed under Section 74(9) of the CGST Act, \n2017 read with Section 20 of the IGST Act, 2017 and \nRule 142(5) of the CGST Rules, 2017, with summary \nof the order in Form GST DRC-07, for FY 2021-22, \npursuant to the GST audit and the show cause notice \ndated 10/03/2026.  \n \n3. Date of receipt of direction or order,\nincluding any ad-interim or interim\norders, or any other communication \nfrom the authority \n25th November, 2026 at 10:39 AM \n4. Details of the violation(s) / \ncontravention(s) committed or alleged \nto be committed  \nAlleged irregular availment of input tax credit (IGST) \non IPO expenses. \n5. Impact on financial, operation or other \nactivities of the listed entity, \nquantifiable in monetary terms to the \nTotal demand: Rs. 81.25 lakh (Rs. 81,25,524), \ncomprising: \nTax (IGST): Rs. 28.61 lakh \n\n              \n                                                                                                                             \nwww.kuttukaran.in \nPopular Vehicles and Services Ltd \nKuttukaran Centre \nMamangalam, Kochi 682025 \nt 0484 2341134 \ne cs@popularv.com \nwww.popularvehicles.in \n \nCIN L50102KL1983PLC003741 \nKERALA – GSTIN 32AABCP3805G1ZW \nTAMIL NADU- GSTIN 33AABCP3805G1ZU \nKARNATAKA - GSTIN 29AABCP3805G1ZJ \nTELANGANA - GSTIN 36AABCP3805G1ZO \n \nextent possible Interest: Rs. 24.03 lakh  \nPenalty: Rs. 28.61 lakh \nThe Company will file an appeal against the order \nbefore the Appellate Authority within the prescribed \ntimelines.",
+   "source_id": "NSE:106870898"
+  },
   {
    "id": "e618bb26a8de20a6120eea09",
    "parser_version": 7,
