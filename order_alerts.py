@@ -352,6 +352,16 @@ def raw_details(source_data, exchange):
     return details
 
 
+def pe_value(market, price):
+    """Current trailing P/E from Yahoo. Falls back to price / trailing EPS if Yahoo omits it."""
+    pe = clean_number(market.get("trailingPE"))
+    if pe is None:
+        eps = clean_number(market.get("trailingEps"))
+        if price and eps and eps > 0:
+            pe = price / eps
+    return pe
+
+
 # ---------------------------------------------------------------- alert building
 
 def order_alert(item, market_cache):
@@ -366,6 +376,10 @@ def order_alert(item, market_cache):
     cap_cr = market_cap / 10_000_000 if market_cap is not None and currency == "INR" else None
     order_cr = order_amount["inr"] / 10_000_000 if order_amount else None
     ratio = (order_cr / cap_cr * 100) if order_cr is not None and cap_cr and cap_cr > 0 else None
+
+    pe = pe_value(market, price)
+    week52_high = clean_number(market.get("fiftyTwoWeekHigh"))
+    week52_low = clean_number(market.get("fiftyTwoWeekLow"))
 
     if order_cr is None:
         size_band, subfolder = None, None
@@ -399,16 +413,16 @@ def order_alert(item, market_cache):
         {"label": "Market data snapshot captured",
          "value": datetime.now(IST).isoformat(timespec="seconds"), "source": "Yahoo Finance"},
         {"label": "Price at snapshot", "value": format_inr(price), "source": "Yahoo Finance"},
+        {"label": "Current P/E (trailing)", "value": fmt_ratio(pe), "source": "Yahoo Finance"},
+        {"label": "52-week high", "value": format_inr(week52_high), "source": "Yahoo Finance"},
+        {"label": "52-week low", "value": format_inr(week52_low), "source": "Yahoo Finance"},
         {"label": "Market capitalization", "value": format_inr(market_cap), "source": "Yahoo Finance"},
         {"label": "Market capitalization (INR crore)",
          "value": f"₹{cap_cr:,.2f} crore" if cap_cr is not None else None, "source": "Yahoo Finance"},
-        {"label": "Trailing P/E", "value": fmt_ratio(clean_number(market.get("trailingPE"))), "source": "Yahoo Finance"},
         {"label": "Forward P/E", "value": fmt_ratio(clean_number(market.get("forwardPE"))), "source": "Yahoo Finance"},
         {"label": "Price-to-book", "value": fmt_ratio(clean_number(market.get("priceToBook"))), "source": "Yahoo Finance"},
         {"label": "Trailing EPS", "value": format_inr(clean_number(market.get("trailingEps"))), "source": "Yahoo Finance"},
         {"label": "Enterprise value", "value": format_inr(clean_number(market.get("enterpriseValue"))), "source": "Yahoo Finance"},
-        {"label": "52-week high", "value": format_inr(clean_number(market.get("fiftyTwoWeekHigh"))), "source": "Yahoo Finance"},
-        {"label": "52-week low", "value": format_inr(clean_number(market.get("fiftyTwoWeekLow"))), "source": "Yahoo Finance"},
         {"label": "Sector", "value": market.get("sector"), "source": "Yahoo Finance"},
         {"label": "Industry", "value": market.get("industry"), "source": "Yahoo Finance"},
         {"label": "Order value / market cap",
@@ -424,7 +438,7 @@ def order_alert(item, market_cache):
     change = clean_number(market.get("regularMarketChangePercent"))
     return {
         "id": hashlib.sha256(raw_id.encode("utf-8")).hexdigest()[:24],
-        "parser_version": 4,
+        "parser_version": 5,
         "time": datetime.now(IST).isoformat(timespec="seconds"),
         "folder": "orders",
         "subfolder": subfolder,
@@ -432,6 +446,9 @@ def order_alert(item, market_cache):
         "company": item.get("company") or "",
         "title": item.get("title") or item.get("category") or "Order win announcement",
         "price": price,
+        "pe_ratio": pe,
+        "week52_high": week52_high,
+        "week52_low": week52_low,
         "change_pct": change,
         "details": details,
         "link": item.get("link") or "",
@@ -474,9 +491,17 @@ def send_telegram(alert):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT:
         return
     lines = [f"🟢 {alert['company']} ({alert['symbol']})", alert["title"]]
+    if alert.get("price") is not None:
+        lines.append(f"Price: {format_inr(alert['price'])}")
+    if alert.get("pe_ratio") is not None:
+        lines.append(f"Current P/E: {fmt_ratio(alert['pe_ratio'])}")
+    if alert.get("week52_high") is not None and alert.get("week52_low") is not None:
+        lines.append(
+            f"52-week range: {format_inr(alert['week52_low'])} – {format_inr(alert['week52_high'])}"
+        )
     for d in alert["details"]:
         if d["label"] in ("Reported order value", "Client / counterparty",
-                          "Execution / delivery period", "Price at snapshot", "Order size band"):
+                          "Execution / delivery period", "Order size band"):
             if d["value"]:
                 lines.append(f"{d['label']}: {d['value']}")
     if alert["link"]:
