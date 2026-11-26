@@ -22,6 +22,7 @@ ALERTS_FILE = BASE_DIR / "alerts.json"
 STATE_FILE = BASE_DIR / "order_state.json"
 
 IST = ZoneInfo("Asia/Kolkata")
+
 CATEGORY = "order_wins"
 LOOKBACK_DAYS = 2
 MAX_STATE = 5000
@@ -38,8 +39,13 @@ HEADERS = {
     "Accept": "application/json, text/plain, */*",
 }
 
-# Only "Bagging/Receiving of orders/contracts" announcements.
-BAGGING = re.compile(r"bagging\s*/?\s*receiv", re.I)
+# Order-related announcements: bagging/receiving contracts, orders passed,
+# orders initiated, orders taken, order wins, contract awards.
+ORDER = re.compile(
+    r"bagging|receiving|orders?\s+(passed|initiated|taken|received|awarded|won)|"
+    r"new\s+orders?|order\s+win|contract\s+(award|win)",
+    re.I,
+)
 
 MONEY = re.compile(
     r"(?:₹|\bRs\.?|\bINR)\s*([0-9][0-9,]*(?:\.\d+)?)\s*"
@@ -287,7 +293,7 @@ def fetch_bse(start, end):
 
 def is_bagging(item):
     text = f"{item.get('title', '')} {item.get('category', '')}"
-    return bool(BAGGING.search(text))
+    return bool(ORDER.search(text))
 
 
 def build_alert(item):
@@ -350,7 +356,9 @@ def send_telegram(alert):
             },
             timeout=20,
         )
+
         response.raise_for_status()
+
         return bool(response.json().get("ok"))
 
     except requests.RequestException as error:
