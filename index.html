@@ -504,32 +504,84 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
         h('span', { class: 'rv' }, valueNode, source ? h('span', { class: 'src', text: source }) : null)));
     }
 
+    function cleanKey(v) { return String(v || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
+    function findDetail(labels) {
+      var wanted = labels.map(cleanKey);
+      if (Array.isArray(a.details)) {
+        for (var i = 0; i < a.details.length; i++) {
+          var item = a.details[i];
+          if (item && typeof item === 'object' && wanted.indexOf(cleanKey(item.label)) > -1 &&
+              item.value !== undefined && item.value !== null && item.value !== '') return item.value;
+        }
+      }
+      var sources = [a.fundamentals, a.market_data, a.yahoo_finance];
+      for (var j = 0; j < sources.length; j++) {
+        var obj = sources[j];
+        if (!obj || typeof obj !== 'object') continue;
+        for (var k in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, k) && wanted.indexOf(cleanKey(k)) > -1 &&
+              obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k];
+        }
+      }
+      return null;
+    }
+    function numeric(value) {
+      if (typeof value === 'number') return isFinite(value) ? value : null;
+      if (value === null || value === undefined || value === '') return null;
+      var str = String(value).replace(/,/g, '').replace(/[₹$%\s]/g, '');
+      var n = Number(str);
+      return isFinite(n) ? n : null;
+    }
+    function firstNumeric(values) {
+      for (var i = 0; i < values.length; i++) {
+        var n = numeric(values[i]);
+        if (n !== null) return n;
+      }
+      return null;
+    }
+
     var isOrder = a.folder === 'orders' || a.category === 'order_wins';
     if (isOrder) {
+      var orderValue = firstNumeric([a.order_value_crore, a.order_value_inr_crore,
+        findDetail(['Order value (INR crore)', 'Order value in crore', 'Order value crore'])]);
+      var marketCap = firstNumeric([a.market_cap_crore, a.market_cap_inr_crore,
+        findDetail(['Market capitalization (INR crore)', 'Market capitalisation (INR crore)',
+          'Market cap (INR crore)', 'Market capitalisation crore'])]);
+      var orderPercent = firstNumeric([a.order_percent_of_mcap, a.order_size_vs_market_cap]);
+      if (orderPercent === null && orderValue !== null && marketCap !== null && marketCap > 0) {
+        orderPercent = (orderValue / marketCap) * 100;
+      }
+
+      var computedSize = null;
+      if (orderPercent !== null && orderPercent >= 0) {
+        if (orderPercent > 50) computedSize = 'VERY BIG ORDER';
+        else if (orderPercent >= 25) computedSize = 'BIG ORDER';
+        else if (orderPercent >= 15) computedSize = 'MEDIUM ORDER';
+        else computedSize = 'SMALL ORDER';
+      }
       var sizeNames = {
-        'very-big': 'VERY BIG ORDER',
-        'big': 'BIG ORDER',
-        'medium': 'MEDIUM ORDER',
-        'small': 'SMALL ORDER'
+        'very-big': 'VERY BIG ORDER', 'big': 'BIG ORDER',
+        'medium': 'MEDIUM ORDER', 'small': 'SMALL ORDER'
       };
-      var size = a.order_size || a.order_category || sizeNames[a.subfolder] || a.subfolder;
-      addRow('Order size category', size || 'Not available');
-      var orderValue = a.order_value_crore;
-      addRow('Order value', orderValue === undefined || orderValue === null || orderValue === ''
-        ? orderValue : '₹' + Number(orderValue).toLocaleString('en-IN', { maximumFractionDigits: 2 }) + ' crore');
-      var marketCap = a.market_cap_crore;
-      addRow('Market capitalisation', marketCap === undefined || marketCap === null || marketCap === ''
-        ? marketCap : '₹' + Number(marketCap).toLocaleString('en-IN', { maximumFractionDigits: 2 }) + ' crore');
-      var orderPercent = a.order_percent_of_mcap;
-      addRow('Order size vs market cap', orderPercent === undefined || orderPercent === null || orderPercent === ''
-        ? orderPercent : Number(orderPercent).toLocaleString('en-IN', { maximumFractionDigits: 2 }) + '%');
+      var storedSize = a.order_size || a.order_category || sizeNames[a.subfolder] || a.subfolder;
+      addRow('Order size category', computedSize || storedSize || 'Not available');
+      addRow('Order value', orderValue === null ? null :
+        '₹' + orderValue.toLocaleString('en-IN', { maximumFractionDigits: 2 }) + ' crore');
+      addRow('Market capitalisation', marketCap === null ? null :
+        '₹' + marketCap.toLocaleString('en-IN', { maximumFractionDigits: 2 }) + ' crore');
+      addRow('Order size vs market cap', orderPercent === null ? null :
+        orderPercent.toLocaleString('en-IN', { maximumFractionDigits: 2 }) + '%');
       addRow('Exchange', a.exchange);
       addRow('Filing date', a.time ? dayKey(a) : (a.filing_date || a.date));
     }
 
+    var displayedLabels = {};
     if (Array.isArray(a.details)) {
       a.details.forEach(function (it) {
-        if (it && typeof it === 'object') addRow(it.label || '', it.value, it.source);
+        if (it && typeof it === 'object') {
+          addRow(it.label || '', it.value, it.source);
+          displayedLabels[cleanKey(it.label)] = true;
+        }
       });
     } else if (typeof a.details === 'string' && a.details.trim()) {
       addRow(isOrder ? 'Announcement details' : 'Details', a.details);
@@ -539,6 +591,29 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
       wrap.appendChild(h('p', { class: 'none', text: 'No further details for this alert yet.' }));
     }
 
+    // Keep the standard Yahoo Finance fundamentals visible even when an older
+    // feed record omitted one of the fields. Missing source data is not guessed.
+    if (isOrder) {
+      var fundamentalRows = [
+        ['Trailing P/E', ['Trailing P/E', 'Trailing PE', 'trailing_pe']],
+        ['Forward P/E', ['Forward P/E', 'Forward PE', 'forward_pe']],
+        ['Price-to-book', ['Price-to-book', 'Price to book', 'price_to_book']],
+        ['Trailing EPS', ['Trailing EPS', 'EPS', 'trailing_eps']],
+        ['Enterprise value', ['Enterprise value', 'enterprise_value']],
+        ['52-week high', ['52-week high', '52 week high', 'fifty_two_week_high']],
+        ['52-week low', ['52-week low', '52 week low', 'fifty_two_week_low']],
+        ['Sector', ['Sector', 'sector']],
+        ['Industry', ['Industry', 'industry']]
+      ];
+      fundamentalRows.forEach(function (row) {
+        var key = cleanKey(row[0]);
+        if (!displayedLabels[key]) {
+          addRow(row[0], findDetail(row[1]), 'Yahoo Finance');
+          displayedLabels[key] = true;
+        }
+      });
+    }
+
     if (a.link && /^https?:\/\//i.test(a.link)) {
       wrap.appendChild(h('div', { class: 'actions' }, h('a', { class: 'btn', href: a.link, target: '_blank', rel: 'noopener noreferrer', text: 'Open source filing' })));
     } else if (isOrder) {
@@ -546,7 +621,6 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     }
     return wrap;
   }
-
 
   function alertEl(a) {
     var id = a.id || (a.symbol + '-' + a.time);
