@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T18:04:18+05:30",
+ "updated": "2026-11-26T18:25:03+05:30",
  "folders": [
   {
    "id": "emas",
@@ -149,6 +149,44 @@
   }
  ],
  "alerts": [
+  {
+   "id": "order-NSE:106871925",
+   "source_id": "NSE:106871925",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "exchange": "NSE",
+   "company": "Jet Freight Logistics Limited",
+   "symbol": "JETFREIGHT",
+   "title": "Action(s) initiated or orders passed",
+   "details": "Jet Freight Logistics Limited has informed the Exchange about Action(s) initiated or orders passed",
+   "order_value_crore": null,
+   "market_cap_crore": 91.0,
+   "order_percent_of_mcap": null,
+   "time": "26-Nov-2026 18:15:06",
+   "link": "https://nsearchives.nseindia.in/corporate/JETFREIGHT_26112026181456_Reg_30_Intimation_SEBI_Summon_Signed.pdf",
+   "detected_at": "2026-11-26T18:25:03+05:30",
+   "telegram_notified": false
+  },
+  {
+   "id": "order-NSE:106871932",
+   "source_id": "NSE:106871932",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "exchange": "NSE",
+   "company": "Isgec Heavy Engineering Limited",
+   "symbol": "ISGEC",
+   "title": "Action(s) taken or orders passed",
+   "details": "Isgec Heavy Engineering Limited has informed the Exchange about Action(s) taken or orders passed",
+   "order_value_crore": null,
+   "market_cap_crore": 7561.04,
+   "order_percent_of_mcap": null,
+   "time": "26-Nov-2026 18:21:07",
+   "link": "https://nsearchives.nseindia.in/corporate/ISGEC_26112026182045_Revised_intimation.pdf",
+   "detected_at": "2026-11-26T18:25:03+05:30",
+   "telegram_notified": false
+  },
   {
    "id": "order-NSE:106871380",
    "source_id": "NSE:106871380",
