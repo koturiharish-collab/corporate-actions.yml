@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T20:26:46+05:30",
+ "updated": "2026-11-26T21:44:47+05:30",
  "folders": [
   {
    "id": "emas",
@@ -149,6 +149,25 @@
   }
  ],
  "alerts": [
+  {
+   "id": "order-NSE:106872086",
+   "source_id": "NSE:106872086",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "exchange": "NSE",
+   "company": "ZF Commercial Vehicle Control Systems India Limited",
+   "symbol": "ZFCVINDIA",
+   "title": "Action(s) initiated or orders passed",
+   "details": "ZF Commercial Vehicle Control Systems India Limited has informed the Exchange about favourable orders passed by CESTAT, Chennai",
+   "order_value_crore": null,
+   "market_cap_crore": 24923.4,
+   "order_percent_of_mcap": null,
+   "time": "26-Nov-2026 21:29:41",
+   "link": "https://nsearchives.nseindia.in/corporate/WABCOINDIA_26112026212930_sdSEIntimation_order-edit.pdf",
+   "detected_at": "2026-11-26T21:44:47+05:30",
+   "telegram_notified": false
+  },
   {
    "id": "order-NSE:106872005",
    "source_id": "NSE:106872005",
