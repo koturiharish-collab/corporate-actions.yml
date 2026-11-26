@@ -1,7 +1,6 @@
 name: Share Sanket - Results Scanner
 
 on:
-  push:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
