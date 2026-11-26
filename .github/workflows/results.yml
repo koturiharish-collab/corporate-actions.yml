@@ -3,7 +3,6 @@ name: Share Sanket - Results Scanner
 on:
   push:
   schedule:
-    # Every 5 minutes, 24 hours a day, 7 days a week
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
@@ -20,19 +19,13 @@ jobs:
   validate:
     name: Validate Results Module
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase -q origin main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -50,15 +43,14 @@ jobs:
 
       - name: Publish Results JSON files
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add results/alerts.json results/history.json results/calendar.json
 
           if ! git diff --cached --quiet; then
             git commit -m "Publish updated Share Sanket Results data"
             git pull --rebase -q origin main
             git push origin HEAD:main
-            echo "Results JSON files published to repository."
-          else
-            echo "No Results JSON changes to publish."
           fi
 
       - name: Configure GitHub Pages
