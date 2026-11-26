@@ -1,11 +1,11 @@
-name: Share Sanket - Results Scan
+name: Share Sanket - Results Scanner
 
 on:
   push:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
-  
+
 permissions:
   contents: write
   pages: write
@@ -21,56 +21,56 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
-        steps:
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-  - name: Set up Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: "3.12"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-  - name: Install Results dependencies
-    run: |
-      python -m pip install --upgrade pip
-      pip install requests pypdf
+      - name: Install Results dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pypdf
 
-  - name: Run source_adapter.py to refresh source data
-    run: python results/source_adapter.py
+      - name: Run source_adapter.py to refresh source data
+        run: python results/source_adapter.py
 
-  - name: Run Results Scanner
-    run: python results/results_scanner.py
+      - name: Run Results Scanner
+        run: python results/results_scanner.py
 
-  - name: Publish Results JSON files
-    id: save
-    if: success()
-    run: |
-      git config user.name "github-actions[bot]"
-      git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Publish Results JSON files
+        id: save
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      git add results/alerts.json results/history.json results/calendar.json
+          git add results/alerts.json results/history.json results/calendar.json
 
-      if ! git diff --cached --quiet; then
-        git commit -m "Publish updated Share Sanket Results data"
-        git pull --rebase origin main
-        git push origin HEAD:main
-        echo "site_changed=true" >> "$GITHUB_OUTPUT"
-      else
-        echo "site_changed=false" >> "$GITHUB_OUTPUT"
-      fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish updated Share Sanket Results data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "site_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "site_changed=false" >> "$GITHUB_OUTPUT"
+          fi
 
-  - name: Configure GitHub Pages
-    if: steps.save.outputs.site_changed == 'true'
-    uses: actions/configure-pages@v5
+      - name: Configure GitHub Pages
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/configure-pages@v5
 
-  - name: Upload Share Sanket site
-    if: steps.save.outputs.site_changed == 'true'
-    uses: actions/upload-pages-artifact@v3
-    with:
-      path: .
+      - name: Upload Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
 
-  - name: Publish Share Sanket site
-    if: steps.save.outputs.site_changed == 'true'
-    uses: actions/deploy-pages@v4
+      - name: Publish Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
+        uses: actions/deploy-pages@v4
