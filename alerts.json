@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T18:25:58+05:30",
+ "updated": "2026-11-26T18:50:58+05:30",
  "folders": [
   {
    "id": "emas",
@@ -149,6 +149,44 @@
   }
  ],
  "alerts": [
+  {
+   "id": "order-NSE:106871960",
+   "source_id": "NSE:106871960",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "exchange": "NSE",
+   "company": "Apar Industries Limited",
+   "symbol": "APARINDS",
+   "title": "Action(s) initiated or orders passed",
+   "details": "Apar Industries Limited has informed the Exchange about Action(s) initiated or orders passed",
+   "order_value_crore": null,
+   "market_cap_crore": 59458.72,
+   "order_percent_of_mcap": null,
+   "time": "26-Nov-2026 18:39:06",
+   "link": "https://nsearchives.nseindia.in/corporate/APARINDS_26112026183743_Intimation_-_GST.pdf",
+   "detected_at": "2026-11-26T18:50:58+05:30",
+   "telegram_notified": false
+  },
+  {
+   "id": "order-NSE:106871972",
+   "source_id": "NSE:106871972",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "exchange": "NSE",
+   "company": "Walchandnagar Industries Limited",
+   "symbol": "WALCHANNAG",
+   "title": "Bagging/Receiving of orders/contracts",
+   "details": "Walchandnagar Industries Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+   "order_value_crore": null,
+   "market_cap_crore": 1193.9,
+   "order_percent_of_mcap": null,
+   "time": "26-Nov-2026 18:43:35",
+   "link": "https://nsearchives.nseindia.in/corporate/WALCHANNAG_26112026184255_WILIntimationtoStockExchange.pdf",
+   "detected_at": "2026-11-26T18:50:58+05:30",
+   "telegram_notified": false
+  },
   {
    "id": "order-NSE:106871925",
    "source_id": "NSE:106871925",
