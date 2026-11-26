@@ -1,10 +1,27 @@
+
+"""
+Share Sanket - Results Scanner
+
+Features:
+- Processes standalone and consolidated financial results separately.
+- Calculates revenue, profit and EPS growth.
+- Calculates net and operating margins.
+- Generates separate ratings for each reporting scope.
+- Uses consolidated results as the default headline scope.
+- Maintains alerts, history and results calendar.
+- Sends Telegram notifications when configured and when the
+  category is switched on in preferences.json.
+- Keeps the app's folders when saving alerts.json.
+- Preserves existing records and notification status.
+- Does not invent analyst estimates or financial figures.
+"""
+
 import json
 import os
-import re
 import tempfile
-import time
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 import requests
@@ -13,257 +30,444 @@ from categories import category_enabled
 
 
 BASE_DIR = Path(__file__).resolve().parent
+
+SOURCE_FILE = BASE_DIR / "source_announcements.json"
 ALERTS_FILE = BASE_DIR / "alerts.json"
-STATE_FILE = BASE_DIR / "order_state.json"
+HISTORY_FILE = BASE_DIR / "history.json"
+CALENDAR_FILE = BASE_DIR / "calendar.json"
 
 IST = ZoneInfo("Asia/Kolkata")
-CATEGORY = "order_wins"
-LOOKBACK_DAYS = 2
-MAX_STATE = 5000
 
 BOT_TOKEN = os.getenv("RESULTS_TELEGRAM_BOT_TOKEN", "")
 CHAT_ID = os.getenv("RESULTS_TELEGRAM_CHAT_ID", "")
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
-    ),
-    "Accept-Language": "en-US,en;q=0.9",
-    "Accept": "application/json, text/plain, */*",
-}
+SCOPES = ("standalone", "consolidated")
 
-# Only "Bagging/Receiving of orders/contracts" announcements.
-BAGGING = re.compile(r"bagging\s*/?\s*receiv", re.I)
-
-MONEY = re.compile(
-    r"(?:₹|\bRs\.?|\bINR)\s*([0-9][0-9,]*(?:\.\d+)?)\s*"
-    r"(crores?|crs?|lakhs?|lacs?|millions?|mn)?",
-    re.I,
-)
+RESULTS_CATEGORY = "results"
 
 
 def now_ist():
-    return datetime.now(IST).isoformat(timespec="seconds")
+    return datetime.now(IST).isoformat()
+
+
+def load_json(path, default):
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return default
 
 
 def save_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
 
     with tempfile.NamedTemporaryFile(
-        "w", encoding="utf-8", dir=path.parent, delete=False
+        "w",
+        encoding="utf-8",
+        dir=path.parent,
+        delete=False
     ) as temp:
-        json.dump(data, temp, indent=1, ensure_ascii=False, allow_nan=False)
+        json.dump(
+            data,
+            temp,
+            indent=2,
+            ensure_ascii=False,
+            allow_nan=False
+        )
         temp.write("\n")
         temp_path = temp.name
 
     os.replace(temp_path, path)
 
 
-def load_alerts():
-    """Load alerts.json without ever overwriting an unreadable file."""
+def valid_announcement(item):
+    if not isinstance(item, dict):
+        return False
+
+    required = ["symbol", "company", "subject", "source_url"]
+
+    if not all(item.get(key) for key in required):
+        return False
+
     try:
-        data = json.loads(ALERTS_FILE.read_text(encoding="utf-8"))
-    except FileNotFoundError:
-        data = {}
-    except (json.JSONDecodeError, OSError) as error:
-        raise SystemExit(f"alerts.json unreadable, not touching it: {error}")
+        parsed = urlparse(item["source_url"])
 
-    if isinstance(data, list):
-        data = {"alerts": data}
+        if parsed.scheme != "https" or not parsed.hostname:
+            return False
 
-    if not isinstance(data, dict):
-        raise SystemExit("alerts.json has an unexpected format, not touching it.")
-
-    if not isinstance(data.get("alerts"), list):
-        data["alerts"] = []
-
-    return data
-
-
-def load_state():
-    try:
-        value = json.loads(STATE_FILE.read_text(encoding="utf-8"))
-        return value if isinstance(value, list) else None
-    except FileNotFoundError:
-        return None
-    except (json.JSONDecodeError, OSError):
-        return []
-
-
-def order_value_crore(text):
-    """Largest disclosed amount in the text, in crore. None if not disclosed."""
-    best = None
-
-    for match in MONEY.finditer(text or ""):
-        number = float(match.group(1).replace(",", ""))
-        unit = (match.group(2) or "").lower()
-
-        if unit.startswith("cr"):
-            crore = number
-        elif unit.startswith(("lak", "lac")):
-            crore = number / 100
-        elif unit.startswith(("mn", "million")):
-            crore = number / 10
-        elif unit == "":
-            crore = number / 10_000_000
-        else:
-            continue
-
-        best = crore if best is None else max(best, crore)
-
-    return best
-
-
-def size_folder(crore):
-    if crore is None:
-        return "undisclosed"
-    if crore >= 100:
-        return "big"
-    if crore >= 10:
-        return "medium"
-    return "small"
-
-
-def fetch_nse(start, end):
-    session = requests.Session()
-    session.headers.update({
-        **HEADERS,
-        "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
-    })
-    session.get("https://www.nseindia.com", timeout=20)
-
-    response = session.get(
-        "https://www.nseindia.com/api/corporate-announcements",
-        params={
-            "index": "equities",
-            "from_date": start.strftime("%d-%m-%Y"),
-            "to_date": end.strftime("%d-%m-%Y"),
-        },
-        timeout=20,
-    )
-    response.raise_for_status()
-    rows = response.json()
-
-    out = []
-    for row in rows if isinstance(rows, list) else []:
-        key = row.get("seq_id") or f"{row.get('symbol')}|{row.get('an_dt')}"
-        out.append({
-            "id": f"NSE:{key}",
-            "exchange": "NSE",
-            "company": row.get("sm_name") or "",
-            "symbol": row.get("symbol") or "",
-            "title": row.get("desc") or "",
-            "details": row.get("attchmntText") or "",
-            "time": row.get("an_dt") or "",
-            "link": row.get("attchmntFile") or "",
-        })
-    return out
-
-
-def fetch_bse(start, end):
-    out = []
-    headers = {
-        **HEADERS,
-        "Referer": "https://www.bseindia.com/",
-        "Origin": "https://www.bseindia.com",
-    }
-
-    for page in range(1, 11):
-        response = requests.get(
-            "https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w",
-            params={
-                "pageno": page,
-                "strCat": "-1",
-                "subcategory": "-1",
-                "strPrevDate": start.strftime("%Y%m%d"),
-                "strToDate": end.strftime("%Y%m%d"),
-                "strSearch": "P",
-                "strscrip": "",
-                "strType": "C",
-            },
-            headers=headers,
-            timeout=20,
+        allowed_domains = (
+            "nseindia.com",
+            "nseindia.in",
+            "bseindia.com",
         )
-        response.raise_for_status()
-        rows = (response.json() or {}).get("Table") or []
 
-        for row in rows:
-            attachment = row.get("ATTACHMENTNAME") or ""
-            out.append({
-                "id": f"BSE:{row.get('NEWSID') or row.get('SCRIP_CD')}:{row.get('NEWS_DT')}",
-                "exchange": "BSE",
-                "company": row.get("SLONGNAME") or "",
-                "symbol": str(row.get("SCRIP_CD") or ""),
-                "title": row.get("HEADLINE") or "",
-                "details": row.get("NEWSSUB") or "",
-                "category": row.get("SUBCATNAME") or row.get("CATEGORYNAME") or "",
-                "time": row.get("NEWS_DT") or "",
-                "link": (
-                    "https://www.bseindia.com/xml-data/corpfiling/AttachLive/" + attachment
-                    if attachment else ""
-                ),
-            })
+        if not any(
+            parsed.hostname == domain
+            or parsed.hostname.endswith("." + domain)
+            for domain in allowed_domains
+        ):
+            return False
 
-        if len(rows) < 50:
-            break
-        time.sleep(0.5)
+    except Exception:
+        return False
 
-    return out
+    return True
 
 
-def is_bagging(item):
-    text = f"{item.get('title', '')} {item.get('category', '')}"
-    return bool(BAGGING.search(text))
+def number(value):
+    if value is None or value == "":
+        return None
+
+    try:
+        result = float(
+            str(value).replace(",", "").replace("₹", "").strip()
+        )
+
+        if result != result or abs(result) == float("inf"):
+            return None
+
+        return result
+
+    except (ValueError, TypeError):
+        return None
 
 
-def build_alert(item):
-    text = f"{item.get('title', '')}\n{item.get('details', '')}"
-    crore = order_value_crore(text)
-    folder = size_folder(crore)
+def get_growth(current, previous):
+    current = number(current)
+    previous = number(previous)
 
-    return {
-        "id": "order-" + item["id"],
-        "source_id": item["id"],
-        "category": CATEGORY,
-        "folder": "orders",
-        "subfolder": folder,
-        "exchange": item["exchange"],
-        "company": item["company"],
-        "symbol": item["symbol"],
-        "title": item["title"],
-        "details": item["details"],
-        "order_value_crore": round(crore, 2) if crore is not None else None,
-        "time": item["time"],
-        "link": item["link"],
-        "detected_at": now_ist(),
-        "telegram_notified": False,
+    if current is None or previous is None or previous == 0:
+        return None
+
+    # Do not calculate misleading percentage growth from a loss.
+    if previous < 0:
+        return None
+
+    return round(((current - previous) / abs(previous)) * 100, 2)
+
+
+def calculate_margin(profit, revenue):
+    profit = number(profit)
+    revenue = number(revenue)
+
+    if profit is None or revenue in (None, 0):
+        return None
+
+    return round((profit / revenue) * 100, 2)
+
+
+def enrich_financial_record(financials):
+    """Calculate derived financial metrics for one scope."""
+
+    if not isinstance(financials, dict):
+        financials = {}
+
+    financials = dict(financials)
+
+    revenue = number(financials.get("revenue"))
+
+    previous_revenue = number(
+        financials.get(
+            "previous_year_revenue",
+            financials.get("revenue_previous")
+        )
+    )
+
+    net_profit = number(financials.get("net_profit"))
+
+    previous_net_profit = number(
+        financials.get(
+            "previous_year_net_profit",
+            financials.get("net_profit_previous")
+        )
+    )
+
+    operating_profit = number(
+        financials.get("operating_profit")
+    )
+
+    eps = number(financials.get("eps"))
+
+    previous_eps = number(
+        financials.get(
+            "previous_year_eps",
+            financials.get("eps_previous")
+        )
+    )
+
+    financials["revenue_yoy"] = get_growth(
+        revenue, previous_revenue
+    )
+
+    financials["net_profit_yoy"] = get_growth(
+        net_profit, previous_net_profit
+    )
+
+    financials["eps_yoy"] = get_growth(
+        eps, previous_eps
+    )
+
+    financials["net_margin"] = calculate_margin(
+        net_profit, revenue
+    )
+
+    financials["operating_margin"] = calculate_margin(
+        operating_profit, revenue
+    )
+
+    financials["profit_turnaround"] = (
+        previous_net_profit is not None
+        and previous_net_profit < 0
+        and net_profit is not None
+        and net_profit > 0
+    )
+
+    financials["revenue_growth_available"] = (
+        financials["revenue_yoy"] is not None
+    )
+
+    return financials
+
+
+def has_financial_data(financials):
+    if not isinstance(financials, dict):
+        return False
+
+    return any(
+        number(financials.get(field)) is not None
+        for field in ("revenue", "net_profit", "eps")
+    )
+
+
+def enrich_financials(item):
+    """
+    Enrich standalone and consolidated figures independently.
+
+    Consolidated is the default headline scope.
+    Legacy financials are retained as a fallback.
+    """
+
+    scopes = item.get("financials_by_scope", {})
+
+    if not isinstance(scopes, dict):
+        scopes = {}
+
+    enriched = {
+        "standalone": enrich_financial_record(
+            scopes.get("standalone", {})
+        ),
+        "consolidated": enrich_financial_record(
+            scopes.get("consolidated", {})
+        ),
     }
 
+    # Support older announcements using the legacy field.
+    legacy = item.get("financials", {})
 
-def send_telegram(alert):
+    if not has_financial_data(enriched["standalone"]) and not has_financial_data(enriched["consolidated"]):
+        if has_financial_data(legacy):
+            enriched["consolidated"] = enrich_financial_record(legacy)
+
+    selected = item.get("primary_scope")
+
+    if selected not in SCOPES:
+        if has_financial_data(enriched["consolidated"]):
+            selected = "consolidated"
+        elif has_financial_data(enriched["standalone"]):
+            selected = "standalone"
+        else:
+            selected = "consolidated"
+
+    if not has_financial_data(enriched[selected]):
+        alternate = (
+            "standalone"
+            if selected == "consolidated"
+            else "consolidated"
+        )
+
+        if has_financial_data(enriched[alternate]):
+            selected = alternate
+
+    item["financials_by_scope"] = enriched
+    item["primary_scope"] = selected
+
+    # Keep compatibility with existing UI and scanner fields.
+    item["financials"] = dict(enriched[selected])
+
+    return item
+
+
+def assess_scope(financials):
+    """Rate one reporting scope using available financial evidence."""
+
+    if not isinstance(financials, dict):
+        return "Insufficient Data"
+
+    metrics = []
+
+    for field in ("revenue_yoy", "net_profit_yoy", "eps_yoy"):
+        value = number(financials.get(field))
+
+        if value is not None:
+            metrics.append(value)
+
+    turnaround = financials.get("profit_turnaround", False)
+
+    if len(metrics) < 2 and not turnaround:
+        return "Insufficient Data"
+
+    score = 0
+
+    for value in metrics:
+        if value >= 25:
+            score += 2
+        elif value >= 5:
+            score += 1
+        elif value <= -25:
+            score -= 2
+        elif value < 0:
+            score -= 1
+
+    if turnaround:
+        score += 2
+
+    net_margin = number(financials.get("net_margin"))
+    operating_margin = number(
+        financials.get("operating_margin")
+    )
+
+    if net_margin is not None and net_margin < 0:
+        score -= 1
+
+    if operating_margin is not None and operating_margin < 0:
+        score -= 1
+
+    if len(metrics) >= 3 and score >= 6:
+        return "Stellar"
+
+    if score >= 4:
+        return "Excellent"
+
+    if score >= 2:
+        return "Strong"
+
+    if score >= 0:
+        return "Average"
+
+    if score <= -4:
+        return "Disappointing"
+
+    return "Weak"
+
+
+def assess_results(item):
+    scopes = item.get("financials_by_scope", {})
+
+    if not isinstance(scopes, dict):
+        scopes = {}
+
+    item["ratings_by_scope"] = {
+        "standalone": assess_scope(scopes.get("standalone", {})),
+        "consolidated": assess_scope(scopes.get("consolidated", {})),
+    }
+
+    selected = item.get("primary_scope", "consolidated")
+
+    return item["ratings_by_scope"].get(
+        selected,
+        "Insufficient Data"
+    )
+
+
+def assess_expectations(item):
+    expectations = item.get("expectations", {})
+
+    if not isinstance(expectations, dict):
+        return "Not Available"
+
+    source = expectations.get("source")
+    estimate = number(expectations.get("estimate"))
+    actual = number(expectations.get("actual"))
+    analyst_count = number(expectations.get("analyst_count"))
+    estimate_date = expectations.get("estimate_date")
+
+    if not source or not estimate_date:
+        return "Not Available"
+
+    if estimate is None or actual is None:
+        return "Not Available"
+
+    if analyst_count is None or analyst_count <= 0:
+        return "Not Available"
+
+    if actual > estimate:
+        return "Beat Estimates"
+
+    if actual < estimate:
+        return "Missed Estimates"
+
+    return "In-line"
+
+
+def stable_id(item):
+    if item.get("id"):
+        return str(item["id"])
+
+    return "|".join([
+        str(item.get("symbol", "")),
+        str(item.get("period", "")),
+        str(item.get("published_at", "")),
+        str(item.get("source_url", "")),
+    ])
+
+
+def telegram_scope_text(item, scope):
+    financials = item.get(
+        "financials_by_scope", {}
+    ).get(scope, {})
+
+    if not isinstance(financials, dict):
+        financials = {}
+
+    rating = item.get(
+        "ratings_by_scope", {}
+    ).get(scope, "Insufficient Data")
+
+    return (
+        f"\n{scope.title()} Results\n"
+        f"Rating: {rating}\n"
+        f"Revenue: {financials.get('revenue', 'Not Available')}\n"
+        f"Net Profit: {financials.get('net_profit', 'Not Available')}\n"
+        f"EPS: {financials.get('eps', 'Not Available')}\n"
+        f"Revenue YoY: {financials.get('revenue_yoy', 'Not Available')}\n"
+    )
+
+
+def send_telegram(item):
     if not BOT_TOKEN or not CHAT_ID:
         print("Telegram secrets not configured. Notification skipped.")
         return False
 
-    value = alert.get("order_value_crore")
-    value_text = f"₹{value:,.2f} crore" if value is not None else "Not disclosed"
-
     message = (
-        "SHARE SANKET - ORDER WIN\n\n"
-        f"Company: {alert['company']} ({alert['symbol']})\n"
-        f"Exchange: {alert['exchange']}\n"
-        f"Announcement: {alert['title']}\n"
-        f"Order value: {value_text}\n"
-        f"Size: {alert['subfolder'].title()}\n"
-        f"Filed: {alert['time'] or 'Not Available'}\n\n"
-        f"{alert['link']}\n\n"
+        "SHARE SANKET - RESULTS\n\n"
+        f"Company: {item.get('company', 'N/A')}\n"
+        f"Symbol: {item.get('symbol', 'N/A')}\n"
+        f"Period: {item.get('period', 'N/A')}\n"
+        f"Expectations: {item.get('expectations_rating', 'Not Available')}\n"
+        f"Units: {item.get('financial_units', 'Not specified')}\n"
+        + telegram_scope_text(item, "standalone")
+        + telegram_scope_text(item, "consolidated")
+        + "\n"
+        f"Source: {item.get('source', 'N/A')}\n"
+        f"{item.get('source_url', '')}\n\n"
         "For information only. Not investment advice."
     )
 
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
     try:
         response = requests.post(
-            f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+            url,
             json={
                 "chat_id": CHAT_ID,
                 "text": message,
@@ -271,8 +475,16 @@ def send_telegram(alert):
             },
             timeout=20,
         )
+
         response.raise_for_status()
-        return bool(response.json().get("ok"))
+
+        result = response.json()
+
+        if not result.get("ok"):
+            print("Telegram API did not confirm message delivery.")
+            return False
+
+        return True
 
     except requests.RequestException as error:
         print(f"Telegram notification failed: {error}")
@@ -280,71 +492,199 @@ def send_telegram(alert):
 
 
 def main():
-    today = datetime.now(IST).date()
-    start = today - timedelta(days=LOOKBACK_DAYS)
+    source_data = load_json(
+        SOURCE_FILE,
+        {"announcements": []}
+    )
 
-    data = load_alerts()
-    alerts = data["alerts"]
-    known = {a.get("source_id") for a in alerts if isinstance(a, dict)}
+    alerts_data = load_json(
+        ALERTS_FILE,
+        {"updated": "", "alerts": []}
+    )
 
-    state = load_state()
-    first_run = state is None
-    seen = set(state or [])
+    # Support an older alerts.json that is just a list.
+    if isinstance(alerts_data, list):
+        alerts_data = {"updated": "", "alerts": alerts_data}
 
-    fetched = []
-    for name, fetcher in (("NSE", fetch_nse), ("BSE", fetch_bse)):
-        try:
-            rows = fetcher(start, today)
-            print(f"{name}: {len(rows)} announcements")
-            fetched.extend(rows)
-        except Exception as error:
-            print(f"{name} fetch failed, will retry next run: {error}")
+    if not isinstance(alerts_data, dict):
+        alerts_data = {"updated": "", "alerts": []}
 
-    added = 0
-    for item in fetched:
-        if not item.get("id") or item["id"] in known:
+    # Keep the app's folder list. Never remove it when saving.
+    app_folders = alerts_data.get("folders", [])
+
+    if not isinstance(app_folders, list):
+        app_folders = []
+
+    history_data = load_json(
+        HISTORY_FILE,
+        {"updated": "", "results": []}
+    )
+
+    calendar_data = load_json(
+        CALENDAR_FILE,
+        {"updated": "", "calendar": []}
+    )
+
+    announcements = source_data.get("announcements", [])
+
+    if not isinstance(announcements, list):
+        print("Invalid announcements format.")
+        return
+
+    alerts = alerts_data.get("alerts", [])
+    history = history_data.get("results", [])
+    calendar = calendar_data.get("calendar", [])
+
+    if not isinstance(alerts, list):
+        alerts = []
+
+    if not isinstance(history, list):
+        history = []
+
+    if not isinstance(calendar, list):
+        calendar = []
+
+    old_alerts = {
+        stable_id(item): item
+        for item in alerts
+        if isinstance(item, dict)
+    }
+
+    old_history = {
+        stable_id(item): item
+        for item in history
+        if isinstance(item, dict)
+    }
+
+    old_calendar = {
+        stable_id(item): item
+        for item in calendar
+        if isinstance(item, dict)
+    }
+
+    processed = 0
+
+    for original in announcements:
+        if not valid_announcement(original):
+            print("Skipping invalid announcement.")
             continue
 
-        if not is_bagging(item):
+        item = dict(original)
+        item["id"] = stable_id(item)
+        item["category"] = RESULTS_CATEGORY
+
+        previous_record = old_alerts.get(item["id"], {})
+        was_known = bool(previous_record)
+
+        # Preserve notification state on updates.
+        item["telegram_notified"] = previous_record.get(
+            "telegram_notified", False
+        )
+
+        if previous_record.get("telegram_notified_at"):
+            item["telegram_notified_at"] = previous_record[
+                "telegram_notified_at"
+            ]
+
+        item = enrich_financials(item)
+
+        item["rating"] = assess_results(item)
+
+        item["expectations_rating"] = assess_expectations(item)
+
+        item["processed_at"] = now_ist()
+
+        item["data_status"] = item.get(
+            "data_status",
+            "Announcement detected - figures not verified"
+        )
+
+        old_alerts[item["id"]] = item
+        old_history[item["id"]] = item
+
+        old_calendar[item["id"]] = {
+            "id": item["id"],
+            "symbol": item.get("symbol"),
+            "company": item.get("company"),
+            "period": item.get("period"),
+            "published_at": item.get("published_at"),
+            "source": item.get("source"),
+            "source_url": item.get("source_url"),
+            "status": "Announced",
+        }
+
+        processed += 1
+
+        if not was_known:
+            print(f"New result announcement: {item['symbol']}")
+        else:
+            print(f"Updated result record: {item['symbol']}")
+
+        print(
+            "Standalone rating:",
+            item["ratings_by_scope"]["standalone"]
+        )
+
+        print(
+            "Consolidated rating:",
+            item["ratings_by_scope"]["consolidated"]
+        )
+
+        print("Primary scope:", item["primary_scope"])
+
+    final_alerts = list(old_alerts.values())
+    final_history = list(old_history.values())
+    final_calendar = list(old_calendar.values())
+
+    timestamp = now_ist()
+
+    # Save all data before attempting Telegram delivery.
+    # Order alerts from the order scanner are kept as they are.
+    save_json(ALERTS_FILE, {
+        "updated": timestamp,
+        "folders": app_folders,
+        "alerts": final_alerts,
+    })
+
+    save_json(HISTORY_FILE, {
+        "updated": timestamp,
+        "results": final_history,
+    })
+
+    save_json(CALENDAR_FILE, {
+        "updated": timestamp,
+        "calendar": final_calendar,
+    })
+
+    # Retry results notifications that have not been confirmed.
+    # Only results alerts are sent here. Order alerts use their own format.
+    # Alerts in a category that is switched off are saved but not sent.
+    for item in final_alerts:
+        if item.get("category", RESULTS_CATEGORY) != RESULTS_CATEGORY:
             continue
 
-        alert = build_alert(item)
+        if item.get("telegram_notified", False):
+            continue
 
-        # First run: store everything but don't flood Telegram with old orders.
-        if first_run:
-            alert["telegram_notified"] = True
-            alert["note"] = "Stored on first run, not sent"
+        if not category_enabled(RESULTS_CATEGORY):
+            continue
 
-        alerts.insert(0, alert)
-        known.add(item["id"])
-        seen.add(item["id"])
-        added += 1
+        if send_telegram(item):
+            item["telegram_notified"] = True
+            item["telegram_notified_at"] = now_ist()
 
-    # Retry any order alerts not yet sent, if the category is switched on.
-    sent = 0
-    if category_enabled(CATEGORY):
-        for alert in alerts:
-            if (
-                isinstance(alert, dict)
-                and alert.get("category") == CATEGORY
-                and not alert.get("telegram_notified")
-            ):
-                if send_telegram(alert):
-                    alert["telegram_notified"] = True
-                    alert["telegram_notified_at"] = now_ist()
-                    sent += 1
-    else:
-        print("order_wins is off in preferences.json: saved, not sent.")
+    save_json(ALERTS_FILE, {
+        "updated": now_ist(),
+        "folders": app_folders,
+        "alerts": final_alerts,
+    })
 
-    data["alerts"] = alerts[:500]
-    data["updated"] = now_ist()
-    save_json(ALERTS_FILE, data)
-
-    save_json(STATE_FILE, list(seen)[-MAX_STATE:])
-
-    print(f"New order alerts: {added}")
-    print(f"Telegram messages sent: {sent}")
-    print("Order scanner completed.")
+    print("--------------------------------")
+    print("SHARE SANKET RESULTS SCANNER")
+    print("--------------------------------")
+    print(f"Announcements processed: {processed}")
+    print(f"Total results in history: {len(final_history)}")
+    print("Results scanner completed.")
 
 
 if __name__ == "__main__":
