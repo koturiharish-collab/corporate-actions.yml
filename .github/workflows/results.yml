@@ -1,36 +1,36 @@
 name: Share Sanket - Results Scanner
 
 on:
-push:
-schedule:
-- cron: "*/5 * * * *"
-workflow_dispatch:
+  push:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
 
-permissions:
-contents: write
-pages: write
-id-token: write
+  permissions:
+     contents: write
+    pages: write
+    id-token: write
 
 concurrency:
-group: sharesanket-data
-cancel-in-progress: false
+  group: sharesanket-data
+  cancel-in-progress: false
 
 jobs:
-validate:
-name: Validate Results Module
-runs-on: ubuntu-latest
-timeout-minutes: 10
+  validate:
+    name: Validate Results Module
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
-    with:
-      fetch-depth: 0
+       steps:
+          - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-  - name: Set up Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: "3.12"
+         - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
 
   - name: Install Results dependencies
     run: |
