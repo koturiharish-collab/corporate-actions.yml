@@ -1,9 +1,8 @@
-name: Corporate Actions Alert (Splits, Bonus, Buyback)
+name: Corporate Actions Alert
 
 on:
   push:
   schedule:
-    # Every 5 minutes, 24 hours a day, 7 days a week
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
@@ -13,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sharesanket-corporate-actions
+  group: sharesanket-data
   cancel-in-progress: false
 
 jobs:
@@ -47,26 +46,14 @@ jobs:
           git add alerts.json seen.json order_state.json
 
           if ! git diff --cached --quiet; then
-            if [ "$GITHUB_EVENT_NAME" = "push" ] || [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || ! git diff --cached --quiet -- alerts.json; then
-              echo "site_changed=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "site_changed=false" >> "$GITHUB_OUTPUT"
-            fi
-
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-
             git commit -m "Update Share Sanket corporate actions"
-
             git pull --rebase -q origin main
             git push origin HEAD:main
-
+            echo "site_changed=true" >> "$GITHUB_OUTPUT"
           else
-            if [ "$GITHUB_EVENT_NAME" = "push" ] || [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-              echo "site_changed=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "site_changed=false" >> "$GITHUB_OUTPUT"
-            fi
+            echo "site_changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Configure GitHub Pages
@@ -82,20 +69,3 @@ jobs:
       - name: Publish Share Sanket site
         if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
-
-      - name: Telegram status
-        if: always()
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          JOB_STATUS: ${{ job.status }}
-        run: |
-          if [ "$JOB_STATUS" != "success" ]; then
-            MSG="❌ Corporate Actions scan FAILED - check GitHub Actions logs"
-          else
-            MSG="✅ Corporate Actions scan completed"
-          fi
-
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            -d chat_id="${TELEGRAM_CHAT_ID}" \
-            -d text="${MSG}" > /dev/null
