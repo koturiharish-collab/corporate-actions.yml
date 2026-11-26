@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T19:16:51.523942+05:30",
+  "updated": "2026-11-26T16:32:44.955601+05:30",
   "alerts": [
     {
       "symbol": "SFCTECH",
@@ -78,6 +78,7 @@
       "data_status": "Standalone and consolidated Q2 figures visually verified against official NSE PDF pages 4 and 13",
       "financial_units": "INR millions",
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+      "category": "results",
       "telegram_notified": false,
       "primary_scope": "consolidated",
       "ratings_by_scope": {
@@ -86,7 +87,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-24T19:16:51.523013+05:30"
+      "processed_at": "2026-11-26T16:32:44.954477+05:30"
     }
   ]
 }
