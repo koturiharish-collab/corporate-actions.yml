@@ -1,4 +1,4 @@
-name: Corporate Actions Alert (Splits, Bonus, Buyback)
+name: Share Sanket - Results Scanner
 
 on:
   push:
@@ -16,53 +16,50 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  scan:
+  validate:
+    name: Validate Results Module
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
 
-      - name: Install corporate-action dependencies
-        run: pip install -r requirements.txt
-
-      - name: Scan corporate actions
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python corporate_actions.py
-
-      - name: Save state and Share Sanket alerts
-        id: save
-        if: always()
+      - name: Install Results dependencies
         run: |
-          git add alerts.json seen.json order_state.json
+          python -m pip install --upgrade pip
+          pip install requests pypdf
+
+      - name: Run Results Scanner
+        run: |
+          python results/results_scanner.py
+
+      - name: Publish Results JSON files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add results/alerts.json results/history.json results/calendar.json
+
           if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -m "Update Share Sanket corporate actions"
+            git commit -m "Publish updated Share Sanket Results data"
             git pull --rebase -q origin main
             git push origin HEAD:main
-            echo "site_changed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Configure GitHub Pages
-        if: steps.save.outputs.site_changed == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Share Sanket site
-        if: steps.save.outputs.site_changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Publish Share Sanket site
-        if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
