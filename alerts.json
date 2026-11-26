@@ -1,6 +1,6 @@
 {
  "sample": false,
- "updated": "2026-11-26T05:18:28+05:30",
+ "updated": "2026-11-26T10:38:35+05:30",
  "folders": [
   {
    "id": "emas",
@@ -146,6 +146,650 @@
   }
  ],
  "alerts": [
+  {
+   "id": "3fd4515655fe99babd96c137",
+   "parser_version": 7,
+   "time": "2026-11-26T10:38:35+05:30",
+   "folder": "orders",
+   "subfolder": "big",
+   "symbol": "WELCORP",
+   "company": "Welspun Corp Limited",
+   "title": "Bagging/Receiving of orders/contracts",
+   "price": 2151.3,
+   "pe_ratio": 23.599165,
+   "week52_high": 2900.0,
+   "week52_low": 710.0,
+   "change_pct": 1.596149,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Welspun Corp Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "WELCORP",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Welspun Corp Limited has informed the Exchange about Bagging/Receiving of orders/contracts - Receipt of Export Order for LSAW Pipes",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "₹ 2,264 Crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Big (₹100 crore or more)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "26-Nov-2026 08:32:04",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 1 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "WELCORP.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/WELCORP.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-26T10:38:35+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹2,151.30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "23.60",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹2,900.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹710.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹567,306,289,152.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹56,730.63 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": "18.81",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "5.34",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹91.16",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹524,376,113,152.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Basic Materials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Steel",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "3.9908%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "₹ 2,264 Crore; ₹ 50",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "WCL/SEC/2026                       26th November, 2026 \n \nTo, \n \nDear Sirs/ Madam, \n \nSubject: Receipt of Export Order for LSAW Pipes \nRef.: a.  Regulation 30 of the Securities and Exchange Board of India (Listing Obligations  \nand Disclosure Requirements) Regulations, 2015 (“Listing Regulations”), as \namended from time to time \nb.  ISIN: INE191B01025 \n \nWe are pleased to announce receipt of an extremely prestigious export order by the Company \nfor the supply of LSAW pipes from our India operations, to be executed in FY28. \n  \nSince our last announcement dated 29th October 2026, the Company has globally secured \nadditional orders cumulatively valued at approximately ₹ 2,264 Crore.  \n  \nWith these orders, the Company continues to maintain a strong consolidated global order book \nof approximately ₹ 50K Crore, with execution scheduled across FY27, FY28 and FY29. \n  \nThis disclosure is made in compliance with Regulation 30 of the SEBI Listing Regulations and \nthe Company's Code of Practices and Procedure for Fair Disclosure of Unpublished Price \nSensitive Information. \n  \nThis is for your information and records. \n \nYours faithfully, \nFor Welspun Corp Limited \n \n \n \nKamal Rathi \nCompany Secretary and Compliance Officer \nACS-18182 \n \nBSE Ltd.   \nListing Department, \nP. J. Towers, Dalal Street, \nMumbai – 400 001.  \n(Scrip Code: Equity - 532144),  \n(NCD – 973309) \nNational Stock Exchange of India Ltd.  \nExchange Plaza,  \nBandra-Kurla Complex,  \nBandra (E), Mumbai – 400 051. \n(Symbol: WELCORP, Series EQ)",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "26-Nov-2026 08:32:04",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "3.49 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/WELCORP_26112026083153_SEsigned.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Welspun Corp Limited has informed the Exchange about Bagging/Receiving of orders/contracts - Receipt of Export Order for LSAW Pipes",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "26112026083204",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "26-Nov-2026 08:32:05",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "3.49 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106871153",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": "Steel And Steel Products",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE191B01025",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Welspun Corp Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-26 08:32:04",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "WELCORP",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Welspun Corp Limited received an export order for LSAW pipes from its India operations, to be executed in FY28. Since the announcement on 29th October 2026, the company secured additional orders worth approximately 2,264 Crore. The consolidated global order book stands at approximately 50K Crore. Execution is scheduled across FY27, FY28, and FY29. The disclosure complies with Regulation 30 of the SEBI Listing Regulations. The company is listed on BSE with scrip code 532144 for equity and 973309 for NCD. The symbol on NSE is WELCORP in series EQ. The ISIN is INE191B01025. Kamal Rathi, Company Secretary and Compliance Officer, signed the letter dated 26th November 2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/WELCORP_26112026083153_SEsigned.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/WELCORP_26112026083153_SEsigned.pdf",
+   "source_data": {
+    "an_dt": "26-Nov-2026 08:32:04",
+    "attFilePath": null,
+    "attFileSize": "3.49 MB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/WELCORP_26112026083153_SEsigned.pdf",
+    "attchmntText": "Welspun Corp Limited has informed the Exchange about Bagging/Receiving of orders/contracts - Receipt of Export Order for LSAW Pipes",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Bagging/Receiving of orders/contracts",
+    "difference": "00:00:01",
+    "dt": "26112026083204",
+    "exchdisstime": "26-Nov-2026 08:32:05",
+    "fileSize": "3.49 MB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106871153",
+    "smIndustry": "Steel And Steel Products",
+    "sm_isin": "INE191B01025",
+    "sm_name": "Welspun Corp Limited",
+    "sort_date": "2026-11-26 08:32:04",
+    "symbol": "WELCORP",
+    "voiceSummary": "Welspun Corp Limited received an export order for LSAW pipes from its India operations, to be executed in FY28. Since the announcement on 29th October 2026, the company secured additional orders worth approximately 2,264 Crore. The consolidated global order book stands at approximately 50K Crore. Execution is scheduled across FY27, FY28, and FY29. The disclosure complies with Regulation 30 of the SEBI Listing Regulations. The company is listed on BSE with scrip code 532144 for equity and 973309 for NCD. The symbol on NSE is WELCORP in series EQ. The ISIN is INE191B01025. Kamal Rathi, Company Secretary and Compliance Officer, signed the letter dated 26th November 2026.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/WELCORP_26112026083153_SEsigned.mp3"
+   },
+   "filing_text": "Bagging/Receiving of orders/contracts\n\nWelspun Corp Limited has informed the Exchange about Bagging/Receiving of orders/contracts - Receipt of Export Order for LSAW Pipes\n\nWCL/SEC/2026                       26th November, 2026 \n \nTo, \n \nDear Sirs/ Madam, \n \nSubject: Receipt of Export Order for LSAW Pipes \nRef.: a.  Regulation 30 of the Securities and Exchange Board of India (Listing Obligations  \nand Disclosure Requirements) Regulations, 2015 (“Listing Regulations”), as \namended from time to time \nb.  ISIN: INE191B01025 \n \nWe are pleased to announce receipt of an extremely prestigious export order by the Company \nfor the supply of LSAW pipes from our India operations, to be executed in FY28. \n  \nSince our last announcement dated 29th October 2026, the Company has globally secured \nadditional orders cumulatively valued at approximately ₹ 2,264 Crore.  \n  \nWith these orders, the Company continues to maintain a strong consolidated global order book \nof approximately ₹ 50K Crore, with execution scheduled across FY27, FY28 and FY29. \n  \nThis disclosure is made in compliance with Regulation 30 of the SEBI Listing Regulations and \nthe Company's Code of Practices and Procedure for Fair Disclosure of Unpublished Price \nSensitive Information. \n  \nThis is for your information and records. \n \nYours faithfully, \nFor Welspun Corp Limited \n \n \n \nKamal Rathi \nCompany Secretary and Compliance Officer \nACS-18182 \n \nBSE Ltd.   \nListing Department, \nP. J. Towers, Dalal Street, \nMumbai – 400 001.  \n(Scrip Code: Equity - 532144),  \n(NCD – 973309) \nNational Stock Exchange of India Ltd.  \nExchange Plaza,  \nBandra-Kurla Complex,  \nBandra (E), Mumbai – 400 051. \n(Symbol: WELCORP, Series EQ)",
+   "source_id": "NSE:106871153"
+  },
+  {
+   "id": "7e6e0595ba8bdb45f5b9130f",
+   "parser_version": 7,
+   "time": "2026-11-26T10:38:33+05:30",
+   "folder": "orders",
+   "subfolder": "big",
+   "symbol": "JYOTISTRUC",
+   "company": "Jyoti Structures Limited",
+   "title": "Bagging/Receiving of orders/contracts",
+   "price": 12.01,
+   "pe_ratio": 20.355934,
+   "week52_high": 14.47,
+   "week52_low": 7.94,
+   "change_pct": 5.5311685,
+   "details": [
+    {
+     "label": "Source exchange",
+     "value": "NSE",
+     "source": "NSE"
+    },
+    {
+     "label": "Company",
+     "value": "Jyoti Structures Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange symbol / code",
+     "value": "JYOTISTRUC",
+     "source": "NSE"
+    },
+    {
+     "label": "Announcement category",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Filing title",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Order / project description",
+     "value": "Jyoti Structures Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Client / counterparty",
+     "value": "SGL5 Grid 5 Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Reported order value",
+     "value": "Rs.272 Crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Order size band",
+     "value": "Big (₹100 crore or more)",
+     "source": "Rule based only on disclosed order value"
+    },
+    {
+     "label": "Execution / delivery period",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Filing date and time",
+     "value": "26-Nov-2026 09:24:13",
+     "source": "NSE"
+    },
+    {
+     "label": "PDF text extraction",
+     "value": "Extracted text from 2 PDF page(s). Check the source filing for tables or scanned pages.",
+     "source": "NSE"
+    },
+    {
+     "label": "Yahoo Finance symbol",
+     "value": "JYOTISTRUC.NS",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Yahoo Finance company page",
+     "value": "https://finance.yahoo.com/quote/JYOTISTRUC.NS/",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market data snapshot captured",
+     "value": "2026-11-26T10:38:33+05:30",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price at snapshot",
+     "value": "₹12.01",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Current P/E (trailing)",
+     "value": "20.36",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week high",
+     "value": "₹14.47",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "52-week low",
+     "value": "₹7.94",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization",
+     "value": "₹14,335,855,616.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Market capitalization (INR crore)",
+     "value": "₹1,433.59 crore",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Forward P/E",
+     "value": null,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Price-to-book",
+     "value": "3.31",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Trailing EPS",
+     "value": "₹0.59",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Enterprise value",
+     "value": "₹32,921,018,368.00",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Sector",
+     "value": "Industrials",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Industry",
+     "value": "Specialty Industrial Machinery",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Order value / market cap",
+     "value": "18.9734%",
+     "source": "Calculated only when reported INR order value and INR market cap are both available"
+    },
+    {
+     "label": "All monetary figures found in filing",
+     "value": "Rs.272 Crore; Rs.175.67 Crore",
+     "source": "NSE"
+    },
+    {
+     "label": "Complete extracted filing text",
+     "value": "Nashik Factory: 52A/53A, D.Road, Satpur Industrial Complex, Nashik - 422007, Maharashtra, India \nRaipur Factory: 1037/1046, Sarora Ring Road, Urla Industrial Complex, Raipur - 493221, Chhattisgarh, India| \nTesting Station & R&D Center: Ubhade Shivar, Village - Deole, Ghoti - Bhandardara Road, Taluka - Igatpuri, Dist. - Nasik 422402| \nTel.: (01-22)-4091-5000 | Website: www.jyotistructures.in \n \n \nJYOTI STRUCTURES LIMITED \nCorporate Office: Valecha Chambers \n6th Floor, New Link Road Oshiwara \nAndheri (West) Mumbai -400053 \nCorporate Identity No: L45200MH1974PLC017494 \n \n Ref: JSL/HO/CS/GEN/2026-27/74                                                   Date: November 26, 2026 \n \nBSE Limited \nPhiroze Jeejeebhoy Tower, \nDalal Street, Fort,  \nMumbai-400 001. \nScrip Code: 513250 \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex, \nMumbai-400 051. \nSymbol: JYOTISTRUC \n \nDear Sir/Madam, \nSub: Intimation under Regulation 30 of the SEBI (LODR) Regulations, 2015 – Fresh LOI received \nfrom SGL5 Grid 5 Limited for 400 kV D/C Xeldom–Narendra Transmission Line Project \n(Goa & Karnataka) \nRef:  JSL/HO/CS/GEN/22-23/475 dated September 26, 2022 \n \nThis is in continuation of our earlier disclosure dated September 26, 2022, whereby the \nCompany had informed the Stock Exchanges regarding the receipt of an EPC contract from \nSterlite Power Transmission Limited  for 400 kV and 220 kV Double Circuit Transmission \nLines in the States of Goa and Karnataka. The Sterlite Power Transmission Limited was \ndemerged by NCLT, Mumbai and infra business was transferred to Sterlite Grid 5 Limited vide \norder dated 05-09-2024. \n \nPursuant to Regulation 30 read with Para B of Part A of Schedule III of the SEBI (Listing \nObligations and Disclosure Requirements) Regulations, 2015, we wish to inform you that the \nCompany has now received a fresh Letter of Intent (LOI) dated November 25, 2026, from \nSterlite Grid 5 Limited, for the balance works as well as works already executed towards the \nconstruction of the 400 kV D/C Xeldom–Narendra Transmission Line Project. \n \nThe details of the amendment are as under: \n \nParticulars Details \nName of the Parties to the \nOrder(s)/Contract(s)  Sterlite Grid 5 Limited \nNature of the \nOrder(s)/Contract(s) \nFresh Letter of Intent for supply of materials and services, including \ncivil and erection works, for balance works and works already \nexecuted for the 400 kV D/C Xeldom–Narendra Transmission Line \nProject in Goa and Karnataka. \n\n \n \n      JYOTI STRUCTURES LIMITED \n \n \n \n \n \nDate of execution of the \nOrder(s)/Contract(s) \n18 Months from Letter of Intent \nDetails of Order(s)/ \nContract(s) Value \n \nAs per fresh LOI order value of Rs.272 Crore (exclusive of \nGST) having an incremental order value of Rs.175.67 Crore \n(exclusive of GST)   \n \n           \n \nThe above disclosure is being made in compliance with Regulation 30 read with Para B of Part \nA of Schedule III of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015, as amended. \n \nNone of the promoter/promoter group/group companies have any interest in the entity that \nawarded the order. Further, the said order would not fall within the purview of the related \nparty transactions. \n \nKindly take the above information on record. \n \nThanking you, \n \nYours faithfully, \nFor Jyoti Structures Limited \n \n \n \nSonali K. Gaikwad \nCompany Secretary \nFCS 13908",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · An Dt",
+     "value": "26-Nov-2026 09:24:13",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Att File Size",
+     "value": "413.33 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/JYOTISTRUC_26112026092403_Sterlite_version.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Attchmnt Text",
+     "value": "Jyoti Structures Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Desc",
+     "value": "Bagging/Receiving of orders/contracts",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Difference",
+     "value": "00:00:02",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Dt",
+     "value": "26112026092413",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Exchdisstime",
+     "value": "26-Nov-2026 09:24:15",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · File Size",
+     "value": "413.33 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Seq Id",
+     "value": "106871209",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Industry",
+     "value": "Transmission Towers",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Isin",
+     "value": "INE197A01024",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sm Name",
+     "value": "Jyoti Structures Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Sort Date",
+     "value": "2026-11-26 09:24:13",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Symbol",
+     "value": "JYOTISTRUC",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Summary",
+     "value": "Jyoti Structures Limited received a fresh Letter of Intent dated November 25, 2026, from Sterlite Grid 5 Limited for the 400 kV D/C Xeldom–Narendra Transmission Line Project in Goa and Karnataka. This follows the demerger of Sterlite Power Transmission Limited, where its infrastructure business was transferred to Sterlite Grid 5 Limited. The order covers balance works and works already executed. The total order value is Rs. 272 Crore, exclusive of GST. This represents an incremental value of Rs. 175.67 Crore, exclusive of GST. The execution period is 18 months from the Letter of Intent. The company confirms that no promoter or promoter group has any interest in the entity awarding the order. The transaction does not fall within the purview of related party transactions. This disclosure is made under Regulation 30 of the SEBI LODR Regulations, 2015.",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchange field · Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/JYOTISTRUC_26112026092403_Sterlite_version.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/JYOTISTRUC_26112026092403_Sterlite_version.pdf",
+   "source_data": {
+    "an_dt": "26-Nov-2026 09:24:13",
+    "attFilePath": null,
+    "attFileSize": "413.33 KB",
+    "attchmntFile": "https://nsearchives.nseindia.in/corporate/JYOTISTRUC_26112026092403_Sterlite_version.pdf",
+    "attchmntText": "Jyoti Structures Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+    "bflag": null,
+    "csvName": null,
+    "desc": "Bagging/Receiving of orders/contracts",
+    "difference": "00:00:02",
+    "dt": "26112026092413",
+    "exchdisstime": "26-Nov-2026 09:24:15",
+    "fileSize": "413.33 KB",
+    "hasXbrl": true,
+    "nasUploadFlag": null,
+    "objUploadFlag": null,
+    "old_new": null,
+    "orgid": null,
+    "seq_id": "106871209",
+    "smIndustry": "Transmission Towers",
+    "sm_isin": "INE197A01024",
+    "sm_name": "Jyoti Structures Limited",
+    "sort_date": "2026-11-26 09:24:13",
+    "symbol": "JYOTISTRUC",
+    "voiceSummary": "Jyoti Structures Limited received a fresh Letter of Intent dated November 25, 2026, from Sterlite Grid 5 Limited for the 400 kV D/C Xeldom–Narendra Transmission Line Project in Goa and Karnataka. This follows the demerger of Sterlite Power Transmission Limited, where its infrastructure business was transferred to Sterlite Grid 5 Limited. The order covers balance works and works already executed. The total order value is Rs. 272 Crore, exclusive of GST. This represents an incremental value of Rs. 175.67 Crore, exclusive of GST. The execution period is 18 months from the Letter of Intent. The company confirms that no promoter or promoter group has any interest in the entity awarding the order. The transaction does not fall within the purview of related party transactions. This disclosure is made under Regulation 30 of the SEBI LODR Regulations, 2015.",
+    "voiceUrl": "https://nsearchives.nseindia.in/ann_voice/JYOTISTRUC_26112026092403_Sterlite_version.mp3"
+   },
+   "filing_text": "Bagging/Receiving of orders/contracts\n\nJyoti Structures Limited has informed the Exchange about Bagging/Receiving of orders/contracts\n\nNashik Factory: 52A/53A, D.Road, Satpur Industrial Complex, Nashik - 422007, Maharashtra, India \nRaipur Factory: 1037/1046, Sarora Ring Road, Urla Industrial Complex, Raipur - 493221, Chhattisgarh, India| \nTesting Station & R&D Center: Ubhade Shivar, Village - Deole, Ghoti - Bhandardara Road, Taluka - Igatpuri, Dist. - Nasik 422402| \nTel.: (01-22)-4091-5000 | Website: www.jyotistructures.in \n \n \nJYOTI STRUCTURES LIMITED \nCorporate Office: Valecha Chambers \n6th Floor, New Link Road Oshiwara \nAndheri (West) Mumbai -400053 \nCorporate Identity No: L45200MH1974PLC017494 \n \n Ref: JSL/HO/CS/GEN/2026-27/74                                                   Date: November 26, 2026 \n \nBSE Limited \nPhiroze Jeejeebhoy Tower, \nDalal Street, Fort,  \nMumbai-400 001. \nScrip Code: 513250 \nNational Stock Exchange of India Limited \nExchange Plaza, C-1, Block G, \nBandra Kurla Complex, \nMumbai-400 051. \nSymbol: JYOTISTRUC \n \nDear Sir/Madam, \nSub: Intimation under Regulation 30 of the SEBI (LODR) Regulations, 2015 – Fresh LOI received \nfrom SGL5 Grid 5 Limited for 400 kV D/C Xeldom–Narendra Transmission Line Project \n(Goa & Karnataka) \nRef:  JSL/HO/CS/GEN/22-23/475 dated September 26, 2022 \n \nThis is in continuation of our earlier disclosure dated September 26, 2022, whereby the \nCompany had informed the Stock Exchanges regarding the receipt of an EPC contract from \nSterlite Power Transmission Limited  for 400 kV and 220 kV Double Circuit Transmission \nLines in the States of Goa and Karnataka. The Sterlite Power Transmission Limited was \ndemerged by NCLT, Mumbai and infra business was transferred to Sterlite Grid 5 Limited vide \norder dated 05-09-2024. \n \nPursuant to Regulation 30 read with Para B of Part A of Schedule III of the SEBI (Listing \nObligations and Disclosure Requirements) Regulations, 2015, we wish to inform you that the \nCompany has now received a fresh Letter of Intent (LOI) dated November 25, 2026, from \nSterlite Grid 5 Limited, for the balance works as well as works already executed towards the \nconstruction of the 400 kV D/C Xeldom–Narendra Transmission Line Project. \n \nThe details of the amendment are as under: \n \nParticulars Details \nName of the Parties to the \nOrder(s)/Contract(s)  Sterlite Grid 5 Limited \nNature of the \nOrder(s)/Contract(s) \nFresh Letter of Intent for supply of materials and services, including \ncivil and erection works, for balance works and works already \nexecuted for the 400 kV D/C Xeldom–Narendra Transmission Line \nProject in Goa and Karnataka. \n\n \n \n      JYOTI STRUCTURES LIMITED \n \n \n \n \n \nDate of execution of the \nOrder(s)/Contract(s) \n18 Months from Letter of Intent \nDetails of Order(s)/ \nContract(s) Value \n \nAs per fresh LOI order value of Rs.272 Crore (exclusive of \nGST) having an incremental order value of Rs.175.67 Crore \n(exclusive of GST)   \n \n           \n \nThe above disclosure is being made in compliance with Regulation 30 read with Para B of Part \nA of Schedule III of the SEBI (Listing Obligations and Disclosure Requirements) \nRegulations, 2015, as amended. \n \nNone of the promoter/promoter group/group companies have any interest in the entity that \nawarded the order. Further, the said order would not fall within the purview of the related \nparty transactions. \n \nKindly take the above information on record. \n \nThanking you, \n \nYours faithfully, \nFor Jyoti Structures Limited \n \n \n \nSonali K. Gaikwad \nCompany Secretary \nFCS 13908",
+   "source_id": "NSE:106871209"
+  },
   {
    "id": "4da89f2c0964d4a925633b23",
    "parser_version": 7,
