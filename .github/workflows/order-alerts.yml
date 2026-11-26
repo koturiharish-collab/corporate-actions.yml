@@ -1,10 +1,9 @@
-name: Order Alerts Scan
+name: Corporate Actions Alert (Splits, Bonus, Buyback)
 
 on:
   push:
   schedule:
-    # Every 5 minutes, Mon-Fri, 08:30-21:25 IST (cron is UTC).
-    - cron: "*/5 3-15 * * 1-5"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -13,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sharesanket-data
+  group: sharesanket-corporate-actions
   cancel-in-progress: false
 
 jobs:
@@ -30,17 +29,15 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: requirements-orders.txt
 
-      - name: Install order-alert dependencies
-        run: pip install -r requirements-orders.txt
+      - name: Install corporate-action dependencies
+        run: pip install -r requirements.txt
 
-      - name: Check NSE and BSE order announcements
-        if: github.event_name != 'schedule' || github.event.schedule == '*/5 3-15 * * 1-5'
+      - name: Scan corporate actions
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python order_scanner.py
+        run: python corporate_actions.py
 
       - name: Save state and Share Sanket alerts
         id: save
@@ -58,7 +55,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
 
-            git commit -m "Update Share Sanket order alerts"
+            git commit -m "Update Share Sanket corporate actions"
 
             git pull --rebase -q origin main
             git push origin HEAD:main
@@ -84,25 +81,3 @@ jobs:
       - name: Publish Share Sanket site
         if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
-
-      - name: Telegram status
-        if: always()
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          JOB_STATUS: ${{ job.status }}
-          EVENT_SCHEDULE: ${{ github.event.schedule }}
-        run: |
-          HOUR=$(TZ=Asia/Kolkata date +%H)
-
-          if [ "$JOB_STATUS" != "success" ]; then
-            MSG="❌ Order Alerts scan FAILED - check GitHub Actions logs"
-          elif [ "$EVENT_SCHEDULE" = "*/5 3-15 * * 1-5" ] && [ "$HOUR" -ge 20 ]; then
-            MSG="✅ Order Alerts: last scan of the day done ($(TZ=Asia/Kolkata date '+%d %b %H:%M IST'))"
-          else
-            exit 0
-          fi
-
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-            -d chat_id="${TELEGRAM_CHAT_ID}" \
-            -d text="${MSG}" > /dev/null
