@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """NSE + BSE order announcements -> Share Sanket alerts."""
 
@@ -30,11 +29,12 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 SEEN_FILE = Path("seen.json")
 ALERT_FILE = Path("alerts.json")
+TELEGRAM_OUTBOX = Path("telegram-outbox.json")
 
 MAX_SEEN = 5000
 MAX_ALERTS = 500
 MAX_PDF_BYTES = 12 * 1024 * 1024
-LOOKBACK_DAYS = 2
+LOOKBACK_DAYS = 7
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT = os.getenv("TELEGRAM_CHAT_ID")
@@ -856,7 +856,6 @@ def save_seen(values):
         encoding="utf-8",
     )
 
-
 ALERT_DOCUMENT = None
 
 DEFAULT_FOLDERS = [
@@ -1013,13 +1012,31 @@ def send_telegram(alert):
         log("Telegram send failed (alert still saved):", repr(exc))
 
 
+def reset_telegram_outbox():
+    if TELEGRAM_OUTBOX.exists():
+        TELEGRAM_OUTBOX.unlink()
+
+
+def queue_telegram(alert):
+    if TELEGRAM_OUTBOX.exists():
+        with TELEGRAM_OUTBOX.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(alert, ensure_ascii=False) + "__SS_TELEGRAM_ALERT__")
+    else:
+        TELEGRAM_OUTBOX.write_text(
+            json.dumps(alert, ensure_ascii=False) + "__SS_TELEGRAM_ALERT__",
+            encoding="utf-8",
+        )
+
+
 # ---------------------------------------------------------
-def queue_telegram(alert): Path("telegram-outbox.json").open("a", encoding="utf-8").write(json.dumps(alert, ensure_ascii=False) + "__SS_TELEGRAM_ALERT__"); # MAIN SCANNER
+# MAIN SCANNER
 # ---------------------------------------------------------
 
 def run():
     today = datetime.now(IST).date()
     start = today - timedelta(days=LOOKBACK_DAYS)
+
+    reset_telegram_outbox()
 
     log(f"scan {start} to {today}")
 
