@@ -37,6 +37,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pypdf
 
+      - name: Run source_adapter.py to refresh source data
+        run: python results/source_adapter.py
+
       - name: Run Results Scanner
         run: |
           python results/results_scanner.py
