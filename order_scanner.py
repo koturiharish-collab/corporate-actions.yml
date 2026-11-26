@@ -1,15 +1,20 @@
 import json
 import os
+import re
 import tempfile
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
-import re
 
 import requests
 
 from categories import category_enabled
+
+try:
+    import yfinance as yf
+except Exception:
+    yf = None
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -41,6 +46,16 @@ MONEY = re.compile(
     r"(crores?|crs?|lakhs?|lacs?|millions?|mn)?",
     re.I,
 )
+
+ORDER_FOLDER_ID = "orders"
+SUBFOLDERS = [
+    {"id": "very-big", "name": "Very big orders"},
+    {"id": "big", "name": "Big orders"},
+    {"id": "medium", "name": "Medium orders"},
+    {"id": "small", "name": "Small orders"},
+]
+
+_mcap_cache = {}
 
 
 def now_ist():
@@ -81,6 +96,31 @@ def load_alerts():
     return data
 
 
+def ensure_order_folders(data):
+    """Make sure the app's Orders folder has all four size subfolders."""
+    folders = data.get("folders")
+
+    if not isinstance(folders, list):
+        folders = []
+        data["folders"] = folders
+
+    for folder in folders:
+        if folder.get("id") == ORDER_FOLDER_ID:
+            existing = folder.setdefault("subfolders", [])
+            known = {sub.get("id") for sub in existing}
+
+            for sub in SUBFOLDERS:
+                if sub["id"] not in known:
+                    existing.insert(0, dict(sub))
+            return
+
+    folders.append({
+        "id": ORDER_FOLDER_ID,
+        "name": "Orders",
+        "subfolders": [dict(sub) for sub in SUBFOLDERS],
+    })
+
+
 def load_state():
     try:
         value = json.loads(STATE_FILE.read_text(encoding="utf-8"))
@@ -115,14 +155,47 @@ def order_value_crore(text):
     return best
 
 
-def size_folder(crore):
-    if crore is None:
-        return "undisclosed"
-    if crore >= 100:
-        return "big"
-    if crore >= 10:
-        return "medium"
-    return "small"
+def market_cap_crore(symbol):
+    """Market cap in crore from Yahoo Finance. None if unavailable."""
+    if yf is None or not symbol:
+        return None
+
+    if symbol in _mcap_cache:
+        return _mcap_cache[symbol]
+
+    # BSE scrip codes are numbers; NSE symbols are letters.
+    ticker = f"{symbol}.BO" if symbol.isdigit() else f"{symbol}.NS"
+    value = None
+
+    try:
+        info = yf.Ticker(ticker).info or {}
+        raw = info.get("marketCap")
+        if raw:
+            value = float(raw) / 10_000_000
+    except Exception as error:
+        print(f"Market cap lookup failed for {ticker}: {error}")
+
+    _mcap_cache[symbol] = value
+    return value
+
+
+def size_folder(order_crore, mcap_crore):
+    """Return (folder, percent of market cap)."""
+    if order_crore is None or not mcap_crore or mcap_crore <= 0:
+        return "undisclosed", None
+
+    percent = order_crore / mcap_crore * 100
+
+    if percent > 50:
+        folder = "very-big"
+    elif percent >= 25:
+        folder = "big"
+    elif percent >= 15:
+        folder = "medium"
+    else:
+        folder = "small"
+
+    return folder, round(percent, 2)
 
 
 def fetch_nse(start, end):
@@ -219,21 +292,24 @@ def is_bagging(item):
 
 def build_alert(item):
     text = f"{item.get('title', '')}\n{item.get('details', '')}"
-    crore = order_value_crore(text)
-    folder = size_folder(crore)
+    order_crore = order_value_crore(text)
+    mcap_crore = market_cap_crore(item["symbol"])
+    folder, percent = size_folder(order_crore, mcap_crore)
 
     return {
         "id": "order-" + item["id"],
         "source_id": item["id"],
         "category": CATEGORY,
-        "folder": "orders",
+        "folder": ORDER_FOLDER_ID,
         "subfolder": folder,
         "exchange": item["exchange"],
         "company": item["company"],
         "symbol": item["symbol"],
         "title": item["title"],
         "details": item["details"],
-        "order_value_crore": round(crore, 2) if crore is not None else None,
+        "order_value_crore": round(order_crore, 2) if order_crore is not None else None,
+        "market_cap_crore": round(mcap_crore, 2) if mcap_crore is not None else None,
+        "order_percent_of_mcap": percent,
         "time": item["time"],
         "link": item["link"],
         "detected_at": now_ist(),
@@ -249,13 +325,16 @@ def send_telegram(alert):
     value = alert.get("order_value_crore")
     value_text = f"₹{value:,.2f} crore" if value is not None else "Not disclosed"
 
+    percent = alert.get("order_percent_of_mcap")
+    percent_text = f"{percent:.2f}% of market cap" if percent is not None else "Not available"
+
     message = (
         "SHARE SANKET - ORDER WIN\n\n"
         f"Company: {alert['company']} ({alert['symbol']})\n"
         f"Exchange: {alert['exchange']}\n"
         f"Announcement: {alert['title']}\n"
         f"Order value: {value_text}\n"
-        f"Size: {alert['subfolder'].title()}\n"
+        f"Size: {alert['subfolder'].replace('-', ' ').title()} ({percent_text})\n"
         f"Filed: {alert['time'] or 'Not Available'}\n\n"
         f"{alert['link']}\n\n"
         "For information only. Not investment advice."
@@ -284,6 +363,7 @@ def main():
     start = today - timedelta(days=LOOKBACK_DAYS)
 
     data = load_alerts()
+    ensure_order_folders(data)
     alerts = data["alerts"]
     known = {a.get("source_id") for a in alerts if isinstance(a, dict)}
 
@@ -320,7 +400,6 @@ def main():
         seen.add(item["id"])
         added += 1
 
-    # Retry any order alerts not yet sent, if the category is switched on.
     sent = 0
     if category_enabled(CATEGORY):
         for alert in alerts:
