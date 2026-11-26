@@ -1,7 +1,8 @@
 name: Order Alerts Scan
 
+name: Order Alerts Scan
+
 on:
-  push:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
