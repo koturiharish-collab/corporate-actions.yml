@@ -1,3 +1,4 @@
+
 import json
 import os
 import re
@@ -111,9 +112,20 @@ def ensure_order_folders(data):
         data["folders"] = folders
 
     for folder in folders:
+        if not isinstance(folder, dict):
+            continue
+
         if folder.get("id") == ORDER_FOLDER_ID:
             existing = folder.setdefault("subfolders", [])
-            known = {sub.get("id") for sub in existing}
+            if not isinstance(existing, list):
+                existing = []
+                folder["subfolders"] = existing
+
+            known = {
+                sub.get("id")
+                for sub in existing
+                if isinstance(sub, dict)
+            }
 
             for sub in SUBFOLDERS:
                 if sub["id"] not in known:
@@ -224,8 +236,11 @@ def fetch_nse(start, end):
     response.raise_for_status()
     rows = response.json()
 
+    if not isinstance(rows, list):
+        raise ValueError("NSE returned an unexpected announcements response")
+
     out = []
-    for row in rows if isinstance(rows, list) else []:
+    for row in rows:
         key = row.get("seq_id") or f"{row.get('symbol')}|{row.get('an_dt')}"
         out.append({
             "id": f"NSE:{key}",
@@ -265,7 +280,12 @@ def fetch_bse(start, end):
             timeout=20,
         )
         response.raise_for_status()
-        rows = (response.json() or {}).get("Table") or []
+        payload = response.json()
+
+        if not isinstance(payload, dict):
+            raise ValueError("BSE returned an unexpected announcements response")
+
+        rows = payload.get("Table") or []
 
         for row in rows:
             attachment = row.get("ATTACHMENTNAME") or ""
@@ -358,7 +378,6 @@ def send_telegram(alert):
         )
 
         response.raise_for_status()
-
         return bool(response.json().get("ok"))
 
     except requests.RequestException as error:
@@ -372,65 +391,116 @@ def main():
 
     data = load_alerts()
     ensure_order_folders(data)
-    alerts = data["alerts"]
-    known = {a.get("source_id") for a in alerts if isinstance(a, dict)}
 
+    old_alerts = data["alerts"]
     state = load_state()
     first_run = state is None
+
+    # Keep previous IDs so the first run does not re-publish old announcements.
     seen = set(state or [])
+    old_order_ids = set()
+
+    for alert in old_alerts:
+        if not isinstance(alert, dict):
+            continue
+
+        is_order = (
+            alert.get("category") == CATEGORY
+            or alert.get("folder") == ORDER_FOLDER_ID
+        )
+        if is_order and alert.get("source_id"):
+            old_order_ids.add(alert["source_id"])
+
+    seen.update(old_order_ids)
 
     fetched = []
+    successful_exchanges = set()
+
+    # If an exchange fetch fails, its previous alerts are retained for safety.
     for name, fetcher in (("NSE", fetch_nse), ("BSE", fetch_bse)):
         try:
             rows = fetcher(start, today)
+            if not isinstance(rows, list):
+                raise ValueError(f"{name} returned an invalid response")
+
             print(f"{name}: {len(rows)} announcements")
             fetched.extend(rows)
+            successful_exchanges.add(name)
+
         except Exception as error:
-            print(f"{name} fetch failed, will retry next run: {error}")
+            print(f"{name} scan failed; previous {name} orders will be retained: {error}")
 
-    added = 0
+    # Preserve non-order alerts. Preserve old orders only for an exchange
+    # whose fetch failed; successfully scanned exchanges get a fresh list.
+    retained_alerts = []
+
+    for alert in old_alerts:
+        if not isinstance(alert, dict):
+            retained_alerts.append(alert)
+            continue
+
+        is_order = (
+            alert.get("category") == CATEGORY
+            or alert.get("folder") == ORDER_FOLDER_ID
+        )
+
+        if not is_order:
+            retained_alerts.append(alert)
+            continue
+
+        exchange = alert.get("exchange")
+        if exchange not in successful_exchanges:
+            retained_alerts.append(alert)
+
+    new_order_alerts = []
+    newly_seen_ids = set()
+
     for item in fetched:
-        if not item.get("id") or item["id"] in known:
+        source_id = item.get("id")
+
+        if not source_id or not is_bagging(item):
             continue
 
-        if not is_bagging(item):
-            continue
-
-        alert = build_alert(item)
-
-        # First run: store everything but don't flood Telegram with old orders.
+        # The first run establishes a baseline and does not publish old items.
         if first_run:
-            alert["telegram_notified"] = True
-            alert["note"] = "Stored on first run, not sent"
+            newly_seen_ids.add(source_id)
+            continue
 
-        alerts.insert(0, alert)
-        known.add(item["id"])
-        seen.add(item["id"])
-        added += 1
+        if source_id in seen or source_id in newly_seen_ids:
+            continue
 
+        new_order_alerts.append(build_alert(item))
+        newly_seen_ids.add(source_id)
+
+    # Send notifications only for newly detected orders.
     sent = 0
     if category_enabled(CATEGORY):
-        for alert in alerts:
-            if (
-                isinstance(alert, dict)
-                and alert.get("category") == CATEGORY
-                and not alert.get("telegram_notified")
-            ):
-                if send_telegram(alert):
-                    alert["telegram_notified"] = True
-                    alert["telegram_notified_at"] = now_ist()
-                    sent += 1
+        for alert in new_order_alerts:
+            if send_telegram(alert):
+                alert["telegram_notified"] = True
+                alert["telegram_notified_at"] = now_ist()
+                sent += 1
     else:
         print("order_wins is off in preferences.json: saved, not sent.")
 
-    data["alerts"] = alerts[:500]
+    # The Orders section shows only orders newly detected in this scan.
+    # Other alert categories are kept unchanged.
+    data["alerts"] = new_order_alerts + retained_alerts
     data["updated"] = now_ist()
+
     save_json(ALERTS_FILE, data)
 
-    save_json(STATE_FILE, list(seen)[-MAX_STATE:])
+    seen.update(newly_seen_ids)
+    save_json(STATE_FILE, sorted(seen)[-MAX_STATE:])
 
-    print(f"New order alerts: {added}")
+    print("--------------------------------")
+    print("SHARE SANKET ORDER SCANNER")
+    print("--------------------------------")
+    print(f"New order alerts: {len(new_order_alerts)}")
     print(f"Telegram messages sent: {sent}")
+    print(f"Orders currently displayed: {len(new_order_alerts)}")
+    if first_run:
+        print("Initial baseline completed; existing announcements were not published.")
     print("Order scanner completed.")
 
 
