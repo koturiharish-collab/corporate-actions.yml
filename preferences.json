@@ -1,1 +1,12 @@
-.
+{
+  "categories": {
+    "results": true,
+    "ema": true,
+    "stops": false,
+    "order_wins": false,
+    "high_volume": false,
+    "splits_buybacks": false,
+    "promoter_deals": false,
+    "news": false
+  }
+}
