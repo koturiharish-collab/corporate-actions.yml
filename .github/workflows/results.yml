@@ -1,9 +1,8 @@
-name: Share Sanket - Results Scanner
+name: Corporate Actions Alert (Splits, Bonus, Buyback)
 
 on:
   push:
   schedule:
-    # Every 5 minutes, 24 hours a day, 7 days a week
     - cron: "*/5 * * * *"
   workflow_dispatch:
 
@@ -17,142 +16,53 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  validate:
-    name: Validate Results Module
+  scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
 
-      - name: Install Results dependencies
+      - name: Install corporate-action dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scan corporate actions
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python corporate_actions.py
+
+      - name: Save state and Share Sanket alerts
+        id: save
+        if: always()
         run: |
-          python -m pip install --upgrade pip
-          pip install requests pypdf
-
-      - name: Validate Results JSON files
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          files = {
-              "alerts.json": "alerts",
-              "history.json": "results",
-              "calendar.json": "calendar",
-          }
-
-          for filename, key in files.items():
-              path = Path("results") / filename
-              if path.exists():
-                  with path.open(encoding="utf-8") as f:
-                      data = json.load(f)
-
-                  if not isinstance(data.get(key), list):
-                      raise SystemExit(f"Invalid structure: {path}")
-              print(f"PASS/Skipped: {path}")
-          PY
-
-      - name: Validate Python syntax
-        run: |
-          python -m py_compile results/results_scanner.py
-          python -m py_compile results/source_adapter.py
-          python -m py_compile results/pdf_extractor.py
-          python -m py_compile results/financial_extractor.py
-          echo "All Results Python files are valid."
-
-      - name: Run Results Source Adapter
-        run: |
-          python results/source_adapter.py
-
-      - name: Test SFC Results PDF extraction
-        run: |
-          python results/pdf_extractor.py SFC_TEST "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf"
-
-      - name: Run Financial Statement Extractor
-        run: |
-          python results/financial_extractor.py SFC_TEST
-
-      - name: Upload extracted PDF text
-        uses: actions/upload-artifact@v4
-        with:
-          name: sfc-results-pdf-text
-          path: results/extracted/
-          if-no-files-found: ignore
-
-      - name: Upload Financial Review
-        uses: actions/upload-artifact@v4
-        with:
-          name: sfc-financial-review
-          path: results/review/SFC_TEST_financial_review.json
-          if-no-files-found: ignore
-
-      - name: Validate generated announcements
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          path = Path("results/source_announcements.json")
-
-          if path.exists():
-              with path.open(encoding="utf-8") as f:
-                  data = json.load(f)
-
-              if not isinstance(data.get("announcements"), list):
-                  raise SystemExit("Invalid announcements structure")
-
-              print("PASS: Source adapter output")
-              print("Records:", len(data["announcements"]))
-          PY
-
-      - name: Run Results Scanner
-        run: |
-          python results/results_scanner.py
-
-      - name: Publish Results JSON files to repository
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add results/alerts.json
-          git add results/history.json
-          git add results/calendar.json
-
-          if git diff --cached --quiet; then
-            echo "No Results JSON changes to publish."
-          else
-            git commit -m "Publish updated Share Sanket Results data"
+          git add alerts.json seen.json order_state.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update Share Sanket corporate actions"
             git pull --rebase -q origin main
             git push origin HEAD:main
-            echo "Results JSON files published to repository."
+            echo "site_changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Upload Results data
-        uses: actions/upload-artifact@v4
-        with:
-          name: share-sanket-results-data
-          path: |
-            results/alerts.json
-            results/history.json
-            results/calendar.json
-          if-no-files-found: ignore
-
       - name: Configure GitHub Pages
+        if: steps.save.outputs.site_changed == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Publish Share Sanket site
+        if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
