@@ -40,11 +40,9 @@ HEADERS = {
     "Accept": "application/json, text/plain, */*",
 }
 
-# Order-related announcements: bagging/receiving contracts, orders passed,
-# orders initiated, orders taken, order wins, contract awards.
-ORDER = re.compile(
-    r"bagging|receiving|orders?\s+(passed|initiated|taken|received|awarded|won)|"
-    r"new\s+orders?|order\s+win|contract\s+(award|win)",
+# Accept only this exact exchange announcement type.
+EXACT_ORDER_ANNOUNCEMENT = re.compile(
+    r"bagging\s*/\s*receiving\s+of\s+orders?\s*/\s*contracts?",
     re.I,
 )
 
@@ -62,7 +60,7 @@ SUBFOLDERS = [
     {"id": "small", "name": "Small orders"},
 ]
 
-_mcap_cache = {}
+_fundamentals_cache = {}
 
 
 def now_ist():
@@ -173,28 +171,52 @@ def order_value_crore(text):
     return best
 
 
-def market_cap_crore(symbol):
-    """Market cap in crore from Yahoo Finance. None if unavailable."""
+def company_fundamentals(symbol):
+    """Return Yahoo Finance company metrics; missing values remain None."""
     if yf is None or not symbol:
-        return None
+        return {}
 
-    if symbol in _mcap_cache:
-        return _mcap_cache[symbol]
+    symbol = str(symbol).strip()
+    if symbol in _fundamentals_cache:
+        return dict(_fundamentals_cache[symbol])
 
-    # BSE scrip codes are numbers; NSE symbols are letters.
     ticker = f"{symbol}.BO" if symbol.isdigit() else f"{symbol}.NS"
-    value = None
-
+    result = {}
     try:
         info = yf.Ticker(ticker).info or {}
-        raw = info.get("marketCap")
-        if raw:
-            value = float(raw) / 10_000_000
-    except Exception as error:
-        print(f"Market cap lookup failed for {ticker}: {error}")
 
-    _mcap_cache[symbol] = value
-    return value
+        def number(key, divisor=1):
+            raw = info.get(key)
+            try:
+                value = float(raw)
+                if value != value or value in (float("inf"), float("-inf")):
+                    return None
+                return round(value / divisor, 2)
+            except (TypeError, ValueError, OverflowError):
+                return None
+
+        result = {
+            "market_cap_crore": number("marketCap", 10_000_000),
+            "trailing_pe": number("trailingPE"),
+            "forward_pe": number("forwardPE"),
+            "price_to_book": number("priceToBook"),
+            "trailing_eps": number("trailingEps"),
+            "enterprise_value": number("enterpriseValue", 10_000_000),
+            "fifty_two_week_high": number("fiftyTwoWeekHigh"),
+            "fifty_two_week_low": number("fiftyTwoWeekLow"),
+            "sector": info.get("sector") or None,
+            "industry": info.get("industry") or None,
+        }
+    except Exception as error:
+        print(f"Company fundamentals lookup failed for {ticker}: {error}")
+
+    _fundamentals_cache[symbol] = result
+    return dict(result)
+
+
+def market_cap_crore(symbol):
+    """Market cap in crore from Yahoo Finance. None if unavailable."""
+    return company_fundamentals(symbol).get("market_cap_crore")
 
 
 def size_folder(order_crore, mcap_crore):
@@ -312,15 +334,24 @@ def fetch_bse(start, end):
 
 
 def is_bagging(item):
+    """True only for 'Bagging/Receiving of orders/Contracts' announcements."""
     text = f"{item.get('title', '')} {item.get('category', '')}"
-    return bool(ORDER.search(text))
+    return bool(EXACT_ORDER_ANNOUNCEMENT.search(text))
 
 
 def build_alert(item):
     text = f"{item.get('title', '')}\n{item.get('details', '')}"
     order_crore = order_value_crore(text)
-    mcap_crore = market_cap_crore(item["symbol"])
+    fundamentals = company_fundamentals(item.get("symbol"))
+    mcap_crore = fundamentals.get("market_cap_crore")
     folder, percent = size_folder(order_crore, mcap_crore)
+    size_names = {
+        "very-big": "VERY BIG ORDER",
+        "big": "BIG ORDER",
+        "medium": "MEDIUM ORDER",
+        "small": "SMALL ORDER",
+        "undisclosed": "UNDISCLOSED",
+    }
 
     return {
         "id": "order-" + item["id"],
@@ -328,6 +359,8 @@ def build_alert(item):
         "category": CATEGORY,
         "folder": ORDER_FOLDER_ID,
         "subfolder": folder,
+        "order_size": size_names[folder],
+        "announcement_category": item.get("category") or "",
         "exchange": item["exchange"],
         "company": item["company"],
         "symbol": item["symbol"],
@@ -336,6 +369,15 @@ def build_alert(item):
         "order_value_crore": round(order_crore, 2) if order_crore is not None else None,
         "market_cap_crore": round(mcap_crore, 2) if mcap_crore is not None else None,
         "order_percent_of_mcap": percent,
+        "trailing_pe": fundamentals.get("trailing_pe"),
+        "forward_pe": fundamentals.get("forward_pe"),
+        "price_to_book": fundamentals.get("price_to_book"),
+        "trailing_eps": fundamentals.get("trailing_eps"),
+        "enterprise_value": fundamentals.get("enterprise_value"),
+        "fifty_two_week_high": fundamentals.get("fifty_two_week_high"),
+        "fifty_two_week_low": fundamentals.get("fifty_two_week_low"),
+        "sector": fundamentals.get("sector"),
+        "industry": fundamentals.get("industry"),
         "time": item["time"],
         "link": item["link"],
         "detected_at": now_ist(),
@@ -360,7 +402,7 @@ def send_telegram(alert):
         f"Exchange: {alert['exchange']}\n"
         f"Announcement: {alert['title']}\n"
         f"Order value: {value_text}\n"
-        f"Size: {alert['subfolder'].replace('-', ' ').title()} ({percent_text})\n"
+        f"Size: {alert.get('order_size') or 'UNDISCLOSED'} ({percent_text})\n"
         f"Filed: {alert['time'] or 'Not Available'}\n\n"
         f"{alert['link']}\n\n"
         "For information only. Not investment advice."
