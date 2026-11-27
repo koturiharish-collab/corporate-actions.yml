@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T21:25:22.863445+05:30",
+  "updated": "2026-11-27T21:30:38.664592+05:30",
   "calendar": [
     {
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
@@ -22929,6 +22929,26 @@
       "published_at": "27-Nov-2026 21:20:49",
       "source": "NSE",
       "source_url": "https://nsearchives.nseindia.in/corporate/DEVYANI_ROID_105310_KMP_Doc.zip",
+      "status": "Announced"
+    },
+    {
+      "id": "HOMEFIRST|Not Specified|27-Nov-2026 21:29:53|https://nsearchives.nseindia.in/corporate/HOMEFIRST_27112026212942_Investor_meet_outcome_27112026_F.pdf",
+      "symbol": "HOMEFIRST",
+      "company": "Home First Finance Company India Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 21:29:53",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/HOMEFIRST_27112026212942_Investor_meet_outcome_27112026_F.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "EROSMEDIA|Not Specified|27-Nov-2026 21:26:46|https://nsearchives.nseindia.in/corporate/EROSMEDIA_ROID_105312_KMP_Doc.zip",
+      "symbol": "EROSMEDIA",
+      "company": "Eros International Media Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 21:26:46",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/EROSMEDIA_ROID_105312_KMP_Doc.zip",
       "status": "Announced"
     }
   ]
