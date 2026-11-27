@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sharesanket-data
+  group: sharesanket-orders
   cancel-in-progress: false
 
 jobs:
@@ -71,4 +71,3 @@ jobs:
       - name: Publish Share Sanket site
         if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
-
