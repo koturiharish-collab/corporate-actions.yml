@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T19:05:24+05:30",
+  "updated": "2026-11-27T19:10:26+05:30",
   "folders": [
     {
       "id": "emas",
@@ -46669,6 +46669,145 @@
         }
       ],
       "link": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026190149_SEIntimationLOFsigned.pdf"
+    },
+    {
+      "id": "19c5f6f2aade333154aa34ed",
+      "time": "2026-11-27T19:10:26+05:30",
+      "folder": "corporate-actions",
+      "subfolder": "buyback",
+      "symbol": "DALBHARAT",
+      "company": "Dalmia Bharat Limited",
+      "title": "General Updates",
+      "price": null,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "An Dt",
+          "value": "27-Nov-2026 19:05:50",
+          "source": "NSE"
+        },
+        {
+          "label": "Att File Path",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Att File Size",
+          "value": "574.86 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Attchmnt File",
+          "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_27112026190526_SEemail271126651.pdf",
+          "source": "NSE"
+        },
+        {
+          "label": "Attchmnt Text",
+          "value": "We wish to inform you that as per the requirements of Securities and Exchange Board of India(Buy-Back of Securities) Regulations, 2018, as amended, the Company has today i.e. onNovember 27, 2026, sent an intimation through electronic mode regarding its Buyback Offerthrough open market to its shareholders.",
+          "source": "NSE"
+        },
+        {
+          "label": "Bflag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Csv Name",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Desc",
+          "value": "General Updates",
+          "source": "NSE"
+        },
+        {
+          "label": "Difference",
+          "value": "00:00:01",
+          "source": "NSE"
+        },
+        {
+          "label": "Dt",
+          "value": "27112026190550",
+          "source": "NSE"
+        },
+        {
+          "label": "Exchdisstime",
+          "value": "27-Nov-2026 19:05:51",
+          "source": "NSE"
+        },
+        {
+          "label": "File Size",
+          "value": "574.86 KB",
+          "source": "NSE"
+        },
+        {
+          "label": "Has Xbrl",
+          "value": true,
+          "source": "NSE"
+        },
+        {
+          "label": "Nas Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Obj Upload Flag",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Old New",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Orgid",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Seq Id",
+          "value": "106873104",
+          "source": "NSE"
+        },
+        {
+          "label": "Sm Industry",
+          "value": null,
+          "source": "NSE"
+        },
+        {
+          "label": "Sm Isin",
+          "value": "INE00R701025",
+          "source": "NSE"
+        },
+        {
+          "label": "Sm Name",
+          "value": "Dalmia Bharat Limited",
+          "source": "NSE"
+        },
+        {
+          "label": "Sort Date",
+          "value": "2026-11-27 19:05:50",
+          "source": "NSE"
+        },
+        {
+          "label": "Symbol",
+          "value": "DALBHARAT",
+          "source": "NSE"
+        },
+        {
+          "label": "Voice Summary",
+          "value": "Dalmia Bharat Limited has intimated BSE and NSE regarding a buyback offer through the open market route. The Board approved the proposal on November 23, 2026. The maximum buyback price is Rs. 1,850 per equity share. The maximum buyback size is Rs. 7,00,00,00,000. The offer excludes promoters and their group. The buyback will commence on or before December 02, 2026. Shares will be acquired via stock exchange mechanisms. The last date for completion is the earlier of March 05, 2027, or when the maximum size is reached. The company may close earlier if Rs. 525,00,00,000 is deployed. Axis Capital Limited is the manager to the buyback. KFin Technologies Limited is the registrar.",
+          "source": "NSE"
+        },
+        {
+          "label": "Voice Url",
+          "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_27112026190526_SEemail271126651.mp3",
+          "source": "NSE"
+        }
+      ],
+      "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_27112026190526_SEemail271126651.pdf"
     }
   ]
 }
