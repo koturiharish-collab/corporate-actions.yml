@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T17:26:49.251851+05:30",
+  "updated": "2026-11-27T17:30:51.034121+05:30",
   "alerts": [
     {
       "symbol": "SFCTECH",
@@ -87,7 +87,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-27T17:26:49.250936+05:30"
+      "processed_at": "2026-11-27T17:30:51.033146+05:30"
     }
   ]
 }
