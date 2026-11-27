@@ -5,7 +5,7 @@
     "stops": false,
     "order_wins": true,
     "high_volume": false,
-    "splits_buybacks": false,
+    "splits_buybacks": true,
     "promoter_deals": false,
     "news": false
   }
