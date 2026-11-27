@@ -430,9 +430,10 @@ def main():
         except Exception as error:
             print(f"{name} scan failed; previous {name} orders will be retained: {error}")
 
-    # Preserve non-order alerts. Preserve old orders only for an exchange
-    # whose fetch failed; successfully scanned exchanges get a fresh list.
+    # Preserve every existing alert, including historical Orders. A successful
+    # exchange scan must not delete orders published by an earlier scan.
     retained_alerts = []
+    old_orders_by_source = {}
 
     for alert in old_alerts:
         if not isinstance(alert, dict):
@@ -444,13 +445,10 @@ def main():
             or alert.get("folder") == ORDER_FOLDER_ID
         )
 
-        if not is_order:
-            retained_alerts.append(alert)
-            continue
+        retained_alerts.append(alert)
 
-        exchange = alert.get("exchange")
-        if exchange not in successful_exchanges:
-            retained_alerts.append(alert)
+        if is_order and alert.get("source_id"):
+            old_orders_by_source[str(alert["source_id"])] = alert
 
     new_order_alerts = []
     newly_seen_ids = set()
@@ -461,16 +459,37 @@ def main():
         if not source_id or not is_bagging(item):
             continue
 
-        # The first run establishes a baseline and does not publish old items.
-        if first_run:
-            newly_seen_ids.add(source_id)
+        source_id = str(source_id)
+
+        if source_id in newly_seen_ids:
             continue
 
-        if source_id in seen or source_id in newly_seen_ids:
+        newly_seen_ids.add(source_id)
+
+        # Refresh an existing order from the latest filing without creating a
+        # duplicate alert or sending another Telegram notification.
+        existing = old_orders_by_source.get(source_id)
+        if existing is not None:
+            refreshed = build_alert(item)
+
+            # Notification history and original detection time are historical
+            # facts; never reset them during a data refresh.
+            for key, value in refreshed.items():
+                if key in ("telegram_notified", "telegram_notified_at", "detected_at"):
+                    continue
+                if value not in (None, "", []):
+                    existing[key] = value
+            continue
+
+        # The first run establishes a baseline and does not publish old items.
+        if first_run:
+            continue
+
+        # Previously seen IDs without a published alert are not notified again.
+        if source_id in seen:
             continue
 
         new_order_alerts.append(build_alert(item))
-        newly_seen_ids.add(source_id)
 
     # Send notifications only for newly detected orders.
     sent = 0
@@ -483,8 +502,8 @@ def main():
     else:
         print("order_wins is off in preferences.json: saved, not sent.")
 
-    # The Orders section shows only orders newly detected in this scan.
-    # Other alert categories are kept unchanged.
+    # Show new orders first, followed by all historical alerts. Other alert
+    # categories remain unchanged.
     data["alerts"] = new_order_alerts + retained_alerts
     data["updated"] = now_ist()
 
@@ -498,7 +517,12 @@ def main():
     print("--------------------------------")
     print(f"New order alerts: {len(new_order_alerts)}")
     print(f"Telegram messages sent: {sent}")
-    print(f"Orders currently displayed: {len(new_order_alerts)}")
+    displayed_orders = sum(
+        1 for alert in data["alerts"]
+        if isinstance(alert, dict)
+        and (alert.get("category") == CATEGORY or alert.get("folder") == ORDER_FOLDER_ID)
+    )
+    print(f"Orders currently displayed: {displayed_orders}")
     if first_run:
         print("Initial baseline completed; existing announcements were not published.")
     print("Order scanner completed.")
