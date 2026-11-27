@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sharesanket-data
+  group: sharesanket-corporate-actions
   cancel-in-progress: false
 
 jobs:
@@ -50,11 +50,8 @@ jobs:
 
           if ! git diff --cached --quiet; then
             git commit -m "Update Share Sanket corporate actions"
-
             git pull --rebase origin main
-
             git push origin HEAD:main
-
             echo "site_changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "site_changed=false" >> "$GITHUB_OUTPUT"
