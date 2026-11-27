@@ -1,4 +1,3 @@
-
 """
 Share Sanket - Results Source Adapter
 
@@ -47,6 +46,7 @@ NSE_HOME = "https://www.nseindia.com"
 NSE_FILINGS_PAGE = "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
 NSE_ANNOUNCEMENTS_API = "https://www.nseindia.com/api/corporate-announcements"
 NSE_LOOKBACK_DAYS = 7
+
 NSE_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -446,8 +446,12 @@ def fetch_nse_announcements():
     """
     Fetch recent announcements from the official NSE API.
 
-    Each retry creates a fresh session and repeats the NSE
-    homepage/filings-page handshake to obtain fresh cookies.
+    Each retry creates a fresh session and visits the corporate
+    filings page to obtain fresh cookies.
+
+    The NSE homepage is intentionally not requested because it
+    can return HTTP 403 while the filings page and API are accessible.
+
     Returns raw records; filtering and validation happen downstream.
     """
 
@@ -466,14 +470,8 @@ def fetch_nse_announcements():
             session = requests.Session()
             session.headers.update(NSE_HEADERS)
 
-            # Establish fresh NSE cookies.
-            home = session.get(
-                NSE_HOME,
-                timeout=(15, 25),
-            )
-            home.raise_for_status()
-
-            # Visit the corporate filings page before the API.
+            # Visit the corporate filings page directly.
+            # Do not request NSE_HOME because it can return HTTP 403.
             filings_page = session.get(
                 NSE_FILINGS_PAGE,
                 timeout=(15, 25),
