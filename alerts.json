@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T14:44:21+05:30",
+ "updated": "2026-11-27T15:00:13+05:30",
  "folders": [
   {
    "id": "emas",
@@ -180,12 +180,22 @@
    "title": "Bagging/Receiving of orders/contracts",
    "details": "Zaggle Prepaid Ocean Services Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
    "order_value_crore": null,
-   "market_cap_crore": 2169.58,
+   "market_cap_crore": 2176.85,
    "order_percent_of_mcap": null,
    "time": "27-Nov-2026 13:04:45",
    "link": "https://nsearchives.nseindia.in/corporate/ZAGGLE_27112026130414_Yokohama_Draft_Intimation.pdf",
    "detected_at": "2026-11-27T14:44:17+05:30",
-   "telegram_notified": false
+   "telegram_notified": false,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 16.69,
+   "forward_pe": 9.79,
+   "price_to_book": 1.5,
+   "trailing_eps": 9.69,
+   "enterprise_value": 1799.82,
+   "fifty_two_week_high": 397.0,
+   "fifty_two_week_low": 146.65,
+   "sector": "Technology",
+   "industry": "Software - Infrastructure"
   },
   {
    "id": "order-NSE:106872547",
@@ -237,12 +247,21 @@
    "title": "Bagging/Receiving of orders/contracts",
    "details": "LCC Projects Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
    "order_value_crore": null,
-   "market_cap_crore": 3774.71,
+   "market_cap_crore": 3760.22,
    "order_percent_of_mcap": null,
    "time": "27-Nov-2026 10:02:32",
    "link": "https://nsearchives.nseindia.in/corporate/LCCPROJECTS_27112026100222_Regulation_30_Intimation.pdf",
    "detected_at": "2026-11-27T14:44:18+05:30",
-   "telegram_notified": false
+   "telegram_notified": false,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 12.6,
+   "price_to_book": 2.97,
+   "trailing_eps": 10.3,
+   "enterprise_value": 4124.0,
+   "fifty_two_week_high": 189.0,
+   "fifty_two_week_low": 117.12,
+   "sector": "Industrials",
+   "industry": "Infrastructure Operations"
   },
   {
    "id": "e24ea7d98ed6f6302d33155d",
@@ -9629,7 +9648,17 @@
    "source_id": "NSE:106871153",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 60683.55
+   "market_cap_crore": 60630.81,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 25.22,
+   "forward_pe": 20.1,
+   "price_to_book": 5.71,
+   "trailing_eps": 91.16,
+   "enterprise_value": 55479.23,
+   "fifty_two_week_high": 2900.0,
+   "fifty_two_week_low": 710.0,
+   "sector": "Basic Materials",
+   "industry": "Steel"
   },
   {
    "id": "order-NSE:106871209",
@@ -9678,7 +9707,16 @@
    "source_id": "NSE:106871209",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 1438.36
+   "market_cap_crore": 1440.75,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 20.46,
+   "price_to_book": 3.33,
+   "trailing_eps": 0.59,
+   "enterprise_value": 3336.27,
+   "fifty_two_week_high": 14.47,
+   "fifty_two_week_low": 7.94,
+   "sector": "Industrials",
+   "industry": "Specialty Industrial Machinery"
   },
   {
    "id": "order-NSE:106871037",
@@ -9924,7 +9962,17 @@
    "source_id": "NSE:106870852",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 11240.75
+   "market_cap_crore": 11299.96,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 30.79,
+   "forward_pe": 28.56,
+   "price_to_book": 11.21,
+   "trailing_eps": 47.73,
+   "enterprise_value": 11060.96,
+   "fifty_two_week_high": 2152.6,
+   "fifty_two_week_low": 707.6,
+   "sector": "Industrials",
+   "industry": "Electrical Equipment & Parts"
   },
   {
    "id": "667a5a30aba29e17339f2a9b",
@@ -10295,7 +10343,17 @@
    "source_id": "NSE:106870873",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 13411.86
+   "market_cap_crore": 13407.88,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 121.46,
+   "forward_pe": 17.7,
+   "price_to_book": 2.42,
+   "trailing_eps": 1.94,
+   "enterprise_value": 25447.24,
+   "fifty_two_week_high": 284.5,
+   "fifty_two_week_low": 223.2,
+   "sector": "Utilities",
+   "industry": "Utilities - Renewable"
   },
   {
    "id": "order-NSE:106870749",
@@ -10393,7 +10451,16 @@
    "source_id": "NSE:106870777",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 21889.4
+   "market_cap_crore": 21805.67,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 71.63,
+   "price_to_book": 27.54,
+   "trailing_eps": 5.09,
+   "enterprise_value": 21614.84,
+   "fifty_two_week_high": 404.0,
+   "fifty_two_week_low": 115.57,
+   "sector": "Industrials",
+   "industry": "Specialty Industrial Machinery"
   },
   {
    "id": "ema-golden-cdsl-2026-11-23",
@@ -44534,7 +44601,16 @@
    "source_id": "NSE:106870125",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 615.36
+   "market_cap_crore": 613.21,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 23.05,
+   "price_to_book": 2.52,
+   "trailing_eps": 3.71,
+   "enterprise_value": 665.93,
+   "fifty_two_week_high": 87.95,
+   "fifty_two_week_low": 40.1,
+   "sector": "Industrials",
+   "industry": "Infrastructure Operations"
   },
   {
    "id": "order-NSE:106870219",
@@ -44583,7 +44659,17 @@
    "source_id": "NSE:106870219",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 565407.07
+   "market_cap_crore": 565764.84,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 31.67,
+   "forward_pe": 22.83,
+   "price_to_book": 5.01,
+   "trailing_eps": 129.82,
+   "enterprise_value": 631608.39,
+   "fifty_two_week_high": 4440.0,
+   "fifty_two_week_low": 3288.1,
+   "sector": "Industrials",
+   "industry": "Engineering & Construction"
   },
   {
    "id": "order-NSE:106870365",
@@ -44632,7 +44718,16 @@
    "source_id": "NSE:106870365",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 2813.6
+   "market_cap_crore": 2820.05,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 9.53,
+   "price_to_book": 1.74,
+   "trailing_eps": 21.56,
+   "enterprise_value": 2558.94,
+   "fifty_two_week_high": 371.4,
+   "fifty_two_week_low": 188.0,
+   "sector": "Energy",
+   "industry": "Thermal Coal"
   },
   {
    "id": "f8e1157dc078a1496341e2f7",
@@ -45004,8 +45099,17 @@
    "category": "order_wins",
    "exchange": "NSE",
    "order_value_crore": 1.22,
-   "market_cap_crore": 3245.71,
-   "order_percent_of_mcap": 0.04
+   "market_cap_crore": 3244.28,
+   "order_percent_of_mcap": 0.04,
+   "order_size": "SMALL ORDER",
+   "trailing_pe": 80.15,
+   "price_to_book": 32.21,
+   "trailing_eps": 0.85,
+   "enterprise_value": 3504.87,
+   "fifty_two_week_high": 71.29,
+   "fifty_two_week_low": 24.27,
+   "sector": "Consumer Cyclical",
+   "industry": "Apparel Manufacturing"
   },
   {
    "id": "6bb78a7d3216d4efacdcdf35",
@@ -45373,7 +45477,16 @@
    "source_id": "NSE:106869999",
    "category": "order_wins",
    "exchange": "NSE",
-   "market_cap_crore": 615.36
+   "market_cap_crore": 613.21,
+   "order_size": "UNDISCLOSED",
+   "trailing_pe": 23.05,
+   "price_to_book": 2.52,
+   "trailing_eps": 3.71,
+   "enterprise_value": 665.93,
+   "fifty_two_week_high": 87.95,
+   "fifty_two_week_low": 40.1,
+   "sector": "Industrials",
+   "industry": "Infrastructure Operations"
   },
   {
    "id": "18102fae3d0131476541a8dd",
