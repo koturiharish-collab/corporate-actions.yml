@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28T01:15:29.174358+05:30",
+  "updated": "2026-11-28T01:21:29.035707+05:30",
   "results": [
     {
       "symbol": "SFCTECH",
@@ -20,6 +20,7 @@
           "operating_profit": null,
           "gross_profit": null,
           "ebitda": null,
+          "ebitda_margin": null,
           "total_debt": null,
           "cash_flow": null,
           "previous_year_revenue": 527.88,
@@ -28,6 +29,11 @@
           "revenue_yoy": 89.15,
           "net_profit_yoy": null,
           "eps_yoy": null,
+          "revenue_qoq": null,
+          "net_profit_qoq": null,
+          "eps_qoq": null,
+          "ebitda_yoy": null,
+          "ebitda_qoq": null,
           "net_margin": 5.09,
           "operating_margin": null,
           "profit_turnaround": true,
@@ -40,6 +46,7 @@
           "operating_profit": null,
           "gross_profit": null,
           "ebitda": null,
+          "ebitda_margin": null,
           "total_debt": null,
           "cash_flow": null,
           "previous_year_revenue": 965.95,
@@ -48,6 +55,11 @@
           "revenue_yoy": 68.46,
           "net_profit_yoy": null,
           "eps_yoy": null,
+          "revenue_qoq": null,
+          "net_profit_qoq": null,
+          "eps_qoq": null,
+          "ebitda_yoy": null,
+          "ebitda_qoq": null,
           "net_margin": 1.39,
           "operating_margin": null,
           "profit_turnaround": true,
@@ -61,6 +73,7 @@
         "operating_profit": null,
         "gross_profit": null,
         "ebitda": null,
+        "ebitda_margin": null,
         "total_debt": null,
         "cash_flow": null,
         "previous_year_revenue": 965.95,
@@ -69,6 +82,11 @@
         "revenue_yoy": 68.46,
         "net_profit_yoy": null,
         "eps_yoy": null,
+        "revenue_qoq": null,
+        "net_profit_qoq": null,
+        "eps_qoq": null,
+        "ebitda_yoy": null,
+        "ebitda_qoq": null,
         "net_margin": 1.39,
         "operating_margin": null,
         "profit_turnaround": true,
@@ -77,6 +95,11 @@
       "expectations": {},
       "data_status": "Standalone and consolidated Q2 figures visually verified against official NSE PDF pages 4 and 13",
       "financial_units": "INR millions",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -87,7 +110,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174062+05:30"
+      "processed_at": "2026-11-28T01:21:29.035302+05:30"
     },
     {
       "symbol": "SETCO",
@@ -100,47 +123,124 @@
       "attachment_url": "https://nsearchives.nseindia.in/corporate/SETCO_27112026160110_FINAL_SIGNED_OUTCOME_27112026.pdf",
       "period": "Not Specified",
       "financials": {
-        "revenue_yoy": null,
+        "revenue": 44.89,
+        "net_profit": 0.77,
+        "eps": 0.06,
+        "ebitda": -6.62,
+        "ebitda_margin": -14.747159723769213,
+        "operating_margin": null,
+        "previous_year_revenue": 39.12,
+        "previous_year_net_profit": -5.84,
+        "previous_year_eps": -0.42,
+        "revenue_yoy": 14.75,
         "net_profit_yoy": null,
         "eps_yoy": null,
-        "net_margin": null,
-        "operating_margin": null,
-        "profit_turnaround": false,
-        "revenue_growth_available": false
+        "revenue_qoq": -15.141776937618145,
+        "net_profit_qoq": -99.62128664174699,
+        "eps_qoq": -99.60578186596584,
+        "ebitda_yoy": -219.8067632850242,
+        "ebitda_qoq": 45.107794361525706,
+        "net_margin": 1.72,
+        "profit_turnaround": true,
+        "revenue_growth_available": true
       },
       "financials_by_scope": {
         "standalone": {
+          "net_profit": 0.89,
+          "eps": 0.07,
+          "previous_year_revenue": 0.24,
+          "previous_year_net_profit": 0.19,
+          "previous_year_eps": 0.02,
+          "net_profit_yoy": 368.42,
+          "eps_yoy": 250.0,
+          "net_profit_qoq": -99.56648806624453,
+          "eps_qoq": -99.54397394136808,
           "revenue_yoy": null,
-          "net_profit_yoy": null,
-          "eps_yoy": null,
           "net_margin": null,
           "operating_margin": null,
           "profit_turnaround": false,
           "revenue_growth_available": false
         },
         "consolidated": {
-          "revenue_yoy": null,
+          "revenue": 44.89,
+          "net_profit": 0.77,
+          "eps": 0.06,
+          "ebitda": -6.62,
+          "ebitda_margin": -14.747159723769213,
+          "operating_margin": null,
+          "previous_year_revenue": 39.12,
+          "previous_year_net_profit": -5.84,
+          "previous_year_eps": -0.42,
+          "revenue_yoy": 14.75,
           "net_profit_yoy": null,
           "eps_yoy": null,
-          "net_margin": null,
-          "operating_margin": null,
-          "profit_turnaround": false,
-          "revenue_growth_available": false
+          "revenue_qoq": -15.141776937618145,
+          "net_profit_qoq": -99.62128664174699,
+          "eps_qoq": -99.60578186596584,
+          "ebitda_yoy": -219.8067632850242,
+          "ebitda_qoq": 45.107794361525706,
+          "net_margin": 1.72,
+          "profit_turnaround": true,
+          "revenue_growth_available": true
         }
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/SETCO_27112026160110_FINAL_SIGNED_OUTCOME_27112026.pdf",
+        "pages": {
+          "standalone": 4,
+          "consolidated": 12
+        },
+        "source_file": "tmpv89xv2b6.pdf",
+        "method": "pypdf text extraction",
+        "missing_values_policy": "Dashes and unrecognised rows remain unavailable",
+        "unit_conflict": false,
+        "extracted_financials_by_scope": {
+          "standalone": {
+            "net_profit": 0.89,
+            "eps": 0.07,
+            "previous_year_revenue": 0.24,
+            "previous_year_net_profit": 0.19,
+            "previous_year_eps": 0.02,
+            "net_profit_yoy": 368.42105263157896,
+            "eps_yoy": 250.0,
+            "net_profit_qoq": -99.56648806624453,
+            "eps_qoq": -99.54397394136808
+          },
+          "consolidated": {
+            "revenue": 44.89,
+            "net_profit": 0.77,
+            "eps": 0.06,
+            "ebitda": -6.62,
+            "ebitda_margin": -14.747159723769213,
+            "operating_margin": -14.747159723769213,
+            "previous_year_revenue": 39.12,
+            "previous_year_net_profit": -5.84,
+            "previous_year_eps": -0.42,
+            "revenue_yoy": 14.749488752556248,
+            "net_profit_yoy": 113.18493150684932,
+            "eps_yoy": 114.28571428571428,
+            "revenue_qoq": -15.141776937618145,
+            "net_profit_qoq": -99.62128664174699,
+            "eps_qoq": -99.60578186596584,
+            "ebitda_yoy": -219.8067632850242,
+            "ebitda_qoq": 45.107794361525706
+          }
+        }
+      },
       "id": "SETCO|Not Specified|27-Nov-2026 16:02:45|https://nsearchives.nseindia.in/corporate/SETCO_27112026160110_FINAL_SIGNED_OUTCOME_27112026.pdf",
       "category": "results",
       "telegram_notified": false,
       "primary_scope": "consolidated",
       "ratings_by_scope": {
-        "standalone": "Insufficient Data",
-        "consolidated": "Insufficient Data"
+        "standalone": "Excellent",
+        "consolidated": "Strong"
       },
-      "rating": "Insufficient Data",
+      "rating": "Strong",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174119+05:30"
+      "processed_at": "2026-11-28T01:21:29.035412+05:30"
     },
     {
       "symbol": "ENRIN",
@@ -183,6 +283,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/ENRIN_25112026201025_BoardMeetingOutcome25112026signed.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "ENRIN|Not Specified|25-Nov-2026 20:19:54|https://nsearchives.nseindia.in/corporate/ENRIN_25112026201025_BoardMeetingOutcome25112026signed.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -193,7 +298,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174151+05:30"
+      "processed_at": "2026-11-28T01:21:29.035452+05:30"
     },
     {
       "symbol": "SIMBHALS",
@@ -236,6 +341,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/SIMBHALS_25112026183853_Finaloutcome25Nov2026forupload.pdf",
+        "reason": "No reliable financial figures found in the PDF"
+      },
       "id": "SIMBHALS|Not Specified|25-Nov-2026 18:44:40|https://nsearchives.nseindia.in/corporate/SIMBHALS_25112026183853_Finaloutcome25Nov2026forupload.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -246,7 +356,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174175+05:30"
+      "processed_at": "2026-11-28T01:21:29.035484+05:30"
     },
     {
       "symbol": "MKJEWELS",
@@ -289,6 +399,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/MK123_24112026214754_MK_Results_300926_S.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "MKJEWELS|Not Specified|24-Nov-2026 21:49:25|https://nsearchives.nseindia.in/corporate/MK123_24112026214754_MK_Results_300926_S.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -299,7 +414,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174198+05:30"
+      "processed_at": "2026-11-28T01:21:29.035512+05:30"
     },
     {
       "symbol": "LEXUS",
@@ -342,6 +457,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/LEXUS_24112026171644_Outcome_Lexus.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "LEXUS|Not Specified|24-Nov-2026 17:19:10|https://nsearchives.nseindia.in/corporate/LEXUS_24112026171644_Outcome_Lexus.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -352,7 +472,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174219+05:30"
+      "processed_at": "2026-11-28T01:21:29.035539+05:30"
     },
     {
       "symbol": "SFCTECH",
@@ -395,6 +515,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "SFCTECH|Not Specified|23-Nov-2026 23:41:38|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -405,7 +530,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174236+05:30"
+      "processed_at": "2026-11-28T01:21:29.035559+05:30"
     },
     {
       "symbol": "KSERASERA",
@@ -448,6 +573,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/KSERASERA_23112026200705_OutcomeandUnauditedFinancialResults.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "KSERASERA|Not Specified|23-Nov-2026 20:07:28|https://nsearchives.nseindia.in/corporate/KSERASERA_23112026200705_OutcomeandUnauditedFinancialResults.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -458,7 +588,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174254+05:30"
+      "processed_at": "2026-11-28T01:21:29.035584+05:30"
     },
     {
       "symbol": "BCSSL",
@@ -501,6 +631,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/BCSSL_23112026191706_BoardMeetingOutcome.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "BCSSL|Not Specified|23-Nov-2026 19:17:27|https://nsearchives.nseindia.in/corporate/BCSSL_23112026191706_BoardMeetingOutcome.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -511,7 +646,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174273+05:30"
+      "processed_at": "2026-11-28T01:21:29.035606+05:30"
     },
     {
       "symbol": "ARSHIYA",
@@ -554,6 +689,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/ARSHIYA_23112026164019_11.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "ARSHIYA|Not Specified|23-Nov-2026 16:42:55|https://nsearchives.nseindia.in/corporate/ARSHIYA_23112026164019_11.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -564,7 +704,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174294+05:30"
+      "processed_at": "2026-11-28T01:21:29.035630+05:30"
     },
     {
       "symbol": "ARSHIYA",
@@ -607,6 +747,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/ARSHIYA_23112026160004_11.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "ARSHIYA|Not Specified|23-Nov-2026 16:10:18|https://nsearchives.nseindia.in/corporate/ARSHIYA_23112026160004_11.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -617,7 +762,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174314+05:30"
+      "processed_at": "2026-11-28T01:21:29.035654+05:30"
     },
     {
       "symbol": "GVPTECH",
@@ -660,6 +805,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/4THDIM_20112026191220_Financial_Results-Sep-26_Signed.pdf",
+        "reason": "No recognisable NSE standalone/consolidated results tables found"
+      },
       "id": "GVPTECH|Not Specified|20-Nov-2026 19:18:26|https://nsearchives.nseindia.in/corporate/4THDIM_20112026191220_Financial_Results-Sep-26_Signed.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -670,7 +820,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174332+05:30"
+      "processed_at": "2026-11-28T01:21:29.035676+05:30"
     },
     {
       "symbol": "VALECHAENG",
@@ -713,6 +863,11 @@
       },
       "data_status": "NSE announcement detected; financial figures not yet verified",
       "financial_units": "Not specified",
+      "pdf_extraction": {
+        "status": "not_extracted",
+        "source_url": "https://nsearchives.nseindia.in/corporate/VALECHAENG_20112026190422_Outcome_of_Board_Meeting.pdf",
+        "reason": "No reliable financial figures found in the PDF"
+      },
       "id": "VALECHAENG|Not Specified|20-Nov-2026 19:06:44|https://nsearchives.nseindia.in/corporate/VALECHAENG_20112026190422_Outcome_of_Board_Meeting.pdf",
       "category": "results",
       "telegram_notified": false,
@@ -723,7 +878,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T01:15:29.174352+05:30"
+      "processed_at": "2026-11-28T01:21:29.035700+05:30"
     }
   ]
 }
