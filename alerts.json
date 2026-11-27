@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T21:10:40+05:30",
+ "updated": "2026-11-27T21:15:32+05:30",
  "folders": [
   {
    "id": "emas",
@@ -10456,7 +10456,7 @@
    "trailing_pe": 71.31,
    "price_to_book": 27.41,
    "trailing_eps": 5.09,
-   "enterprise_value": 21614.84,
+   "enterprise_value": 22269.63,
    "fifty_two_week_high": 404.0,
    "fifty_two_week_low": 115.57,
    "sector": "Industrials",
@@ -45105,7 +45105,7 @@
    "trailing_pe": 80.12,
    "price_to_book": 32.2,
    "trailing_eps": 0.85,
-   "enterprise_value": 3504.87,
+   "enterprise_value": 3493.02,
    "fifty_two_week_high": 71.29,
    "fifty_two_week_low": 24.27,
    "sector": "Consumer Cyclical",
