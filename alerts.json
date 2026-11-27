@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T21:30:51+05:30",
+ "updated": "2026-11-27T21:35:34+05:30",
  "folders": [
   {
    "id": "emas",
@@ -257,7 +257,7 @@
    "trailing_pe": 12.62,
    "price_to_book": 2.97,
    "trailing_eps": 10.3,
-   "enterprise_value": 4124.0,
+   "enterprise_value": 4119.95,
    "fifty_two_week_high": 189.0,
    "fifty_two_week_low": 117.12,
    "sector": "Industrials",
@@ -9712,7 +9712,7 @@
    "trailing_pe": 20.56,
    "price_to_book": 3.34,
    "trailing_eps": 0.59,
-   "enterprise_value": 3336.27,
+   "enterprise_value": 3381.63,
    "fifty_two_week_high": 14.47,
    "fifty_two_week_low": 7.94,
    "sector": "Industrials",
@@ -44606,7 +44606,7 @@
    "trailing_pe": 23.36,
    "price_to_book": 2.56,
    "trailing_eps": 3.71,
-   "enterprise_value": 683.8,
+   "enterprise_value": 684.4,
    "fifty_two_week_high": 87.95,
    "fifty_two_week_low": 40.1,
    "sector": "Industrials",
@@ -45482,7 +45482,7 @@
    "trailing_pe": 23.36,
    "price_to_book": 2.56,
    "trailing_eps": 3.71,
-   "enterprise_value": 683.8,
+   "enterprise_value": 684.4,
    "fifty_two_week_high": 87.95,
    "fifty_two_week_low": 40.1,
    "sector": "Industrials",
