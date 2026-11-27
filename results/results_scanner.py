@@ -1,3 +1,4 @@
+
 """
 Share Sanket - Results Scanner
 
@@ -42,6 +43,48 @@ CHAT_ID = os.getenv("RESULTS_TELEGRAM_CHAT_ID", "")
 SCOPES = ("standalone", "consolidated")
 
 RESULTS_CATEGORY = "results"
+
+
+# Only accept genuine financial-results announcements.
+RESULT_KEYWORDS = (
+    "financial results",
+    "unaudited financial results",
+    "audited financial results",
+    "quarterly results",
+    "quarterly financial results",
+    "half yearly results",
+    "half-yearly results",
+    "half yearly financial results",
+    "half-yearly financial results",
+    "annual results",
+    "annual financial results",
+    "standalone results",
+    "consolidated results",
+    "results for the period ended",
+    "results for the quarter ended",
+    "results for the year ended",
+)
+
+
+def is_financial_results_announcement(item):
+    """
+    Accept only Outcome of Board Meeting announcements
+    whose details explicitly refer to financial results.
+    """
+
+    if not isinstance(item, dict):
+        return False
+
+    subject = str(item.get("subject", "")).lower().strip()
+    details = str(item.get("details", "")).lower().strip()
+
+    if "outcome of board meeting" not in subject:
+        return False
+
+    return any(
+        keyword in details
+        for keyword in RESULT_KEYWORDS
+    )
 
 
 def now_ist():
@@ -262,7 +305,10 @@ def enrich_financials(item):
     # Support older announcements using the legacy field.
     legacy = item.get("financials", {})
 
-    if not has_financial_data(enriched["standalone"]) and not has_financial_data(enriched["consolidated"]):
+    if (
+        not has_financial_data(enriched["standalone"])
+        and not has_financial_data(enriched["consolidated"])
+    ):
         if has_financial_data(legacy):
             enriched["consolidated"] = enrich_financial_record(legacy)
 
@@ -516,6 +562,17 @@ def main():
         print("Invalid announcements format.")
         return
 
+    # Filter the incoming source records.
+    rejected_source = sum(
+        1 for item in announcements
+        if not is_financial_results_announcement(item)
+    )
+
+    announcements = [
+        item for item in announcements
+        if is_financial_results_announcement(item)
+    ]
+
     alerts = alerts_data.get("alerts", [])
     history = history_data.get("results", [])
     calendar = calendar_data.get("calendar", [])
@@ -545,6 +602,30 @@ def main():
         stable_id(item): item
         for item in calendar
         if isinstance(item, dict)
+    }
+
+    # Remove previously misclassified announcements.
+    old_alerts = {
+        key: item
+        for key, item in old_alerts.items()
+        if is_financial_results_announcement(item)
+    }
+
+    old_history = {
+        key: item
+        for key, item in old_history.items()
+        if is_financial_results_announcement(item)
+    }
+
+    # Calendar entries do not contain subject/details.
+    # Retain calendar entries only when their IDs exist
+    # in the filtered Results alerts or history.
+    valid_ids = set(old_alerts) | set(old_history)
+
+    old_calendar = {
+        key: item
+        for key, item in old_calendar.items()
+        if key in valid_ids
     }
 
     processed = 0
@@ -661,6 +742,7 @@ def main():
     print("SHARE SANKET RESULTS SCANNER")
     print("--------------------------------")
     print(f"Announcements processed: {processed}")
+    print(f"Rejected unrelated announcements: {rejected_source}")
     print(f"Total results in history: {len(final_history)}")
     print("Results scanner completed.")
 
