@@ -350,12 +350,8 @@ def normalize_announcement(item):
             item.get("attachment_url", "")
         ).strip(),
         "result_scope": classify_result_scope(combined_text),
-
         "financials_by_scope": financials_by_scope,
-
-        # Retain legacy field for older scanner compatibility.
         "financials": legacy_financials,
-
         "expectations": expectations,
         "data_status": item.get(
             "data_status",
@@ -448,25 +444,40 @@ def merge_preserving_verified_data(old, new):
 
 def fetch_nse_announcements():
     """
-    Fetch recent announcements directly from the official NSE API.
+    Fetch recent announcements from the official NSE API.
+
+    Each retry creates a fresh session and repeats the NSE
+    homepage/filings-page handshake to obtain fresh cookies.
     Returns raw records; filtering and validation happen downstream.
     """
+
     start = date.today() - timedelta(days=NSE_LOOKBACK_DAYS)
     end = date.today()
 
-    session = requests.Session()
-    session.headers.update(NSE_HEADERS)
-
     last_error = None
-    for attempt in range(1, 4):
+    max_attempts = 4
+
+    for attempt in range(1, max_attempts + 1):
+        session = None
+
         try:
-            # NSE requires a homepage visit to establish session cookies.
-            # Prepare the NSE session using the same page sequence
-            # already used by the Corporate Actions scanner.
-            home = session.get(NSE_HOME, timeout=25)
+            # A fresh session is important because NSE may reject
+            # stale or invalid session cookies.
+            session = requests.Session()
+            session.headers.update(NSE_HEADERS)
+
+            # Establish fresh NSE cookies.
+            home = session.get(
+                NSE_HOME,
+                timeout=(15, 25),
+            )
             home.raise_for_status()
 
-            filings_page = session.get(NSE_FILINGS_PAGE, timeout=25)
+            # Visit the corporate filings page before the API.
+            filings_page = session.get(
+                NSE_FILINGS_PAGE,
+                timeout=(15, 25),
+            )
             filings_page.raise_for_status()
 
             response = session.get(
@@ -476,17 +487,25 @@ def fetch_nse_announcements():
                     "from_date": start.strftime("%d-%m-%Y"),
                     "to_date": end.strftime("%d-%m-%Y"),
                 },
-                timeout=35,
+                timeout=(20, 30),
             )
             response.raise_for_status()
+
             payload = response.json()
 
             if isinstance(payload, dict):
-                payload = payload.get("data", payload.get("rows", []))
+                payload = payload.get(
+                    "data",
+                    payload.get("rows", [])
+                )
+
             if not isinstance(payload, list):
-                raise ValueError("NSE returned an unexpected announcements response")
+                raise ValueError(
+                    "NSE returned an unexpected announcements response"
+                )
 
             announcements = []
+
             for row in payload:
                 if not isinstance(row, dict):
                     continue
@@ -498,7 +517,14 @@ def fetch_nse_announcements():
                 published_at = str(row.get("an_dt") or "").strip()
                 pdf_url = str(row.get("attchmntFile") or "").strip()
 
-                if not (subject and details and symbol and company and published_at and pdf_url):
+                if not (
+                    subject
+                    and details
+                    and symbol
+                    and company
+                    and published_at
+                    and pdf_url
+                ):
                     continue
 
                 if pdf_url.startswith("/"):
@@ -518,7 +544,10 @@ def fetch_nse_announcements():
                     "period": "Not Specified",
                     "financials": {},
                     "financials_by_scope": {},
-                    "data_status": "NSE announcement detected; financial figures not yet verified",
+                    "data_status": (
+                        "NSE announcement detected; "
+                        "financial figures not yet verified"
+                    ),
                     "financial_units": "Not specified",
                 })
 
@@ -527,15 +556,27 @@ def fetch_nse_announcements():
                 f"({start.isoformat()} to {end.isoformat()}); "
                 f"usable records: {len(announcements)}"
             )
+
             return announcements
 
         except Exception as exc:
             last_error = exc
-            print(f"NSE fetch attempt {attempt}/3 failed: {exc}")
-            if attempt < 3:
-                time.sleep(attempt * 3)
 
-    raise RuntimeError(f"Unable to fetch NSE announcements: {last_error}")
+            print(
+                f"NSE fetch attempt {attempt}/{max_attempts} failed: {exc}"
+            )
+
+            if attempt < max_attempts:
+                time.sleep(attempt * 5)
+
+        finally:
+            if session is not None:
+                session.close()
+
+    raise RuntimeError(
+        f"Unable to fetch NSE announcements after "
+        f"{max_attempts} attempts: {last_error}"
+    )
 
 
 def read_inbox():
@@ -580,12 +621,17 @@ def read_inbox():
 def main():
     # Keep manually verified inbox entries and add live NSE announcements.
     announcements = read_inbox()
+
     try:
         live_announcements = fetch_nse_announcements()
         announcements.extend(live_announcements)
+
     except Exception as exc:
         # Do not lose or overwrite existing/inbox data if NSE is temporarily down.
-        print(f"WARNING: Live NSE refresh failed; processing inbox records only: {exc}")
+        print(
+            "WARNING: Live NSE refresh failed; "
+            f"processing inbox records only: {exc}"
+        )
 
     existing = {"announcements": []}
 
@@ -617,6 +663,7 @@ def main():
                 item
             )
             update_count += 1
+
         else:
             unique[key] = item
             new_count += 1
