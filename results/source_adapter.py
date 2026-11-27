@@ -1,7 +1,7 @@
 """
 Share Sanket - Results Source Adapter
 
-Processes official NSE/BSE financial-results announcements.
+Processes official NSE financial-results announcements.
 
 Supports:
 - Standalone financial results
@@ -17,7 +17,8 @@ Input:
 Output:
     results/source_announcements.json
 
-This adapter does not scrape PDFs or invent financial figures.
+Only Outcome of Board Meeting announcements relating to
+financial results are accepted.
 """
 
 import json
@@ -63,7 +64,13 @@ RESULT_KEYWORDS = [
     "unaudited financial results",
     "audited financial results",
     "quarterly results",
+    "quarterly financial results",
+    "half yearly results",
+    "half-yearly results",
+    "half yearly financial results",
+    "half-yearly financial results",
     "annual results",
+    "annual financial results",
     "standalone results",
     "consolidated results",
     "results for the period ended",
@@ -209,14 +216,6 @@ def normalize_financial_scopes(item):
     """
     Store standalone and consolidated figures separately.
 
-    Preferred input:
-        financials_by_scope:
-            standalone: {...}
-            consolidated: {...}
-
-    Legacy input:
-        financials: {...}
-
     Legacy figures are not automatically assigned to either scope.
     """
 
@@ -232,7 +231,6 @@ def normalize_financial_scopes(item):
             supplied.get(scope, {})
         )
 
-    # Preserve legacy financials without guessing their scope.
     legacy = normalize_financials(
         item.get("financials", {})
     )
@@ -241,8 +239,13 @@ def normalize_financial_scopes(item):
 
 
 def is_results_announcement(item):
-    subject = str(item.get("subject", "")).lower()
-    details = str(item.get("details", "")).lower()
+    """
+    Accept only Outcome of Board Meeting announcements
+    whose details explicitly refer to financial results.
+    """
+
+    subject = str(item.get("subject", "")).lower().strip()
+    details = str(item.get("details", "")).lower().strip()
 
     if BOARD_MEETING_SUBJECT not in subject:
         return False
@@ -446,13 +449,11 @@ def fetch_nse_announcements():
     """
     Fetch recent announcements from the official NSE API.
 
-    Each retry creates a fresh session and visits the corporate
-    filings page to obtain fresh cookies.
+    Visit the filings page directly to obtain NSE cookies.
+    The homepage is intentionally skipped because it can return 403.
 
-    The NSE homepage is intentionally not requested because it
-    can return HTTP 403 while the filings page and API are accessible.
-
-    Returns raw records; filtering and validation happen downstream.
+    Only qualifying Outcome of Board Meeting announcements
+    are returned.
     """
 
     start = date.today() - timedelta(days=NSE_LOOKBACK_DAYS)
@@ -465,19 +466,17 @@ def fetch_nse_announcements():
         session = None
 
         try:
-            # A fresh session is important because NSE may reject
-            # stale or invalid session cookies.
             session = requests.Session()
             session.headers.update(NSE_HEADERS)
 
             # Visit the corporate filings page directly.
-            # Do not request NSE_HOME because it can return HTTP 403.
             filings_page = session.get(
                 NSE_FILINGS_PAGE,
                 timeout=(15, 25),
             )
             filings_page.raise_for_status()
 
+            # Fetch official NSE announcements.
             response = session.get(
                 NSE_ANNOUNCEMENTS_API,
                 params={
@@ -503,6 +502,7 @@ def fetch_nse_announcements():
                 )
 
             announcements = []
+            rejected_count = 0
 
             for row in payload:
                 if not isinstance(row, dict):
@@ -523,6 +523,7 @@ def fetch_nse_announcements():
                     and published_at
                     and pdf_url
                 ):
+                    rejected_count += 1
                     continue
 
                 if pdf_url.startswith("/"):
@@ -530,7 +531,7 @@ def fetch_nse_announcements():
                 elif pdf_url.startswith("http://"):
                     pdf_url = "https://" + pdf_url[len("http://"):]
 
-                announcements.append({
+                announcement = {
                     "symbol": symbol,
                     "company": company,
                     "subject": subject,
@@ -547,12 +548,27 @@ def fetch_nse_announcements():
                         "financial figures not yet verified"
                     ),
                     "financial_units": "Not specified",
-                })
+                }
+
+                # IMPORTANT:
+                # Only accept Outcome of Board Meeting announcements
+                # that explicitly mention financial results in details.
+                if not is_results_announcement(announcement):
+                    rejected_count += 1
+                    continue
+
+                announcements.append(announcement)
 
             print(
                 f"NSE announcements fetched: {len(payload)} "
-                f"({start.isoformat()} to {end.isoformat()}); "
-                f"usable records: {len(announcements)}"
+                f"({start.isoformat()} to {end.isoformat()})"
+            )
+            print(
+                f"Matching financial-results announcements: "
+                f"{len(announcements)}"
+            )
+            print(
+                f"Rejected unrelated announcements: {rejected_count}"
             )
 
             return announcements
@@ -607,7 +623,7 @@ def read_inbox():
                     records.append(result)
                 else:
                     print(
-                        "SKIPPED: Not a financial results announcement"
+                        "SKIPPED: Not a qualifying financial-results announcement"
                     )
 
             except ValueError as exc:
@@ -617,7 +633,7 @@ def read_inbox():
 
 
 def main():
-    # Keep manually verified inbox entries and add live NSE announcements.
+    # Keep manually verified inbox entries and add filtered live NSE data.
     announcements = read_inbox()
 
     try:
