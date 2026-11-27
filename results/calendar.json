@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T22:10:28.294270+05:30",
+  "updated": "2026-11-27T22:15:25.920022+05:30",
   "calendar": [
     {
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
@@ -23009,6 +23009,26 @@
       "published_at": "27-Nov-2026 22:00:17",
       "source": "NSE",
       "source_url": "https://nsearchives.nseindia.in/corporate/TVSMOTOR_27112026215550_NSEBSEArmadoangola_sd.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "ACEVECTOR|Not Specified|27-Nov-2026 22:11:13|https://nsearchives.nseindia.in/corporate/SNAPDEAL_27112026221023_Notice_of_19th_AGM_Cover_letter_AV_Signed.pdf",
+      "symbol": "ACEVECTOR",
+      "company": "AceVector Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 22:11:13",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/SNAPDEAL_27112026221023_Notice_of_19th_AGM_Cover_letter_AV_Signed.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "VISL|Not Specified|27-Nov-2026 22:10:46|https://nsearchives.nseindia.in/corporate/VEDANTAIRONSTEEL_27112026220909_SE_Intimation_-_PB_outcome_signed.pdf",
+      "symbol": "VISL",
+      "company": "Vedanta Iron and Steel Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 22:10:46",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/VEDANTAIRONSTEEL_27112026220909_SE_Intimation_-_PB_outcome_signed.pdf",
       "status": "Announced"
     }
   ]
