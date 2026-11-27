@@ -3,7 +3,7 @@
     "results": true,
     "ema": true,
     "stops": false,
-    "order_wins": false,
+    "order_wins": true,
     "high_volume": false,
     "splits_buybacks": false,
     "promoter_deals": false,
