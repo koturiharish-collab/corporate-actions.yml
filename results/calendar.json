@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T22:00:42.104128+05:30",
+  "updated": "2026-11-27T22:05:22.632285+05:30",
   "calendar": [
     {
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
@@ -22989,6 +22989,26 @@
       "published_at": "27-Nov-2026 21:45:55",
       "source": "NSE",
       "source_url": "https://nsearchives.nseindia.in/corporate/ujwal727_27112026214500_BSENSEInvestorMeetingKotakSecuritiesConferenceHeld27November2026.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "CARYSIL|Not Specified|27-Nov-2026 22:03:20|https://nsearchives.nseindia.in/corporate/ACRYSIL_27112026220309_Intimation271126.pdf",
+      "symbol": "CARYSIL",
+      "company": "CARYSIL LIMITED",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 22:03:20",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/ACRYSIL_27112026220309_Intimation271126.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "TVSMOTOR|Not Specified|27-Nov-2026 22:00:17|https://nsearchives.nseindia.in/corporate/TVSMOTOR_27112026215550_NSEBSEArmadoangola_sd.pdf",
+      "symbol": "TVSMOTOR",
+      "company": "TVS Motor Company Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 22:00:17",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/TVSMOTOR_27112026215550_NSEBSEArmadoangola_sd.pdf",
       "status": "Announced"
     }
   ]
