@@ -34,7 +34,7 @@ jobs:
       - name: Install order-alert dependencies
         run: pip install -r requirements-orders.txt
 
-      - name: Check NSE and BSE order announcements
+      - name: Check NSE order announcements
         env:
           RESULTS_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           RESULTS_TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
