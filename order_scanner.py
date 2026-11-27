@@ -3,7 +3,6 @@ import json
 import os
 import re
 import tempfile
-import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -40,7 +39,7 @@ HEADERS = {
     "Accept": "application/json, text/plain, */*",
 }
 
-# Accept only this exact exchange announcement type.
+# Accept only this exact NSE announcement type.
 EXACT_ORDER_ANNOUNCEMENT = re.compile(
     r"bagging\s*/\s*receiving\s+of\s+orders?\s*/\s*contracts?",
     re.I,
@@ -172,7 +171,7 @@ def order_value_crore(text):
 
 
 def company_fundamentals(symbol):
-    """Return Yahoo Finance company metrics; missing values remain None."""
+    """Return Yahoo Finance NSE company metrics; missing values remain None."""
     if yf is None or not symbol:
         return {}
 
@@ -180,7 +179,7 @@ def company_fundamentals(symbol):
     if symbol in _fundamentals_cache:
         return dict(_fundamentals_cache[symbol])
 
-    ticker = f"{symbol}.BO" if symbol.isdigit() else f"{symbol}.NS"
+    ticker = f"{symbol}.NS"
     result = {}
     try:
         info = yf.Ticker(ticker).info or {}
@@ -274,62 +273,6 @@ def fetch_nse(start, end):
             "time": row.get("an_dt") or "",
             "link": row.get("attchmntFile") or "",
         })
-    return out
-
-
-def fetch_bse(start, end):
-    out = []
-    headers = {
-        **HEADERS,
-        "Referer": "https://www.bseindia.com/",
-        "Origin": "https://www.bseindia.com",
-    }
-
-    for page in range(1, 11):
-        response = requests.get(
-            "https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w",
-            params={
-                "pageno": page,
-                "strCat": "-1",
-                "subcategory": "-1",
-                "strPrevDate": start.strftime("%Y%m%d"),
-                "strToDate": end.strftime("%Y%m%d"),
-                "strSearch": "P",
-                "strscrip": "",
-                "strType": "C",
-            },
-            headers=headers,
-            timeout=20,
-        )
-        response.raise_for_status()
-        payload = response.json()
-
-        if not isinstance(payload, dict):
-            raise ValueError("BSE returned an unexpected announcements response")
-
-        rows = payload.get("Table") or []
-
-        for row in rows:
-            attachment = row.get("ATTACHMENTNAME") or ""
-            out.append({
-                "id": f"BSE:{row.get('NEWSID') or row.get('SCRIP_CD')}:{row.get('NEWS_DT')}",
-                "exchange": "BSE",
-                "company": row.get("SLONGNAME") or "",
-                "symbol": str(row.get("SCRIP_CD") or ""),
-                "title": row.get("HEADLINE") or "",
-                "details": row.get("NEWSSUB") or "",
-                "category": row.get("SUBCATNAME") or row.get("CATEGORYNAME") or "",
-                "time": row.get("NEWS_DT") or "",
-                "link": (
-                    "https://www.bseindia.com/xml-data/corpfiling/AttachLive/" + attachment
-                    if attachment else ""
-                ),
-            })
-
-        if len(rows) < 50:
-            break
-        time.sleep(0.5)
-
     return out
 
 
@@ -456,24 +399,19 @@ def main():
     seen.update(old_order_ids)
 
     fetched = []
-    successful_exchanges = set()
 
-    # If an exchange fetch fails, its previous alerts are retained for safety.
-    for name, fetcher in (("NSE", fetch_nse), ("BSE", fetch_bse)):
-        try:
-            rows = fetcher(start, today)
-            if not isinstance(rows, list):
-                raise ValueError(f"{name} returned an invalid response")
+    try:
+        fetched = fetch_nse(start, today)
+        if not isinstance(fetched, list):
+            raise ValueError("NSE returned an invalid response")
 
-            print(f"{name}: {len(rows)} announcements")
-            fetched.extend(rows)
-            successful_exchanges.add(name)
+        print(f"NSE: {len(fetched)} announcements")
 
-        except Exception as error:
-            print(f"{name} scan failed; previous {name} orders will be retained: {error}")
+    except Exception as error:
+        print(f"NSE scan failed; previous NSE orders will be retained: {error}")
+        fetched = []
 
-    # Preserve every existing alert, including historical Orders. A successful
-    # exchange scan must not delete orders published by an earlier scan.
+    # Preserve every existing alert, including historical Orders.
     retained_alerts = []
     old_orders_by_source = {}
 
@@ -508,14 +446,13 @@ def main():
 
         newly_seen_ids.add(source_id)
 
-        # Refresh an existing order from the latest filing without creating a
-        # duplicate alert or sending another Telegram notification.
+        # Refresh an existing order without creating a duplicate or
+        # sending another Telegram notification.
         existing = old_orders_by_source.get(source_id)
         if existing is not None:
             refreshed = build_alert(item)
 
-            # Notification history and original detection time are historical
-            # facts; never reset them during a data refresh.
+            # Preserve notification history and original detection time.
             for key, value in refreshed.items():
                 if key in ("telegram_notified", "telegram_notified_at", "detected_at"):
                     continue
@@ -544,8 +481,7 @@ def main():
     else:
         print("order_wins is off in preferences.json: saved, not sent.")
 
-    # Show new orders first, followed by all historical alerts. Other alert
-    # categories remain unchanged.
+    # Show new orders first, followed by all historical alerts.
     data["alerts"] = new_order_alerts + retained_alerts
     data["updated"] = now_ist()
 
