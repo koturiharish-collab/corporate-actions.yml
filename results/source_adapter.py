@@ -44,6 +44,7 @@ ALLOWED_DOMAINS = {
 }
 
 NSE_HOME = "https://www.nseindia.com"
+NSE_FILINGS_PAGE = "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
 NSE_ANNOUNCEMENTS_API = "https://www.nseindia.com/api/corporate-announcements"
 NSE_LOOKBACK_DAYS = 7
 NSE_HEADERS = {
@@ -460,8 +461,13 @@ def fetch_nse_announcements():
     for attempt in range(1, 4):
         try:
             # NSE requires a homepage visit to establish session cookies.
+            # Prepare the NSE session using the same page sequence
+            # already used by the Corporate Actions scanner.
             home = session.get(NSE_HOME, timeout=25)
             home.raise_for_status()
+
+            filings_page = session.get(NSE_FILINGS_PAGE, timeout=25)
+            filings_page.raise_for_status()
 
             response = session.get(
                 NSE_ANNOUNCEMENTS_API,
