@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T21:20:24.838435+05:30",
+  "updated": "2026-11-27T21:25:22.863445+05:30",
   "calendar": [
     {
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
@@ -22909,6 +22909,26 @@
       "published_at": "20-Nov-2026 00:19:14",
       "source": "NSE",
       "source_url": "https://nsearchives.nseindia.in/corporate/AVG_20112026001845_AVG_Investors_Presentation_Q2_-_Stock_EX.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "NAZARA|Not Specified|27-Nov-2026 21:21:01|https://nsearchives.nseindia.in/corporate/NAZARA_27112026211959_IntimationInvestorMeet.pdf",
+      "symbol": "NAZARA",
+      "company": "Nazara Technologies Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 21:21:01",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/NAZARA_27112026211959_IntimationInvestorMeet.pdf",
+      "status": "Announced"
+    },
+    {
+      "id": "DEVYANI|Not Specified|27-Nov-2026 21:20:49|https://nsearchives.nseindia.in/corporate/DEVYANI_ROID_105310_KMP_Doc.zip",
+      "symbol": "DEVYANI",
+      "company": "Devyani International Limited",
+      "period": "Not Specified",
+      "published_at": "27-Nov-2026 21:20:49",
+      "source": "NSE",
+      "source_url": "https://nsearchives.nseindia.in/corporate/DEVYANI_ROID_105310_KMP_Doc.zip",
       "status": "Announced"
     }
   ]
