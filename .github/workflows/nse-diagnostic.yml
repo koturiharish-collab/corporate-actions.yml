@@ -1,0 +1,74 @@
+
+name: NSE Live Connectivity Diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-nse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Test NSE endpoints
+        run: |
+          python - <<'PY'
+          import requests
+          import time
+          from datetime import date, timedelta
+
+          session = requests.Session()
+          session.headers.update({
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36",
+              "Accept": "application/json, text/plain, */*",
+              "Accept-Language": "en-US,en;q=0.9",
+              "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
+          })
+
+          urls = [
+              "https://www.nseindia.com",
+              "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
+          ]
+
+          for url in urls:
+              try:
+                  start = time.time()
+                  response = session.get(url, timeout=20)
+                  print("URL:", url)
+                  print("HTTP:", response.status_code)
+                  print("Time:", round(time.time() - start, 2), "seconds")
+                  print("Cookies:", len(session.cookies))
+              except Exception as exc:
+                  print("ERROR:", url, str(exc))
+
+          try:
+              today = date.today()
+              response = session.get(
+                  "https://www.nseindia.com/api/corporate-announcements",
+                  params={
+                      "index": "equities",
+                      "from_date": (today - timedelta(days=2)).strftime("%d-%m-%Y"),
+                      "to_date": today.strftime("%d-%m-%Y")
+                  },
+                  timeout=30
+              )
+              print("API HTTP:", response.status_code)
+              print("API content type:", response.headers.get("Content-Type"))
+              response.raise_for_status()
+              data = response.json()
+              if isinstance(data, dict):
+                  data = data.get("data", data.get("rows", []))
+              print("Announcement rows:", len(data) if isinstance(data, list) else "Unexpected format")
+              if isinstance(data, list):
+                  for row in data:
+                      if isinstance(row, dict):
+                          subject = str(row.get("desc", ""))
+                          details = str(row.get("attchmntText", ""))
+                          if "financial" in (subject + " " + details).lower():
+                              print("MATCH:", row.get("symbol"), subject, row.get("an_dt"))
+          except Exception as exc:
+              print("API ERROR:", str(exc))
+          PY
