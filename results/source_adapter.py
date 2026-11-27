@@ -23,7 +23,10 @@ This adapter does not scrape PDFs or invent financial figures.
 
 import json
 import math
-from datetime import datetime, timezone
+import time
+
+import requests
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -37,9 +40,21 @@ ALLOWED_DOMAINS = {
     "www.nseindia.com",
     "nseindia.in",
     "www.nseindia.in",
-    "bseindia.com",
-    "www.bseindia.com",
     "nsearchives.nseindia.in",
+}
+
+NSE_HOME = "https://www.nseindia.com"
+NSE_ANNOUNCEMENTS_API = "https://www.nseindia.com/api/corporate-announcements"
+NSE_LOOKBACK_DAYS = 7
+NSE_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0 Safari/537.36"
+    ),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
 }
 
 RESULT_KEYWORDS = [
@@ -275,8 +290,8 @@ def validate_announcement(item):
 
     source = str(item["source"]).strip().upper()
 
-    if source not in {"NSE", "BSE"}:
-        return False, "Source must be NSE or BSE"
+    if source != "NSE":
+        return False, "Only NSE announcements are accepted"
 
     if not is_official_url(item["source_url"]):
         return False, "Invalid official announcement URL"
@@ -430,6 +445,93 @@ def merge_preserving_verified_data(old, new):
     return merged
 
 
+def fetch_nse_announcements():
+    """
+    Fetch recent announcements directly from the official NSE API.
+    Returns raw records; filtering and validation happen downstream.
+    """
+    start = date.today() - timedelta(days=NSE_LOOKBACK_DAYS)
+    end = date.today()
+
+    session = requests.Session()
+    session.headers.update(NSE_HEADERS)
+
+    last_error = None
+    for attempt in range(1, 4):
+        try:
+            # NSE requires a homepage visit to establish session cookies.
+            home = session.get(NSE_HOME, timeout=25)
+            home.raise_for_status()
+
+            response = session.get(
+                NSE_ANNOUNCEMENTS_API,
+                params={
+                    "index": "equities",
+                    "from_date": start.strftime("%d-%m-%Y"),
+                    "to_date": end.strftime("%d-%m-%Y"),
+                },
+                timeout=35,
+            )
+            response.raise_for_status()
+            payload = response.json()
+
+            if isinstance(payload, dict):
+                payload = payload.get("data", payload.get("rows", []))
+            if not isinstance(payload, list):
+                raise ValueError("NSE returned an unexpected announcements response")
+
+            announcements = []
+            for row in payload:
+                if not isinstance(row, dict):
+                    continue
+
+                subject = str(row.get("desc") or "").strip()
+                details = str(row.get("attchmntText") or "").strip()
+                symbol = str(row.get("symbol") or "").strip().upper()
+                company = str(row.get("sm_name") or "").strip()
+                published_at = str(row.get("an_dt") or "").strip()
+                pdf_url = str(row.get("attchmntFile") or "").strip()
+
+                if not (subject and details and symbol and company and published_at and pdf_url):
+                    continue
+
+                if pdf_url.startswith("/"):
+                    pdf_url = "https://www.nseindia.com" + pdf_url
+                elif pdf_url.startswith("http://"):
+                    pdf_url = "https://" + pdf_url[len("http://"):]
+
+                announcements.append({
+                    "symbol": symbol,
+                    "company": company,
+                    "subject": subject,
+                    "details": details,
+                    "published_at": published_at,
+                    "source": "NSE",
+                    "source_url": pdf_url,
+                    "attachment_url": pdf_url,
+                    "period": "Not Specified",
+                    "financials": {},
+                    "financials_by_scope": {},
+                    "data_status": "NSE announcement detected; financial figures not yet verified",
+                    "financial_units": "Not specified",
+                })
+
+            print(
+                f"NSE announcements fetched: {len(payload)} "
+                f"({start.isoformat()} to {end.isoformat()}); "
+                f"usable records: {len(announcements)}"
+            )
+            return announcements
+
+        except Exception as exc:
+            last_error = exc
+            print(f"NSE fetch attempt {attempt}/3 failed: {exc}")
+            if attempt < 3:
+                time.sleep(attempt * 3)
+
+    raise RuntimeError(f"Unable to fetch NSE announcements: {last_error}")
+
+
 def read_inbox():
     INBOX_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -470,7 +572,14 @@ def read_inbox():
 
 
 def main():
+    # Keep manually verified inbox entries and add live NSE announcements.
     announcements = read_inbox()
+    try:
+        live_announcements = fetch_nse_announcements()
+        announcements.extend(live_announcements)
+    except Exception as exc:
+        # Do not lose or overwrite existing/inbox data if NSE is temporarily down.
+        print(f"WARNING: Live NSE refresh failed; processing inbox records only: {exc}")
 
     existing = {"announcements": []}
 
