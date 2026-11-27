@@ -1,3 +1,4 @@
+
 name: Share Sanket - Results Scanner
 
 on:
@@ -11,20 +12,21 @@ permissions:
   id-token: write
 
 concurrency:
-  group: sharesanket-results
+  group: sharesanket-results-publisher
   cancel-in-progress: false
 
 jobs:
   validate:
     name: Validate Results Module
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,29 +38,68 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pypdf
 
-      - name: Run source_adapter.py to refresh source data
-        run: python results/source_adapter.py
-
-      - name: Run Results Scanner
-        run: python results/results_scanner.py
-
-      - name: Publish Results JSON files
+      - name: Publish Results JSON files safely
         id: save
-        if: success()
+        shell: bash
         run: |
+          set -e
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add results/alerts.json results/history.json results/calendar.json
+          MAX_ATTEMPTS=5
+          PUBLISHED=false
 
-          if ! git diff --cached --quiet; then
+          for attempt in $(seq 1 "$MAX_ATTEMPTS"); do
+
+            echo "========================================"
+            echo "Publishing attempt $attempt/$MAX_ATTEMPTS"
+            echo "========================================"
+
+            # Always start from the latest main branch.
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Rebuild Results data using the latest repository files.
+            python results/source_adapter.py
+            python results/results_scanner.py
+
+            # Stage only Results output files.
+            git add \
+              results/alerts.json \
+              results/history.json \
+              results/calendar.json
+
+            # No changes means no commit or deployment is necessary.
+            if git diff --cached --quiet; then
+              echo "No Results changes detected."
+              echo "site_changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
             git commit -m "Publish updated Share Sanket Results data"
-            git pull --rebase origin main
-            git push origin HEAD:main
-            echo "site_changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "site_changed=false" >> "$GITHUB_OUTPUT"
+
+            # Push directly. If another workflow updates main first,
+            # fetch the latest version and rebuild Results on the next attempt.
+            if git push origin HEAD:main; then
+              echo "Results data published successfully."
+              PUBLISHED=true
+              break
+            fi
+
+            echo "Push rejected because main changed."
+            echo "Retrying with the latest main branch..."
+
+            sleep 5
+
+          done
+
+          if [ "$PUBLISHED" != "true" ]; then
+            echo "ERROR: Could not publish Results after $MAX_ATTEMPTS attempts."
+            exit 1
           fi
+
+          echo "site_changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Configure GitHub Pages
         if: steps.save.outputs.site_changed == 'true'
