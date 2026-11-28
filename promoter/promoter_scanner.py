@@ -39,7 +39,7 @@ from pypdf import PdfReader
 PROMOTER_DIR = Path(__file__).resolve().parent
 ROOT = PROMOTER_DIR.parent
 
-ALERTS = ROOT / "alerts.json"
+ALERTS = PROMOTER_DIR / "alerts.json"
 STATE = PROMOTER_DIR / "promoter_state.json"
 
 IST = ZoneInfo("Asia/Kolkata")
