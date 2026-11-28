@@ -64,6 +64,37 @@
  ],
  "alerts": [
   {
+   "id": "order-NSE:106873511",
+   "source_id": "NSE:106873511",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "order_size": "UNDISCLOSED",
+   "announcement_category": "",
+   "exchange": "NSE",
+   "company": "Railtel Corporation Of India Limited",
+   "symbol": "RAILTEL",
+   "title": "Bagging/Receiving of orders/contracts",
+   "details": "Railtel Corporation Of India Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+   "order_value_crore": null,
+   "market_cap_crore": 7918.83,
+   "order_percent_of_mcap": null,
+   "trailing_pe": 23.39,
+   "forward_pe": 16.79,
+   "price_to_book": 3.35,
+   "trailing_eps": 10.55,
+   "enterprise_value": 7555.72,
+   "fifty_two_week_high": 391.0,
+   "fifty_two_week_low": 220.06,
+   "sector": "Communication Services",
+   "industry": "Telecom Services",
+   "time": "28-Nov-2026 17:06:00",
+   "link": "https://nsearchives.nseindia.in/corporate/RAILTEL_28112026170548_Railtel_Order_Book_Company_Rep_281126.pdf",
+   "detected_at": "2026-11-28T17:10:34+05:30",
+   "telegram_notified": true,
+   "telegram_notified_at": "2026-11-28T17:10:35+05:30"
+  },
+  {
    "id": "ema-death-dycl-2026-11-27",
    "time": "2026-11-28T16:17:04.246836+05:30",
    "folder": "emas",
@@ -1741,5 +1772,5 @@
    "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026163637_SEfilingPA26112026.pdf"
   }
  ],
- "updated": "2026-11-28T17:05:28+05:30"
+ "updated": "2026-11-28T17:10:35+05:30"
 }
