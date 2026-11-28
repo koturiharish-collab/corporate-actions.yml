@@ -366,7 +366,40 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
 
   function prep(d) {
-    var folders = d && Array.isArray(d.folders) ? d.folders : [];
+    var folders = d && Array.isArray(d.folders) ? d.folders.slice() : [];
+
+    // Independent feeds still need navigation entries in the main sidebar.
+    // Their alerts remain in results/alerts.json and promoter/alerts.json.
+    var virtualFolders = [
+      {
+        id: 'results',
+        name: 'Results',
+        subfolders: [
+          { id: 'quarterly', name: 'Quarterly Results' },
+          { id: 'profit-up', name: 'Profit Increased' },
+          { id: 'profit-down', name: 'Profit Decreased' }
+        ]
+      },
+      {
+        id: 'promoter',
+        name: 'Promoter Activity',
+        subfolders: [
+          { id: 'buying', name: '🟢 Promoter Buying' },
+          { id: 'pledge-release', name: '🟢 Promoter Pledge Release' },
+          { id: 'selling', name: '🔴 Promoter Selling' },
+          { id: 'pledge-creation', name: '🔴 Promoter Pledge Creation' },
+          { id: 'pledge-invocation', name: '🔴 Promoter Pledge Invocation' }
+        ]
+      }
+    ];
+
+    virtualFolders.forEach(function (virtualFolder) {
+      var existing = folders.some(function (folder) {
+        return folder && folder.id === virtualFolder.id;
+      });
+      if (!existing) folders.push(virtualFolder);
+    });
+
     var alerts = d && Array.isArray(d.alerts) ? d.alerts.slice() : [];
     alerts.sort(function (a, b) { return (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0); });
     var fmap = {};
@@ -1294,7 +1327,40 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
 
   function prep(d) {
-    var folders = d && Array.isArray(d.folders) ? d.folders : [];
+    var folders = d && Array.isArray(d.folders) ? d.folders.slice() : [];
+
+    // Independent feeds still need navigation entries in the main sidebar.
+    // Their alerts remain in results/alerts.json and promoter/alerts.json.
+    var virtualFolders = [
+      {
+        id: 'results',
+        name: 'Results',
+        subfolders: [
+          { id: 'quarterly', name: 'Quarterly Results' },
+          { id: 'profit-up', name: 'Profit Increased' },
+          { id: 'profit-down', name: 'Profit Decreased' }
+        ]
+      },
+      {
+        id: 'promoter',
+        name: 'Promoter Activity',
+        subfolders: [
+          { id: 'buying', name: '🟢 Promoter Buying' },
+          { id: 'pledge-release', name: '🟢 Promoter Pledge Release' },
+          { id: 'selling', name: '🔴 Promoter Selling' },
+          { id: 'pledge-creation', name: '🔴 Promoter Pledge Creation' },
+          { id: 'pledge-invocation', name: '🔴 Promoter Pledge Invocation' }
+        ]
+      }
+    ];
+
+    virtualFolders.forEach(function (virtualFolder) {
+      var existing = folders.some(function (folder) {
+        return folder && folder.id === virtualFolder.id;
+      });
+      if (!existing) folders.push(virtualFolder);
+    });
+
     var alerts = d && Array.isArray(d.alerts) ? d.alerts.slice() : [];
     alerts.sort(function (a, b) { return (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0); });
     var fmap = {};
@@ -1853,4 +1919,4 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
 
   <script type="module" src="firebase-members.js"></script>
 </body>
-</html>
+</html
