@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T16:00:43+05:30",
+ "updated": "2026-11-28T17:35:42+05:30",
  "folders": [
   {
    "id": "emas",
@@ -258,7 +258,7 @@
    "price_to_book": 1.51,
    "trailing_eps": 8.89,
    "enterprise_value": 1797.94,
-   "fifty_two_week_high": 397.0,
+   "fifty_two_week_high": 394.9,
    "fifty_two_week_low": 146.65,
    "sector": "Technology",
    "industry": "Software - Infrastructure"
@@ -9716,10 +9716,10 @@
    "exchange": "NSE",
    "market_cap_crore": 60702.01,
    "order_size": "UNDISCLOSED",
-   "trailing_pe": 25.65,
+   "trailing_pe": 25.25,
    "forward_pe": 20.12,
    "price_to_book": 5.72,
-   "trailing_eps": 89.74,
+   "trailing_eps": 91.16,
    "enterprise_value": 57302.08,
    "fifty_two_week_high": 2900.0,
    "fifty_two_week_low": 710.0,
