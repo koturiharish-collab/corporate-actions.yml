@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -366,38 +367,23 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
 
   function prep(d) {
-    var folders = d && Array.isArray(d.folders) ? d.folders.slice() : [];
+    // Keep the complete app navigation from the built-in seed configuration.
+    // The main alerts.json may contain only the folders used by its scanners.
+    var baseFolders = (typeof SEED !== 'undefined' && SEED && Array.isArray(SEED.folders))
+      ? SEED.folders.slice()
+      : [];
+    var incomingFolders = d && Array.isArray(d.folders) ? d.folders : [];
+    var folders = baseFolders.slice();
 
-    // Independent feeds still need navigation entries in the main sidebar.
-    // Their alerts remain in results/alerts.json and promoter/alerts.json.
-    var virtualFolders = [
-      {
-        id: 'results',
-        name: 'Results',
-        subfolders: [
-          { id: 'quarterly', name: 'Quarterly Results' },
-          { id: 'profit-up', name: 'Profit Increased' },
-          { id: 'profit-down', name: 'Profit Decreased' }
-        ]
-      },
-      {
-        id: 'promoter',
-        name: 'Promoter Activity',
-        subfolders: [
-          { id: 'buying', name: '🟢 Promoter Buying' },
-          { id: 'pledge-release', name: '🟢 Promoter Pledge Release' },
-          { id: 'selling', name: '🔴 Promoter Selling' },
-          { id: 'pledge-creation', name: '🔴 Promoter Pledge Creation' },
-          { id: 'pledge-invocation', name: '🔴 Promoter Pledge Invocation' }
-        ]
-      }
-    ];
-
-    virtualFolders.forEach(function (virtualFolder) {
-      var existing = folders.some(function (folder) {
-        return folder && folder.id === virtualFolder.id;
+    incomingFolders.forEach(function (incoming) {
+      if (!incoming || !incoming.id) return;
+      var index = folders.findIndex(function (folder) { return folder && folder.id === incoming.id; });
+      if (index === -1) folders.push(incoming);
+      else folders[index] = Object.assign({}, folders[index], incoming, {
+        subfolders: Array.isArray(incoming.subfolders) && incoming.subfolders.length
+          ? incoming.subfolders
+          : (folders[index].subfolders || [])
       });
-      if (!existing) folders.push(virtualFolder);
     });
 
     var alerts = d && Array.isArray(d.alerts) ? d.alerts.slice() : [];
@@ -1327,38 +1313,23 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
 
   function prep(d) {
-    var folders = d && Array.isArray(d.folders) ? d.folders.slice() : [];
+    // Keep the complete app navigation from the built-in seed configuration.
+    // The main alerts.json may contain only the folders used by its scanners.
+    var baseFolders = (typeof SEED !== 'undefined' && SEED && Array.isArray(SEED.folders))
+      ? SEED.folders.slice()
+      : [];
+    var incomingFolders = d && Array.isArray(d.folders) ? d.folders : [];
+    var folders = baseFolders.slice();
 
-    // Independent feeds still need navigation entries in the main sidebar.
-    // Their alerts remain in results/alerts.json and promoter/alerts.json.
-    var virtualFolders = [
-      {
-        id: 'results',
-        name: 'Results',
-        subfolders: [
-          { id: 'quarterly', name: 'Quarterly Results' },
-          { id: 'profit-up', name: 'Profit Increased' },
-          { id: 'profit-down', name: 'Profit Decreased' }
-        ]
-      },
-      {
-        id: 'promoter',
-        name: 'Promoter Activity',
-        subfolders: [
-          { id: 'buying', name: '🟢 Promoter Buying' },
-          { id: 'pledge-release', name: '🟢 Promoter Pledge Release' },
-          { id: 'selling', name: '🔴 Promoter Selling' },
-          { id: 'pledge-creation', name: '🔴 Promoter Pledge Creation' },
-          { id: 'pledge-invocation', name: '🔴 Promoter Pledge Invocation' }
-        ]
-      }
-    ];
-
-    virtualFolders.forEach(function (virtualFolder) {
-      var existing = folders.some(function (folder) {
-        return folder && folder.id === virtualFolder.id;
+    incomingFolders.forEach(function (incoming) {
+      if (!incoming || !incoming.id) return;
+      var index = folders.findIndex(function (folder) { return folder && folder.id === incoming.id; });
+      if (index === -1) folders.push(incoming);
+      else folders[index] = Object.assign({}, folders[index], incoming, {
+        subfolders: Array.isArray(incoming.subfolders) && incoming.subfolders.length
+          ? incoming.subfolders
+          : (folders[index].subfolders || [])
       });
-      if (!existing) folders.push(virtualFolder);
     });
 
     var alerts = d && Array.isArray(d.alerts) ? d.alerts.slice() : [];
