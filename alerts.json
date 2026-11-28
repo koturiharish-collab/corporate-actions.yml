@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T12:45:33+05:30",
+ "updated": "2026-11-28T12:50:41+05:30",
  "folders": [
   {
    "id": "emas",
@@ -149,6 +149,37 @@
   }
  ],
  "alerts": [
+  {
+   "id": "order-NSE:106873395",
+   "source_id": "NSE:106873395",
+   "category": "order_wins",
+   "folder": "orders",
+   "subfolder": "undisclosed",
+   "order_size": "UNDISCLOSED",
+   "announcement_category": "",
+   "exchange": "NSE",
+   "company": "E2E Networks Limited",
+   "symbol": "E2E",
+   "title": "Bagging/Receiving of orders/contracts",
+   "details": "E2E Networks Limited has informed the Exchange about Bagging/Receiving of orders/contracts",
+   "order_value_crore": null,
+   "market_cap_crore": 10253.94,
+   "order_percent_of_mcap": null,
+   "trailing_pe": 88.9,
+   "forward_pe": null,
+   "price_to_book": 5.68,
+   "trailing_eps": 5.61,
+   "enterprise_value": 10006.1,
+   "fifty_two_week_high": 765.0,
+   "fifty_two_week_low": 183.36,
+   "sector": "Technology",
+   "industry": "Software - Infrastructure",
+   "time": "28-Nov-2026 12:47:52",
+   "link": "https://nsearchives.nseindia.in/corporate/E2E_28112026124250_E2E_SEBI_Reg30_Disclosure.pdf",
+   "detected_at": "2026-11-28T12:50:39+05:30",
+   "telegram_notified": true,
+   "telegram_notified_at": "2026-11-28T12:50:41+05:30"
+  },
   {
    "id": "order-NSE:106873329",
    "source_id": "NSE:106873329",
