@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Share Sanket - NSE Promoter Activity Scanner
@@ -40,9 +39,7 @@ from pypdf import PdfReader
 PROMOTER_DIR = Path(__file__).resolve().parent
 ROOT = PROMOTER_DIR.parent
 
-# Promoter alerts must use their own JSON feed.
-# Do not read or overwrite the website's root alerts.json.
-ALERTS = PROMOTER_DIR / "alerts.json"
+ALERTS = ROOT / "alerts.json"
 STATE = PROMOTER_DIR / "promoter_state.json"
 
 IST = ZoneInfo("Asia/Kolkata")
