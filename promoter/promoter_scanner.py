@@ -2,24 +2,19 @@
 """
 Share Sanket - NSE Promoter Activity Scanner
 
-Features:
-- NSE-only promoter disclosures
+NSE-only promoter disclosures:
 - Promoter buying and selling
 - Pledge creation, release and invocation
-- Extracts original NSE PDF text
-- Promoter name
-- Number of shares involved
-- Transaction percentage
-- Transaction value
-- Price per share
+- Promoter names
+- Shares and transaction percentage
+- Transaction value and price, when disclosed
 - Previous and post-transaction holding
-- Purpose of transaction
+- Purpose and transaction mode
+- Transaction-wise breakdown
 - Original NSE filing link
 - Duplicate prevention
-- Safe JSON writing
 
-Missing information is shown as Not Disclosed.
-No unsupported transaction figures are invented.
+Missing information is never invented.
 """
 
 import hashlib
@@ -50,9 +45,7 @@ STATE = PROMOTER_DIR / "promoter_state.json"
 IST = ZoneInfo("Asia/Kolkata")
 
 HOME = "https://www.nseindia.com"
-
 API = HOME + "/api/corporate-announcements"
-
 PAGE = HOME + "/companies-listing/corporate-filings-announcements"
 
 NOT_DISCLOSED = "Not Disclosed"
@@ -69,28 +62,12 @@ HEADERS = {
 # =========================================================
 
 SUBS = [
-    {
-        "id": "buying",
-        "name": "🟢 Promoter Buying"
-    },
-    {
-        "id": "pledge-release",
-        "name": "🟢 Promoter Pledge Release"
-    },
-    {
-        "id": "selling",
-        "name": "🔴 Promoter Selling"
-    },
-    {
-        "id": "pledge-creation",
-        "name": "🔴 Promoter Pledge Creation"
-    },
-    {
-        "id": "pledge-invocation",
-        "name": "🔴 Promoter Pledge Invocation"
-    },
+    {"id": "buying", "name": "🟢 Promoter Buying"},
+    {"id": "pledge-release", "name": "🟢 Promoter Pledge Release"},
+    {"id": "selling", "name": "🔴 Promoter Selling"},
+    {"id": "pledge-creation", "name": "🔴 Promoter Pledge Creation"},
+    {"id": "pledge-invocation", "name": "🔴 Promoter Pledge Invocation"},
 ]
-
 
 PROMOTER = re.compile(
     r"\bpromoter(?:s)?\b|\bpromoter group\b",
@@ -103,14 +80,12 @@ HINT = re.compile(
     re.I
 )
 
-
 EVENTS = [
     (
         "pledge-invocation",
         re.compile(
             r"invocation\s+of\s+(?:the\s+)?pledge|"
-            r"pledge.{0,30}invoked|"
-            r"invoked.{0,30}lender",
+            r"pledge.{0,30}invoked|invoked.{0,30}lender",
             re.I
         )
     ),
@@ -118,8 +93,7 @@ EVENTS = [
         "pledge-release",
         re.compile(
             r"release\s+of\s+(?:the\s+)?pledge|"
-            r"pledge.{0,30}released|"
-            r"unpledged|"
+            r"pledge.{0,30}released|unpledged|"
             r"release\s+of\s+encumbrance",
             re.I
         )
@@ -128,14 +102,12 @@ EVENTS = [
         "pledge-creation",
         re.compile(
             r"creation\s+of\s+(?:a\s+)?pledge|"
-            r"pledge.{0,30}created|"
-            r"shares\s+pledged|"
+            r"pledge.{0,30}created|shares\s+pledged|"
             r"creation\s+of\s+encumbrance",
             re.I
         )
     ),
 ]
-
 
 BUY = re.compile(
     r"\b(acquisition|acquired|purchase|purchased|bought|buying)\b",
@@ -153,23 +125,16 @@ SELL = re.compile(
 # =========================================================
 
 def atomic_write(path, obj):
-
-    path.parent.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
+    path.parent.mkdir(parents=True, exist_ok=True)
     tmp = None
 
     try:
-
         with tempfile.NamedTemporaryFile(
             "w",
             encoding="utf-8",
             dir=path.parent,
             delete=False
         ) as f:
-
             json.dump(
                 obj,
                 f,
@@ -177,33 +142,22 @@ def atomic_write(path, obj):
                 indent=2,
                 allow_nan=False
             )
-
             f.write("\n")
-
             tmp = f.name
 
         os.replace(tmp, path)
 
     finally:
-
         if tmp and os.path.exists(tmp):
             os.unlink(tmp)
 
 
 def read_json(path, default):
-
     try:
-
-        return json.loads(
-            path.read_text(encoding="utf-8")
-        )
-
+        return json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
-
         return default
-
     except (OSError, json.JSONDecodeError) as exc:
-
         raise RuntimeError(
             f"Cannot safely read {path.name}: {exc}"
         )
@@ -214,24 +168,18 @@ def read_json(path, default):
 # =========================================================
 
 def fetch_rows():
+    today = datetime.now(IST).date()
 
     start = (
-        datetime.now(IST).date()
-        - timedelta(days=3)
+        today - timedelta(days=3)
     ).strftime("%d-%m-%Y")
 
-    end = datetime.now(IST).date().strftime(
-        "%d-%m-%Y"
-    )
+    end = today.strftime("%d-%m-%Y")
 
     session = requests.Session()
-
     session.headers.update(HEADERS)
 
-    session.get(
-        HOME,
-        timeout=20
-    )
+    session.get(HOME, timeout=20)
 
     response = session.get(
         API,
@@ -248,7 +196,6 @@ def fetch_rows():
     rows = response.json()
 
     if not isinstance(rows, list):
-
         raise RuntimeError(
             "Unexpected NSE announcement response"
         )
@@ -261,7 +208,6 @@ def fetch_rows():
 # =========================================================
 
 def pdf_text(url):
-
     if (
         not url
         or not url.lower().split("?")[0].endswith(".pdf")
@@ -269,7 +215,6 @@ def pdf_text(url):
         return ""
 
     try:
-
         response = requests.get(
             url,
             headers=HEADERS,
@@ -282,18 +227,13 @@ def pdf_text(url):
         content = bytearray()
 
         for chunk in response.iter_content(65536):
-
             content.extend(chunk)
 
             if len(content) > 8 * 1024 * 1024:
-
                 print("PDF exceeds 8 MB extraction limit")
-
                 return ""
 
-        reader = PdfReader(
-            io.BytesIO(content)
-        )
+        reader = PdfReader(io.BytesIO(content))
 
         return "\n".join(
             page.extract_text() or ""
@@ -301,11 +241,7 @@ def pdf_text(url):
         )
 
     except Exception as exc:
-
-        print(
-            f"PDF extraction unavailable: {exc}"
-        )
-
+        print(f"PDF extraction unavailable: {exc}")
         return ""
 
 
@@ -314,23 +250,16 @@ def pdf_text(url):
 # =========================================================
 
 def clean_text(value):
-
-    return re.sub(
-        r"\s+",
-        " ",
-        str(value or "")
-    ).strip()
+    return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
 def number_value(raw):
-
     if raw is None:
         return None
 
     value = str(raw).replace(",", "").replace(" ", "")
 
     try:
-
         number = float(value)
 
         if number.is_integer():
@@ -339,49 +268,34 @@ def number_value(raw):
         return number
 
     except (TypeError, ValueError):
-
         return None
 
 
 def fmt_number(value):
-
     if value is None:
         return NOT_DISCLOSED
 
     if float(value).is_integer():
-
         return f"{int(value):,}"
 
     return f"{value:,.2f}"
 
 
 def first_match(patterns, text):
-
     for pattern in patterns:
-
-        match = re.search(
-            pattern,
-            text,
-            re.I | re.S
-        )
+        match = re.search(pattern, text, re.I | re.S)
 
         if match:
-
-            return clean_text(
-                match.group(1)
-            )
+            return clean_text(match.group(1))
 
     return None
 
 
 def labeled_number(text, labels, percent=False):
-
     label = "(?:" + "|".join(labels) + ")"
-
     suffix = r"\s*%?" if percent else ""
 
     patterns = [
-
         label
         + r"[^0-9]{0,100}"
         + r"([0-9][0-9,]*(?:\.[0-9]+)?)"
@@ -390,15 +304,78 @@ def labeled_number(text, labels, percent=False):
         r"([0-9][0-9,]*(?:\.[0-9]+)?)"
         + r"\s*%?\s*[^.\n]{0,55}"
         + label
-
     ]
 
-    raw = first_match(
-        patterns,
-        text
+    return number_value(first_match(patterns, text))
+
+
+# =========================================================
+# TRANSACTION BREAKDOWN
+# =========================================================
+
+def extract_transaction_breakdown(text):
+    """
+    Extract individual transaction rows when the PDF text
+    contains a recognisable promoter/date/shares/percentage
+    table.
+
+    Unrecognised rows are not fabricated.
+    """
+
+    normalized = clean_text(text)
+
+    # Repair common PDF extraction issue:
+    # "November 2 5, 2026" -> "November 25, 2026"
+    months = (
+        "January|February|March|April|May|June|July|"
+        "August|September|October|November|December"
     )
 
-    return number_value(raw)
+    normalized = re.sub(
+        rf"\b({months})\s+(\d)\s+(\d),\s*(20\d{{2}})",
+        r"\1 \2\3, \4",
+        normalized,
+        flags=re.I
+    )
+
+    pattern = re.compile(
+        rf"(?P<name>"
+        rf"(?:Mr\.?|Mrs\.?|Ms\.?|M/s\.?)?\s*"
+        rf"[A-Z][A-Za-z.' -]{{2,75}}?"
+        rf")\s+"
+        rf"(?P<date>"
+        rf"(?:{months})\s+\d{{1,2}},?\s+20\d{{2}}"
+        rf")\s+"
+        rf"(?P<shares>\d[\d,]*)\s+"
+        rf"(?P<pct>\d+(?:\.\d+)?\s*%)",
+        re.I
+    )
+
+    matches = list(pattern.finditer(normalized))
+
+    if not matches:
+        return NOT_DISCLOSED
+
+    lines = []
+
+    for match in matches[:30]:
+        name = clean_text(match.group("name"))
+        date = clean_text(match.group("date"))
+        shares = number_value(match.group("shares"))
+        pct = clean_text(match.group("pct"))
+
+        if not name or shares is None:
+            continue
+
+        lines.append(
+            f"{name} | {date} | "
+            f"{fmt_number(shares)} shares | {pct}"
+        )
+
+    if not lines:
+        return NOT_DISCLOSED
+
+    return "\n".join(lines)
 
 
 # =========================================================
@@ -406,12 +383,9 @@ def labeled_number(text, labels, percent=False):
 # =========================================================
 
 def extract_details(text, row):
-
     flat = clean_text(text)
 
-    # -----------------------------------------------------
     # PROMOTER NAME
-    # -----------------------------------------------------
 
     promoter_name = first_match(
         [
@@ -429,7 +403,6 @@ def extract_details(text, row):
     )
 
     if not promoter_name:
-
         promoter_name = first_match(
             [
                 r"((?:Mr\.?|Mrs\.?|Ms\.?)\s+"
@@ -440,9 +413,7 @@ def extract_details(text, row):
             text
         )
 
-    # -----------------------------------------------------
-    # NUMBER OF SHARES
-    # -----------------------------------------------------
+    # SHARES
 
     quantity = labeled_number(
         text,
@@ -457,16 +428,13 @@ def extract_details(text, row):
     )
 
     if quantity is None:
-
         quantity = number_value(
             first_match(
                 [
                     r"(?:acquired|purchased|bought|sold|disposed\s+of)"
-                    r"\s+([0-9][0-9,]*)"
-                    r"\s+(?:equity\s+)?shares",
+                    r"\s+([0-9][0-9,]*)\s+(?:equity\s+)?shares",
 
-                    r"([0-9][0-9,]*)"
-                    r"\s+(?:equity\s+)?shares"
+                    r"([0-9][0-9,]*)\s+(?:equity\s+)?shares"
                     r"\s+(?:were\s+)?"
                     r"(?:acquired|purchased|bought|sold|disposed)"
                 ],
@@ -474,9 +442,7 @@ def extract_details(text, row):
             )
         )
 
-    # -----------------------------------------------------
     # TRANSACTION PERCENTAGE
-    # -----------------------------------------------------
 
     transaction_pct = labeled_number(
         text,
@@ -490,9 +456,7 @@ def extract_details(text, row):
         percent=True
     )
 
-    # -----------------------------------------------------
     # PREVIOUS HOLDING
-    # -----------------------------------------------------
 
     before_pct = labeled_number(
         text,
@@ -507,9 +471,7 @@ def extract_details(text, row):
         percent=True
     )
 
-    # -----------------------------------------------------
-    # POST TRANSACTION HOLDING
-    # -----------------------------------------------------
+    # POST-TRANSACTION HOLDING
 
     after_pct = labeled_number(
         text,
@@ -523,9 +485,7 @@ def extract_details(text, row):
         percent=True
     )
 
-    # -----------------------------------------------------
     # PRICE PER SHARE
-    # -----------------------------------------------------
 
     price = labeled_number(
         text,
@@ -538,9 +498,7 @@ def extract_details(text, row):
         ]
     )
 
-    # -----------------------------------------------------
     # TRANSACTION VALUE
-    # -----------------------------------------------------
 
     amount = None
 
@@ -550,56 +508,26 @@ def extract_details(text, row):
             r"(?:consideration|value|amount|proceeds)"
             r"\s*(?:inr|rs\.?|₹)?\s*[:\-]?\s*"
             r"(?:inr|rs\.?|₹)?\s*"
-            r"([0-9][0-9,]*(?:\.[0-9]+)?)"
-            r"\s*(crore|cr|lakh|lac)?",
+            r"([0-9][0-9,]*(?:\.[0-9]+)?)",
 
             r"(?:inr|rs\.?|₹)\s*"
             r"([0-9][0-9,]*(?:\.[0-9]+)?)"
-            r"\s*(crore|cr|lakh|lac)?"
         ],
         text
     )
 
     if amount_raw:
-
         amount = number_value(amount_raw)
-
-        unit_match = re.search(
-            r"(?:consideration|value|amount|proceeds)"
-            r"[^0-9]{0,35}"
-            r"[0-9][0-9,]*(?:\.[0-9]+)?"
-            r"\s*(crore|cr|lakh|lac)",
-            flat,
-            re.I
-        )
-
-        if unit_match:
-
-            unit = unit_match.group(1).lower()
-
-            if unit in ("crore", "cr"):
-
-                amount *= 10000000
-
-            elif unit in ("lakh", "lac"):
-
-                amount *= 100000
 
     amount_source = "NSE filing"
 
-    # Calculate only if both disclosed figures exist.
+    # Calculate only when both figures are disclosed.
 
     if amount is None and quantity is not None and price is not None:
-
         amount = quantity * price
+        amount_source = "Calculated from disclosed shares × disclosed price"
 
-        amount_source = (
-            "Calculated from disclosed shares × disclosed price"
-        )
-
-    # -----------------------------------------------------
     # PURPOSE
-    # -----------------------------------------------------
 
     purpose = first_match(
         [
@@ -616,9 +544,7 @@ def extract_details(text, row):
         text
     )
 
-    # -----------------------------------------------------
     # TRANSACTION MODE
-    # -----------------------------------------------------
 
     mode = first_match(
         [
@@ -632,56 +558,43 @@ def extract_details(text, row):
         text
     )
 
-    # -----------------------------------------------------
     # ACTIVITY
-    # -----------------------------------------------------
 
     buying = bool(BUY.search(text))
-
     selling = bool(SELL.search(text))
 
     if buying and not selling:
-
         activity = "Buying"
-
     elif selling and not buying:
-
         activity = "Selling"
-
     else:
-
         activity = NOT_DISCLOSED
 
-    # -----------------------------------------------------
-    # STRUCTURED DETAILS
-    # -----------------------------------------------------
+    # TRANSACTION BREAKDOWN
+
+    breakdown = extract_transaction_breakdown(text)
 
     return [
-
         {
             "label": "Promoter name",
             "value": promoter_name or NOT_DISCLOSED,
             "source": "NSE filing"
         },
-
         {
             "label": "Activity",
             "value": activity,
             "source": "NSE filing text"
         },
-
         {
             "label": "Transaction type / mode",
             "value": mode or NOT_DISCLOSED,
             "source": "NSE filing"
         },
-
         {
             "label": "Shares involved",
             "value": fmt_number(quantity),
             "source": "NSE filing"
         },
-
         {
             "label": "Transaction percentage",
             "value": (
@@ -691,7 +604,6 @@ def extract_details(text, row):
             ),
             "source": "NSE filing"
         },
-
         {
             "label": "Transaction value",
             "value": (
@@ -699,11 +611,8 @@ def extract_details(text, row):
                 if amount is not None
                 else NOT_DISCLOSED
             ),
-            "source": amount_source
-            if amount is not None
-            else "NSE filing"
+            "source": amount_source if amount is not None else "NSE filing"
         },
-
         {
             "label": "Price per share",
             "value": (
@@ -713,7 +622,6 @@ def extract_details(text, row):
             ),
             "source": "NSE filing"
         },
-
         {
             "label": "Previous holding",
             "value": (
@@ -723,7 +631,6 @@ def extract_details(text, row):
             ),
             "source": "NSE filing"
         },
-
         {
             "label": "Post-transaction holding",
             "value": (
@@ -733,13 +640,16 @@ def extract_details(text, row):
             ),
             "source": "NSE filing"
         },
-
         {
             "label": "Purpose of transaction",
             "value": purpose or NOT_DISCLOSED,
             "source": "NSE filing"
+        },
+        {
+            "label": "Transaction breakdown",
+            "value": breakdown,
+            "source": "NSE filing transaction table"
         }
-
     ]
 
 
@@ -748,23 +658,17 @@ def extract_details(text, row):
 # =========================================================
 
 def classify(text):
-
     if not PROMOTER.search(text):
-
         return None
 
     for folder, pattern in EVENTS:
-
         if pattern.search(text):
-
             return folder
 
     buying = bool(BUY.search(text))
-
     selling = bool(SELL.search(text))
 
     if buying != selling:
-
         return "buying" if buying else "selling"
 
     return None
@@ -775,7 +679,6 @@ def classify(text):
 # =========================================================
 
 def main():
-
     rows = fetch_rows()
 
     data = read_json(
@@ -788,7 +691,6 @@ def main():
     )
 
     if isinstance(data, list):
-
         data = {
             "sample": False,
             "folders": [],
@@ -799,36 +701,25 @@ def main():
         not isinstance(data, dict)
         or not isinstance(data.get("alerts", []), list)
     ):
-
         raise RuntimeError(
             "alerts.json format invalid; refusing to overwrite"
         )
 
-    state = read_json(
-        STATE,
-        []
-    )
+    state = read_json(STATE, [])
 
     if isinstance(state, dict):
-
         state = list(state)
 
     if not isinstance(state, list):
-
         raise RuntimeError(
             "promoter_state.json format invalid"
         )
 
     seen = set(map(str, state))
 
-    # -----------------------------------------------------
-    # PROMOTER FOLDER
-    # -----------------------------------------------------
+    # CREATE PROMOTER FOLDER
 
-    folders = data.setdefault(
-        "folders",
-        []
-    )
+    folders = data.setdefault("folders", [])
 
     folder = next(
         (
@@ -840,27 +731,17 @@ def main():
     )
 
     if folder is None:
-
         folder = {
             "id": "promoter",
             "name": "Promoter Activity",
             "subfolders": []
         }
-
         folders.append(folder)
 
     folder["name"] = "Promoter Activity"
-
     folder["subfolders"] = SUBS
 
-    # -----------------------------------------------------
-    # EXISTING ALERTS
-    # -----------------------------------------------------
-
-    alerts = data.setdefault(
-        "alerts",
-        []
-    )
+    alerts = data.setdefault("alerts", [])
 
     ids = {
         a.get("id")
@@ -870,36 +751,20 @@ def main():
 
     added = 0
 
-    # -----------------------------------------------------
     # PROCESS NSE DISCLOSURES
-    # -----------------------------------------------------
 
     for row in rows:
-
-        category = str(
-            row.get("desc") or ""
-        )
-
-        summary = str(
-            row.get("attchmntText") or ""
-        )
-
-        attachment = str(
-            row.get("attchmntFile") or ""
-        )
+        category = str(row.get("desc") or "")
+        summary = str(row.get("attchmntText") or "")
+        attachment = str(row.get("attchmntFile") or "")
 
         if not (
             PROMOTER.search(category + "\n" + summary)
             or HINT.search(category + "\n" + summary)
         ):
-
             continue
 
-        # Extract PDF.
-
-        extracted = pdf_text(
-            attachment
-        )
+        extracted = pdf_text(attachment)
 
         body = (
             category
@@ -912,10 +777,7 @@ def main():
         sub = classify(body)
 
         if not sub:
-
             continue
-
-        # Unique NSE announcement identifier.
 
         source = str(
             row.get("seq_id")
@@ -924,7 +786,6 @@ def main():
         )
 
         if not source:
-
             source = hashlib.sha256(
                 (
                     str(row.get("symbol"))
@@ -935,20 +796,15 @@ def main():
             ).hexdigest()
 
         if source in seen:
-
             continue
 
         alert_id = (
             "promoter-"
-            + hashlib.sha256(
-                source.encode()
-            ).hexdigest()[:24]
+            + hashlib.sha256(source.encode()).hexdigest()[:24]
         )
 
         if alert_id in ids:
-
             seen.add(source)
-
             continue
 
         sub_name = next(
@@ -957,18 +813,12 @@ def main():
             if x["id"] == sub
         )
 
-        # -------------------------------------------------
-        # BASIC DISCLOSURE INFORMATION
-        # -------------------------------------------------
-
         details = [
-
             {
                 "label": "NSE disclosure category",
                 "value": category or NOT_DISCLOSED,
                 "source": "NSE"
             },
-
             {
                 "label": "NSE announcement date",
                 "value": (
@@ -978,38 +828,27 @@ def main():
                 ),
                 "source": "NSE"
             },
-
             {
                 "label": "NSE announcement summary",
                 "value": summary or NOT_DISCLOSED,
                 "source": "NSE"
             },
-
             {
                 "label": "Promoter activity",
                 "value": sub_name,
                 "source": "NSE disclosure classification"
             }
-
         ]
 
-        # -------------------------------------------------
-        # TRANSACTION DETAILS
-        # -------------------------------------------------
-
         details.extend(
-            extract_details(
-                body,
-                row
-            )
+            extract_details(body, row)
         )
 
-        # -------------------------------------------------
-        # ORIGINAL FILING TEXT
-        # -------------------------------------------------
+        # Keep original PDF text for reference.
+        # The website will hide this long field from the
+        # simple promoter details display.
 
         details.append(
-
             {
                 "label": "Extracted filing text",
                 "value": (
@@ -1022,51 +861,28 @@ def main():
                 ),
                 "source": "NSE attachment"
             }
-
         )
 
-        symbol = str(
-            row.get("symbol") or ""
-        )
-
-        company = str(
-            row.get("sm_name") or ""
-        )
-
-        # -------------------------------------------------
-        # PUBLISH ALERT
-        # -------------------------------------------------
+        symbol = str(row.get("symbol") or "")
+        company = str(row.get("sm_name") or "")
 
         alert = {
-
             "id": alert_id,
-
             "source_id": source,
-
-            "time": datetime.now(
-                IST
-            ).isoformat(
+            "time": datetime.now(IST).isoformat(
                 timespec="seconds"
             ),
-
             "folder": "promoter",
-
             "subfolder": sub,
-
             "exchange": "NSE",
-
             "symbol": symbol,
-
             "company": company,
-
             "title": (
                 sub_name
                 + " – "
                 + (company or symbol or "NSE disclosure")
             ),
-
             "details": details,
-
             "link": (
                 attachment
                 or (
@@ -1076,42 +892,29 @@ def main():
                     else PAGE
                 )
             )
-
         }
 
         alerts.append(alert)
-
         ids.add(alert_id)
-
         seen.add(source)
-
         added += 1
 
-    # -----------------------------------------------------
     # SAVE
-    # -----------------------------------------------------
 
     data["sample"] = False
 
-    data["updated"] = datetime.now(
-        IST
-    ).isoformat(
+    data["updated"] = datetime.now(IST).isoformat(
         timespec="seconds"
     )
 
-    atomic_write(
-        ALERTS,
-        data
-    )
+    atomic_write(ALERTS, data)
 
     atomic_write(
         STATE,
         sorted(seen)[-12000:]
     )
 
-    print(
-        f"New promoter alerts added: {added}"
-    )
+    print(f"New promoter alerts added: {added}")
 
 
 # =========================================================
@@ -1119,5 +922,4 @@ def main():
 # =========================================================
 
 if __name__ == "__main__":
-
     main()
