@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -367,25 +366,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
 
   function prep(d) {
-    // Keep the complete app navigation from the built-in seed configuration.
-    // The main alerts.json may contain only the folders used by its scanners.
-    var baseFolders = (typeof SEED !== 'undefined' && SEED && Array.isArray(SEED.folders))
-      ? SEED.folders.slice()
-      : [];
-    var incomingFolders = d && Array.isArray(d.folders) ? d.folders : [];
-    var folders = baseFolders.slice();
-
-    incomingFolders.forEach(function (incoming) {
-      if (!incoming || !incoming.id) return;
-      var index = folders.findIndex(function (folder) { return folder && folder.id === incoming.id; });
-      if (index === -1) folders.push(incoming);
-      else folders[index] = Object.assign({}, folders[index], incoming, {
-        subfolders: Array.isArray(incoming.subfolders) && incoming.subfolders.length
-          ? incoming.subfolders
-          : (folders[index].subfolders || [])
-      });
-    });
-
+    var folders = d && Array.isArray(d.folders) ? d.folders : [];
     var alerts = d && Array.isArray(d.alerts) ? d.alerts.slice() : [];
     alerts.sort(function (a, b) { return (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0); });
     var fmap = {};
@@ -1313,25 +1294,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
   function toggleWatch(s) { var i = watch.indexOf(s); if (i > -1) watch.splice(i, 1); else watch.push(s); saveWatch(); render(); }
 
   function prep(d) {
-    // Keep the complete app navigation from the built-in seed configuration.
-    // The main alerts.json may contain only the folders used by its scanners.
-    var baseFolders = (typeof SEED !== 'undefined' && SEED && Array.isArray(SEED.folders))
-      ? SEED.folders.slice()
-      : [];
-    var incomingFolders = d && Array.isArray(d.folders) ? d.folders : [];
-    var folders = baseFolders.slice();
-
-    incomingFolders.forEach(function (incoming) {
-      if (!incoming || !incoming.id) return;
-      var index = folders.findIndex(function (folder) { return folder && folder.id === incoming.id; });
-      if (index === -1) folders.push(incoming);
-      else folders[index] = Object.assign({}, folders[index], incoming, {
-        subfolders: Array.isArray(incoming.subfolders) && incoming.subfolders.length
-          ? incoming.subfolders
-          : (folders[index].subfolders || [])
-      });
-    });
-
+    var folders = d && Array.isArray(d.folders) ? d.folders : [];
     var alerts = d && Array.isArray(d.alerts) ? d.alerts.slice() : [];
     alerts.sort(function (a, b) { return (Date.parse(b.time) || 0) - (Date.parse(a.time) || 0); });
     var fmap = {};
@@ -1890,4 +1853,4 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
 
   <script type="module" src="firebase-members.js"></script>
 </body>
-</html
+</html>
