@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28T11:36:13.537780+05:30",
+  "updated": "2026-11-28T11:41:13.903337+05:30",
   "alerts": [
     {
       "symbol": "SFCTECH",
@@ -110,7 +110,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.532809+05:30"
+      "processed_at": "2026-11-28T11:41:13.899421+05:30"
     },
     {
       "symbol": "SETCO",
@@ -193,7 +193,7 @@
           "standalone": 4,
           "consolidated": 12
         },
-        "source_file": "tmp8k8hf9vu.pdf",
+        "source_file": "tmpgc77tsa2.pdf",
         "method": "pypdf text extraction",
         "missing_values_policy": "Dashes and unrecognised rows remain unavailable",
         "unit_conflict": false,
@@ -240,7 +240,7 @@
       },
       "rating": "Strong",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.532913+05:30"
+      "processed_at": "2026-11-28T11:41:13.899515+05:30"
     },
     {
       "symbol": "ENRIN",
@@ -298,7 +298,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.532960+05:30"
+      "processed_at": "2026-11-28T11:41:13.899551+05:30"
     },
     {
       "symbol": "SIMBHALS",
@@ -356,7 +356,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533008+05:30"
+      "processed_at": "2026-11-28T11:41:13.899585+05:30"
     },
     {
       "symbol": "MKJEWELS",
@@ -414,7 +414,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533048+05:30"
+      "processed_at": "2026-11-28T11:41:13.899614+05:30"
     },
     {
       "symbol": "LEXUS",
@@ -472,7 +472,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533083+05:30"
+      "processed_at": "2026-11-28T11:41:13.899639+05:30"
     },
     {
       "symbol": "SFCTECH",
@@ -530,7 +530,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533135+05:30"
+      "processed_at": "2026-11-28T11:41:13.899662+05:30"
     },
     {
       "symbol": "KSERASERA",
@@ -588,7 +588,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533174+05:30"
+      "processed_at": "2026-11-28T11:41:13.899687+05:30"
     },
     {
       "symbol": "BCSSL",
@@ -646,7 +646,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533206+05:30"
+      "processed_at": "2026-11-28T11:41:13.899709+05:30"
     },
     {
       "symbol": "ARSHIYA",
@@ -704,7 +704,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533238+05:30"
+      "processed_at": "2026-11-28T11:41:13.899731+05:30"
     },
     {
       "symbol": "ARSHIYA",
@@ -762,7 +762,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T11:36:13.533273+05:30"
+      "processed_at": "2026-11-28T11:41:13.899753+05:30"
     },
     {
       "symbol": "GVPTECH",
