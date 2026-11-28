@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28T18:31:13.696864+05:30",
+  "updated": "2026-11-28T18:35:32.965263+05:30",
   "alerts": [
     {
       "symbol": "SFCTECH",
@@ -110,7 +110,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693116+05:30"
+      "processed_at": "2026-11-28T18:35:32.962538+05:30"
     },
     {
       "symbol": "SETCO",
@@ -184,8 +184,8 @@
           "revenue_growth_available": true
         }
       },
-      "data_status": "NSE announcement detected; financial figures not yet verified",
-      "financial_units": "Not specified",
+      "data_status": "Official NSE PDF downloaded; figures extracted where table rows were reliably recognised. Existing verified values preserved.",
+      "financial_units": "INR crore (EPS in INR/share)",
       "pdf_extraction": {
         "status": "extracted",
         "source_url": "https://nsearchives.nseindia.in/corporate/SETCO_27112026160110_FINAL_SIGNED_OUTCOME_27112026.pdf",
@@ -193,7 +193,7 @@
           "standalone": 4,
           "consolidated": 12
         },
-        "source_file": "tmpuzb8c6h_.pdf",
+        "source_file": "tmpximy00un.pdf",
         "method": "pypdf text extraction",
         "missing_values_policy": "Dashes and unrecognised rows remain unavailable",
         "unit_conflict": false,
@@ -240,7 +240,7 @@
       },
       "rating": "Strong",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693198+05:30"
+      "processed_at": "2026-11-28T18:35:32.962604+05:30"
     },
     {
       "symbol": "ENRIN",
@@ -298,7 +298,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693231+05:30"
+      "processed_at": "2026-11-28T18:35:32.962629+05:30"
     },
     {
       "symbol": "SIMBHALS",
@@ -356,7 +356,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693262+05:30"
+      "processed_at": "2026-11-28T18:35:32.962654+05:30"
     },
     {
       "symbol": "MKJEWELS",
@@ -414,7 +414,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693287+05:30"
+      "processed_at": "2026-11-28T18:35:32.962672+05:30"
     },
     {
       "symbol": "LEXUS",
@@ -472,7 +472,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693310+05:30"
+      "processed_at": "2026-11-28T18:35:32.962687+05:30"
     },
     {
       "symbol": "SFCTECH",
@@ -530,7 +530,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693335+05:30"
+      "processed_at": "2026-11-28T18:35:32.962701+05:30"
     },
     {
       "symbol": "KSERASERA",
@@ -588,7 +588,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693356+05:30"
+      "processed_at": "2026-11-28T18:35:32.962717+05:30"
     },
     {
       "symbol": "BCSSL",
@@ -646,7 +646,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693377+05:30"
+      "processed_at": "2026-11-28T18:35:32.962732+05:30"
     },
     {
       "symbol": "ARSHIYA",
@@ -704,7 +704,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693398+05:30"
+      "processed_at": "2026-11-28T18:35:32.962747+05:30"
     },
     {
       "symbol": "ARSHIYA",
@@ -762,7 +762,7 @@
       },
       "rating": "Insufficient Data",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T18:31:13.693420+05:30"
+      "processed_at": "2026-11-28T18:35:32.962760+05:30"
     },
     {
       "symbol": "GVPTECH",
