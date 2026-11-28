@@ -42,6 +42,201 @@
   ],
   "alerts": [
     {
+      "id": "ema-golden-bankbaroda-2026-11-27",
+      "time": "2026-11-28T16:08:06.450902+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "BANKBARODA",
+      "company": "BANKBARODA",
+      "title": "Golden Cross (Daily)",
+      "price": 274.9,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-27",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 253.9219,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 253.3859,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:BANKBARODA"
+    },
+    {
+      "id": "ema-golden-choicein-2026-11-27",
+      "time": "2026-11-28T16:08:06.450902+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "CHOICEIN",
+      "company": "CHOICEIN",
+      "title": "Golden Cross (Daily)",
+      "price": 770.45,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-27",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 741.5307,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 740.6778,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:CHOICEIN"
+    },
+    {
+      "id": "ema-golden-hdfcamc-2026-11-27",
+      "time": "2026-11-28T16:08:06.450902+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "HDFCAMC",
+      "company": "HDFCAMC",
+      "title": "Golden Cross (Daily)",
+      "price": 2706.0,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-27",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 2523.0924,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 2522.3339,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:HDFCAMC"
+    },
+    {
+      "id": "ema-golden-jlhl-2026-11-27",
+      "time": "2026-11-28T16:08:06.450902+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "JLHL",
+      "company": "JLHL",
+      "title": "Golden Cross (Daily)",
+      "price": 345.3,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-27",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 281.019,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 279.1409,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:JLHL"
+    },
+    {
+      "id": "ema-golden-olil-2026-11-27",
+      "time": "2026-11-28T16:08:06.450902+05:30",
+      "folder": "emas",
+      "subfolder": "golden",
+      "symbol": "OLIL",
+      "company": "OLIL",
+      "title": "Golden Cross (Daily)",
+      "price": 434.8,
+      "change_pct": null,
+      "details": [
+        {
+          "label": "Signal date",
+          "value": "2026-11-27",
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA50",
+          "value": 363.8761,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "EMA200",
+          "value": 363.7609,
+          "source": "Yahoo Finance"
+        },
+        {
+          "label": "Timeframe",
+          "value": "Daily",
+          "source": "Scanner"
+        },
+        {
+          "label": "Signal definition",
+          "value": "EMA50 above EMA200",
+          "source": "Scanner"
+        }
+      ],
+      "link": "https://www.tradingview.com/chart/?symbol=NSE:OLIL"
+    },
+    {
       "id": "944ba23533a01f71934b7727",
       "time": "2026-11-28T16:05:26+05:30",
       "folder": "corporate-actions",
@@ -1212,5 +1407,5 @@
       "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026163637_SEfilingPA26112026.pdf"
     }
   ],
-  "updated": "2026-11-28T16:05:26+05:30"
+  "updated": "2026-11-28T16:08:06.450902+05:30"
 }
