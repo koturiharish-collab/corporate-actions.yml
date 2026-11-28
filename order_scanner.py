@@ -1,4 +1,3 @@
-
 import json
 import os
 import re
@@ -22,7 +21,6 @@ ALERTS_FILE = BASE_DIR / "alerts.json"
 STATE_FILE = BASE_DIR / "order_state.json"
 
 IST = ZoneInfo("Asia/Kolkata")
-
 CATEGORY = "order_wins"
 LOOKBACK_DAYS = 2
 MAX_STATE = 5000
@@ -39,9 +37,10 @@ HEADERS = {
     "Accept": "application/json, text/plain, */*",
 }
 
-# Accept only this exact NSE announcement type.
+# Match the NSE order announcement wording even when it appears in the
+# announcement details rather than only in the short description.
 EXACT_ORDER_ANNOUNCEMENT = re.compile(
-    r"bagging\s*/\s*receiving\s+of\s+orders?\s*/\s*contracts?",
+    r"\bbagging\s*/\s*receiving\s+of\s+orders?\s*/\s*contracts?\b",
     re.I,
 )
 
@@ -68,19 +67,24 @@ def now_ist():
 
 def save_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = None
 
-    with tempfile.NamedTemporaryFile(
-        "w", encoding="utf-8", dir=path.parent, delete=False
-    ) as temp:
-        json.dump(data, temp, indent=1, ensure_ascii=False, allow_nan=False)
-        temp.write("\n")
-        temp_path = temp.name
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", dir=path.parent, delete=False
+        ) as temp:
+            json.dump(data, temp, indent=1, ensure_ascii=False, allow_nan=False)
+            temp.write("\n")
+            temp_path = temp.name
 
-    os.replace(temp_path, path)
+        os.replace(temp_path, path)
+    finally:
+        if temp_path and os.path.exists(temp_path):
+            os.unlink(temp_path)
 
 
 def load_alerts():
-    """Load alerts.json without ever overwriting an unreadable file."""
+    """Load alerts.json without overwriting an unreadable file."""
     try:
         data = json.loads(ALERTS_FILE.read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -90,10 +94,8 @@ def load_alerts():
 
     if isinstance(data, list):
         data = {"alerts": data}
-
     if not isinstance(data, dict):
         raise SystemExit("alerts.json has an unexpected format, not touching it.")
-
     if not isinstance(data.get("alerts"), list):
         data["alerts"] = []
 
@@ -101,33 +103,28 @@ def load_alerts():
 
 
 def ensure_order_folders(data):
-    """Make sure the app's Orders folder has all four size subfolders."""
+    """Ensure the app's Orders folder has all four size subfolders."""
     folders = data.get("folders")
-
     if not isinstance(folders, list):
         folders = []
         data["folders"] = folders
 
     for folder in folders:
-        if not isinstance(folder, dict):
+        if not isinstance(folder, dict) or folder.get("id") != ORDER_FOLDER_ID:
             continue
 
-        if folder.get("id") == ORDER_FOLDER_ID:
-            existing = folder.setdefault("subfolders", [])
-            if not isinstance(existing, list):
-                existing = []
-                folder["subfolders"] = existing
+        existing = folder.setdefault("subfolders", [])
+        if not isinstance(existing, list):
+            existing = []
+            folder["subfolders"] = existing
 
-            known = {
-                sub.get("id")
-                for sub in existing
-                if isinstance(sub, dict)
-            }
-
-            for sub in SUBFOLDERS:
-                if sub["id"] not in known:
-                    existing.insert(0, dict(sub))
-            return
+        known = {
+            sub.get("id") for sub in existing if isinstance(sub, dict)
+        }
+        for sub in SUBFOLDERS:
+            if sub["id"] not in known:
+                existing.append(dict(sub))
+        return
 
     folders.append({
         "id": ORDER_FOLDER_ID,
@@ -142,14 +139,14 @@ def load_state():
         return value if isinstance(value, list) else None
     except FileNotFoundError:
         return None
-    except (json.JSONDecodeError, OSError):
+    except (json.JSONDecodeError, OSError) as error:
+        print(f"Order state could not be read; treating as empty state: {error}")
         return []
 
 
 def order_value_crore(text):
-    """Largest disclosed amount in the text, in crore. None if not disclosed."""
+    """Return the largest disclosed amount in crore, or None."""
     best = None
-
     for match in MONEY.finditer(text or ""):
         number = float(match.group(1).replace(",", ""))
         unit = (match.group(2) or "").lower()
@@ -171,7 +168,7 @@ def order_value_crore(text):
 
 
 def company_fundamentals(symbol):
-    """Return Yahoo Finance NSE company metrics; missing values remain None."""
+    """Return Yahoo Finance NSE metrics; unavailable values remain None."""
     if yf is None or not symbol:
         return {}
 
@@ -214,17 +211,16 @@ def company_fundamentals(symbol):
 
 
 def market_cap_crore(symbol):
-    """Market cap in crore from Yahoo Finance. None if unavailable."""
+    """Return market capitalisation in crore, or None."""
     return company_fundamentals(symbol).get("market_cap_crore")
 
 
 def size_folder(order_crore, mcap_crore):
-    """Return (folder, percent of market cap)."""
+    """Return (size folder, order value as percentage of market cap)."""
     if order_crore is None or not mcap_crore or mcap_crore <= 0:
         return "undisclosed", None
 
     percent = order_crore / mcap_crore * 100
-
     if percent > 50:
         folder = "very-big"
     elif percent >= 25:
@@ -269,6 +265,7 @@ def fetch_nse(start, end):
             "company": row.get("sm_name") or "",
             "symbol": row.get("symbol") or "",
             "title": row.get("desc") or "",
+            "category": row.get("category") or row.get("smIndustry") or "",
             "details": row.get("attchmntText") or "",
             "time": row.get("an_dt") or "",
             "link": row.get("attchmntFile") or "",
@@ -277,8 +274,10 @@ def fetch_nse(start, end):
 
 
 def is_bagging(item):
-    """True only for 'Bagging/Receiving of orders/Contracts' announcements."""
-    text = f"{item.get('title', '')} {item.get('category', '')}"
+    """Check title, category and NSE attachment text for the order wording."""
+    text = " ".join(str(item.get(key) or "") for key in (
+        "title", "category", "details"
+    ))
     return bool(EXACT_ORDER_ANNOUNCEMENT.search(text))
 
 
@@ -288,6 +287,7 @@ def build_alert(item):
     fundamentals = company_fundamentals(item.get("symbol"))
     mcap_crore = fundamentals.get("market_cap_crore")
     folder, percent = size_folder(order_crore, mcap_crore)
+
     size_names = {
         "very-big": "VERY BIG ORDER",
         "big": "BIG ORDER",
@@ -335,9 +335,11 @@ def send_telegram(alert):
 
     value = alert.get("order_value_crore")
     value_text = f"₹{value:,.2f} crore" if value is not None else "Not disclosed"
-
     percent = alert.get("order_percent_of_mcap")
-    percent_text = f"{percent:.2f}% of market cap" if percent is not None else "Not available"
+    percent_text = (
+        f"{percent:.2f}% of market cap"
+        if percent is not None else "Not available"
+    )
 
     message = (
         "SHARE SANKET - ORDER WIN\n\n"
@@ -361,13 +363,21 @@ def send_telegram(alert):
             },
             timeout=20,
         )
-
         response.raise_for_status()
         return bool(response.json().get("ok"))
-
     except requests.RequestException as error:
         print(f"Telegram notification failed: {error}")
         return False
+
+
+def is_order_alert(alert):
+    return (
+        isinstance(alert, dict)
+        and (
+            alert.get("category") == CATEGORY
+            or alert.get("folder") == ORDER_FOLDER_ID
+        )
+    )
 
 
 def main():
@@ -381,99 +391,77 @@ def main():
     state = load_state()
     first_run = state is None
 
-    # Keep previous IDs so the first run does not re-publish old announcements.
+    # IDs already represented in the app are authoritative, regardless of state.
     seen = set(state or [])
-    old_order_ids = set()
-
+    old_orders_by_source = {}
     for alert in old_alerts:
-        if not isinstance(alert, dict):
-            continue
-
-        is_order = (
-            alert.get("category") == CATEGORY
-            or alert.get("folder") == ORDER_FOLDER_ID
-        )
-        if is_order and alert.get("source_id"):
-            old_order_ids.add(alert["source_id"])
-
-    seen.update(old_order_ids)
-
-    fetched = []
+        if is_order_alert(alert) and alert.get("source_id"):
+            old_orders_by_source[str(alert["source_id"])] = alert
+            seen.add(str(alert["source_id"]))
 
     try:
         fetched = fetch_nse(start, today)
         if not isinstance(fetched, list):
             raise ValueError("NSE returned an invalid response")
-
         print(f"NSE: {len(fetched)} announcements")
-
     except Exception as error:
         print(f"NSE scan failed; previous NSE orders will be retained: {error}")
         fetched = []
 
     # Preserve every existing alert, including historical Orders.
-    retained_alerts = []
-    old_orders_by_source = {}
-
-    for alert in old_alerts:
-        if not isinstance(alert, dict):
-            retained_alerts.append(alert)
-            continue
-
-        is_order = (
-            alert.get("category") == CATEGORY
-            or alert.get("folder") == ORDER_FOLDER_ID
-        )
-
-        retained_alerts.append(alert)
-
-        if is_order and alert.get("source_id"):
-            old_orders_by_source[str(alert["source_id"])] = alert
-
+    retained_alerts = list(old_alerts)
     new_order_alerts = []
     newly_seen_ids = set()
+    recovered_orders = 0
+    matched_orders = 0
 
     for item in fetched:
         source_id = item.get("id")
-
         if not source_id or not is_bagging(item):
             continue
 
         source_id = str(source_id)
-
         if source_id in newly_seen_ids:
             continue
-
         newly_seen_ids.add(source_id)
+        matched_orders += 1
 
-        # Refresh an existing order without creating a duplicate or
-        # sending another Telegram notification.
         existing = old_orders_by_source.get(source_id)
         if existing is not None:
             refreshed = build_alert(item)
-
-            # Preserve notification history and original detection time.
             for key, value in refreshed.items():
-                if key in ("telegram_notified", "telegram_notified_at", "detected_at"):
+                if key in (
+                    "telegram_notified",
+                    "telegram_notified_at",
+                    "detected_at",
+                ):
                     continue
                 if value not in (None, "", []):
                     existing[key] = value
             continue
 
-        # The first run establishes a baseline and does not publish old items.
-        if first_run:
+        # If state says this was seen but alerts.json lacks it, restore it
+        # without sending another Telegram notification.
+        if source_id in seen:
+            recovered = build_alert(item)
+            recovered["telegram_notified"] = True
+            recovered["recovered_from_state"] = True
+            new_order_alerts.append(recovered)
+            recovered_orders += 1
             continue
 
-        # Previously seen IDs without a published alert are not notified again.
-        if source_id in seen:
+        # On first run, establish a baseline without re-alerting old announcements.
+        if first_run:
             continue
 
         new_order_alerts.append(build_alert(item))
 
-    # Send notifications only for newly detected orders.
+    # Notify only genuinely new alerts, never recovered records.
     sent = 0
     if category_enabled(CATEGORY):
         for alert in new_order_alerts:
+            if alert.get("recovered_from_state"):
+                continue
             if send_telegram(alert):
                 alert["telegram_notified"] = True
                 alert["telegram_notified_at"] = now_ist()
@@ -481,10 +469,12 @@ def main():
     else:
         print("order_wins is off in preferences.json: saved, not sent.")
 
-    # Show new orders first, followed by all historical alerts.
+    # New/recovered orders appear first; all existing alerts remain untouched.
     data["alerts"] = new_order_alerts + retained_alerts
     data["updated"] = now_ist()
 
+    # Save the app feed before advancing state, so a failed feed write cannot
+    # silently mark an order as successfully published.
     save_json(ALERTS_FILE, data)
 
     seen.update(newly_seen_ids)
@@ -493,16 +483,15 @@ def main():
     print("--------------------------------")
     print("SHARE SANKET ORDER SCANNER")
     print("--------------------------------")
-    print(f"New order alerts: {len(new_order_alerts)}")
+    print(f"Matching order announcements: {matched_orders}")
+    print(f"New order alerts: {len(new_order_alerts) - recovered_orders}")
+    print(f"Recovered missing orders: {recovered_orders}")
     print(f"Telegram messages sent: {sent}")
-    displayed_orders = sum(
-        1 for alert in data["alerts"]
-        if isinstance(alert, dict)
-        and (alert.get("category") == CATEGORY or alert.get("folder") == ORDER_FOLDER_ID)
-    )
+
+    displayed_orders = sum(1 for alert in data["alerts"] if is_order_alert(alert))
     print(f"Orders currently displayed: {displayed_orders}")
     if first_run:
-        print("Initial baseline completed; existing announcements were not published.")
+        print("Initial baseline completed; existing announcements were not notified.")
     print("Order scanner completed.")
 
 
