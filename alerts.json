@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T19:35:28+05:30",
+ "updated": "2026-11-28T19:25:30+05:30",
  "folders": [
   {
    "id": "emas",
@@ -102,32 +102,6 @@
     {
      "id": "profit-down",
      "name": "Profit down"
-    }
-   ]
-  },
-  {
-   "id": "promoter",
-   "name": "Promoter Activity",
-   "subfolders": [
-    {
-     "id": "buying",
-     "name": "🟢 Promoter Buying"
-    },
-    {
-     "id": "pledge-release",
-     "name": "🟢 Promoter Pledge Release"
-    },
-    {
-     "id": "selling",
-     "name": "🔴 Promoter Selling"
-    },
-    {
-     "id": "pledge-creation",
-     "name": "🔴 Promoter Pledge Creation"
-    },
-    {
-     "id": "pledge-invocation",
-     "name": "🔴 Promoter Pledge Invocation"
     }
    ]
   },
@@ -9716,10 +9690,10 @@
    "exchange": "NSE",
    "market_cap_crore": 60702.01,
    "order_size": "UNDISCLOSED",
-   "trailing_pe": 25.65,
+   "trailing_pe": 25.25,
    "forward_pe": 20.12,
    "price_to_book": 5.72,
-   "trailing_eps": 89.74,
+   "trailing_eps": 91.16,
    "enterprise_value": 57302.08,
    "fifty_two_week_high": 2900.0,
    "fifty_two_week_low": 710.0,
@@ -47013,240 +46987,6 @@
     }
    ],
    "link": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026192715_fSELOFTenderoffersigned.pdf"
-  },
-  {
-   "id": "promoter-929463fc87795422419e0d78",
-   "source_id": "106872816",
-   "time": "2026-11-28T13:53:12+05:30",
-   "folder": "promoter",
-   "subfolder": "selling",
-   "exchange": "NSE",
-   "symbol": "LGEINDIA",
-   "company": "LG Electronics India Limited",
-   "title": "🔴 Promoter Selling – LG Electronics India Limited",
-   "details": [
-    {
-     "label": "NSE disclosure category",
-     "value": "Updates",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement date",
-     "value": "27-Nov-2026 16:15:28",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement summary",
-     "value": "LG Electronics India Limited has informed the Exchange regarding 'Sale of Equity Shares of the Company by LG Electronics Inc., Promoter, in the open market for complying with minimum public shareholding requirement'.",
-     "source": "NSE"
-    },
-    {
-     "label": "Promoter activity",
-     "value": "🔴 Promoter Selling",
-     "source": "NSE disclosure classification"
-    },
-    {
-     "label": "Extracted filing text",
-     "value": " \n \n \nLG Electronics India Limited  \n(16th to 20th Floor) C- 001, Tower D, KK Project, Sector-16 B. \nNoida - 201301 Dist. Gautam Buddha Nagar, UP (India) \nT: 91-120-651-6700 Website: www.lg.com/in \nEmail id: cgc.india@lge.com \nRegd. Office: A-24/6, Mohan Cooperative Industrial Estate, Mathura Road, New Delhi – 110044 \nCIN: L32107DL1997PLC220109 \n \n \nLGEIL/CGC/2026-27/77 \n \nDate: November 27, 2026 \n \nNational Stock Exchange of India Limited   BSE Limited  \nExchange Plaza, C-1, Block G                 Phiroze Jeejeebhoy Towers  \nBandra Kurla Complex,     Dalal Street,  \nBandra (E), Mumbai – 400 051    Mumbai – 400 001 \n \nNSE Symbol: LGEINDIA                 Scrip Code: 544576 \n \nSub: Intimation regarding sale of equity shares of face value of ₹10 each (“Equity Shares”) of \nLG Electronics India Limited (“Company”) by its promoter, LG Electronics Inc., in the open \nmarket for complying with minimum public shareholding requirement \n \nDear Sir/Madam, \n \nThis is with reference to our earlier intimation dated November 25, 2026. We wish to inform you that \nLG Electronics Inc., the promoter of the Company, has informed the Company that it has sold \n13,575,447 Equity Shares (representing 2.00% of the total issued and paid -up Equity Share capital of \nthe Company) on November 26, 2026, through open market sale, in accordance with SEBI Master \nCircular No. HO/49/14/14(7)2025-CFD-POD2/I/3762/2026 issued on July 11, 2023 (last updated on \nJanuary 30, 2026) to comply with the minimum public shareholding requirements applicable to the \nCompany. \n \nPursuant to the abovementioned sale of Equity Shares, the shareholding of the promoter in the \nCompany has reduced from 85.00% of the issued and paid-up Equity Share capital of the Company to \n83.00% of the issued and paid-up equity share capital of the Company. \n \nThis is for your information and records. \n \nThanking You, \n \nYours faithfully, \nFor LG Electronics India Limited \n \n \n \n \n \n(Anuj Goyal) \nCompany Secretary and Compliance Officer \n \n ",
-     "source": "NSE attachment"
-    }
-   ],
-   "link": "https://nsearchives.nseindia.in/corporate/LGEINDIA_27112026160719_Intimation_of_Sale_by_Promoter.pdf"
-  },
-  {
-   "id": "promoter-d51ee4dfb0e5ead0a8407c1e",
-   "source_id": "106872668",
-   "time": "2026-11-28T13:53:12+05:30",
-   "folder": "promoter",
-   "subfolder": "selling",
-   "exchange": "NSE",
-   "symbol": "IGIL",
-   "company": "International Gemological Institute Limited",
-   "title": "🔴 Promoter Selling – International Gemological Institute Limited",
-   "details": [
-    {
-     "label": "NSE disclosure category",
-     "value": "Updates",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement date",
-     "value": "27-Nov-2026 14:34:22",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement summary",
-     "value": "International Gemological Institute Limited has informed the Exchange regarding 'Intimation of sale of equity shares of International Gemological Institute Limited by BCP ASIA II TOPCO PTE. LTD., Promoter, for achieving minimum public shareholding'.",
-     "source": "NSE"
-    },
-    {
-     "label": "Promoter activity",
-     "value": "🔴 Promoter Selling",
-     "source": "NSE disclosure classification"
-    },
-    {
-     "label": "Extracted filing text",
-     "value": " \n \n \nNovember 27, 2026 \n \n To \nBSE Limited National Stock Exchange of India Limited \nCorporate Relationship Department, Phiroze \nJeejeebhoy Towers, Dalal Street, Mumbai 400 001 \nScrip Code: 544311 \nListing Department, “Exchange Plaza”, C -1, Block \nG, Bandra Kurla Complex, Bandra (East), Mumbai \n400 051 \n Symbol: IGIL \n \n \nDear Sir/Madam, \n \nSubject: Intimation of sale of equity shares of International Gemological Institute Limited by BCP ASIA \nII TOPCO PTE. LTD., Promoter, for achieving minimum public shareholding. \n \nWith reference to our earlier intimation dated November 26, 2026, we wish to inform you that BCP ASIA \nII TOPCO PTE. LTD., the promoter of International Gemological Institute Limited (the “ Company”), has \ninformed the Company that it has sold 67,16,031 equity shares of the Company having a face value of ₹2 \neach (“Equity Shares”), representing ~1.55% of the total issued and paid -up equity share capital of the \nCompany, in the open market through the block deal window mechanism of National Stock Exchange of \nIndia Limited on November 27, 2026 in accordance with item 7 of the table in paragraph 2 of Section VI-\nA of Chapter VI of the master circular for compliance w ith the provisions of the SEBI (Listing Obligations \nand Disclosure Requirements) Regulations, 2015 by listed entities bearing reference no. \nHO/49/14/14(7)2025-CFD-POD2/I/3762/2026 issued by the Securities and Exchange Board of India on \nJuly 11, 2023 and last updated on January 30, 2026, as amended from time to time, for achieving the \nminimum public shareholding requirements. \n \nFollowing the aforesaid sale of Equity Shares, the aggregate shareholding of the promoter and promoter \ngroup in the Company has reduced from 76.55% (33,08,35,803 Equity Shares) to 75.00% (32,41,19,772 \nEquity Shares) of the paid -up equity share capital of t he Company, and the public shareholding has \nincreased to 25.00% of the paid-up equity share capital of the Company. \n \n \n \n \nAccordingly, the Company has achieved the minimum public shareholding requirements, as mandated \nunder Rule 19(2)(b) and Rule 19A of the Securities Contracts (Regulation) Rules, 1957, read with \nRegulation 38 of the Securities and Exchange Board of India (Li sting Obligations and Disclosure \nRequirements) Regulations, 2015. \n \nYou are requested to kindly take the above information on record. \n \nThanking you, \nFor International Gemological Institute Limited \n \n \n \nNitika Dalmia \nCompany Secretary and Compliance Officer \n \n ",
-     "source": "NSE attachment"
-    }
-   ],
-   "link": "https://nsearchives.nseindia.in/corporate/IGIINDIA_27112026143350_SE_intimation.pdf"
-  },
-  {
-   "id": "promoter-684f350e342a2b21f5ea1544",
-   "source_id": "106872637",
-   "time": "2026-11-28T13:53:12+05:30",
-   "folder": "promoter",
-   "subfolder": "selling",
-   "exchange": "NSE",
-   "symbol": "FLAIR",
-   "company": "Flair Writing Industries Limited",
-   "title": "🔴 Promoter Selling – Flair Writing Industries Limited",
-   "details": [
-    {
-     "label": "NSE disclosure category",
-     "value": "Updates",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement date",
-     "value": "27-Nov-2026 13:39:02",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement summary",
-     "value": "Flair Writing Industries Limited has informed the Exchange regarding Completion Of Sale Of Equity Shares Of The Face Value Of Rs. 5 Each (''Equity Shares'') Of Flair Writing Industries Limited (''Company'') Held By The Promoters And Promoter Group In The Open Market And For Achieving Minimum Public Shareholding (''MPS'').",
-     "source": "NSE"
-    },
-    {
-     "label": "Promoter activity",
-     "value": "🔴 Promoter Selling",
-     "source": "NSE disclosure classification"
-    },
-    {
-     "label": "Extracted filing text",
-     "value": " \n   \n \nRef: FWIL/SEC/2026-27/75 \n \nDate: November 27, 2026 \n \nTo, \n \nBSE Limited \nListing Department \nP.J. Towers, 1st Floor, \nDalal Street, Fort, \nMumbai - 400 001 \nScrip Code: 544030 \nNational Stock Exchange of India \nLimited \nExchange Plaza, \nBandra Kurla Complex, \nBandra (E), Mumbai- 400051 \nSymbol: FLAIR \n \nSub: Intimation for completion of sale of equity shares of the face value of Rs. 5 each \n(“Equity Shares”) of Flair Writing Industries Limited (“Company”) held by the \nPromoters and Promoter Group of the Company in the open market and for achieving \nMinimum Public Shareholding (“MPS”) pursuant to the completion of sale. \n \nDear Sir /Madam, \n \nIn continuation of our earlier intimation dated November 13, 2026, we wish to inform you \nthat the selling Promoters of Flair Writing Industries Limited (“Company”), namely Mr. \nKhubilal Jugraj Rathod and Mr. Vimalchand Jugraj Rathod, have successfully completed \nthe sale of their respective Equity Shares through the open market route to comply with \nthe Minimum Public Shareholding (“MPS”) requirements prescribed under Rule 19(2)(b) \nand Rule 19A of the Securities Contracts (Regulation) Rules, 1957, read with Regulation \n38 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 and \nChapter VI, Section VI-A of the SEBI Master Circular bearing reference no. \nHO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 (“Master \nCircular”). \n \nThe details of the sale done today are as follows: \n \nSr. \nNo. Name of the Promoter(s) \nDate of \nDisposal  \nNumber of \nEquity Shares \nsold \n% of total equity \nshare capital sold \n1. Mr. Khubilal Jugraj Rathod November 27 , 2026 2,80,000 0.26% \n2. Mr. Vimalchand Jugraj Rathod November 27 , 2026 3,20,000 0.30% \n Total  6,00,000 0.57% \n \n \n   \n \nWe hereby confirm that the sale of above Equity Shares has been duly completed within \nthe timeline, as mentioned in our intimation dated November 13, 2026. \n \nAccordingly, the details of the total number of Equity Shares sold along with the % of total \nequity share capital sold during the Sale Period are mentioned below: \n \nSr. \nNo. Name of the Promoter(s) \nPeriod of \nDisposal  \nNumber of \nEquity Shares \nsold \n% of total equity \nshare capital sold \n1. Mr. Khubilal Jugraj Rathod  \nFrom \n17.11.2026 to \n27.11.2026 \n22,80,000 2.16% \n2. Mr. Vimalchand Jugraj Rathod From 17.11.2026 to 27.11.2026 15,20,000 1.44% \n Total (A+B)  38,00,000 3.61% \n \n \nWe further confirm that: \n \n The sale of Equity Shares has been completed through the open market on the \nStock Exchange in accordance with the applicable conditions prescribed under the \nMaster Circular. \n \n Upon completion of the sale, the Company has achieved compliance with the \nMinimum Public Shareholding requirement of at least 25% of its total paid-up \nequity share capital. Accordingly, the aggregate shareholding of the Promoters of \nthe Company has reduced from 78.59% to 74.98%, post completion of the sale. \n \n \nKindly take the same on records. \n \nYours faithfully, \n \nFor Flair Writing Industries Limited \n \n \n \n \nVishal Kishor Chanda \nCompany Secretary and Compliance Officer \n ",
-     "source": "NSE attachment"
-    }
-   ],
-   "link": "https://nsearchives.nseindia.in/corporate/flair2016_27112026133855_BSE_NSE_Intimation_After_Sale.pdf"
-  },
-  {
-   "id": "promoter-f0c0080c0c4dda6b1d45fa6e",
-   "source_id": "106871980",
-   "time": "2026-11-28T13:53:14+05:30",
-   "folder": "promoter",
-   "subfolder": "selling",
-   "exchange": "NSE",
-   "symbol": "FLAIR",
-   "company": "Flair Writing Industries Limited",
-   "title": "🔴 Promoter Selling – Flair Writing Industries Limited",
-   "details": [
-    {
-     "label": "NSE disclosure category",
-     "value": "General Updates",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement date",
-     "value": "26-Nov-2026 18:48:46",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement summary",
-     "value": "Flair Writing Industries Limited has informed the Exchange regarding Sale of Equity Shares of the Face Value of Rs. 5 Each (''Equity Shares'') of Flair Writing Industries Limited (''Company'') Held by the Promoters and Promoter Group of the Company in the Open Market For Achieving Minimum Public Shareholding (''MPS'').",
-     "source": "NSE"
-    },
-    {
-     "label": "Promoter activity",
-     "value": "🔴 Promoter Selling",
-     "source": "NSE disclosure classification"
-    },
-    {
-     "label": "Extracted filing text",
-     "value": " \n   \n \nRef: FWIL/SEC/2026-27/72 \n \nDate: November 26, 2026 \n \nTo, \n \nBSE Limited \nListing Department \nP.J. Towers, 1st Floor, \nDalal Street, Fort, \nMumbai - 400 001 \nScrip Code: 544030 \nNational Stock Exchange of India \nLimited \nExchange Plaza, \nBandra Kurla Complex, \nBandra (E), Mumbai- 400051 \nSymbol: FLAIR \n \nSub: Sale of equity shares of the face value of Rs. 5 each (“Equity Shares”) of Flair \nWriting Industries Limited (“Company”) held by the Promoters an d Promoter Group \nof the Company in the open market for achieving Minimum Public Shareholding \n(“MPS”). \n \nDear Sir /Madam, \n \nIn continuation of our earlier intimation dated November 13, 2026, we wish to inform you \nthat the selling Promoters of Flair Writing Industries Limited (“Company”), namely Mr. \nKhubilal Jugraj Rathod and Mr. Vimalchand Jugraj Rathod, have successfully completed \nthe sale of their respective Equity Shares through the open market route to comply with \nthe Minimum Public Shareholding (“MPS”) requirements prescribed under Rule 19(2)(b) \nand Rule 19A of the Securities Contracts (Regulation) Rules, 1957, read with Re gulation \n38 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015 and \nChapter VI, Section VI -A of the SEBI Master Circular bearing reference no. \nHO/49/14/14(7)2025-CFD-POD2/I/3762/2026 dated January 30, 2026 (“Master \nCircular”). \n \nThe details of the sale are as follows: \n \nSr. \nNo. Name of the Promoter(s) \nDate of \nDisposal  \nNumber of \nEquity Shares \nsold \n% of total equity \nshare capital sold \n1. Mr. Khubilal Jugraj Rathod November 2 5, 2026 2,50,000 0.24% \n2. Mr. Vimalchand Jugraj Rathod November 25, 2026 2,50,000 0.24% \n3. Mr. Khubilal Jugraj Rathod November 26, 2026 3,50,000 0.33% \n \n   \n \n4. Mr. Vimalchand Jugraj Rathod November 26, 2026 3,50,000 0.33% \n Total  12,00,000 1.14% \n \nWe hereby confirm that the sale of Equity Shares provided above has been duly completed \nwithin the timeline, as mentioned in our intimation dated November 13, 2026. \n \nWe further confirm that: \n \n The sale of Equity Shares has been completed through the open market on the \nStock Exchange in accordance with the applicable conditions prescribed under the \nMaster Circular. \n \n The Company is in the process of completing the sale as per our intimation dated \nNovember 13, 2026. Upon completion of the entire sale, the Company will achieve \ncompliance with Minimum Public Shareholding requirements  as per applicable \nlaws. \n \nKindly take the same on records. \n \nYours faithfully, \n \nFor Flair Writing Industries Limited \n \n \n \n \nVishal Kishor Chanda \nCompany Secretary and Compliance Officer \n ",
-     "source": "NSE attachment"
-    }
-   ],
-   "link": "https://nsearchives.nseindia.in/corporate/flair2016_26112026184830_BSE_NSE_Intimation_After_Sale.pdf"
-  },
-  {
-   "id": "promoter-ae46229e1b77ccfe5ed2745a",
-   "source_id": "106870405",
-   "time": "2026-11-28T13:53:17+05:30",
-   "folder": "promoter",
-   "subfolder": "selling",
-   "exchange": "NSE",
-   "symbol": "LGEINDIA",
-   "company": "LG Electronics India Limited",
-   "title": "🔴 Promoter Selling – LG Electronics India Limited",
-   "details": [
-    {
-     "label": "NSE disclosure category",
-     "value": "Updates",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement date",
-     "value": "25-Nov-2026 15:15:05",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement summary",
-     "value": "LG Electronics India Limited has informed the Exchange regarding 'Proposed sale of equity shares of the Company by LG Electronics Inc., Promoter, to divest a part of its shareholding for complying with Minimum Public Shareholding requirement'.",
-     "source": "NSE"
-    },
-    {
-     "label": "Promoter activity",
-     "value": "🔴 Promoter Selling",
-     "source": "NSE disclosure classification"
-    },
-    {
-     "label": "Extracted filing text",
-     "value": " \n \n \nLG Electronics India Limited  \n(16th to 20th Floor) C- 001, Tower D, KK Project, Sector-16 B. \nNoida - 201301 Dist. Gautam Buddha Nagar, UP (India) \nT: 91-120-651-6700 Website: www.lg.com/in \nEmail id: cgc.india@lge.com \nRegd. Office: A-24/6, Mohan Cooperative Industrial Estate, Mathura Road, New Delhi – 110044 \nCIN: L32107DL1997PLC220109 \n \n \nLGEIL/CGC/2026-27/76 \n \nDate: November 25, 2026 \n \nNational Stock Exchange of India Limited   BSE Limited  \nExchange Plaza, C-1, Block G                 Phiroze Jeejeebhoy Towers  \nBandra Kurla Complex,     Dalal Street,  \nBandra (E), Mumbai – 400 051    Mumbai – 400 001 \n \nNSE Symbol: LGEINDIA                 Scrip Code: 544576 \n \nSub:   Intimation regarding proposed sale of equity shares of face value of ₹1 0 each (“Equity \nShares”) of LG Electronics India Limited (“Company”) by its promoter, LG Electronics Inc., in \nthe open market for complying with minimum public shareholding requirement \n \nDear Sir/Madam, \n \nIn accordance with the requirement of Rule 19(2)(b) of the Securities Contracts (Regulation) Rules, \n1957 and Regulation 38 of Securities and Exchange Board of India (Listing Obligations and \nDisclosure Requirements) Regulations, 2015, each as amended, read with paragraph 2(7)(i) under \nSection VI -A of Chapter VI of the SEBI Master Circular No. HO/49/14/14(7)2025 -CFD-\nPOD2/I/3762/2026 issued on July 11, 2023 (last updated on January 30, 2026) (“ SEBI MPS Master \nCircular”) in connection with manner of achieving minimum public shareholding, we wish to inform \nyou regarding the intention of our promoter, LG Electronics Inc., to sell certain Equity Shares held by \nit through the stock exchange(s) in the open market. \n \nThe details required to be disclosed as per the SEBI MPS Master Circular are as follows: \n \nS. No. Particulars Details \n1.  Intention of the promoter / promoter group \nto sell and the purpose of sale \nThe promoter of the Company, LG \nElectronics Inc., has conveyed its intention \nto sell certain Equity Shares held by it for \ncompliance with the requirements of \nminimum public shareholding applicable \nto the Company \n \n2.  Details of promoter / promoter group who \npropose to divest their shareholding \nLG Electronics Inc., the promoter of the \nCompany, proposes to divest a part of its \nshareholding in the Company  \n3.  Total number of shares and percentage of \nshareholding in the listed entity that is \nproposed to be divested \nUp to 2% of the total issued and paid -up \nEquity Share capital of the Company \naggregating up to 13,575,447 Equity \nShares \n \n4.  Period within which the entire divestment \nprocess will be completed \nUntil Dec 31st, 2026. The sales will be of \nsuch number of Equity Shares as \nmentioned in S. No. 3, in Single or \nmultiple tranches. \n \n \n \nLG Electronics India Limited  \n(16th to 20th Floor) C- 001, Tower D, KK Project, Sector-16 B. \nNoida - 201301 Dist. Gautam Buddha Nagar, UP (India) \nT: 91-120-651-6700 Website: www.lg.com/in \nEmail id: cgc.india@lge.com \nRegd. Office: A-24/6, Mohan Cooperative Industrial Estate, Mathura Road, New Delhi – 110044 \nCIN: L32107DL1997PLC220109 \n \n \nThe shareholding of LG Electronics Inc. as on Nov 25th, 2026 is 85.00% of the total issued and paid -\nup Equity Share capital of the Company. Upon completion of the abovementioned sale, the \nshareholding of LG Electronics Inc. in the Company would be reduced from 85.00% to 83.00% of the \ntotal issued and paid-up Equity Share capital of the Company. \n \nUndertaking received from LG Electronics Inc. pursuant to the provisions of the SEBI MPS Master \nCircular is enclosed herewith as Annexure I. \n \nWe request you to kindly take the above on record and disseminate the same to all market \nparticipants. \n \nThanking You, \n \nYours faithfully, \nFor LG Electronics India Limited \n \n \n \n \n \n(Anuj Goyal) \nCompany Secretary and Compliance Officer \n \nEncl.: Annexure I – Undertaking from LG Electronics Inc. \n \n\n",
-     "source": "NSE attachment"
-    }
-   ],
-   "link": "https://nsearchives.nseindia.in/corporate/LGEINDIA_25112026151138_Shares_Sale_by_Promoter.pdf"
-  },
-  {
-   "id": "promoter-5da91ac35feb87d9fedfe687",
-   "source_id": "106870212",
-   "time": "2026-11-28T13:53:17+05:30",
-   "folder": "promoter",
-   "subfolder": "buying",
-   "exchange": "NSE",
-   "symbol": "AXITA",
-   "company": "Axita Cotton Limited",
-   "title": "🟢 Promoter Buying – Axita Cotton Limited",
-   "details": [
-    {
-     "label": "NSE disclosure category",
-     "value": "Disclosure under SEBI Takeover Regulations",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement date",
-     "value": "25-Nov-2026 11:31:09",
-     "source": "NSE"
-    },
-    {
-     "label": "NSE announcement summary",
-     "value": "Gitaben Nitinbhai Patel has submitted to the Exchange a copy of Disclosures under Regulation 10(6)-Report to stock Exchange in respect of any acquisition made in reliance upon exemption provided for in regulation 10 of SEBI (SAST) Regulations, 2011.",
-     "source": "NSE"
-    },
-    {
-     "label": "Promoter activity",
-     "value": "🟢 Promoter Buying",
-     "source": "NSE disclosure classification"
-    },
-    {
-     "label": "Extracted filing text",
-     "value": "  \n  \nDate: 24-11-2026 \n  \nTo, \nBSE Limited \nI\" Floor, New Trading Wing, Exchange Plaza, Plot \nNo. C/1, G Block, P. J. Tower, Dalal Street, Fort, \nMumbai - 400001, Maharashtra, India \nBSE Scrip Code: 542285 \n    \nTo, \nThe National Stock Exchange of India Limited \nExchange Plaza, 5 Floor Plot No. C/I, G Block, Bandra Kurla \nComplex, Bandra (E), Mumbai- 400051, Maharashtra, \nIndia , \nNSE Symbol: AXITA \n  \n  \nDear Sir/Madam, \nSubject: Disclosure under Regulation 10(6) of SEBI (Substantial Acquisition of Shares and Takeover) \nRegulations, 2011. \nPlease find attached herewith disclosure under Regulation 10(6) of SEBI (Substantial Acquisition of Shares and \nTakeovers) Regulations 2011 \nYou are requested to kindly take the same on record and acknowledge the receipt of the same. \nThanking You. \nx. Pedal \nGitaben Nitinbhai Patel \nACQUIRER (PROMOTER GROUP) \nEnclosed: A/a. \n   \n  \nDisclosures under Regulation 10(6) \nReport to Stock Exchanges in respect of any acquisition made in reliance upon exemption provided for in Regulation \n10 of SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011 \n  \n  \n  \n  \n1 Name of the Target Company (TC) Axita Cotton Limited \n2 | Name of the acquirer(s) Gitaben Nitinbhai Patel \n3 Name of the stock exchange where shares of the TC are | Yes \nlisted \n4 Details of the transaction including rationale, if any, for | Inter-se Transfer of Shares by way of gift amongst \nthe transfer/acquisition of shares. immediate relatives cum Promoter and Promoter Group \n  \n5 Relevant regulation under which the acquirer is | Regulation 10(1) (a) (i) \nexempted from making open offer. \n  \n6 Whether disclosure of proposed acquisition was \nrequired to be made under regulation 10 (5) and if so, \n- whether disclosure was made and whether it was made | Yes \nwithin the timeline specified under the regulations. \n  \n  \n  \n  \n- date of filing with the stock exchange. 06-11-2026 \n7 Details of acquisition Disclosures required to be | Whether the disclosures \nmade under regulation | under regulation 10(5) are \n10(5) actually made \na. | Name of the transferor / seller Kushal Nitinbhai Patel No \nb. | Date of acquisition 18-11-2026 \n  \nc. | Number of shares/ voting rights in respect of the | 3,98,70,411 \nacquisitions from each person mentioned in 7(a) \nabove \n  \nd. | Total shares proposed to be acquired / actually 10.42 \nacquired as a % of diluted share capital of TC \n  \ne. | Price at which shares are proposed to be acquired / NIL, Inter-se Transfer of \n    \n  \n          \n  \n      \n  \nactually acquired Shares by way of gift \namongst immediate \nrelatives \n8 Shareholding details Pre-Transaction Post-Transaction \nNo. of % w.r.t total No. of % w.r.t total \nshares share capital shares share capital \nheld of TC held of TC \na | Each Acquirer / Transferee(*) \nGitaben Nitinbhai Patel | 1,27,58,065 | 3.33 | 5,26,28,476 | 13.75, \nb | Each Seller / Transferor -a \n_Kushal Nitinbhai Patel | 3,98,70,411 | 10.42 | 0 | 0.00 \nWn Cele) \nGitaben Nitinbhai Patel (Immediate Relative) Date: 24-11-2026 \nAcquirer/ Promoter Group Place: Ahmedabad \nNote: \ne (*) Shareholding of each entity shall be shown separately and then collectively in a group. \ne The above disclosure shall be signed by the acquirer mentioning date & place. In case, there is more than one acquirer, \nthe report shall be signed either by all the persons or by a person duly authorized to do so on behalf of all the acquirers. \n  \n ",
-     "source": "NSE attachment"
-    }
-   ],
-   "link": "https://nsearchives.nseindia.in/corporate/team_sandeshc_25112026111457_Reg.pdf"
   }
  ],
  "sample": false
