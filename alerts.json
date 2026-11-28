@@ -1,1411 +1,1433 @@
 {
-  "sample": false,
-  "folders": [
+ "sample": false,
+ "folders": [
+  {
+   "id": "corporate-actions",
+   "name": "Corporate Actions",
+   "subfolders": [
     {
-      "id": "corporate-actions",
-      "name": "Corporate Actions",
-      "subfolders": [
-        {
-          "id": "buyback",
-          "name": "Buybacks"
-        },
-        {
-          "id": "split",
-          "name": "Stock splits"
-        },
-        {
-          "id": "bonus",
-          "name": "Bonus issues"
-        },
-        {
-          "id": "dividend",
-          "name": "Dividends"
-        },
-        {
-          "id": "rights",
-          "name": "Rights issues"
-        },
-        {
-          "id": "merger",
-          "name": "Mergers"
-        },
-        {
-          "id": "demerger",
-          "name": "Demergers"
-        },
-        {
-          "id": "other",
-          "name": "Other corporate actions"
-        }
-      ]
+     "id": "buyback",
+     "name": "Buybacks"
+    },
+    {
+     "id": "split",
+     "name": "Stock splits"
+    },
+    {
+     "id": "bonus",
+     "name": "Bonus issues"
+    },
+    {
+     "id": "dividend",
+     "name": "Dividends"
+    },
+    {
+     "id": "rights",
+     "name": "Rights issues"
+    },
+    {
+     "id": "merger",
+     "name": "Mergers"
+    },
+    {
+     "id": "demerger",
+     "name": "Demergers"
+    },
+    {
+     "id": "other",
+     "name": "Other corporate actions"
     }
-  ],
-  "alerts": [
+   ]
+  },
+  {
+   "id": "orders",
+   "name": "Orders",
+   "subfolders": [
     {
-      "id": "ema-golden-bankbaroda-2026-11-27",
-      "time": "2026-11-28T16:08:06.450902+05:30",
-      "folder": "emas",
-      "subfolder": "golden",
-      "symbol": "BANKBARODA",
-      "company": "BANKBARODA",
-      "title": "Golden Cross (Daily)",
-      "price": 274.9,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Signal date",
-          "value": "2026-11-27",
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA50",
-          "value": 253.9219,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA200",
-          "value": 253.3859,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "Timeframe",
-          "value": "Daily",
-          "source": "Scanner"
-        },
-        {
-          "label": "Signal definition",
-          "value": "EMA50 above EMA200",
-          "source": "Scanner"
-        }
-      ],
-      "link": "https://www.tradingview.com/chart/?symbol=NSE:BANKBARODA"
+     "id": "very-big",
+     "name": "Very big orders"
     },
     {
-      "id": "ema-golden-choicein-2026-11-27",
-      "time": "2026-11-28T16:08:06.450902+05:30",
-      "folder": "emas",
-      "subfolder": "golden",
-      "symbol": "CHOICEIN",
-      "company": "CHOICEIN",
-      "title": "Golden Cross (Daily)",
-      "price": 770.45,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Signal date",
-          "value": "2026-11-27",
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA50",
-          "value": 741.5307,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA200",
-          "value": 740.6778,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "Timeframe",
-          "value": "Daily",
-          "source": "Scanner"
-        },
-        {
-          "label": "Signal definition",
-          "value": "EMA50 above EMA200",
-          "source": "Scanner"
-        }
-      ],
-      "link": "https://www.tradingview.com/chart/?symbol=NSE:CHOICEIN"
+     "id": "big",
+     "name": "Big orders"
     },
     {
-      "id": "ema-golden-hdfcamc-2026-11-27",
-      "time": "2026-11-28T16:08:06.450902+05:30",
-      "folder": "emas",
-      "subfolder": "golden",
-      "symbol": "HDFCAMC",
-      "company": "HDFCAMC",
-      "title": "Golden Cross (Daily)",
-      "price": 2706.0,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Signal date",
-          "value": "2026-11-27",
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA50",
-          "value": 2523.0924,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA200",
-          "value": 2522.3339,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "Timeframe",
-          "value": "Daily",
-          "source": "Scanner"
-        },
-        {
-          "label": "Signal definition",
-          "value": "EMA50 above EMA200",
-          "source": "Scanner"
-        }
-      ],
-      "link": "https://www.tradingview.com/chart/?symbol=NSE:HDFCAMC"
+     "id": "medium",
+     "name": "Medium orders"
     },
     {
-      "id": "ema-golden-jlhl-2026-11-27",
-      "time": "2026-11-28T16:08:06.450902+05:30",
-      "folder": "emas",
-      "subfolder": "golden",
-      "symbol": "JLHL",
-      "company": "JLHL",
-      "title": "Golden Cross (Daily)",
-      "price": 345.3,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Signal date",
-          "value": "2026-11-27",
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA50",
-          "value": 281.019,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA200",
-          "value": 279.1409,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "Timeframe",
-          "value": "Daily",
-          "source": "Scanner"
-        },
-        {
-          "label": "Signal definition",
-          "value": "EMA50 above EMA200",
-          "source": "Scanner"
-        }
-      ],
-      "link": "https://www.tradingview.com/chart/?symbol=NSE:JLHL"
-    },
-    {
-      "id": "ema-golden-olil-2026-11-27",
-      "time": "2026-11-28T16:08:06.450902+05:30",
-      "folder": "emas",
-      "subfolder": "golden",
-      "symbol": "OLIL",
-      "company": "OLIL",
-      "title": "Golden Cross (Daily)",
-      "price": 434.8,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Signal date",
-          "value": "2026-11-27",
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA50",
-          "value": 363.8761,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "EMA200",
-          "value": 363.7609,
-          "source": "Yahoo Finance"
-        },
-        {
-          "label": "Timeframe",
-          "value": "Daily",
-          "source": "Scanner"
-        },
-        {
-          "label": "Signal definition",
-          "value": "EMA50 above EMA200",
-          "source": "Scanner"
-        }
-      ],
-      "link": "https://www.tradingview.com/chart/?symbol=NSE:OLIL"
-    },
-    {
-      "id": "944ba23533a01f71934b7727",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "split",
-      "symbol": "VGL",
-      "company": "VARVEE GLOBAL LIMITED",
-      "title": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Bc End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Bc Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Ca Broadcast Date",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Comp",
-          "value": "VARVEE GLOBAL LIMITED",
-          "source": "NSE"
-        },
-        {
-          "label": "Ex Date",
-          "value": "27-Nov-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Face Val",
-          "value": "2",
-          "source": "NSE"
-        },
-        {
-          "label": "Ind",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Isin",
-          "value": "INE273D01019",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Rec Date",
-          "value": "27-Nov-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Series",
-          "value": "EQ",
-          "source": "NSE"
-        },
-        {
-          "label": "Subject",
-          "value": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "VGL",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://www.nseindia.com/get-quotes/equity?symbol=VGL"
-    },
-    {
-      "id": "9138a14913e7d19320aaa848",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "split",
-      "symbol": "INTERARCH",
-      "company": "Interarch Building Solutions Limited",
-      "title": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Bc End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Bc Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Ca Broadcast Date",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Comp",
-          "value": "Interarch Building Solutions Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Ex Date",
-          "value": "30-Nov-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Face Val",
-          "value": "10",
-          "source": "NSE"
-        },
-        {
-          "label": "Ind",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Isin",
-          "value": "INE00M901018",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Rec Date",
-          "value": "30-Nov-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Series",
-          "value": "EQ",
-          "source": "NSE"
-        },
-        {
-          "label": "Subject",
-          "value": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "INTERARCH",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://www.nseindia.com/get-quotes/equity?symbol=INTERARCH"
-    },
-    {
-      "id": "ca26afa22ea5ce3ffe61ca32",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "bonus",
-      "symbol": "TECHM",
-      "company": "Tech Mahindra Limited",
-      "title": "Bonus 1:1",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Bc End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Bc Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Ca Broadcast Date",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Comp",
-          "value": "Tech Mahindra Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Ex Date",
-          "value": "30-Nov-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Face Val",
-          "value": "5",
-          "source": "NSE"
-        },
-        {
-          "label": "Ind",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Isin",
-          "value": "INE669C01028",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Rec Date",
-          "value": "30-Nov-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Series",
-          "value": "EQ",
-          "source": "NSE"
-        },
-        {
-          "label": "Subject",
-          "value": "Bonus 1:1",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "TECHM",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://www.nseindia.com/get-quotes/equity?symbol=TECHM"
-    },
-    {
-      "id": "d8c1e3443853eddda9a85831",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "split",
-      "symbol": "SPAL",
-      "company": "S. P. Apparels Limited",
-      "title": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "Bc End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Bc Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Ca Broadcast Date",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Comp",
-          "value": "S. P. Apparels Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Ex Date",
-          "value": "10-Dec-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Face Val",
-          "value": "10",
-          "source": "NSE"
-        },
-        {
-          "label": "Ind",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Isin",
-          "value": "INE212I01016",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd End Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Nd Start Date",
-          "value": "-",
-          "source": "NSE"
-        },
-        {
-          "label": "Rec Date",
-          "value": "10-Dec-2026",
-          "source": "NSE"
-        },
-        {
-          "label": "Series",
-          "value": "EQ",
-          "source": "NSE"
-        },
-        {
-          "label": "Subject",
-          "value": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "SPAL",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://www.nseindia.com/get-quotes/equity?symbol=SPAL"
-    },
-    {
-      "id": "87b55992cdc0039c506efaf2",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "buyback",
-      "symbol": "ZEEL",
-      "company": "Zee Entertainment Enterprises Limited",
-      "title": "General Updates",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "An Dt",
-          "value": "27-Nov-2026 19:27:33",
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Path",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Size",
-          "value": "1.85 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt File",
-          "value": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026192715_fSELOFTenderoffersigned.pdf",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt Text",
-          "value": "Zee Entertainment Enterprises Limited has informed the Exchange about Submission of Letter of Offer along with Tender form for Buy Back of Equity Shares",
-          "source": "NSE"
-        },
-        {
-          "label": "Bflag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Csv Name",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Desc",
-          "value": "General Updates",
-          "source": "NSE"
-        },
-        {
-          "label": "Difference",
-          "value": "00:00:02",
-          "source": "NSE"
-        },
-        {
-          "label": "Dt",
-          "value": "27112026192733",
-          "source": "NSE"
-        },
-        {
-          "label": "Exchdisstime",
-          "value": "27-Nov-2026 19:27:35",
-          "source": "NSE"
-        },
-        {
-          "label": "File Size",
-          "value": "1.85 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Has Xbrl",
-          "value": true,
-          "source": "NSE"
-        },
-        {
-          "label": "Nas Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Obj Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Old New",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Orgid",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Seq Id",
-          "value": "106873119",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Industry",
-          "value": "Media & Entertainment",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Isin",
-          "value": "INE256A01028",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Name",
-          "value": "Zee Entertainment Enterprises Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Sort Date",
-          "value": "2026-11-27 19:27:33",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "ZEEL",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Summary",
-          "value": "Zee Entertainment Enterprises Limited submitted a Letter of Offer for a buyback of up to 65,934,065 equity shares at Rs. 91 per share, totaling Rs. 6,000 Million. The buyback opens on December 1, 2026, and closes on December 7, 2026. The record date is November 25, 2026. The offer is subject to statutory approvals. The buyback represents 6.86% of the total paid-up equity share capital as on March 31, 2026. Entitlement is approximately one share out of every fourteen held. Settlement of bids is expected by December 14, 2026.",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Url",
-          "value": "https://nsearchives.nseindia.in/ann_voice/ZEEL_27112026192715_fSELOFTenderoffersigned.mp3",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026192715_fSELOFTenderoffersigned.pdf"
-    },
-    {
-      "id": "19c5f6f2aade333154aa34ed",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "buyback",
-      "symbol": "DALBHARAT",
-      "company": "Dalmia Bharat Limited",
-      "title": "General Updates",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "An Dt",
-          "value": "27-Nov-2026 19:05:50",
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Path",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Size",
-          "value": "574.86 KB",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt File",
-          "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_27112026190526_SEemail271126651.pdf",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt Text",
-          "value": "We wish to inform you that as per the requirements of Securities and Exchange Board of India(Buy-Back of Securities) Regulations, 2018, as amended, the Company has today i.e. onNovember 27, 2026, sent an intimation through electronic mode regarding its Buyback Offerthrough open market to its shareholders.",
-          "source": "NSE"
-        },
-        {
-          "label": "Bflag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Csv Name",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Desc",
-          "value": "General Updates",
-          "source": "NSE"
-        },
-        {
-          "label": "Difference",
-          "value": "00:00:01",
-          "source": "NSE"
-        },
-        {
-          "label": "Dt",
-          "value": "27112026190550",
-          "source": "NSE"
-        },
-        {
-          "label": "Exchdisstime",
-          "value": "27-Nov-2026 19:05:51",
-          "source": "NSE"
-        },
-        {
-          "label": "File Size",
-          "value": "574.86 KB",
-          "source": "NSE"
-        },
-        {
-          "label": "Has Xbrl",
-          "value": true,
-          "source": "NSE"
-        },
-        {
-          "label": "Nas Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Obj Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Old New",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Orgid",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Seq Id",
-          "value": "106873104",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Industry",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Isin",
-          "value": "INE00R701025",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Name",
-          "value": "Dalmia Bharat Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Sort Date",
-          "value": "2026-11-27 19:05:50",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "DALBHARAT",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Summary",
-          "value": "Dalmia Bharat Limited has intimated BSE and NSE regarding a buyback offer through the open market route. The Board approved the proposal on November 23, 2026. The maximum buyback price is Rs. 1,850 per equity share. The maximum buyback size is Rs. 7,00,00,00,000. The offer excludes promoters and their group. The buyback will commence on or before December 02, 2026. Shares will be acquired via stock exchange mechanisms. The last date for completion is the earlier of March 05, 2027, or when the maximum size is reached. The company may close earlier if Rs. 525,00,00,000 is deployed. Axis Capital Limited is the manager to the buyback. KFin Technologies Limited is the registrar.",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Url",
-          "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_27112026190526_SEemail271126651.mp3",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_27112026190526_SEemail271126651.pdf"
-    },
-    {
-      "id": "d5683652ed1789f9142b4e1e",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "buyback",
-      "symbol": "ZEEL",
-      "company": "Zee Entertainment Enterprises Limited",
-      "title": "General Updates",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "An Dt",
-          "value": "27-Nov-2026 19:01:58",
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Path",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Size",
-          "value": "1.76 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt File",
-          "value": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026190149_SEIntimationLOFsigned.pdf",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt Text",
-          "value": "Zee Entertainment Enterprises Limited has informed the Exchange about Submission of Letter of Offer for Buy Back of Equity Shares",
-          "source": "NSE"
-        },
-        {
-          "label": "Bflag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Csv Name",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Desc",
-          "value": "General Updates",
-          "source": "NSE"
-        },
-        {
-          "label": "Difference",
-          "value": "00:00:01",
-          "source": "NSE"
-        },
-        {
-          "label": "Dt",
-          "value": "27112026190158",
-          "source": "NSE"
-        },
-        {
-          "label": "Exchdisstime",
-          "value": "27-Nov-2026 19:01:59",
-          "source": "NSE"
-        },
-        {
-          "label": "File Size",
-          "value": "1.76 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Has Xbrl",
-          "value": true,
-          "source": "NSE"
-        },
-        {
-          "label": "Nas Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Obj Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Old New",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Orgid",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Seq Id",
-          "value": "106873097",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Industry",
-          "value": "Media & Entertainment",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Isin",
-          "value": "INE256A01028",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Name",
-          "value": "Zee Entertainment Enterprises Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Sort Date",
-          "value": "2026-11-27 19:01:58",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "ZEEL",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Summary",
-          "value": "Zee Entertainment Enterprises Limited submitted a Letter of Offer for a buyback of up to 65,934,065 equity shares at Rs. 91 per share, totaling Rs. 6,000 Million. The buyback opens on December 1, 2026, and closes on December 7, 2026. The record date is November 25, 2026. The offer is subject to statutory approvals. The buyback represents 6.86% of the total paid-up equity share capital as on March 31, 2026. Entitlement is approximately one share out of every fourteen held. Settlement of bids is expected by December 14, 2026.",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Url",
-          "value": "https://nsearchives.nseindia.in/ann_voice/ZEEL_27112026190149_SEIntimationLOFsigned.mp3",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026190149_SEIntimationLOFsigned.pdf"
-    },
-    {
-      "id": "98f44c7acb73fcbeb50e4542",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "split",
-      "symbol": "BOSCHLTD",
-      "company": "Bosch Limited",
-      "title": "Record Date",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "An Dt",
-          "value": "27-Nov-2026 12:48:52",
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Path",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Size",
-          "value": "3.10 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt File",
-          "value": "https://nsearchives.nseindia.in/corporate/BOSCHLTD2025_27112026124825_L2SErecorddateintimationupdated.pdf",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt Text",
-          "value": "Bosch Limited has informed the Exchange that Record date for the purpose of Bonus & Split/Subdivision  is 23-Dec-2026.",
-          "source": "NSE"
-        },
-        {
-          "label": "Bflag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Csv Name",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Desc",
-          "value": "Record Date",
-          "source": "NSE"
-        },
-        {
-          "label": "Difference",
-          "value": "00:00:01",
-          "source": "NSE"
-        },
-        {
-          "label": "Dt",
-          "value": "27112026124852",
-          "source": "NSE"
-        },
-        {
-          "label": "Exchdisstime",
-          "value": "27-Nov-2026 12:48:53",
-          "source": "NSE"
-        },
-        {
-          "label": "File Size",
-          "value": "3.10 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Has Xbrl",
-          "value": true,
-          "source": "NSE"
-        },
-        {
-          "label": "Nas Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Obj Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Old New",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Orgid",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Seq Id",
-          "value": "106872576",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Industry",
-          "value": "Auto Ancillaries",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Isin",
-          "value": "INE323A01026",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Name",
-          "value": "Bosch Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Sort Date",
-          "value": "2026-11-27 12:48:52",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "BOSCHLTD",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Summary",
-          "value": "Bosch Limited has fixed the record date as 23.12.2026 for the sub-division of shares and bonus issue. The company proposes to sub-divide one equity share of face value Rs. 10 into five equity shares of face value Rs. 2. Additionally, the company proposes a bonus issue of 442,441,500 equity shares at a ratio of 3:1. These proposals are subject to shareholder approval via postal ballot closing on 17.12.2026. The deemed date of allotment for bonus shares is 24.12.2026. Bonus shares will be available for trading on 28.12.2026.",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Url",
-          "value": "https://nsearchives.nseindia.in/ann_voice/BOSCHLTD2025_27112026124825_L2SErecorddateintimationupdated.mp3",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://nsearchives.nseindia.in/corporate/BOSCHLTD2025_27112026124825_L2SErecorddateintimationupdated.pdf"
-    },
-    {
-      "id": "ce8bfdd3fd8428234774dd24",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "buyback",
-      "symbol": "DALBHARAT",
-      "company": "Dalmia Bharat Limited",
-      "title": "Buyback",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "An Dt",
-          "value": "26-Nov-2026 16:47:37",
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Path",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Size",
-          "value": "23.79 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt File",
-          "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026164701_SEfilingPA26112026.pdf",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt Text",
-          "value": "Dalmia Bharat Limited has informed the Exchange about Buyback. Board Resolution & Public Announcement pertaining to Buyback",
-          "source": "NSE"
-        },
-        {
-          "label": "Bflag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Csv Name",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Desc",
-          "value": "Buyback",
-          "source": "NSE"
-        },
-        {
-          "label": "Difference",
-          "value": "00:00:00",
-          "source": "NSE"
-        },
-        {
-          "label": "Dt",
-          "value": "26112026164737",
-          "source": "NSE"
-        },
-        {
-          "label": "Exchdisstime",
-          "value": "26-Nov-2026 16:47:37",
-          "source": "NSE"
-        },
-        {
-          "label": "File Size",
-          "value": "23.79 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Has Xbrl",
-          "value": true,
-          "source": "NSE"
-        },
-        {
-          "label": "Nas Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Obj Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Old New",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Orgid",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Seq Id",
-          "value": "106871780",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Industry",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Isin",
-          "value": "INE00R701025",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Name",
-          "value": "Dalmia Bharat Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Sort Date",
-          "value": "2026-11-26 16:47:37",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "DALBHARAT",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Summary",
-          "value": "Dalmia Bharat Limited announced a buyback of fully paid-up equity shares from the open market through the stock exchange mechanism. The Board approved the buyback on November 23, 2026. The maximum buyback size is INR 700,00,00,000. The maximum price per share is INR 1,850. The buyback is subject to shareholder approval as the size exceeds ten percent of paid-up capital and free reserves. The public announcement was published on November 26, 2026. Promoters and persons in control are not participating. The company will implement the buyback via open market purchases using the order matching mechanism.",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Url",
-          "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_26112026164701_SEfilingPA26112026.mp3",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026164701_SEfilingPA26112026.pdf"
-    },
-    {
-      "id": "d760e37d3b7fcf5d0a6bc73c",
-      "time": "2026-11-28T16:05:26+05:30",
-      "folder": "corporate-actions",
-      "subfolder": "buyback",
-      "symbol": "DALBHARAT",
-      "company": "Dalmia Bharat Limited",
-      "title": "Public Announcement - Buyback of Shares",
-      "price": null,
-      "change_pct": null,
-      "details": [
-        {
-          "label": "An Dt",
-          "value": "26-Nov-2026 16:37:32",
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Path",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Att File Size",
-          "value": "23.79 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt File",
-          "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026163637_SEfilingPA26112026.pdf",
-          "source": "NSE"
-        },
-        {
-          "label": "Attchmnt Text",
-          "value": "Dalmia Bharat Limited has informed the Exchange about public Announcement - Buyback of Shares. Submission of the public announcement dated November 25, 2026 (\"Public Announcement\") for the buyback of fully paid-up equity shares of face value of INR 2/- (Indian Rupees Two only) each (\"Equity Shares\") by Dalmia Bharat Limited (\"Company\") from the open market through the stock exchange mechanism, pursuant to the provisions of the Securities and Exchange Board of India (Buy-Back of Securities) Regulations, 2018, as amended (\"Buyback Regulations\") (\"Buyback\")",
-          "source": "NSE"
-        },
-        {
-          "label": "Bflag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Csv Name",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Desc",
-          "value": "Public Announcement - Buyback of Shares",
-          "source": "NSE"
-        },
-        {
-          "label": "Difference",
-          "value": "00:00:01",
-          "source": "NSE"
-        },
-        {
-          "label": "Dt",
-          "value": "26112026163732",
-          "source": "NSE"
-        },
-        {
-          "label": "Exchdisstime",
-          "value": "26-Nov-2026 16:37:33",
-          "source": "NSE"
-        },
-        {
-          "label": "File Size",
-          "value": "23.79 MB",
-          "source": "NSE"
-        },
-        {
-          "label": "Has Xbrl",
-          "value": true,
-          "source": "NSE"
-        },
-        {
-          "label": "Nas Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Obj Upload Flag",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Old New",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Orgid",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Seq Id",
-          "value": "106871739",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Industry",
-          "value": null,
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Isin",
-          "value": "INE00R701025",
-          "source": "NSE"
-        },
-        {
-          "label": "Sm Name",
-          "value": "Dalmia Bharat Limited",
-          "source": "NSE"
-        },
-        {
-          "label": "Sort Date",
-          "value": "2026-11-26 16:37:32",
-          "source": "NSE"
-        },
-        {
-          "label": "Symbol",
-          "value": "DALBHARAT",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Summary",
-          "value": "Dalmia Bharat Limited announced a buyback of fully paid-up equity shares from the open market through stock exchanges. The Board approved this on November 23, 2026. The maximum buyback size is INR 700,00,00,000. The maximum price per share is INR 1,850. This represents 9.64% of paid-up capital and free reserves per standalone financials as of March 31, 2026. Shareholder approval is not required as the size is less than 10% of the aggregate. The public announcement was published on November 26, 2026. Promoters and directors hold zero shares except Priyang Dalmia who holds 3,59,710 shares. The buyback excludes transaction costs.",
-          "source": "NSE"
-        },
-        {
-          "label": "Voice Url",
-          "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_26112026163637_SEfilingPA26112026.mp3",
-          "source": "NSE"
-        }
-      ],
-      "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026163637_SEfilingPA26112026.pdf"
+     "id": "small",
+     "name": "Small orders"
     }
-  ],
-  "updated": "2026-11-28T16:08:06.450902+05:30"
+   ]
+  }
+ ],
+ "alerts": [
+  {
+   "id": "ema-golden-bankbaroda-2026-11-27",
+   "time": "2026-11-28T16:08:06.450902+05:30",
+   "folder": "emas",
+   "subfolder": "golden",
+   "symbol": "BANKBARODA",
+   "company": "BANKBARODA",
+   "title": "Golden Cross (Daily)",
+   "price": 274.9,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Signal date",
+     "value": "2026-11-27",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA50",
+     "value": 253.9219,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA200",
+     "value": 253.3859,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Timeframe",
+     "value": "Daily",
+     "source": "Scanner"
+    },
+    {
+     "label": "Signal definition",
+     "value": "EMA50 above EMA200",
+     "source": "Scanner"
+    }
+   ],
+   "link": "https://www.tradingview.com/chart/?symbol=NSE:BANKBARODA"
+  },
+  {
+   "id": "ema-golden-choicein-2026-11-27",
+   "time": "2026-11-28T16:08:06.450902+05:30",
+   "folder": "emas",
+   "subfolder": "golden",
+   "symbol": "CHOICEIN",
+   "company": "CHOICEIN",
+   "title": "Golden Cross (Daily)",
+   "price": 770.45,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Signal date",
+     "value": "2026-11-27",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA50",
+     "value": 741.5307,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA200",
+     "value": 740.6778,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Timeframe",
+     "value": "Daily",
+     "source": "Scanner"
+    },
+    {
+     "label": "Signal definition",
+     "value": "EMA50 above EMA200",
+     "source": "Scanner"
+    }
+   ],
+   "link": "https://www.tradingview.com/chart/?symbol=NSE:CHOICEIN"
+  },
+  {
+   "id": "ema-golden-hdfcamc-2026-11-27",
+   "time": "2026-11-28T16:08:06.450902+05:30",
+   "folder": "emas",
+   "subfolder": "golden",
+   "symbol": "HDFCAMC",
+   "company": "HDFCAMC",
+   "title": "Golden Cross (Daily)",
+   "price": 2706.0,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Signal date",
+     "value": "2026-11-27",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA50",
+     "value": 2523.0924,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA200",
+     "value": 2522.3339,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Timeframe",
+     "value": "Daily",
+     "source": "Scanner"
+    },
+    {
+     "label": "Signal definition",
+     "value": "EMA50 above EMA200",
+     "source": "Scanner"
+    }
+   ],
+   "link": "https://www.tradingview.com/chart/?symbol=NSE:HDFCAMC"
+  },
+  {
+   "id": "ema-golden-jlhl-2026-11-27",
+   "time": "2026-11-28T16:08:06.450902+05:30",
+   "folder": "emas",
+   "subfolder": "golden",
+   "symbol": "JLHL",
+   "company": "JLHL",
+   "title": "Golden Cross (Daily)",
+   "price": 345.3,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Signal date",
+     "value": "2026-11-27",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA50",
+     "value": 281.019,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA200",
+     "value": 279.1409,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Timeframe",
+     "value": "Daily",
+     "source": "Scanner"
+    },
+    {
+     "label": "Signal definition",
+     "value": "EMA50 above EMA200",
+     "source": "Scanner"
+    }
+   ],
+   "link": "https://www.tradingview.com/chart/?symbol=NSE:JLHL"
+  },
+  {
+   "id": "ema-golden-olil-2026-11-27",
+   "time": "2026-11-28T16:08:06.450902+05:30",
+   "folder": "emas",
+   "subfolder": "golden",
+   "symbol": "OLIL",
+   "company": "OLIL",
+   "title": "Golden Cross (Daily)",
+   "price": 434.8,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Signal date",
+     "value": "2026-11-27",
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA50",
+     "value": 363.8761,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "EMA200",
+     "value": 363.7609,
+     "source": "Yahoo Finance"
+    },
+    {
+     "label": "Timeframe",
+     "value": "Daily",
+     "source": "Scanner"
+    },
+    {
+     "label": "Signal definition",
+     "value": "EMA50 above EMA200",
+     "source": "Scanner"
+    }
+   ],
+   "link": "https://www.tradingview.com/chart/?symbol=NSE:OLIL"
+  },
+  {
+   "id": "944ba23533a01f71934b7727",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "split",
+   "symbol": "VGL",
+   "company": "VARVEE GLOBAL LIMITED",
+   "title": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Bc End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Bc Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Ca Broadcast Date",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Comp",
+     "value": "VARVEE GLOBAL LIMITED",
+     "source": "NSE"
+    },
+    {
+     "label": "Ex Date",
+     "value": "27-Nov-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Face Val",
+     "value": "2",
+     "source": "NSE"
+    },
+    {
+     "label": "Ind",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Isin",
+     "value": "INE273D01019",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Rec Date",
+     "value": "27-Nov-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Series",
+     "value": "EQ",
+     "source": "NSE"
+    },
+    {
+     "label": "Subject",
+     "value": "Face Value Split (Sub-Division) - From Rs 5/- Per Share To Rs 2/- Per Share",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "VGL",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://www.nseindia.com/get-quotes/equity?symbol=VGL"
+  },
+  {
+   "id": "9138a14913e7d19320aaa848",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "split",
+   "symbol": "INTERARCH",
+   "company": "Interarch Building Solutions Limited",
+   "title": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Bc End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Bc Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Ca Broadcast Date",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Comp",
+     "value": "Interarch Building Solutions Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Ex Date",
+     "value": "30-Nov-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Face Val",
+     "value": "10",
+     "source": "NSE"
+    },
+    {
+     "label": "Ind",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Isin",
+     "value": "INE00M901018",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Rec Date",
+     "value": "30-Nov-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Series",
+     "value": "EQ",
+     "source": "NSE"
+    },
+    {
+     "label": "Subject",
+     "value": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "INTERARCH",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://www.nseindia.com/get-quotes/equity?symbol=INTERARCH"
+  },
+  {
+   "id": "ca26afa22ea5ce3ffe61ca32",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "bonus",
+   "symbol": "TECHM",
+   "company": "Tech Mahindra Limited",
+   "title": "Bonus 1:1",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Bc End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Bc Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Ca Broadcast Date",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Comp",
+     "value": "Tech Mahindra Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Ex Date",
+     "value": "30-Nov-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Face Val",
+     "value": "5",
+     "source": "NSE"
+    },
+    {
+     "label": "Ind",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Isin",
+     "value": "INE669C01028",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Rec Date",
+     "value": "30-Nov-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Series",
+     "value": "EQ",
+     "source": "NSE"
+    },
+    {
+     "label": "Subject",
+     "value": "Bonus 1:1",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "TECHM",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://www.nseindia.com/get-quotes/equity?symbol=TECHM"
+  },
+  {
+   "id": "d8c1e3443853eddda9a85831",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "split",
+   "symbol": "SPAL",
+   "company": "S. P. Apparels Limited",
+   "title": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "Bc End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Bc Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Ca Broadcast Date",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Comp",
+     "value": "S. P. Apparels Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Ex Date",
+     "value": "10-Dec-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Face Val",
+     "value": "10",
+     "source": "NSE"
+    },
+    {
+     "label": "Ind",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Isin",
+     "value": "INE212I01016",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd End Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Nd Start Date",
+     "value": "-",
+     "source": "NSE"
+    },
+    {
+     "label": "Rec Date",
+     "value": "10-Dec-2026",
+     "source": "NSE"
+    },
+    {
+     "label": "Series",
+     "value": "EQ",
+     "source": "NSE"
+    },
+    {
+     "label": "Subject",
+     "value": "Face Value Split (Sub-Division) - From Rs 10/- Per Share To Rs 2/- Per Share",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "SPAL",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://www.nseindia.com/get-quotes/equity?symbol=SPAL"
+  },
+  {
+   "id": "87b55992cdc0039c506efaf2",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "buyback",
+   "symbol": "ZEEL",
+   "company": "Zee Entertainment Enterprises Limited",
+   "title": "General Updates",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "An Dt",
+     "value": "27-Nov-2026 19:27:33",
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Size",
+     "value": "1.85 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026192715_fSELOFTenderoffersigned.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt Text",
+     "value": "Zee Entertainment Enterprises Limited has informed the Exchange about Submission of Letter of Offer along with Tender form for Buy Back of Equity Shares",
+     "source": "NSE"
+    },
+    {
+     "label": "Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Desc",
+     "value": "General Updates",
+     "source": "NSE"
+    },
+    {
+     "label": "Difference",
+     "value": "00:00:02",
+     "source": "NSE"
+    },
+    {
+     "label": "Dt",
+     "value": "27112026192733",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchdisstime",
+     "value": "27-Nov-2026 19:27:35",
+     "source": "NSE"
+    },
+    {
+     "label": "File Size",
+     "value": "1.85 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Seq Id",
+     "value": "106873119",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Industry",
+     "value": "Media & Entertainment",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Isin",
+     "value": "INE256A01028",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Name",
+     "value": "Zee Entertainment Enterprises Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Sort Date",
+     "value": "2026-11-27 19:27:33",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "ZEEL",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Summary",
+     "value": "Zee Entertainment Enterprises Limited submitted a Letter of Offer for a buyback of up to 65,934,065 equity shares at Rs. 91 per share, totaling Rs. 6,000 Million. The buyback opens on December 1, 2026, and closes on December 7, 2026. The record date is November 25, 2026. The offer is subject to statutory approvals. The buyback represents 6.86% of the total paid-up equity share capital as on March 31, 2026. Entitlement is approximately one share out of every fourteen held. Settlement of bids is expected by December 14, 2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/ZEEL_27112026192715_fSELOFTenderoffersigned.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026192715_fSELOFTenderoffersigned.pdf"
+  },
+  {
+   "id": "19c5f6f2aade333154aa34ed",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "buyback",
+   "symbol": "DALBHARAT",
+   "company": "Dalmia Bharat Limited",
+   "title": "General Updates",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "An Dt",
+     "value": "27-Nov-2026 19:05:50",
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Size",
+     "value": "574.86 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_27112026190526_SEemail271126651.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt Text",
+     "value": "We wish to inform you that as per the requirements of Securities and Exchange Board of India(Buy-Back of Securities) Regulations, 2018, as amended, the Company has today i.e. onNovember 27, 2026, sent an intimation through electronic mode regarding its Buyback Offerthrough open market to its shareholders.",
+     "source": "NSE"
+    },
+    {
+     "label": "Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Desc",
+     "value": "General Updates",
+     "source": "NSE"
+    },
+    {
+     "label": "Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Dt",
+     "value": "27112026190550",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchdisstime",
+     "value": "27-Nov-2026 19:05:51",
+     "source": "NSE"
+    },
+    {
+     "label": "File Size",
+     "value": "574.86 KB",
+     "source": "NSE"
+    },
+    {
+     "label": "Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Seq Id",
+     "value": "106873104",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Isin",
+     "value": "INE00R701025",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Name",
+     "value": "Dalmia Bharat Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Sort Date",
+     "value": "2026-11-27 19:05:50",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "DALBHARAT",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Summary",
+     "value": "Dalmia Bharat Limited has intimated BSE and NSE regarding a buyback offer through the open market route. The Board approved the proposal on November 23, 2026. The maximum buyback price is Rs. 1,850 per equity share. The maximum buyback size is Rs. 7,00,00,00,000. The offer excludes promoters and their group. The buyback will commence on or before December 02, 2026. Shares will be acquired via stock exchange mechanisms. The last date for completion is the earlier of March 05, 2027, or when the maximum size is reached. The company may close earlier if Rs. 525,00,00,000 is deployed. Axis Capital Limited is the manager to the buyback. KFin Technologies Limited is the registrar.",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_27112026190526_SEemail271126651.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_27112026190526_SEemail271126651.pdf"
+  },
+  {
+   "id": "d5683652ed1789f9142b4e1e",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "buyback",
+   "symbol": "ZEEL",
+   "company": "Zee Entertainment Enterprises Limited",
+   "title": "General Updates",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "An Dt",
+     "value": "27-Nov-2026 19:01:58",
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Size",
+     "value": "1.76 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026190149_SEIntimationLOFsigned.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt Text",
+     "value": "Zee Entertainment Enterprises Limited has informed the Exchange about Submission of Letter of Offer for Buy Back of Equity Shares",
+     "source": "NSE"
+    },
+    {
+     "label": "Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Desc",
+     "value": "General Updates",
+     "source": "NSE"
+    },
+    {
+     "label": "Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Dt",
+     "value": "27112026190158",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchdisstime",
+     "value": "27-Nov-2026 19:01:59",
+     "source": "NSE"
+    },
+    {
+     "label": "File Size",
+     "value": "1.76 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Seq Id",
+     "value": "106873097",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Industry",
+     "value": "Media & Entertainment",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Isin",
+     "value": "INE256A01028",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Name",
+     "value": "Zee Entertainment Enterprises Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Sort Date",
+     "value": "2026-11-27 19:01:58",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "ZEEL",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Summary",
+     "value": "Zee Entertainment Enterprises Limited submitted a Letter of Offer for a buyback of up to 65,934,065 equity shares at Rs. 91 per share, totaling Rs. 6,000 Million. The buyback opens on December 1, 2026, and closes on December 7, 2026. The record date is November 25, 2026. The offer is subject to statutory approvals. The buyback represents 6.86% of the total paid-up equity share capital as on March 31, 2026. Entitlement is approximately one share out of every fourteen held. Settlement of bids is expected by December 14, 2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/ZEEL_27112026190149_SEIntimationLOFsigned.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/ZEEL_27112026190149_SEIntimationLOFsigned.pdf"
+  },
+  {
+   "id": "98f44c7acb73fcbeb50e4542",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "split",
+   "symbol": "BOSCHLTD",
+   "company": "Bosch Limited",
+   "title": "Record Date",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "An Dt",
+     "value": "27-Nov-2026 12:48:52",
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Size",
+     "value": "3.10 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/BOSCHLTD2025_27112026124825_L2SErecorddateintimationupdated.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt Text",
+     "value": "Bosch Limited has informed the Exchange that Record date for the purpose of Bonus & Split/Subdivision  is 23-Dec-2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Desc",
+     "value": "Record Date",
+     "source": "NSE"
+    },
+    {
+     "label": "Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Dt",
+     "value": "27112026124852",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchdisstime",
+     "value": "27-Nov-2026 12:48:53",
+     "source": "NSE"
+    },
+    {
+     "label": "File Size",
+     "value": "3.10 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Seq Id",
+     "value": "106872576",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Industry",
+     "value": "Auto Ancillaries",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Isin",
+     "value": "INE323A01026",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Name",
+     "value": "Bosch Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Sort Date",
+     "value": "2026-11-27 12:48:52",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "BOSCHLTD",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Summary",
+     "value": "Bosch Limited has fixed the record date as 23.12.2026 for the sub-division of shares and bonus issue. The company proposes to sub-divide one equity share of face value Rs. 10 into five equity shares of face value Rs. 2. Additionally, the company proposes a bonus issue of 442,441,500 equity shares at a ratio of 3:1. These proposals are subject to shareholder approval via postal ballot closing on 17.12.2026. The deemed date of allotment for bonus shares is 24.12.2026. Bonus shares will be available for trading on 28.12.2026.",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/BOSCHLTD2025_27112026124825_L2SErecorddateintimationupdated.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/BOSCHLTD2025_27112026124825_L2SErecorddateintimationupdated.pdf"
+  },
+  {
+   "id": "ce8bfdd3fd8428234774dd24",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "buyback",
+   "symbol": "DALBHARAT",
+   "company": "Dalmia Bharat Limited",
+   "title": "Buyback",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "An Dt",
+     "value": "26-Nov-2026 16:47:37",
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Size",
+     "value": "23.79 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026164701_SEfilingPA26112026.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt Text",
+     "value": "Dalmia Bharat Limited has informed the Exchange about Buyback. Board Resolution & Public Announcement pertaining to Buyback",
+     "source": "NSE"
+    },
+    {
+     "label": "Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Desc",
+     "value": "Buyback",
+     "source": "NSE"
+    },
+    {
+     "label": "Difference",
+     "value": "00:00:00",
+     "source": "NSE"
+    },
+    {
+     "label": "Dt",
+     "value": "26112026164737",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchdisstime",
+     "value": "26-Nov-2026 16:47:37",
+     "source": "NSE"
+    },
+    {
+     "label": "File Size",
+     "value": "23.79 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Seq Id",
+     "value": "106871780",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Isin",
+     "value": "INE00R701025",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Name",
+     "value": "Dalmia Bharat Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Sort Date",
+     "value": "2026-11-26 16:47:37",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "DALBHARAT",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Summary",
+     "value": "Dalmia Bharat Limited announced a buyback of fully paid-up equity shares from the open market through the stock exchange mechanism. The Board approved the buyback on November 23, 2026. The maximum buyback size is INR 700,00,00,000. The maximum price per share is INR 1,850. The buyback is subject to shareholder approval as the size exceeds ten percent of paid-up capital and free reserves. The public announcement was published on November 26, 2026. Promoters and persons in control are not participating. The company will implement the buyback via open market purchases using the order matching mechanism.",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_26112026164701_SEfilingPA26112026.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026164701_SEfilingPA26112026.pdf"
+  },
+  {
+   "id": "d760e37d3b7fcf5d0a6bc73c",
+   "time": "2026-11-28T16:05:26+05:30",
+   "folder": "corporate-actions",
+   "subfolder": "buyback",
+   "symbol": "DALBHARAT",
+   "company": "Dalmia Bharat Limited",
+   "title": "Public Announcement - Buyback of Shares",
+   "price": null,
+   "change_pct": null,
+   "details": [
+    {
+     "label": "An Dt",
+     "value": "26-Nov-2026 16:37:32",
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Path",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Att File Size",
+     "value": "23.79 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt File",
+     "value": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026163637_SEfilingPA26112026.pdf",
+     "source": "NSE"
+    },
+    {
+     "label": "Attchmnt Text",
+     "value": "Dalmia Bharat Limited has informed the Exchange about public Announcement - Buyback of Shares. Submission of the public announcement dated November 25, 2026 (\"Public Announcement\") for the buyback of fully paid-up equity shares of face value of INR 2/- (Indian Rupees Two only) each (\"Equity Shares\") by Dalmia Bharat Limited (\"Company\") from the open market through the stock exchange mechanism, pursuant to the provisions of the Securities and Exchange Board of India (Buy-Back of Securities) Regulations, 2018, as amended (\"Buyback Regulations\") (\"Buyback\")",
+     "source": "NSE"
+    },
+    {
+     "label": "Bflag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Csv Name",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Desc",
+     "value": "Public Announcement - Buyback of Shares",
+     "source": "NSE"
+    },
+    {
+     "label": "Difference",
+     "value": "00:00:01",
+     "source": "NSE"
+    },
+    {
+     "label": "Dt",
+     "value": "26112026163732",
+     "source": "NSE"
+    },
+    {
+     "label": "Exchdisstime",
+     "value": "26-Nov-2026 16:37:33",
+     "source": "NSE"
+    },
+    {
+     "label": "File Size",
+     "value": "23.79 MB",
+     "source": "NSE"
+    },
+    {
+     "label": "Has Xbrl",
+     "value": true,
+     "source": "NSE"
+    },
+    {
+     "label": "Nas Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Obj Upload Flag",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Old New",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Orgid",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Seq Id",
+     "value": "106871739",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Industry",
+     "value": null,
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Isin",
+     "value": "INE00R701025",
+     "source": "NSE"
+    },
+    {
+     "label": "Sm Name",
+     "value": "Dalmia Bharat Limited",
+     "source": "NSE"
+    },
+    {
+     "label": "Sort Date",
+     "value": "2026-11-26 16:37:32",
+     "source": "NSE"
+    },
+    {
+     "label": "Symbol",
+     "value": "DALBHARAT",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Summary",
+     "value": "Dalmia Bharat Limited announced a buyback of fully paid-up equity shares from the open market through stock exchanges. The Board approved this on November 23, 2026. The maximum buyback size is INR 700,00,00,000. The maximum price per share is INR 1,850. This represents 9.64% of paid-up capital and free reserves per standalone financials as of March 31, 2026. Shareholder approval is not required as the size is less than 10% of the aggregate. The public announcement was published on November 26, 2026. Promoters and directors hold zero shares except Priyang Dalmia who holds 3,59,710 shares. The buyback excludes transaction costs.",
+     "source": "NSE"
+    },
+    {
+     "label": "Voice Url",
+     "value": "https://nsearchives.nseindia.in/ann_voice/DALBHARAT_26112026163637_SEfilingPA26112026.mp3",
+     "source": "NSE"
+    }
+   ],
+   "link": "https://nsearchives.nseindia.in/corporate/DALBHARAT_26112026163637_SEfilingPA26112026.pdf"
+  }
+ ],
+ "updated": "2026-11-28T16:15:29+05:30"
 }
