@@ -1,0 +1,33 @@
+{
+  "sample": false,
+  "folders": [
+    {
+      "id": "promoter",
+      "name": "Promoter Activity",
+      "subfolders": [
+        {
+          "id": "buying",
+          "name": "🟢 Promoter Buying"
+        },
+        {
+          "id": "pledge-release",
+          "name": "🟢 Promoter Pledge Release"
+        },
+        {
+          "id": "selling",
+          "name": "🔴 Promoter Selling"
+        },
+        {
+          "id": "pledge-creation",
+          "name": "🔴 Promoter Pledge Creation"
+        },
+        {
+          "id": "pledge-invocation",
+          "name": "🔴 Promoter Pledge Invocation"
+        }
+      ]
+    }
+  ],
+  "alerts": [],
+  "updated": "2026-11-28T16:17:00+05:30"
+}
