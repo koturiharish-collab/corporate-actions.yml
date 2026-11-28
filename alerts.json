@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T22:50:41+05:30",
+ "updated": "2026-11-28T23:00:47+05:30",
  "folders": [
   {
    "id": "emas",
@@ -10000,10 +10000,10 @@
    "exchange": "NSE",
    "market_cap_crore": 60941.98,
    "order_size": "UNDISCLOSED",
-   "trailing_pe": 25.75,
+   "trailing_pe": 25.35,
    "forward_pe": 20.2,
    "price_to_book": 5.74,
-   "trailing_eps": 89.74,
+   "trailing_eps": 91.16,
    "enterprise_value": 57302.08,
    "fifty_two_week_high": 2900.0,
    "fifty_two_week_low": 710.0,
