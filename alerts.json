@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T10:15:34+05:30",
+ "updated": "2026-11-28T10:20:43+05:30",
  "folders": [
   {
    "id": "emas",
@@ -165,10 +165,10 @@
    "order_value_crore": 1407.0,
    "market_cap_crore": 7785.02,
    "order_percent_of_mcap": 18.07,
-   "trailing_pe": 18.42,
+   "trailing_pe": 18.73,
    "forward_pe": 10.34,
    "price_to_book": 1.27,
-   "trailing_eps": 15.88,
+   "trailing_eps": 15.61,
    "enterprise_value": 13657.61,
    "fifty_two_week_high": 764.8,
    "fifty_two_week_low": 290.0,
@@ -9681,10 +9681,10 @@
    "exchange": "NSE",
    "market_cap_crore": 60702.01,
    "order_size": "UNDISCLOSED",
-   "trailing_pe": 25.65,
+   "trailing_pe": 25.25,
    "forward_pe": 20.12,
    "price_to_book": 5.72,
-   "trailing_eps": 89.74,
+   "trailing_eps": 91.16,
    "enterprise_value": 57302.08,
    "fifty_two_week_high": 2900.0,
    "fifty_two_week_low": 710.0,
