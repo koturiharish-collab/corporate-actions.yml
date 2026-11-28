@@ -495,7 +495,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
       var valueNode = empty
         ? h('span', { class: 'dv na', text: valueText })
         : /^https?:\/\//i.test(valueText)
-          ? h('a', { class: 'dv', href: valueText, target: '_blank', rel: 'noopener noreferrer', text: valueText })
+          ? h('a', { class: 'dv', href: valueText, target: '_self', rel: 'noopener noreferrer', text: valueText })
           : h('span', { class: 'dv', text: valueText });
       wrap.appendChild(h('div', { class: 'drow' },
         h('span', { class: 'dl', text: label }),
@@ -613,7 +613,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
     }
 
     if (a.link && /^https?:\/\//i.test(a.link)) {
-      wrap.appendChild(h('div', { class: 'actions' }, h('a', { class: 'btn', href: a.link, target: '_blank', rel: 'noopener noreferrer', text: 'Open source filing' })));
+      wrap.appendChild(h('div', { class: 'actions' }, h('a', { class: 'btn', href: a.link, target: '_self', rel: 'noopener noreferrer', text: 'Open source filing' })));
     } else if (isOrder) {
       addRow('Source filing', 'Source filing link not available.');
     }
@@ -750,7 +750,7 @@ h1 .n { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 14px;
       table.appendChild(body);
       card.appendChild(h('div', { class: 'scroll' }, table));
       card.appendChild(h('p', { text: 'Analyst expectations: ' + (a.expectations_rating || 'Not Available') }));
-      if (a.source_url) card.appendChild(h('a', { class: 'btn', href: a.source_url, target: '_blank', rel: 'noopener noreferrer', text: 'Open official filing' }));
+      if (a.source_url) card.appendChild(h('a', { class: 'btn', href: a.source_url, target: '_self', rel: 'noopener noreferrer', text: 'Open official filing' }));
       c.appendChild(card);
     });
   }
