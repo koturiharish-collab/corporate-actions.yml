@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28T05:31:50.490924+05:30",
+  "updated": "2026-11-28T05:36:37.013302+05:30",
   "results": [
     {
       "symbol": "SFCTECH",
@@ -98,7 +98,7 @@
       "pdf_extraction": {
         "status": "not_extracted",
         "source_url": "https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
-        "reason": "No recognisable NSE standalone/consolidated results tables found"
+        "reason": "403 Client Error: Forbidden for url: https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf"
       },
       "id": "SFCTECH|Q2 FY2026-27|2026-11-23|https://nsearchives.nseindia.in/corporate/COMPLIANCE_SFC_23112026234018_sfcoutcom.pdf",
       "category": "results",
@@ -110,7 +110,7 @@
       },
       "rating": "Excellent",
       "expectations_rating": "Not Available",
-      "processed_at": "2026-11-28T05:31:50.490470+05:30"
+      "processed_at": "2026-11-28T05:36:37.013287+05:30"
     },
     {
       "symbol": "SETCO",
