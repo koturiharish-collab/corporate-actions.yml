@@ -44,160 +44,19 @@ jobs:
         id: save
         if: success()
         run: |
-          set -e
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Keep this run's generated files safe while syncing with main.
-          cp promoter/alerts.json /tmp/promoter-alerts-generated.json
-          cp promoter/promoter_state.json /tmp/promoter-state-generated.json
+          git add alerts.json promoter/promoter_state.json
 
-          # Retry if another workflow updates main during our push.
-          for attempt in 1 2 3; do
-            echo "Publish attempt ${attempt}/3"
-
-            git fetch origin main
-            git reset --hard origin/main
-
-            # Merge generated promoter data into the latest remote version.
-            # This preserves existing alerts and avoids add/add JSON conflicts.
-            python - <<'PY'
-          import json
-          from pathlib import Path
-
-          alerts_path = Path("promoter/alerts.json")
-          state_path = Path("promoter/promoter_state.json")
-
-          generated_alerts = json.loads(
-              Path("/tmp/promoter-alerts-generated.json").read_text(encoding="utf-8")
-          )
-          generated_state = json.loads(
-              Path("/tmp/promoter-state-generated.json").read_text(encoding="utf-8")
-          )
-
-          try:
-              current = json.loads(alerts_path.read_text(encoding="utf-8"))
-          except FileNotFoundError:
-              current = {"sample": False, "folders": [], "alerts": []}
-
-          if isinstance(current, list):
-              current = {"sample": False, "folders": [], "alerts": current}
-          if not isinstance(current, dict):
-              raise RuntimeError("Remote promoter/alerts.json has an invalid format")
-
-          current_alerts = current.setdefault("alerts", [])
-          if not isinstance(current_alerts, list):
-              raise RuntimeError("Remote promoter alerts field is not a list")
-
-          new_alerts = (
-              generated_alerts.get("alerts", [])
-              if isinstance(generated_alerts, dict)
-              else generated_alerts
-          )
-          if not isinstance(new_alerts, list):
-              raise RuntimeError("Generated promoter alerts field is not a list")
-
-          existing_keys = {
-              str(item.get("source_id") or item.get("id"))
-              for item in current_alerts
-              if isinstance(item, dict)
-          }
-
-          added = 0
-          for item in new_alerts:
-              if not isinstance(item, dict):
-                  continue
-              key = str(item.get("source_id") or item.get("id") or "")
-              if key and key not in existing_keys:
-                  current_alerts.append(item)
-                  existing_keys.add(key)
-                  added += 1
-
-          current_folders = current.setdefault("folders", [])
-          generated_folders = (
-              generated_alerts.get("folders", [])
-              if isinstance(generated_alerts, dict)
-              else []
-          )
-          promoter_folder = next(
-              (
-                  folder for folder in generated_folders
-                  if isinstance(folder, dict) and folder.get("id") == "promoter"
-              ),
-              None,
-          )
-
-          if promoter_folder:
-              current_folders = [
-                  folder for folder in current_folders
-                  if not (isinstance(folder, dict) and folder.get("id") == "promoter")
-              ]
-              current_folders.append(promoter_folder)
-              current["folders"] = current_folders
-
-          current["sample"] = False
-          current["updated"] = (
-              generated_alerts.get("updated")
-              if isinstance(generated_alerts, dict)
-              else None
-          ) or current.get("updated")
-
-          alerts_path.parent.mkdir(parents=True, exist_ok=True)
-          alerts_path.write_text(
-              json.dumps(current, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-
-          try:
-              old_state = json.loads(state_path.read_text(encoding="utf-8"))
-          except FileNotFoundError:
-              old_state = []
-
-          if isinstance(old_state, dict):
-              old_state = list(old_state)
-          if not isinstance(old_state, list):
-              raise RuntimeError("Remote promoter state file has an invalid format")
-
-          if isinstance(generated_state, dict):
-              generated_state = list(generated_state)
-          if not isinstance(generated_state, list):
-              raise RuntimeError("Generated promoter state file has an invalid format")
-
-          merged_state = sorted(
-              set(map(str, old_state)) | set(map(str, generated_state))
-          )[-12000:]
-
-          state_path.parent.mkdir(parents=True, exist_ok=True)
-          state_path.write_text(
-              json.dumps(merged_state, ensure_ascii=False, indent=2) + "\n",
-              encoding="utf-8",
-          )
-
-          print(f"Preserved remote alerts; added {added} new promoter alerts.")
-          print(f"Promoter alert total: {len(current_alerts)}")
-          PY
-
-            git add promoter/alerts.json promoter/promoter_state.json
-
-            if git diff --cached --quiet; then
-              echo "No promoter data changes to publish."
-              echo "site_changed=false" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-
+          if ! git diff --cached --quiet; then
             git commit -m "Update Share Sanket promoter activity alerts"
-
-            if git push origin HEAD:main; then
-              echo "site_changed=true" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-
-            echo "Push did not succeed; syncing latest main and retrying."
-          done
-
-          echo "Unable to publish promoter data after 3 attempts."
-          exit 1
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "site_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "site_changed=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Configure Pages
         if: steps.save.outputs.site_changed == 'true'
@@ -212,4 +71,3 @@ jobs:
       - name: Deploy Pages
         if: steps.save.outputs.site_changed == 'true'
         uses: actions/deploy-pages@v4
-
